@@ -1,0 +1,9 @@
+
+# 301 Redirects
+/full-audit /strategy-blueprint 301
+/home-staging / 301
+
+# Dynamic sitemap via Supabase Edge Function
+/sitemap.xml https://pgbcixncaeyjunwxrsik.supabase.co/functions/v1/generate-sitemap 200
+
+/*    /index.html   200

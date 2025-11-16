@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form Submitted</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      // Robust cross-tab signaling that the form has been submitted
+      (function () {
+        function notify() {
+          // If loaded in an iframe
+          try { window.parent?.postMessage({ type: 'form-submitted', source: 'ghl-bridge-parent' }, '*'); } catch (e) {}
+          // If opened in a new tab/window
+          try { window.opener?.postMessage({ type: 'form-submitted', source: 'ghl-bridge-opener' }, '*'); } catch (e) {}
+          // BroadcastChannel works across tabs of the same origin
+          try {
+            const bc = new BroadcastChannel('ghl-form-submission');
+            bc.postMessage({ type: 'form-submitted', source: 'ghl-bridge-bc' });
+            setTimeout(() => bc.close(), 500);
+          } catch (e) {}
+          // localStorage event also notifies other tabs on same origin
+          try { localStorage.setItem('ghl_form_submitted', String(Date.now())); } catch (e) {}
+        }
+        notify();
+        setTimeout(notify, 200);
+        setTimeout(notify, 800);
+        setTimeout(notify, 2000);
+      })();
+    </script>
+    <style>
+      :root { color-scheme: light dark; }
+      body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; display: grid; place-items: center; min-height: 100dvh; }
+      .card { border: 1px solid rgba(0,0,0,.08); padding: 24px; border-radius: 12px; max-width: 560px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+      .title { font-weight: 700; margin: 0 0 8px; }
+      .desc { opacity: .8; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="title">Thanks! Redirecting…</h1>
+      <p class="desc">You can close this tab. Your access dialog should appear automatically.</p>
+    </div>
+  </body>
+</html>

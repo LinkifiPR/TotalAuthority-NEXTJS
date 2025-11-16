@@ -1,81 +1,53 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+#!/usr/bin/env node
 
-const app = express();
+/**
+ * This file is a bridge to run Next.js through the existing Replit workflow.
+ * It starts the Next.js development server programmatically.
+ */
 
-declare module 'http' {
-  interface IncomingMessage {
-    rawBody: unknown
-  }
-}
-app.use(express.json({
-  verify: (req, _res, buf) => {
-    req.rawBody = buf;
-  }
-}));
-app.use(express.urlencoded({ extended: false }));
+import { spawn } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const projectRoot = join(__dirname, '..');
 
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
+const isDevelopment = process.env.NODE_ENV === 'development';
 
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
+// Determine which command to run
+const command = isDevelopment ? 'dev' : 'start';
+const port = process.env.PORT || '5000';
 
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
+console.log(`Starting Next.js ${command} server on port ${port}...`);
 
-      log(logLine);
-    }
-  });
-
-  next();
+// Start Next.js
+const nextProcess = spawn('npx', ['next', command, '-p', port], {
+  cwd: projectRoot,
+  stdio: 'inherit',
+  env: {
+    ...process.env,
+    PORT: port,
+  },
 });
 
-(async () => {
-  const server = await registerRoutes(app);
+nextProcess.on('error', (error) => {
+  console.error('Failed to start Next.js:', error);
+  process.exit(1);
+});
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+nextProcess.on('exit', (code) => {
+  console.log(`Next.js process exited with code ${code}`);
+  process.exit(code || 0);
+});
 
-    res.status(status).json({ message });
-    throw err;
-  });
+// Handle graceful shutdown
+process.on('SIGINT', () => {
+  console.log('\nGracefully shutting down Next.js server...');
+  nextProcess.kill('SIGINT');
+});
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
-
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
-})();
+process.on('SIGTERM', () => {
+  console.log('\nGracefully shutting down Next.js server...');
+  nextProcess.kill('SIGTERM');
+});

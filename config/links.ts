@@ -1,0 +1,1 @@
+export const BOOKING_URL = "https://go.totalauthority.com/widget/bookings/totalauthority";
