@@ -7,7 +7,6 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { BlogPostContent } from '@/components/blog/BlogPostContent';
 import { BlogPostSidebar } from '@/components/blog/BlogPostSidebar';
-import { BlogPostSEO } from '@/components/blog/BlogPostSEO';
 import { FormPopup } from '@/components/FormPopup';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { useToast } from '@/hooks/use-toast';
@@ -184,12 +183,18 @@ const BlogPost = () => {
   }
 
   if (!post) {
-    return <Navigate to="/404" replace />;
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+          <p className="text-gray-600">The blog post you're looking for doesn't exist.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen bg-white">
-      <BlogPostSEO post={post} />
       <Header onOpenForm={openForm} />
       
       {/* Preview banner */}

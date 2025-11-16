@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FormPopup } from '@/components/FormPopup';
@@ -13,16 +12,6 @@ const AuditClaimTutorial = () => {
 
   return (
     <>
-      <Helmet>
-        <title>AI Visibility Audit Quick Claim Tutorial | TotalAuthority</title>
-        <meta 
-          name="description" 
-          content="Learn how to quickly claim your AI visibility audit with our step-by-step video tutorial. Get your free audit report in minutes." 
-        />
-        <meta name="keywords" content="AI visibility audit, tutorial, claim audit, SEO audit guide" />
-        <link rel="canonical" href="https://totalauthority.io/audit-claim-tutorial" />
-      </Helmet>
-
       <div className="min-h-screen bg-gradient-to-b from-orange-50 to-amber-50">
         <Header onOpenForm={openForm} />
         

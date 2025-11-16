@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FormPopup } from '@/components/FormPopup';
@@ -15,7 +14,7 @@ import { Progress } from '@/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { z } from 'zod';
 import { ComparisonCharts } from '@/components/audit/ComparisonCharts';
 import { DetailedFactorAnalysis } from '@/components/audit/DetailedFactorAnalysis';
@@ -285,16 +284,6 @@ const LLMVisibilityGapCalculator = () => {
 
   return (
     <>
-      <Helmet>
-        <title>AI Visibility Gap Calculator | TotalAuthority</title>
-        <meta 
-          name="description" 
-          content="Compare your brand's AI visibility against competitors. Get detailed gap analysis and recommendations to improve your AI search presence." 
-        />
-        <meta name="keywords" content="LLM visibility, brand comparison, AI search analysis, competitor analysis" />
-        <link rel="canonical" href="https://totalauthority.io/llm-visibility-gap-calculator" />
-      </Helmet>
-
       <div className="min-h-screen bg-beige dark:bg-beige-dark relative overflow-hidden">
         <Header onOpenForm={openForm} />
         

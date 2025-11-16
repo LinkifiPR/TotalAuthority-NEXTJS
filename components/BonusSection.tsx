@@ -1,35 +1,36 @@
 "use client";
 
-import cheatSheetMockup from "@/assets/cheat_sheet_mockup.png";
-import industryReportMockup from "@/assets/industry_report_mockup.png";
-import brandTrackerMockup from "@/assets/brand_tracker_mockup.png";
-import prChecklistMockup from "@/assets/pr_checklist_mockup.png";
-import allProductsBundle from "@/assets/all_products_bundle.png";
+// Note: Asset imports temporarily commented out - images need to be added to project
+// import cheatSheetMockup from "@/assets/cheat_sheet_mockup.png";
+// import industryReportMockup from "@/assets/industry_report_mockup.png";
+// import brandTrackerMockup from "@/assets/brand_tracker_mockup.png";
+// import prChecklistMockup from "@/assets/pr_checklist_mockup.png";
+// import allProductsBundle from "@/assets/all_products_bundle.png";
 
 const bonuses = [
   {
     title: "The State of Small Business Visibility in ChatGPT (2025 Report)",
     description: "Get the full picture. This exclusive research summary reveals how nearly 100 small businesses perform in real AI answers — and why most don't show up. See what's holding them back and what it takes to get on the map.",
     price: 39,
-    image: industryReportMockup
+    image: undefined
   },
   {
     title: "LLM Visibility Cheat Sheet",
     description: "Based on insights from 100+ audits, this PDF gives you the exact playbook to become visible in AI results. Covers schema, citations, content gaps, and entity setup — everything you need to get recognised by ChatGPT, Claude, Gemini, and Perplexity.",
     price: 109,
-    image: cheatSheetMockup
+    image: undefined
   },
   {
     title: "Build Your Own Brand Tracker (Guide + Workflow)",
     description: "Never miss another brand mention. This guide shows you how to set up a fully automated brand tracking system using free tools and n8n — so you can catch citations, claim unlinked mentions, and turn them into backlinks.",
     price: 129,
-    image: brandTrackerMockup
+    image: undefined
   },
   {
     title: "PR-Ready Checklist",
     description: "Want to get quoted or featured in the media? This checklist shows you what journalists look for before they include you — from your About page to your Google results. Use it to tighten your brand presentation and get press-ready fast.",
     price: 49,
-    image: prChecklistMockup
+    image: undefined
   }
 ];
 
@@ -78,11 +79,10 @@ export const BonusSection = () => {
 
         {/* Bundle Image */}
         <div className="flex justify-center mb-16 animate-fade-in">
-          <img 
-            src={allProductsBundle} 
-            alt="All Products Bundle"
-            className="max-w-4xl w-full h-auto object-contain drop-shadow-2xl"
-          />
+          {/* Image placeholder - asset needs to be added to project */}
+          <div className="max-w-4xl w-full h-64 bg-orange-50 rounded-lg flex items-center justify-center drop-shadow-2xl">
+            <p className="text-orange-400 text-sm">Bundle image placeholder</p>
+          </div>
         </div>
 
         {/* Total Value Badge */}
@@ -126,11 +126,10 @@ export const BonusSection = () => {
               {/* Product Image with Hover Effect */}
               <div className="mb-6 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <img 
-                  src={bonus.image} 
-                  alt={bonus.title}
-                  className="relative max-h-[280px] w-auto object-contain transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 drop-shadow-2xl"
-                />
+                {/* Image placeholder - asset needs to be added to project */}
+                <div className="relative max-h-[280px] w-full h-64 bg-gradient-to-br from-orange-100 to-blue-100 rounded-lg flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 drop-shadow-2xl">
+                  <p className="text-gray-400 text-xs">Image placeholder</p>
+                </div>
               </div>
 
               {/* Title */}

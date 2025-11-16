@@ -2,8 +2,8 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { useParams, useRouter } from 'next/navigation';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
 import { AuditPasswordForm } from '@/components/audit/AuditPasswordForm';
@@ -30,8 +30,9 @@ interface AuditData {
 }
 
 const AuditReport = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+  const params = useParams();
+  const slug = params?.slug as string;
+  const router = useRouter();
   const { user } = useAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
@@ -66,7 +67,7 @@ const AuditReport = () => {
           description: "Audit report not found",
           variant: "destructive",
         });
-        navigate('/');
+        router.push('/');
         return;
       }
 
@@ -114,7 +115,7 @@ const AuditReport = () => {
         description: "Failed to load audit report",
         variant: "destructive",
       });
-      navigate('/');
+      router.push('/');
     }
   };
 

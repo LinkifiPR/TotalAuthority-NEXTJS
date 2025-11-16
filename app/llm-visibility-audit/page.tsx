@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { ArrowUpRight } from 'lucide-react';
 import HowItWorksSection from '@/components/HowItWorksSection';
@@ -19,11 +18,6 @@ import { FinalCTA } from '@/components/FinalCTA';
 const LLMVisibilityAudit = () => {
   return (
     <>
-      <Helmet>
-        <title>LLM Visibility Audit - Get Your AI Visibility Score</title>
-        <meta name="description" content="Are you invisible to AI? Get your LLM Visibility Score and have your business show up before competitors in AI search results." />
-      </Helmet>
-
       <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-white">
         {/* Hero Section */}
         <section className="relative py-20 px-4 overflow-hidden">

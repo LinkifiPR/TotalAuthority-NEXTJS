@@ -2,13 +2,12 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams, Navigate, useLocation } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { useParams, usePathname } from 'next/navigation';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { BlogPostContent } from '@/components/blog/BlogPostContent';
 import { BlogPostSidebar } from '@/components/blog/BlogPostSidebar';
-import { BlogPostSEO } from '@/components/blog/BlogPostSEO';
 import { FormPopup } from '@/components/FormPopup';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { useToast } from '@/hooks/use-toast';
@@ -35,8 +34,9 @@ interface BlogPost {
 }
 
 const BlogPost = () => {
-  const { slug } = useParams();
-  const location = useLocation();
+  const params = useParams();
+  const slug = params?.slug as string;
+  const pathname = usePathname();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [headings, setHeadings] = useState<Array<{id: string, text: string, level: number}>>([]);
@@ -44,7 +44,7 @@ const BlogPost = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
 
   // Check if this is a preview URL
-  const isPreview = location.pathname.startsWith('/preview/');
+  const isPreview = pathname?.startsWith('/preview/') ?? true;
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -184,12 +184,18 @@ const BlogPost = () => {
   }
 
   if (!post) {
-    return <Navigate to="/404" replace />;
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+          <p className="text-gray-600">The blog post preview you're looking for doesn't exist.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen bg-white">
-      <BlogPostSEO post={post} />
       <Header onOpenForm={openForm} />
       
       {/* Preview banner */}

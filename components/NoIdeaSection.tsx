@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-import confusionIllustration from '@/assets/confusion-to-clarity-illustration.png';
+// Note: Asset import temporarily commented out - image needs to be added to project
+// import confusionIllustration from '@/assets/confusion-to-clarity-illustration.png';
 
 interface NoIdeaSectionProps {
   onOpenForm?: () => void;
@@ -38,11 +39,10 @@ export const NoIdeaSection: React.FC<NoIdeaSectionProps> = ({ onOpenForm }) => {
 
             {/* Right: Illustration */}
             <div className="flex justify-center lg:justify-end">
-              <img 
-                src={confusionIllustration} 
-                alt="Business professional confused about AI visibility versus having clear data insights" 
-                className="w-full max-w-xl"
-              />
+              {/* Image placeholder - asset needs to be added to project */}
+              <div className="w-full max-w-xl h-64 bg-blue-100 rounded-lg flex items-center justify-center">
+                <p className="text-blue-400 text-sm">Illustration placeholder</p>
+              </div>
             </div>
           </div>
         </div>

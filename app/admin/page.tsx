@@ -13,7 +13,7 @@ import { AdminDashboardStats } from '@/components/admin/AdminDashboardStats';
 import { AdminQuickActions } from '@/components/admin/AdminQuickActions';
 import { AdminSystemOverview } from '@/components/admin/AdminSystemOverview';
 import { useAuth } from '@/hooks/useAuth';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { BarChart3 } from 'lucide-react';
 
 interface DashboardStats {

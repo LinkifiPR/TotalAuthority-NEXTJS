@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock, Eye, User } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 interface BlogPost {
   id: string;
@@ -25,7 +25,7 @@ interface BlogPostContentProps {
 }
 
 export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -36,7 +36,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
   };
 
   const handleTagClick = (tag: string) => {
-    navigate(`/insights?tag=${encodeURIComponent(tag)}`);
+    router.push(`/insights?tag=${encodeURIComponent(tag)}`);
   };
 
   // Content processing - clean up editor elements and ensure proper YouTube embeds

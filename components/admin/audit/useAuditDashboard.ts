@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { AuditReport, ReviewFormData } from './types';
 import { lockAudit, unlockAudit, bulkLockAudits, bulkUnlockAudits } from './snapshotUtils';
