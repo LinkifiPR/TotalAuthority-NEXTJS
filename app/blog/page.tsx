@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/integrations/supabase/client';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -40,7 +40,6 @@ const BlogList = () => {
   const postsPerPage = 9;
   const [paginatedPosts, setPaginatedPosts] = useState<BlogPost[]>([]);
   const [totalPages, setTotalPages] = useState(0);
-  const router = useRouter();
   const searchParams = useSearchParams();
   const {
     toast
@@ -51,21 +50,13 @@ const BlogList = () => {
     closeForm
   } = useFormPopup();
 
-  const handleBlogPostClick = (slug: string) => {
-    router.push(`/${slug}`);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 150);
-  };
-
   const handleTagClick = (tag: string) => {
     setSelectedTag(tag);
-    router.push(`/blog?tag=${tag}`);
+    setCurrentPage(1);
   };
 
   const clearTagFilter = () => {
     setSelectedTag('');
-    router.push('/blog');
   };
   useEffect(() => {
     fetchPosts();
@@ -276,61 +267,63 @@ const BlogList = () => {
                           </Badge>
                         </div>
                       )}
-                      <div 
-                        onClick={() => handleBlogPostClick(post.slug)}
-                        className="cursor-pointer"
-                      >
-                        {post.featured_image_url && <div className="overflow-hidden rounded-t-lg">
-                            <img src={post.featured_image_url} alt={post.featured_image_alt || post.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
-                          </div>}
-                        
-                        <CardHeader>
+                      
+                      {post.featured_image_url && (
+                        <Link href={`/${post.slug}`} className="block overflow-hidden rounded-t-lg">
+                          <img 
+                            src={post.featured_image_url} 
+                            alt={post.featured_image_alt || post.title} 
+                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                            loading="lazy" 
+                          />
+                        </Link>
+                      )}
+                      
+                      <CardHeader>
+                        <Link href={`/${post.slug}`} className="relative after:content-[''] after:block after:absolute after:inset-0">
                           <CardTitle className="group-hover:text-blue-600 transition-colors line-clamp-2">
                             {post.title}
                           </CardTitle>
-                          <CardDescription className="line-clamp-3">
-                            {post.excerpt}
-                          </CardDescription>
-                        </CardHeader>
-                        
-                        <CardContent>
-                          <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div className="flex items-center gap-4">
-                              <div className="flex items-center gap-1">
-                                <Calendar className="w-4 h-4" />
-                                <span>{formatDate(post.published_at)}</span>
-                              </div>
-                              
-                              {post.reading_time && <div className="flex items-center gap-1">
-                                  <Clock className="w-4 h-4" />
-                                  <span>{post.reading_time} min</span>
-                                </div>}
-                              
-                              <div className="flex items-center gap-1">
-                                <Eye className="w-4 h-4" />
-                                <span>{post.view_count}</span>
-                              </div>
+                        </Link>
+                        <CardDescription className="line-clamp-3">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent>
+                        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                          <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-4 h-4" />
+                              <span>{formatDate(post.published_at)}</span>
+                            </div>
+                            
+                            {post.reading_time && <div className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                <span>{post.reading_time} min</span>
+                              </div>}
+                            
+                            <div className="flex items-center gap-1">
+                              <Eye className="w-4 h-4" />
+                              <span>{post.view_count}</span>
                             </div>
                           </div>
-                          
-                          {post.tags && post.tags.length > 0 && <div className="flex flex-wrap gap-2">
-                              {post.tags.slice(0, 3).map((tag, index) => <Badge 
-                                  key={index} 
-                                  variant="secondary" 
-                                  className="text-xs cursor-pointer hover:bg-orange-100"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleTagClick(tag);
-                                  }}
-                                >
-                                  {tag}
-                                </Badge>)}
-                              {post.tags.length > 3 && <Badge variant="outline" className="text-xs">
-                                  +{post.tags.length - 3} more
-                                </Badge>}
-                            </div>}
-                        </CardContent>
-                      </div>
+                        </div>
+                        
+                        {post.tags && post.tags.length > 0 && <div className="flex flex-wrap gap-2 relative z-10">
+                            {post.tags.slice(0, 3).map((tag, index) => <button 
+                                key={index}
+                                type="button"
+                                onClick={() => handleTagClick(tag)}
+                                className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-orange-100"
+                              >
+                                {tag}
+                              </button>)}
+                            {post.tags.length > 3 && <Badge variant="outline" className="text-xs">
+                                +{post.tags.length - 3} more
+                              </Badge>}
+                          </div>}
+                      </CardContent>
                     </Card>
                   );
                 })}

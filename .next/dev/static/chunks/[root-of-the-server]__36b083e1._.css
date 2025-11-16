@@ -8304,6 +8304,11 @@ body {
   inset: -.5rem;
 }
 
+.after\:inset-0:after {
+  content: var(--tw-content);
+  inset: 0;
+}
+
 .after\:inset-y-0:after {
   content: var(--tw-content);
   top: 0;

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 import { Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
 
 interface FooterProps {
@@ -10,44 +9,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
-  const pathname = usePathname();
-  const router = useRouter();
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleSectionLink = (sectionId: string) => {
-    if (pathname === '/') {
-      // We're on homepage, scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      // We're on another page, navigate to homepage then scroll to section
-      router.push('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  };
-
-  const handleBlogClick = () => {
-    router.push('/blog');
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 150);
-  };
-
-  const handleAboutClick = () => {
-    router.push('/about');
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 150);
   };
 
   return (
@@ -125,20 +88,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <button 
-                  onClick={handleAboutClick}
-                  className="text-slate-300 hover:text-orange-400 transition-colors cursor-pointer"
+                <Link 
+                  href="/about"
+                  onClick={scrollToTop}
+                  className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
                   About
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={handleBlogClick}
-                  className="text-slate-300 hover:text-orange-400 transition-colors cursor-pointer"
+                <Link 
+                  href="/blog"
+                  onClick={scrollToTop}
+                  className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
                   Blog
-                </button>
+                </Link>
               </li>
               <li>
                 <a 
