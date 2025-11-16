@@ -1,13 +1,12 @@
 "use client";
 
-
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import type { CustomAuditFormProps } from '@/types/form';
 
 export const CustomAuditForm: React.FC<CustomAuditFormProps> = ({ onSuccess }) => {
   const [showThankYou, setShowThankYou] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     // Load the GHL form embed script
@@ -22,7 +21,7 @@ export const CustomAuditForm: React.FC<CustomAuditFormProps> = ({ onSuccess }) =
       if (event.origin === 'https://go.totalauthority.com' && event.data?.type === 'form_submitted') {
         console.log('Form submitted successfully via GHL iframe');
         // Redirect to thank you page instead of showing animation
-        navigate('/thankyou');
+        router.push('/thankyou');
         onSuccess?.();
       }
     };
@@ -41,7 +40,7 @@ export const CustomAuditForm: React.FC<CustomAuditFormProps> = ({ onSuccess }) =
                 try {
                   const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                   if (iframeDoc && iframeDoc.body.innerHTML.includes('thank')) {
-                    navigate('/thankyou');
+                    router.push('/thankyou');
                     onSuccess?.();
                   }
                 } catch (e) {
@@ -70,7 +69,7 @@ export const CustomAuditForm: React.FC<CustomAuditFormProps> = ({ onSuccess }) =
         document.head.removeChild(existingScript);
       }
     };
-  }, [navigate, onSuccess]);
+  }, [router, onSuccess]);
 
   return (
     <div className="max-w-lg mx-auto">

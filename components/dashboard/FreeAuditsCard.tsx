@@ -2,7 +2,7 @@
 
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -188,7 +188,7 @@ const FreeAuditsCard = ({
               {userAudits.slice(0, 3).map((audit) => (
                 <div key={audit.id} className="flex items-center justify-between p-2 bg-slate-50 rounded text-xs">
                   <span className="truncate">{audit.audit_reports?.client_name}</span>
-                  <Link to={`/audit/${audit.audit_reports?.share_url_slug}`}>
+                  <Link href={`/audit/${audit.audit_reports?.share_url_slug}`}>
                     <Button size="sm" variant="outline" className="h-6 px-2 text-xs">
                       View Audit
                     </Button>

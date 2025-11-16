@@ -1,9 +1,8 @@
 "use client";
 
-
 import React, { useState, useEffect } from 'react';
-import { useParams, Navigate, useLocation } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { useParams, usePathname } from 'next/navigation';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { BlogPostContent } from '@/components/blog/BlogPostContent';
@@ -35,8 +34,9 @@ interface BlogPost {
 }
 
 const BlogPost = () => {
-  const { slug } = useParams();
-  const location = useLocation();
+  const params = useParams();
+  const slug = params?.slug as string;
+  const pathname = usePathname();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [headings, setHeadings] = useState<Array<{id: string, text: string, level: number}>>([]);
@@ -44,7 +44,7 @@ const BlogPost = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
 
   // Check if this is a preview URL
-  const isPreview = location.pathname.startsWith('/preview/');
+  const isPreview = pathname?.startsWith('/preview/') ?? false;
 
   useEffect(() => {
     const fetchPost = async () => {

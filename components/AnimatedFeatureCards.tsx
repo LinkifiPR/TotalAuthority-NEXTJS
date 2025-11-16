@@ -6,8 +6,12 @@ import { Brain, CheckCircle, TrendingUp } from 'lucide-react';
 const AnimatedFeatureCards = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Set mobile status on client side
+    setIsMobile(window.innerWidth < 768);
+
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -29,16 +33,24 @@ const AnimatedFeatureCards = () => {
       setScrollProgress(progress);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
     handleScroll(); // Initial call
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   // Calculate transforms based on scroll progress - responsive
-  const maxSpread = window.innerWidth >= 768 ? 450 : 120; // Much larger spread for dramatic fan-out
+  const maxSpread = isMobile ? 120 : 450; // Much larger spread for dramatic fan-out
   const spreadX = maxSpread * scrollProgress;
-  const rotationAngle = (window.innerWidth >= 768 ? 18 : 8) * scrollProgress; // Increased rotation
+  const rotationAngle = (isMobile ? 8 : 18) * scrollProgress; // Increased rotation
 
   return (
     <div ref={containerRef} className="relative py-20 overflow-visible">

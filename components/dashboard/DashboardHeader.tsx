@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { User, LogOut } from 'lucide-react';
 import { User as UserType } from '@supabase/supabase-js';
@@ -16,7 +16,7 @@ const DashboardHeader = ({ user, onSignOut }: DashboardHeaderProps) => {
   return (
     <header className="bg-white/95 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2 md:space-x-3">
+        <Link href="/" className="flex items-center space-x-2 md:space-x-3">
           <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
             <div className="absolute inset-0 rounded-full border-2 border-orange-200 opacity-30"></div>
             <div className="absolute inset-1 rounded-full border border-orange-300 opacity-50"></div>

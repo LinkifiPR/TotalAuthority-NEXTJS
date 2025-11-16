@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import AISearchChanged from '@/components/sections/AISearchChanged';
@@ -9,7 +8,7 @@ import FeaturedSection from '@/components/FeaturedSection';
 import AnimatedFeatureCards from '@/components/AnimatedFeatureCards';
 import { TrustVideoSection } from '@/components/TrustVideoSection';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { FormPopup } from '@/components/FormPopup';
 import { useScheduleCallPopup } from '@/hooks/useScheduleCallPopup';
@@ -59,13 +58,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-orange-50 to-blue-50">
-      <Helmet>
-        <title>If AI Doesn't Recommend You, You Don't Exist - TotalAuthority</title>
-        <meta name="description" content="The biggest discovery shift in 20 years is happening right now. Welcome to LLM Visibility—the new front line of search, trust, and traffic." />
-        <meta name="keywords" content="LLM visibility, AI search optimization, ChatGPT SEO, AI recommendations, brand visibility, LLM optimization" />
-        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-      </Helmet>
-      
       <Header onOpenForm={openForm} />
       
       {/* Hero Section - Ultra Focused */}

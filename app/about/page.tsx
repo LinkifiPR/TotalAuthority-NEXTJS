@@ -9,13 +9,18 @@ import { FormPopup } from '@/components/FormPopup';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
-// Import the team images
-import chrisImage from '/lovable-uploads/f46e68e3-f04e-41db-9ee4-5a1cec1831aa.png';
-import nickImage from '/lovable-uploads/78efdd4f-4ba8-4b29-967a-ce18966a33d2.png';
+// Note: Image imports commented out during Next.js migration
+// These images will need to be added to public/ folder or imported differently
+// import chrisImage from '/lovable-uploads/f46e68e3-f04e-41db-9ee4-5a1cec1831aa.png';
+// import nickImage from '/lovable-uploads/78efdd4f-4ba8-4b29-967a-ce18966a33d2.png';
+// import chrisProfileImage from '/lovable-uploads/a9f1895a-95ce-4693-8740-1208df0d27ca.png';
+// import nickProfileImage from '/lovable-uploads/da8791ef-79d6-4372-93af-202398fbc01b.png';
 
-// Import the new profile images for About Us section
-import chrisProfileImage from '/lovable-uploads/a9f1895a-95ce-4693-8740-1208df0d27ca.png';
-import nickProfileImage from '/lovable-uploads/da8791ef-79d6-4372-93af-202398fbc01b.png';
+// Placeholder image paths (update these with actual images later)
+const chrisImage = "https://via.placeholder.com/400x400?text=Chris";
+const nickImage = "https://via.placeholder.com/400x400?text=Nick";
+const chrisProfileImage = "https://via.placeholder.com/200x200?text=Chris";
+const nickProfileImage = "https://via.placeholder.com/200x200?text=Nick";
 
 const About = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();

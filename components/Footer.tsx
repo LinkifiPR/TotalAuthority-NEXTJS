@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
 
 interface FooterProps {
@@ -9,15 +10,15 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSectionLink = (sectionId: string) => {
-    if (location.pathname === '/') {
+    if (pathname === '/') {
       // We're on homepage, scroll to section
       const element = document.getElementById(sectionId);
       if (element) {
@@ -25,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
       }
     } else {
       // We're on another page, navigate to homepage then scroll to section
-      navigate('/');
+      router.push('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -36,14 +37,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
   };
 
   const handleBlogClick = () => {
-    navigate('/blog');
+    router.push('/blog');
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 150);
   };
 
   const handleAboutClick = () => {
-    navigate('/about');
+    router.push('/about');
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 150);
@@ -172,7 +173,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
             <ul className="space-y-3">
               <li>
                 <Link 
-                  to="/privacy-policy" 
+                  href="/privacy-policy" 
                   onClick={scrollToTop}
                   className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
@@ -181,7 +182,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
               </li>
               <li>
                 <Link 
-                  to="/terms-of-service" 
+                  href="/terms-of-service" 
                   onClick={scrollToTop}
                   className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
@@ -190,7 +191,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
               </li>
               <li>
                 <Link 
-                  to="/cookie-policy" 
+                  href="/cookie-policy" 
                   onClick={scrollToTop}
                   className="text-slate-300 hover:text-orange-400 transition-colors"
                 >

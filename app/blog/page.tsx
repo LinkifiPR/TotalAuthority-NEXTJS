@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { supabase } from '@/lib/integrations/supabase/client';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FormPopup } from '@/components/FormPopup';
@@ -13,7 +14,6 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { Calendar, Clock, Eye, Search, X } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 interface BlogPost {
   id: string;
   title: string;
@@ -40,8 +40,8 @@ const BlogList = () => {
   const postsPerPage = 9;
   const [paginatedPosts, setPaginatedPosts] = useState<BlogPost[]>([]);
   const [totalPages, setTotalPages] = useState(0);
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     toast
   } = useToast();
@@ -52,7 +52,7 @@ const BlogList = () => {
   } = useFormPopup();
 
   const handleBlogPostClick = (slug: string) => {
-    navigate(`/${slug}`);
+    router.push(`/${slug}`);
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 150);
@@ -60,12 +60,12 @@ const BlogList = () => {
 
   const handleTagClick = (tag: string) => {
     setSelectedTag(tag);
-    setSearchParams({ tag });
+    router.push(`/blog?tag=${tag}`);
   };
 
   const clearTagFilter = () => {
     setSelectedTag('');
-    setSearchParams({});
+    router.push('/blog');
   };
   useEffect(() => {
     fetchPosts();
@@ -180,12 +180,6 @@ const BlogList = () => {
     });
   };
   return <div className="min-h-screen bg-white">
-      <Helmet>
-        <title>Insights & Articles - Total Authority</title>
-        <meta name="description" content="Expert insights on local SEO, digital marketing, and business growth strategies from Total Authority." />
-        <link rel="canonical" href="https://totalauthority.com/insights" />
-      </Helmet>
-      
       <Header onOpenForm={openForm} />
       
       <div className="container mx-auto px-4 py-12">

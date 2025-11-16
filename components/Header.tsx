@@ -1,9 +1,9 @@
 "use client";
 
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { User, LogOut } from 'lucide-react';
 
@@ -13,8 +13,8 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
   const { user, signOut } = useAuth();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     await signOut();
@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
 
   const handleLogoClick = () => {
     // If we're already on the homepage, scroll to top
-    if (location.pathname === '/') {
+    if (pathname === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     // If we're on another page, Link will handle navigation and we'll scroll to top
@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
   };
 
   const handleSectionNavigation = (sectionId: string) => {
-    if (location.pathname === '/') {
+    if (pathname === '/') {
       // Already on homepage, just scroll to section
       const element = document.getElementById(sectionId);
       if (element) {
@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
       }
     } else {
       // Navigate to homepage first, then scroll to section
-      navigate('/');
+      router.push('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-2 md:space-x-3">
+          <Link href="/" onClick={handleLogoClick} className="flex items-center space-x-2 md:space-x-3">
             {/* Clean Robot Face Logo */}
             <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
               {/* Outer decorative circle */}
@@ -96,14 +96,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
         
         <nav className="hidden lg:flex items-center space-x-8">
           <Link 
-            to="/about" 
+            href="/about" 
             onClick={scrollToTop}
             className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
           >
             About
           </Link>
           <Link 
-            to="/blog" 
+            href="/blog" 
             onClick={scrollToTop}
             className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
           >
@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
           
           {user ? (
             <div className="flex items-center space-x-4">
-              <Link to="/dashboard" onClick={scrollToTop}>
+              <Link href="/dashboard" onClick={scrollToTop}>
                 <Button variant="outline" className="flex items-center space-x-2">
                   <User className="w-4 h-4" />
                   <span>Dashboard</span>
@@ -134,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
                   AI Visibility Audit
                 </Button>
               </a>
-              <Link to="/auth" onClick={scrollToTop}>
+              <Link href="/auth" onClick={scrollToTop}>
                 <Button variant="outline">
                   Sign In
                 </Button>
@@ -145,7 +145,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
         
         <div className="lg:hidden">
           {user ? (
-            <Link to="/dashboard" onClick={scrollToTop}>
+            <Link href="/dashboard" onClick={scrollToTop}>
               <Button variant="outline" size="sm" className="flex items-center space-x-2">
                 <User className="w-4 h-4" />
                 <span>Dashboard</span>
@@ -158,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
                   AI Visibility Audit
                 </Button>
               </a>
-              <Link to="/auth" onClick={scrollToTop}>
+              <Link href="/auth" onClick={scrollToTop}>
                 <Button variant="outline" size="sm">
                   Sign In
                 </Button>

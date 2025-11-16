@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, ArrowRight } from 'lucide-react';
@@ -37,7 +37,7 @@ const RecentAuditsSection = ({ userAudits }: RecentAuditsSectionProps) => {
                   </p>
                 </div>
               </div>
-              <Link to={`/audit/${audit.audit_reports?.share_url_slug}`}>
+              <Link href={`/audit/${audit.audit_reports?.share_url_slug}`}>
                 <Button variant="outline" size="sm" className="flex items-center space-x-2">
                   <span>View Report</span>
                   <ArrowRight className="w-4 h-4" />
