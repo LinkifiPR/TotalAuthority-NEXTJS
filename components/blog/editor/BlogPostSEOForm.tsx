@@ -64,7 +64,7 @@ export const BlogPostSEOForm: React.FC<BlogPostSEOFormProps> = ({
           id="canonical_url"
           value={formData.canonical_url}
           onChange={(e) => onInputChange('canonical_url', e.target.value)}
-          placeholder={`${siteUrl}/post-slug`}
+          placeholder={`${siteUrl}/blog/post-slug`}
         />
       </div>
 

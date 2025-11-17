@@ -1,10 +1,16 @@
 /**
  * Site configuration for URLs and SEO metadata
  * Uses environment variable for deployment flexibility
+ * 
+ * IMPORTANT: NEXT_PUBLIC_SITE_URL should NOT include a trailing slash
+ * Good: https://totalauthority.com
+ * Bad:  https://totalauthority.com/
  */
 
 // Get site URL from environment, fallback to production domain
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://totalauthority.com';
+// Strip any trailing slash to prevent double slashes in URLs
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://totalauthority.com';
+export const siteUrl = rawSiteUrl.endsWith('/') ? rawSiteUrl.slice(0, -1) : rawSiteUrl;
 
 /**
  * Build an absolute URL from a relative path

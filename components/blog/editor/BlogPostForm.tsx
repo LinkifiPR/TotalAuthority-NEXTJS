@@ -58,7 +58,7 @@ export const BlogPostForm: React.FC<BlogPostFormProps> = ({
           placeholder="url-slug"
         />
         <p className="text-sm text-gray-500 mt-1">
-          {siteUrl}/{formData.slug}
+          {siteUrl}/blog/{formData.slug}
         </p>
       </div>
 

@@ -25,7 +25,7 @@ interface BlogPostSEOProps {
 export const BlogPostSEO: React.FC<BlogPostSEOProps> = ({ post }) => {
   const pageTitle = post.meta_title || post.title;
   const description = post.meta_description || post.excerpt;
-  const canonicalUrl = post.canonical_url || buildAbsoluteUrl(post.slug);
+  const canonicalUrl = post.canonical_url || buildAbsoluteUrl(`/blog/${post.slug}`);
   const ogImage = post.og_image_url || '/placeholder.svg';
   const ogImageAlt = post.og_image_alt || post.title;
 
