@@ -131,12 +131,6 @@ const AdminPosts = () => {
 
       if (error) throw error;
 
-      // Update sitemap when publishing
-      if (newStatus === 'published') {
-        const { updateSitemap } = await import('../utils/sitemapGenerator');
-        await updateSitemap();
-      }
-
       toast({
         title: "Success",
         description: `Post ${newStatus === 'published' ? 'published' : 'saved as draft'}`,
@@ -175,7 +169,7 @@ const AdminPosts = () => {
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight">Blog Posts</h2>
             <Button asChild>
-              <Link to="/admin/posts/new" className="flex items-center space-x-2">
+              <Link href="/admin/posts/new" className="flex items-center space-x-2">
                 <Plus className="w-4 h-4" />
                 <span>New Post</span>
               </Link>
@@ -280,19 +274,19 @@ const AdminPosts = () => {
                         <div className="flex items-center space-x-2">
                           {post.status === 'published' ? (
                             <Button size="sm" variant="outline" asChild>
-                              <Link to={`/${post.slug}`} target="_blank">
+                              <Link href={`/blog/${post.slug}`} target="_blank">
                                 <Eye className="w-4 h-4" />
                               </Link>
                             </Button>
                           ) : (
                             <Button size="sm" variant="outline" asChild>
-                              <Link to={`/preview/${post.slug}`} target="_blank">
+                              <Link href={`/preview/${post.slug}`} target="_blank">
                                 <Eye className="w-4 h-4" />
                               </Link>
                             </Button>
                           )}
                           <Button size="sm" variant="outline" asChild>
-                            <Link to={`/admin/posts/${post.id}`}>
+                            <Link href={`/admin/posts/${post.id}`}>
                               <Edit className="w-4 h-4" />
                             </Link>
                           </Button>

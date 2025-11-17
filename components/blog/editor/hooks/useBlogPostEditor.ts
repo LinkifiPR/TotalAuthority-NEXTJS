@@ -178,22 +178,6 @@ export const useBlogPostEditor = ({ post, onSave }: UseBlogPostEditorProps) => {
         postData.id = data.id;
       }
 
-      // Update sitemap when publishing and is_indexed is true
-      if (status === 'published' && postData.is_indexed) {
-        console.log('Updating sitemap for published post...');
-        try {
-          const { updateSitemap } = await import('@/utils/sitemapGenerator');
-          const sitemapUpdated = await updateSitemap();
-          if (sitemapUpdated) {
-            console.log('Sitemap updated successfully');
-          } else {
-            console.warn('Sitemap update failed');
-          }
-        } catch (sitemapError) {
-          console.error('Error updating sitemap:', sitemapError);
-        }
-      }
-
       toast({
         title: "Success",
         description: `Post ${status === 'published' ? 'published' : 'saved as draft'} successfully`,
