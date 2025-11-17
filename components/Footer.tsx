@@ -106,28 +106,31 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 </Link>
               </li>
               <li>
-                <a 
-                  href="https://totalauthority.com/llm-visibility-gap-calculator"
+                <Link 
+                  href="/llm-visibility-gap-calculator"
+                  onClick={scrollToTop}
                   className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
                   Visibility Gap Calculator
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="https://totalauthority.com/llm-visibility-audit"
+                <Link 
+                  href="/llm-visibility-audit"
+                  onClick={scrollToTop}
                   className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
                   Visibility Mini Audit
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="https://totalauthority.com/strategy-blueprint"
+                <Link 
+                  href="/strategy-blueprint"
+                  onClick={scrollToTop}
                   className="text-slate-300 hover:text-orange-400 transition-colors"
                 >
                   Strategy Blueprint
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
