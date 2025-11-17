@@ -3,6 +3,7 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { siteUrl } from '@/lib/siteConfig';
 
 interface BlogPost {
   id?: string;
@@ -63,7 +64,7 @@ export const BlogPostSEOForm: React.FC<BlogPostSEOFormProps> = ({
           id="canonical_url"
           value={formData.canonical_url}
           onChange={(e) => onInputChange('canonical_url', e.target.value)}
-          placeholder="https://totalauthority.com/post-slug"
+          placeholder={`${siteUrl}/post-slug`}
         />
       </div>
 

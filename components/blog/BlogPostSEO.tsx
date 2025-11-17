@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { buildAbsoluteUrl } from '@/lib/siteConfig';
 
 interface BlogPost {
   title: string;
@@ -24,7 +25,7 @@ interface BlogPostSEOProps {
 export const BlogPostSEO: React.FC<BlogPostSEOProps> = ({ post }) => {
   const pageTitle = post.meta_title || post.title;
   const description = post.meta_description || post.excerpt;
-  const canonicalUrl = post.canonical_url || `https://totalauthority.com/${post.slug}`;
+  const canonicalUrl = post.canonical_url || buildAbsoluteUrl(post.slug);
   const ogImage = post.og_image_url || '/placeholder.svg';
   const ogImageAlt = post.og_image_alt || post.title;
 
@@ -44,7 +45,7 @@ export const BlogPostSEO: React.FC<BlogPostSEOProps> = ({ post }) => {
       "name": "Total Authority",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://totalauthority.com/placeholder.svg"
+        "url": buildAbsoluteUrl('/placeholder.svg')
       }
     },
     "image": ogImage

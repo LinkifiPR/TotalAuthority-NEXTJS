@@ -3,6 +3,7 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { siteUrl } from '@/lib/siteConfig';
 
 interface BlogPost {
   id?: string;
@@ -57,7 +58,7 @@ export const BlogPostForm: React.FC<BlogPostFormProps> = ({
           placeholder="url-slug"
         />
         <p className="text-sm text-gray-500 mt-1">
-          https://totalauthority.com/{formData.slug}
+          {siteUrl}/{formData.slug}
         </p>
       </div>
 

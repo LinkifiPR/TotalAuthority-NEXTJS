@@ -129,11 +129,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
             </div>
           ) : (
             <div className="flex items-center space-x-4">
-              <a href="https://totalauthority.com/llm-visibility-audit">
+              <Link href="/llm-visibility-audit" onClick={scrollToTop}>
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white">
                   AI Visibility Audit
                 </Button>
-              </a>
+              </Link>
               <Link href="/auth" onClick={scrollToTop}>
                 <Button variant="outline">
                   Sign In
@@ -153,11 +153,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
             </Link>
           ) : (
             <div className="flex items-center space-x-2">
-              <a href="https://totalauthority.com/llm-visibility-audit">
+              <Link href="/llm-visibility-audit" onClick={scrollToTop}>
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-2">
                   AI Visibility Audit
                 </Button>
-              </a>
+              </Link>
               <Link href="/auth" onClick={scrollToTop}>
                 <Button variant="outline" size="sm">
                   Sign In
