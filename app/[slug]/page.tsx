@@ -47,11 +47,12 @@ const BlogPost = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      if (!slug) return;
+      if (!slug) {
+        setLoading(false);
+        return;
+      }
 
       try {
-        console.log('Fetching blog post with slug:', slug, 'isPreview:', isPreview);
-        
         let query = supabase
           .from('blog_posts')
           .select('*')
@@ -65,17 +66,22 @@ const BlogPost = () => {
         const { data, error } = await query.single();
 
         if (error) {
-          console.error('Error fetching blog post:', error);
+          // PGRST116 means no rows returned - this is expected for non-existent posts
           if (error.code === 'PGRST116') {
-            // Post not found
             setPost(null);
           } else {
-            throw error;
+            // Clear stale post data and show error toast for unexpected errors
+            setPost(null);
+            toast({
+              title: "Error",
+              description: "Failed to load blog post",
+              variant: "destructive",
+            });
           }
+          setLoading(false);
           return;
         }
 
-        console.log('Blog post found:', data);
         setPost(data);
         
         // Only increment view count for published posts (not previews)
@@ -87,10 +93,18 @@ const BlogPost = () => {
         }
 
       } catch (error: any) {
-        console.error('Error fetching blog post:', error);
+        // Clear stale post data to avoid showing incorrect content
+        setPost(null);
+        
+        // Log errors in development for debugging without triggering error overlay
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Blog post fetch failed:', error?.message || 'Unknown error');
+        }
+        
+        // Show user-facing error feedback for unexpected failures
         toast({
           title: "Error",
-          description: "Failed to load blog post",
+          description: "An unexpected error occurred while loading the blog post",
           variant: "destructive",
         });
       } finally {
