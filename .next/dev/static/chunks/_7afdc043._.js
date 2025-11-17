@@ -2495,7 +2495,8 @@ const BlogPost = ()=>{
                             if (error.code === 'PGRST116') {
                                 setPost(null);
                             } else {
-                                // Only show error toast for unexpected errors, not 404s
+                                // Clear stale post data and show error toast for unexpected errors
+                                setPost(null);
                                 toast({
                                     title: "Error",
                                     description: "Failed to load blog post",
@@ -2513,6 +2514,8 @@ const BlogPost = ()=>{
                             }).eq('id', data.id);
                         }
                     } catch (error) {
+                        // Clear stale post data to avoid showing incorrect content
+                        setPost(null);
                         // Log errors in development for debugging without triggering error overlay
                         if ("TURBOPACK compile-time truthy", 1) {
                             console.warn('Blog post fetch failed:', error?.message || 'Unknown error');
@@ -2614,7 +2617,7 @@ const BlogPost = ()=>{
                     onOpenForm: openForm
                 }, void 0, false, {
                     fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 178,
+                    lineNumber: 182,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2626,14 +2629,14 @@ const BlogPost = ()=>{
                                 className: "h-8 bg-gray-200 rounded w-3/4 mb-4"
                             }, void 0, false, {
                                 fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 181,
+                                lineNumber: 185,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "h-4 bg-gray-200 rounded w-1/2 mb-8"
                             }, void 0, false, {
                                 fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 182,
+                                lineNumber: 186,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2643,51 +2646,51 @@ const BlogPost = ()=>{
                                         className: "h-4 bg-gray-200 rounded"
                                     }, void 0, false, {
                                         fileName: "[project]/app/[slug]/page.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 188,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "h-4 bg-gray-200 rounded"
                                     }, void 0, false, {
                                         fileName: "[project]/app/[slug]/page.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 189,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "h-4 bg-gray-200 rounded w-3/4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/[slug]/page.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 190,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 183,
+                                lineNumber: 187,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 180,
+                        lineNumber: 184,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 179,
+                    lineNumber: 183,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Footer"], {
                     onOpenForm: openForm
                 }, void 0, false, {
                     fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 190,
+                    lineNumber: 194,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/app/[slug]/page.tsx",
-            lineNumber: 177,
+            lineNumber: 181,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -2702,7 +2705,7 @@ const BlogPost = ()=>{
                         children: "Post Not Found"
                     }, void 0, false, {
                         fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 199,
+                        lineNumber: 203,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2710,18 +2713,18 @@ const BlogPost = ()=>{
                         children: "The blog post you're looking for doesn't exist."
                     }, void 0, false, {
                         fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 200,
+                        lineNumber: 204,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 198,
+                lineNumber: 202,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/app/[slug]/page.tsx",
-            lineNumber: 197,
+            lineNumber: 201,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -2732,7 +2735,7 @@ const BlogPost = ()=>{
                 onOpenForm: openForm
             }, void 0, false, {
                 fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 208,
+                lineNumber: 212,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             isPreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2744,17 +2747,17 @@ const BlogPost = ()=>{
                         children: "🔍 Preview Mode - This is how your post will look when published"
                     }, void 0, false, {
                         fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 214,
+                        lineNumber: 218,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 213,
+                    lineNumber: 217,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 212,
+                lineNumber: 216,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2768,12 +2771,12 @@ const BlogPost = ()=>{
                                 headings: headings
                             }, void 0, false, {
                                 fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 225,
+                                lineNumber: 229,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/app/[slug]/page.tsx",
-                            lineNumber: 224,
+                            lineNumber: 228,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2782,30 +2785,30 @@ const BlogPost = ()=>{
                                 post: post
                             }, void 0, false, {
                                 fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 230,
+                                lineNumber: 234,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/app/[slug]/page.tsx",
-                            lineNumber: 229,
+                            lineNumber: 233,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 222,
+                    lineNumber: 226,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 221,
+                lineNumber: 225,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Footer"], {
                 onOpenForm: openForm
             }, void 0, false, {
                 fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 235,
+                lineNumber: 239,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$FormPopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormPopup"], {
@@ -2813,13 +2816,13 @@ const BlogPost = ()=>{
                 onClose: closeForm
             }, void 0, false, {
                 fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 236,
+                lineNumber: 240,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/app/[slug]/page.tsx",
-        lineNumber: 207,
+        lineNumber: 211,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

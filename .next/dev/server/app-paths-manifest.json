@@ -1,4 +1,11 @@
 {
+  "/[slug]/page": "app/[slug]/page.js",
+  "/admin/audits/page": "app/admin/audits/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/posts/page": "app/admin/posts/page.js",
+  "/admin/settings/page": "app/admin/settings/page.js",
+  "/admin/users/page": "app/admin/users/page.js",
+  "/api/admin/stats/route": "app/api/admin/stats/route.js",
   "/auth/page": "app/auth/page.js",
   "/page": "app/page.js"
 }
