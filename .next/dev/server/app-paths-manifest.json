@@ -1,4 +1,7 @@
 {
+  "/[slug]/page": "app/[slug]/page.js",
+  "/about/page": "app/about/page.js",
+  "/blog/page": "app/blog/page.js",
   "/llm-visibility-gap-calculator/page": "app/llm-visibility-gap-calculator/page.js",
   "/page": "app/page.js"
 }
