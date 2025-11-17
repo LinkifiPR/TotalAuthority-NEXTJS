@@ -471,11 +471,11 @@ const Index = () => {
                     <span className="text-slate-700">Gap analysis report</span>
                   </div>
                 </div>
-                <a href="https://totalauthority.com/llm-visibility-gap-calculator">
+                <Link href="/llm-visibility-gap-calculator">
                   <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     Try Calculator Free →
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -525,11 +525,11 @@ const Index = () => {
                     <span className="text-slate-700">Priority action items</span>
                   </div>
                 </div>
-                <a href="https://totalauthority.com/llm-visibility-audit">
+                <Link href="/llm-visibility-audit">
                   <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     Get Mini Audit →
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -579,11 +579,11 @@ const Index = () => {
                     <span className="text-slate-700">90-day quick wins strategy</span>
                   </div>
                 </div>
-                <a href="https://totalauthority.com/strategy-blueprint">
+                <Link href="/strategy-blueprint">
                   <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     Get Full Blueprint →
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
