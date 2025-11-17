@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import Script from 'next/script';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import AISearchChanged from '@/components/sections/AISearchChanged';
@@ -33,6 +34,12 @@ const Index = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
   const { isOpen: isScheduleCallOpen, openScheduleCall, closeScheduleCall } = useScheduleCallPopup();
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).twttr?.widgets) {
+      (window as any).twttr.widgets.load();
+    }
+  }, []);
+
   const aiLogos = [
     {
       name: "OpenAI",
@@ -58,6 +65,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-orange-50 to-blue-50">
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
+        onLoad={() => {
+          if ((window as any).twttr?.widgets) {
+            (window as any).twttr.widgets.load();
+          }
+        }}
+      />
       <Header onOpenForm={openForm} />
       
       {/* Hero Section - Ultra Focused */}
