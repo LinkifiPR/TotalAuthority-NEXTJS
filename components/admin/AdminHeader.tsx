@@ -12,12 +12,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useToast } from '@/hooks/use-toast';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 export function AdminHeader() {
   const { user, signOut } = useAuth();
   const { toast } = useToast();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     // Clear admin session storage
@@ -32,7 +32,7 @@ export function AdminHeader() {
     });
     
     // Redirect to home page
-    navigate('/');
+    router.push('/');
   };
 
   return (

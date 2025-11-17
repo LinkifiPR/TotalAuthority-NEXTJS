@@ -2,7 +2,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
@@ -37,8 +37,8 @@ const Admin = () => {
   });
   const [loadingStats, setLoadingStats] = useState(false);
   const [userRole, setUserRole] = useState<string | null>(null);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const { toast } = useToast();
   const { user, loading: authLoading } = useAuth();
 
@@ -75,27 +75,25 @@ const Admin = () => {
   // Redirect non-authenticated users to auth page with admin context
   useEffect(() => {
     if (!authLoading && !user) {
-      navigate('/auth?admin=true', { 
-        state: { from: location.pathname },
-        replace: true 
-      });
+      router.push('/auth?admin=true');
     }
-  }, [user, authLoading, navigate, location.pathname]);
+  }, [user, authLoading, router]);
 
   const fetchDashboardStats = async () => {
     setLoadingStats(true);
     try {
       console.log('Fetching admin dashboard stats...');
       
-      // Use the admin-stats edge function to bypass RLS for user counting
-      const { data, error } = await supabase.functions.invoke('admin-stats');
+      // Call the server-side API route for admin stats
+      const response = await fetch('/api/admin/stats');
       
-      if (error) {
-        console.error('Error calling admin-stats function:', error);
-        throw error;
+      if (!response.ok) {
+        throw new Error(`Failed to fetch stats: ${response.statusText}`);
       }
 
-      if (data) {
+      const data = await response.json();
+
+      if (data && !data.error) {
         setDashboardStats({
           completedAudits: data.completedAudits || 0,
           pendingAudits: data.pendingAudits || 0,
@@ -118,10 +116,10 @@ const Admin = () => {
   };
 
   useEffect(() => {
-    if (user && userRole === 'admin' && location.pathname === '/admin') {
+    if (user && userRole === 'admin' && pathname === '/admin') {
       fetchDashboardStats();
     }
-  }, [user, userRole, location.pathname, refreshTrigger]);
+  }, [user, userRole, pathname, refreshTrigger]);
 
   const handleAuditCreated = () => {
     setRefreshTrigger(prev => prev + 1);
@@ -170,7 +168,7 @@ const Admin = () => {
   }
 
   // Show audit reports when on /admin/audits route
-  if (location.pathname === '/admin/audits') {
+  if (pathname === '/admin/audits') {
     return (
       <SidebarProvider>
         <AdminSidebar />

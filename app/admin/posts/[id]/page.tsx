@@ -2,7 +2,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/integrations/supabase/client';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { AdminHeader } from '@/components/admin/AdminHeader';
@@ -13,8 +13,9 @@ import { useAuth } from '@/hooks/useAuth';
 import { BarChart3 } from 'lucide-react';
 
 const AdminPostEditor = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id as string;
+  const router = useRouter();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
@@ -23,9 +24,9 @@ const AdminPostEditor = () => {
   // Redirect to auth if not authenticated
   useEffect(() => {
     if (!authLoading && !user) {
-      navigate('/auth');
+      router.push('/auth');
     }
-  }, [user, authLoading, navigate]);
+  }, [user, authLoading, router]);
 
   useEffect(() => {
     if (id && id !== 'new') {
@@ -52,7 +53,7 @@ const AdminPostEditor = () => {
         description: "Failed to load blog post",
         variant: "destructive",
       });
-      navigate('/admin/posts');
+      router.push('/admin/posts');
     } finally {
       setLoading(false);
     }
@@ -63,11 +64,11 @@ const AdminPostEditor = () => {
       title: "Success",
       description: "Blog post saved successfully",
     });
-    navigate('/admin/posts');
+    router.push('/admin/posts');
   };
 
   const handleCancel = () => {
-    navigate('/admin/posts');
+    router.push('/admin/posts');
   };
 
   if (authLoading || loading) {

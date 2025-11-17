@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/integrations/supabase/client';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import WelcomeSection from '@/components/dashboard/WelcomeSection';
@@ -12,15 +12,15 @@ import RecentAuditsSection from '@/components/dashboard/RecentAuditsSection';
 
 const Dashboard = () => {
   const { user, signOut, loading } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [userAudits, setUserAudits] = useState<any[]>([]);
   const [justFetchedAudit, setJustFetchedAudit] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !user) {
-      navigate('/auth');
+      router.push('/auth');
     }
-  }, [user, loading, navigate]);
+  }, [user, loading, router]);
 
   useEffect(() => {
     if (user) {
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate('/');
+    router.push('/');
   };
 
   if (loading) {

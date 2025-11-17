@@ -512,7 +512,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@supabase/ssr/dist/module/createBrowserClient.js [app-client] (ecmascript)");
 "use client";
 ;
-const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createBrowserClient"])(("TURBOPACK compile-time value", "https://pgbcixncaeyjunwxrsik.supabase.co") || "https://pgbcixncaeyjunwxrsik.supabase.co", ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYmNpeG5jYWV5anVud3hyc2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwOTgzMDMsImV4cCI6MjA2NTY3NDMwM30.TUsBYptM7RIcVWZ0IQiGGNViSnlxr8ruN_zwiAup5Fc") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYmNpeG5jYWV5anVud3hyc2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwOTgzMDMsImV4cCI6MjA2NTY3NDMwM30.TUsBYptM7RIcVWZ0IQiGGNViSnlxr8ruN_zwiAup5Fc");
+// Get Supabase credentials from environment variables
+const supabaseUrl = ("TURBOPACK compile-time value", "https://pgbcixncaeyjunwxrsik.supabase.co");
+const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYmNpeG5jYWV5anVud3hyc2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwOTgzMDMsImV4cCI6MjA2NTY3NDMwM30.TUsBYptM7RIcVWZ0IQiGGNViSnlxr8ruN_zwiAup5Fc");
+// Fail fast if credentials are missing
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
+const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createBrowserClient"])(supabaseUrl, supabaseAnonKey);
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

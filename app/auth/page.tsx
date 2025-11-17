@@ -2,7 +2,7 @@
 
 
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,14 +20,13 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const { signIn, signUp, signInWithGoogle } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { toast } = useToast();
 
   // Check if this is an admin login (from admin panel redirect)
-  const isAdminLogin = location.state?.from?.includes('/admin') || 
-                      location.search.includes('admin=true') ||
-                      document.referrer.includes('/admin');
+  const isAdminLogin = searchParams?.get('admin') === 'true' || 
+                      (typeof window !== 'undefined' && document.referrer.includes('/admin'));
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,9 +47,9 @@ const Auth = () => {
       });
       // Redirect based on where they came from
       if (isAdminLogin) {
-        navigate('/admin');
+        router.push('/admin');
       } else {
-        navigate('/dashboard');
+        router.push('/dashboard');
       }
     }
     
@@ -101,7 +100,7 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="mb-6">
-          <Link to="/" className="flex items-center text-slate-600 hover:text-slate-900 transition-colors">
+          <Link href="/" className="flex items-center text-slate-600 hover:text-slate-900 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
