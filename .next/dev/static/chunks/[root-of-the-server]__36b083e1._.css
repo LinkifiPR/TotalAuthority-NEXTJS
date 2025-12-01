@@ -7568,6 +7568,10 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-white\/30 {
+  color: #ffffff4d;
+}
+
 .text-white\/40 {
   color: #fff6;
 }
