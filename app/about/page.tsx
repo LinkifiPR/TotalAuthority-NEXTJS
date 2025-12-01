@@ -243,7 +243,6 @@ const About = () => {
               <div className="animate-fade-in [animation-delay:400ms] flex justify-center">
                 <iframe 
                   title="Market Movers: Building Brands & Links with Linkifi" 
-                  allowTransparency={true} 
                   height="315" 
                   width="100%" 
                   style={{border: 'none', minWidth: 'min(100%, 430px)', height: '315px'}} 
@@ -251,7 +250,7 @@ const About = () => {
                   data-name="pb-iframe-player" 
                   src="https://www.podbean.com/player-v2/?i=zp2st-1290619-pbblog-playlist&share=1&download=1&rtl=0&fonts=Arial&skin=1b1b1b&font-color=auto&logo_link=episode_page&order=episodic&limit=4&filter=all&ss=d478e8812599deb72aed893f84e27af5&btn-skin=ff6d00&size=315" 
                   loading="lazy" 
-                  allowFullScreen={true}
+                  allowFullScreen
                   className="rounded-lg shadow-xl max-w-2xl w-full"
                 />
               </div>
