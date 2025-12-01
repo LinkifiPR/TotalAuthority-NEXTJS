@@ -9,18 +9,12 @@ import { FormPopup } from '@/components/FormPopup';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
-// Note: Image imports commented out during Next.js migration
-// These images will need to be added to public/ folder or imported differently
-// import chrisImage from '/lovable-uploads/f46e68e3-f04e-41db-9ee4-5a1cec1831aa.png';
-// import nickImage from '/lovable-uploads/78efdd4f-4ba8-4b29-967a-ce18966a33d2.png';
-// import chrisProfileImage from '/lovable-uploads/a9f1895a-95ce-4693-8740-1208df0d27ca.png';
-// import nickProfileImage from '/lovable-uploads/da8791ef-79d6-4372-93af-202398fbc01b.png';
-
-// Placeholder image paths (update these with actual images later)
-const chrisImage = "https://via.placeholder.com/400x400?text=Chris";
-const nickImage = "https://via.placeholder.com/400x400?text=Nick";
-const chrisProfileImage = "https://via.placeholder.com/200x200?text=Chris";
-const nickProfileImage = "https://via.placeholder.com/200x200?text=Nick";
+// Founder images - commented out until actual images are added
+// To add images: place them in public/images/ and import/reference them here
+const chrisImage = "";
+const nickImage = "";
+const chrisProfileImage = "";
+const nickProfileImage = "";
 
 const About = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
@@ -96,21 +90,21 @@ const About = () => {
                   <div className="group transform hover:scale-105 transition-all duration-700 hover-scale">
                     <div className="bg-white/30 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-white/40 group-hover:shadow-purple-500/20 group-hover:shadow-3xl transition-all duration-700">
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                      <img 
+                      {chrisImage ? <img 
                         src={chrisImage} 
                         alt="Chris Panteli, Co-founder of Total Authority"
                         className="w-56 h-auto object-contain relative z-10"
-                      />
+                      /> : <div className="w-56 h-56 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-blue-500/20 relative z-10"><Users className="w-16 h-16 text-purple-600/40" /></div>}
                     </div>
                   </div>
                   <div className="group transform hover:scale-105 transition-all duration-700 translate-y-8 hover-scale">
                     <div className="bg-white/30 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-white/40 group-hover:shadow-blue-500/20 group-hover:shadow-3xl transition-all duration-700">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-orange-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                      <img 
+                      {nickImage ? <img 
                         src={nickImage} 
                         alt="Nick Biggs, Co-founder of Total Authority"
                         className="w-56 h-auto object-contain relative z-10"
-                      />
+                      /> : <div className="w-56 h-56 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-orange-500/20 relative z-10"><Users className="w-16 h-16 text-blue-600/40" /></div>}
                     </div>
                   </div>
                 </div>
@@ -292,13 +286,13 @@ const About = () => {
                 <div className="aspect-[16/10] relative overflow-hidden">
                   {/* Primary Image */}
                   <img 
-                    src="/lovable-uploads/61843d16-4ce3-4d31-9475-7f05f94b7eb5.png" 
+                    src="" 
                     alt="Chris speaking at SEO Estonia 2025"
                     className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110"
                   />
                   {/* Secondary Image - appears on hover */}
                   <img 
-                    src="/lovable-uploads/9e59bde5-b953-4a6c-aea4-22f63905a0c1.png" 
+                    src="" 
                     alt="Chris presenting at SEO Estonia 2025"
                     className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                   />
@@ -329,12 +323,12 @@ const About = () => {
               <div className="group relative overflow-hidden rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 animate-fade-in [animation-delay:200ms]">
                 <div className="aspect-[16/10] relative overflow-hidden">
                   <img 
-                    src="/lovable-uploads/03513aac-fff9-4292-871f-982ca94efe18.png" 
+                    src="" 
                     alt="Chris speaking at Link Building Mastery London 2025"
                     className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   <img 
-                    src="/lovable-uploads/dac450cb-388a-4e55-af46-228fe24a7dcb.png" 
+                    src="" 
                     alt="Chris presenting at Link Building Mastery London 2025"
                     className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                   />
@@ -365,12 +359,12 @@ const About = () => {
               <div className="group relative overflow-hidden rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 animate-fade-in [animation-delay:400ms]">
                 <div className="aspect-[16/10] relative overflow-hidden">
                   <img 
-                    src="/lovable-uploads/1b1b9172-200a-4e40-bc1f-b52ab362f1c5.png" 
+                    src="" 
                     alt="Chris speaking at SEO Vibes Dubai 2024"
                     className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   <img 
-                    src="/lovable-uploads/f6df4de1-89c6-4624-97e8-926883abe1cb.png" 
+                    src="" 
                     alt="Chris presenting AI strategies at SEO Vibes Dubai 2024"
                     className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                   />
@@ -401,12 +395,12 @@ const About = () => {
               <div className="group relative overflow-hidden rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 animate-fade-in [animation-delay:600ms]">
                 <div className="aspect-[16/10] relative overflow-hidden">
                   <img 
-                    src="/lovable-uploads/b336701d-65b5-4b8c-9e59-4835afe3ea42.png" 
+                    src="" 
                     alt="Chris at Affiliate Gathering York 2024"
                     className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   <img 
-                    src="/lovable-uploads/7cee1cdd-5197-41b6-b6d8-86ceecc55f82.png" 
+                    src="" 
                     alt="Panel discussion at Affiliate Gathering York 2024"
                     className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                   />
