@@ -1526,17 +1526,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx_
 ;
 ;
 ;
-// Note: Image imports commented out during Next.js migration
-// These images will need to be added to public/ folder or imported differently
-// import chrisImage from '/lovable-uploads/f46e68e3-f04e-41db-9ee4-5a1cec1831aa.png';
-// import nickImage from '/lovable-uploads/78efdd4f-4ba8-4b29-967a-ce18966a33d2.png';
-// import chrisProfileImage from '/lovable-uploads/a9f1895a-95ce-4693-8740-1208df0d27ca.png';
-// import nickProfileImage from '/lovable-uploads/da8791ef-79d6-4372-93af-202398fbc01b.png';
-// Placeholder image paths (update these with actual images later)
-const chrisImage = "https://via.placeholder.com/400x400?text=Chris";
-const nickImage = "https://via.placeholder.com/400x400?text=Nick";
-const chrisProfileImage = "https://via.placeholder.com/200x200?text=Chris";
-const nickProfileImage = "https://via.placeholder.com/200x200?text=Nick";
+// Founder images - commented out until actual images are added
+// To add images: place them in public/images/ and import/reference them here
+const chrisImage = "";
+const nickImage = "";
+const chrisProfileImage = "";
+const nickProfileImage = "";
 const About = ()=>{
     const { isOpen, openForm, closeForm } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useFormPopup$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFormPopup"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1550,6 +1545,27 @@ const About = ()=>{
                         className: "w-6 h-6 text-blue-600 animate-pulse [animation-duration:3s]"
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
+                        lineNumber: 27,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0))
+                }, void 0, false, {
+                    fileName: "[project]/app/about/page.tsx",
+                    lineNumber: 26,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0))
+            }, void 0, false, {
+                fileName: "[project]/app/about/page.tsx",
+                lineNumber: 25,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed bottom-20 left-10 z-10 animate-bounce [animation-duration:5s] [animation-delay:2s] opacity-60",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "w-10 h-10 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-full shadow-lg flex items-center justify-center backdrop-blur-sm border border-white/20",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$brain$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Brain$3e$__["Brain"], {
+                        className: "w-5 h-5 text-purple-600 animate-pulse [animation-duration:2s]"
+                    }, void 0, false, {
+                        fileName: "[project]/app/about/page.tsx",
                         lineNumber: 33,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
@@ -1561,27 +1577,6 @@ const About = ()=>{
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
                 lineNumber: 31,
-                columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed bottom-20 left-10 z-10 animate-bounce [animation-duration:5s] [animation-delay:2s] opacity-60",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "w-10 h-10 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-full shadow-lg flex items-center justify-center backdrop-blur-sm border border-white/20",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$brain$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Brain$3e$__["Brain"], {
-                        className: "w-5 h-5 text-purple-600 animate-pulse [animation-duration:2s]"
-                    }, void 0, false, {
-                        fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 39,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0))
-                }, void 0, false, {
-                    fileName: "[project]/app/about/page.tsx",
-                    lineNumber: 38,
-                    columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0))
-            }, void 0, false, {
-                fileName: "[project]/app/about/page.tsx",
-                lineNumber: 37,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1600,24 +1595,24 @@ const About = ()=>{
                             className: "w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"
                         }, void 0, false, {
                             fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 56,
+                            lineNumber: 50,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     }, i, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 46,
+                        lineNumber: 40,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)))
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 44,
+                lineNumber: 38,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Header"], {
                 onOpenForm: openForm
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 60,
+                lineNumber: 54,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1627,7 +1622,7 @@ const About = ()=>{
                         className: "absolute inset-0 bg-gradient-to-r from-purple-500/5 via-blue-500/5 to-orange-500/5 animate-pulse [animation-duration:4s]"
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 63,
+                        lineNumber: 57,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1645,12 +1640,12 @@ const About = ()=>{
                                                 children: "We build authority for leaders and brands in the AI era."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 68,
+                                                lineNumber: 62,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 67,
+                                            lineNumber: 61,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1660,12 +1655,12 @@ const About = ()=>{
                                                 children: "Founders of Total Authority: Chris Panteli & Nick Biggs"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 73,
+                                                lineNumber: 67,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 72,
+                                            lineNumber: 66,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1680,12 +1675,12 @@ const About = ()=>{
                                                             children: "AI-Driven Marketing"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 80,
+                                                            lineNumber: 74,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 79,
+                                                        lineNumber: 73,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1695,12 +1690,12 @@ const About = ()=>{
                                                             children: "Thought Leadership"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 83,
+                                                            lineNumber: 77,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 82,
+                                                        lineNumber: 76,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1710,29 +1705,29 @@ const About = ()=>{
                                                             children: "Authority Building"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 86,
+                                                            lineNumber: 80,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 85,
+                                                        lineNumber: 79,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 78,
+                                                lineNumber: 72,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 77,
+                                            lineNumber: 71,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 60,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1744,7 +1739,7 @@ const About = ()=>{
                                                 className: "absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-orange-500/20 blur-3xl animate-pulse [animation-duration:3s]"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 94,
+                                                lineNumber: 88,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1759,27 +1754,32 @@ const About = ()=>{
                                                                     className: "absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/about/page.tsx",
-                                                                    lineNumber: 98,
+                                                                    lineNumber: 92,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                    src: chrisImage,
-                                                                    alt: "Chris Panteli, Co-founder of Total Authority",
-                                                                    className: "w-56 h-auto object-contain relative z-10"
+                                                                ("TURBOPACK compile-time falsy", 0) ? /*#__PURE__*/ "TURBOPACK unreachable" : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "w-56 h-56 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-blue-500/20 relative z-10",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+                                                                        className: "w-16 h-16 text-purple-600/40"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/about/page.tsx",
+                                                                        lineNumber: 97,
+                                                                        columnNumber: 154
+                                                                    }, ("TURBOPACK compile-time value", void 0))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/about/page.tsx",
-                                                                    lineNumber: 99,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 97,
+                                                                    columnNumber: 28
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 97,
+                                                            lineNumber: 91,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 96,
+                                                        lineNumber: 90,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1791,61 +1791,66 @@ const About = ()=>{
                                                                     className: "absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-orange-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/about/page.tsx",
-                                                                    lineNumber: 108,
+                                                                    lineNumber: 102,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                    src: nickImage,
-                                                                    alt: "Nick Biggs, Co-founder of Total Authority",
-                                                                    className: "w-56 h-auto object-contain relative z-10"
+                                                                ("TURBOPACK compile-time falsy", 0) ? /*#__PURE__*/ "TURBOPACK unreachable" : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "w-56 h-56 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-orange-500/20 relative z-10",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+                                                                        className: "w-16 h-16 text-blue-600/40"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/about/page.tsx",
+                                                                        lineNumber: 107,
+                                                                        columnNumber: 154
+                                                                    }, ("TURBOPACK compile-time value", void 0))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/about/page.tsx",
-                                                                    lineNumber: 109,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 107,
+                                                                    columnNumber: 28
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 107,
+                                                            lineNumber: 101,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 106,
+                                                        lineNumber: 100,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 95,
+                                                lineNumber: 89,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 93,
+                                        lineNumber: 87,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 86,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 65,
+                            lineNumber: 59,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 64,
+                        lineNumber: 58,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 62,
+                lineNumber: 56,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1855,7 +1860,7 @@ const About = ()=>{
                         className: "absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/20 to-transparent"
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 125,
+                        lineNumber: 119,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1867,21 +1872,21 @@ const About = ()=>{
                                     className: "absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-orange-500"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 122,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-full blur-3xl"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 129,
+                                    lineNumber: 123,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-blue-500/10 to-orange-500/10 rounded-full blur-3xl"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1889,7 +1894,7 @@ const About = ()=>{
                                     children: "About Total Authority"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 126,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1902,12 +1907,12 @@ const About = ()=>{
                                                 children: "Total Authority is a digital marketing agency specializing in helping leaders and brands establish unshakeable authority in the AI-driven economy."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 137,
+                                                lineNumber: 131,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 136,
+                                            lineNumber: 130,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1917,12 +1922,12 @@ const About = ()=>{
                                                 children: "In a world where artificial intelligence is reshaping how we do business, create content, and connect with audiences, the traditional playbook for building authority has been completely rewritten. We help forward-thinking leaders navigate this new landscape and emerge stronger than ever."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 142,
+                                                lineNumber: 136,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 141,
+                                            lineNumber: 135,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1932,12 +1937,12 @@ const About = ()=>{
                                                 children: "Our comprehensive approach combines cutting-edge AI tools with time-tested authority-building strategies. We don't just help you adapt to the AI revolution – we help you lead it."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 141,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 146,
+                                            lineNumber: 140,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1947,35 +1952,35 @@ const About = ()=>{
                                                 children: "Whether you're a CEO looking to establish thought leadership, a startup founder seeking market credibility, or an established brand pivoting for the AI era, Total Authority provides the strategic expertise and execution you need to dominate your space."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 152,
+                                                lineNumber: 146,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 151,
+                                            lineNumber: 145,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 135,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 127,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 126,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 124,
+                lineNumber: 118,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1988,27 +1993,27 @@ const About = ()=>{
                                 className: "absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full animate-pulse [animation-duration:3s]"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 165,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-orange-400/10 to-pink-400/10 rounded-full animate-pulse [animation-duration:4s] [animation-delay:1s]"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 166,
+                                lineNumber: 160,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-purple-400/5 to-blue-400/5 rounded-full animate-pulse [animation-duration:5s] [animation-delay:2s]"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 167,
+                                lineNumber: 161,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 164,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2019,7 +2024,7 @@ const About = ()=>{
                                 children: "About Us"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 172,
+                                lineNumber: 166,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2037,7 +2042,7 @@ const About = ()=>{
                                                             className: "absolute inset-0 bg-gradient-to-br from-purple-500/30 via-blue-500/30 to-orange-500/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-spin [animation-duration:3s]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 181,
+                                                            lineNumber: 175,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2048,23 +2053,23 @@ const About = ()=>{
                                                                 className: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 183,
+                                                                lineNumber: 177,
                                                                 columnNumber: 21
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 182,
+                                                            lineNumber: 176,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/about/page.tsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 174,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 173,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2072,7 +2077,7 @@ const About = ()=>{
                                                 children: "Nick Biggs"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 185,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2082,7 +2087,7 @@ const About = ()=>{
                                                         className: "absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 193,
+                                                        lineNumber: 187,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2092,24 +2097,24 @@ const About = ()=>{
                                                             children: "Nick Biggs is a digital marketing specialist with expertise in SEO and content marketing. He applies analytical insights and creative approaches to develop effective link-building campaigns that enhance search engine rankings and brand authority. Nick's work emphasizes sustainable growth through ethical and high-quality digital marketing practices."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 195,
+                                                            lineNumber: 189,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 194,
+                                                        lineNumber: 188,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 192,
+                                                lineNumber: 186,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 172,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2124,7 +2129,7 @@ const About = ()=>{
                                                             className: "absolute inset-0 bg-gradient-to-br from-orange-500/30 via-purple-500/30 to-blue-500/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-spin [animation-duration:3s] [animation-direction:reverse]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 200,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2135,23 +2140,23 @@ const About = ()=>{
                                                                 className: "w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 208,
+                                                                lineNumber: 202,
                                                                 columnNumber: 21
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 207,
+                                                            lineNumber: 201,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/about/page.tsx",
-                                                    lineNumber: 205,
+                                                    lineNumber: 199,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 204,
+                                                lineNumber: 198,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2159,7 +2164,7 @@ const About = ()=>{
                                                 children: "Chris Panteli"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 216,
+                                                lineNumber: 210,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2169,7 +2174,7 @@ const About = ()=>{
                                                         className: "absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 218,
+                                                        lineNumber: 212,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2179,42 +2184,42 @@ const About = ()=>{
                                                             children: "Chris Panteli is an entrepreneur with a background in economics who transitioned from managing his family's fish and chip shop to building a successful career in digital marketing and SEO. He has a strong focus on link building and digital PR, leveraging storytelling and data-driven strategies to help brands increase their online visibility and organic traffic."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 220,
+                                                            lineNumber: 214,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 219,
+                                                        lineNumber: 213,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 211,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 203,
+                                        lineNumber: 197,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 176,
+                                lineNumber: 170,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 171,
+                        lineNumber: 165,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 162,
+                lineNumber: 156,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2224,7 +2229,7 @@ const About = ()=>{
                         className: "absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-purple-50/30"
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 232,
+                        lineNumber: 226,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2236,21 +2241,21 @@ const About = ()=>{
                                     className: "absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 235,
+                                    lineNumber: 229,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute -top-32 -right-32 w-64 h-64 bg-gradient-to-br from-orange-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse [animation-duration:4s]"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 230,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute -bottom-32 -left-32 w-64 h-64 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse [animation-duration:4s] [animation-delay:2s]"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 231,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2261,7 +2266,7 @@ const About = ()=>{
                                             children: "Our Podcast: Market Movers"
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 240,
+                                            lineNumber: 234,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2271,12 +2276,12 @@ const About = ()=>{
                                                 children: "Join Chris and Nick every week as they dive deep into the strategies, tools, and mindsets that separate market leaders from followers. Market Movers features conversations with industry pioneers, breakthrough case studies, and actionable insights you can implement immediately."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 244,
+                                                lineNumber: 238,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 243,
+                                            lineNumber: 237,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2299,35 +2304,35 @@ const About = ()=>{
                                                 className: "rounded-lg shadow-xl max-w-2xl w-full"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 251,
+                                                lineNumber: 245,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 250,
+                                            lineNumber: 244,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 239,
+                                    lineNumber: 233,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 234,
+                            lineNumber: 228,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 233,
+                        lineNumber: 227,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 231,
+                lineNumber: 225,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2340,27 +2345,27 @@ const About = ()=>{
                                 className: "absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full animate-pulse [animation-duration:4s]"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 273,
+                                lineNumber: 267,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute bottom-20 right-20 w-32 h-32 bg-accent/10 rounded-full animate-pulse [animation-duration:5s] [animation-delay:1000ms]"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 274,
+                                lineNumber: 268,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute top-1/2 left-1/3 w-16 h-16 bg-orange-500/10 rounded-full animate-pulse [animation-duration:3s] [animation-delay:500ms]"
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 275,
+                                lineNumber: 269,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 272,
+                        lineNumber: 266,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2374,7 +2379,7 @@ const About = ()=>{
                                         children: "Speaking Events"
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 280,
+                                        lineNumber: 274,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2382,13 +2387,13 @@ const About = ()=>{
                                         children: "Sharing insights and strategies with SEO communities around the world"
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 283,
+                                        lineNumber: 277,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 279,
+                                lineNumber: 273,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2404,41 +2409,41 @@ const About = ()=>{
                                                         className: "aspect-[16/10] relative overflow-hidden",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/61843d16-4ce3-4d31-9475-7f05f94b7eb5.png",
+                                                                src: "",
                                                                 alt: "Chris speaking at SEO Estonia 2025",
                                                                 className: "absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 294,
+                                                                lineNumber: 288,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/9e59bde5-b953-4a6c-aea4-22f63905a0c1.png",
+                                                                src: "",
                                                                 alt: "Chris presenting at SEO Estonia 2025",
                                                                 className: "absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 300,
+                                                                lineNumber: 294,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 305,
+                                                                lineNumber: 299,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-br from-blue-500/20 via-transparent to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 306,
+                                                                lineNumber: 300,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 286,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2451,7 +2456,7 @@ const About = ()=>{
                                                                         className: "w-2 h-2 bg-blue-500 rounded-full animate-pulse"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 310,
+                                                                        lineNumber: 304,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2459,13 +2464,13 @@ const About = ()=>{
                                                                         children: "2025"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 311,
+                                                                        lineNumber: 305,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 309,
+                                                                lineNumber: 303,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2473,7 +2478,7 @@ const About = ()=>{
                                                                 children: "SEO Estonia 2025"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 313,
+                                                                lineNumber: 307,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2481,7 +2486,7 @@ const About = ()=>{
                                                                 children: "Advanced SEO Strategies & AI Integration"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 314,
+                                                                lineNumber: 308,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2491,47 +2496,47 @@ const About = ()=>{
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 316,
+                                                                        lineNumber: 310,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "500+ Attendees"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 317,
+                                                                        lineNumber: 311,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "w-1 h-1 bg-white/50 rounded-full mx-2"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 318,
+                                                                        lineNumber: 312,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__["Globe"], {
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 319,
+                                                                        lineNumber: 313,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "Tallinn, Estonia"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 320,
+                                                                        lineNumber: 314,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 315,
+                                                                lineNumber: 309,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 308,
+                                                        lineNumber: 302,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2540,18 +2545,18 @@ const About = ()=>{
                                                             className: "w-5 h-5 text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 324,
+                                                            lineNumber: 318,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 323,
+                                                        lineNumber: 317,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 291,
+                                                lineNumber: 285,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2561,41 +2566,41 @@ const About = ()=>{
                                                         className: "aspect-[16/10] relative overflow-hidden",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/03513aac-fff9-4292-871f-982ca94efe18.png",
+                                                                src: "",
                                                                 alt: "Chris speaking at Link Building Mastery London 2025",
                                                                 className: "absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 331,
+                                                                lineNumber: 325,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/dac450cb-388a-4e55-af46-228fe24a7dcb.png",
+                                                                src: "",
                                                                 alt: "Chris presenting at Link Building Mastery London 2025",
                                                                 className: "absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 336,
+                                                                lineNumber: 330,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 341,
+                                                                lineNumber: 335,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-br from-orange-500/20 via-transparent to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 342,
+                                                                lineNumber: 336,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 330,
+                                                        lineNumber: 324,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2608,7 +2613,7 @@ const About = ()=>{
                                                                         className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 346,
+                                                                        lineNumber: 340,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2616,13 +2621,13 @@ const About = ()=>{
                                                                         children: "2025"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 347,
+                                                                        lineNumber: 341,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 345,
+                                                                lineNumber: 339,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2630,7 +2635,7 @@ const About = ()=>{
                                                                 children: "Link Building Mastery"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 349,
+                                                                lineNumber: 343,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2638,7 +2643,7 @@ const About = ()=>{
                                                                 children: "London 2025 - Advanced Link Strategies"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 350,
+                                                                lineNumber: 344,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2648,47 +2653,47 @@ const About = ()=>{
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 352,
+                                                                        lineNumber: 346,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "300+ Attendees"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 353,
+                                                                        lineNumber: 347,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "w-1 h-1 bg-white/50 rounded-full mx-2"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 354,
+                                                                        lineNumber: 348,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__["Globe"], {
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 355,
+                                                                        lineNumber: 349,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "London, UK"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 356,
+                                                                        lineNumber: 350,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 351,
+                                                                lineNumber: 345,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 344,
+                                                        lineNumber: 338,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2697,18 +2702,18 @@ const About = ()=>{
                                                             className: "w-5 h-5 text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 360,
+                                                            lineNumber: 354,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 359,
+                                                        lineNumber: 353,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 329,
+                                                lineNumber: 323,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2718,41 +2723,41 @@ const About = ()=>{
                                                         className: "aspect-[16/10] relative overflow-hidden",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/1b1b9172-200a-4e40-bc1f-b52ab362f1c5.png",
+                                                                src: "",
                                                                 alt: "Chris speaking at SEO Vibes Dubai 2024",
                                                                 className: "absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 367,
+                                                                lineNumber: 361,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/f6df4de1-89c6-4624-97e8-926883abe1cb.png",
+                                                                src: "",
                                                                 alt: "Chris presenting AI strategies at SEO Vibes Dubai 2024",
                                                                 className: "absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 372,
+                                                                lineNumber: 366,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 377,
+                                                                lineNumber: 371,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-br from-purple-500/20 via-transparent to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 378,
+                                                                lineNumber: 372,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 366,
+                                                        lineNumber: 360,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2765,7 +2770,7 @@ const About = ()=>{
                                                                         className: "w-2 h-2 bg-purple-500 rounded-full animate-pulse"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 382,
+                                                                        lineNumber: 376,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2773,13 +2778,13 @@ const About = ()=>{
                                                                         children: "2024"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 383,
+                                                                        lineNumber: 377,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 381,
+                                                                lineNumber: 375,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2787,7 +2792,7 @@ const About = ()=>{
                                                                 children: "SEO Vibes Dubai"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 385,
+                                                                lineNumber: 379,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2795,7 +2800,7 @@ const About = ()=>{
                                                                 children: "How to Use AI to Build PR Links"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 386,
+                                                                lineNumber: 380,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2805,47 +2810,47 @@ const About = ()=>{
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 388,
+                                                                        lineNumber: 382,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "400+ Attendees"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 389,
+                                                                        lineNumber: 383,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "w-1 h-1 bg-white/50 rounded-full mx-2"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 390,
+                                                                        lineNumber: 384,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__["Globe"], {
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 391,
+                                                                        lineNumber: 385,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "Dubai, UAE"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 392,
+                                                                        lineNumber: 386,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 387,
+                                                                lineNumber: 381,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 380,
+                                                        lineNumber: 374,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2854,18 +2859,18 @@ const About = ()=>{
                                                             className: "w-5 h-5 text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 396,
+                                                            lineNumber: 390,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 395,
+                                                        lineNumber: 389,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 365,
+                                                lineNumber: 359,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2875,41 +2880,41 @@ const About = ()=>{
                                                         className: "aspect-[16/10] relative overflow-hidden",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/b336701d-65b5-4b8c-9e59-4835afe3ea42.png",
+                                                                src: "",
                                                                 alt: "Chris at Affiliate Gathering York 2024",
                                                                 className: "absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 403,
+                                                                lineNumber: 397,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: "/lovable-uploads/7cee1cdd-5197-41b6-b6d8-86ceecc55f82.png",
+                                                                src: "",
                                                                 alt: "Panel discussion at Affiliate Gathering York 2024",
                                                                 className: "absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 408,
+                                                                lineNumber: 402,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 413,
+                                                                lineNumber: 407,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "absolute inset-0 bg-gradient-to-br from-green-500/20 via-transparent to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 414,
+                                                                lineNumber: 408,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 402,
+                                                        lineNumber: 396,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2922,7 +2927,7 @@ const About = ()=>{
                                                                         className: "w-2 h-2 bg-green-500 rounded-full animate-pulse"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 418,
+                                                                        lineNumber: 412,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2930,13 +2935,13 @@ const About = ()=>{
                                                                         children: "2024"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 419,
+                                                                        lineNumber: 413,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 417,
+                                                                lineNumber: 411,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2944,7 +2949,7 @@ const About = ()=>{
                                                                 children: "Affiliate Gathering"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 421,
+                                                                lineNumber: 415,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2952,7 +2957,7 @@ const About = ()=>{
                                                                 children: "York 2024 - Expert Panel Discussion"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 422,
+                                                                lineNumber: 416,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2962,47 +2967,47 @@ const About = ()=>{
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 424,
+                                                                        lineNumber: 418,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "250+ Attendees"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 425,
+                                                                        lineNumber: 419,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "w-1 h-1 bg-white/50 rounded-full mx-2"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 426,
+                                                                        lineNumber: 420,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__["Globe"], {
                                                                         className: "w-3 h-3"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 427,
+                                                                        lineNumber: 421,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         children: "York, UK"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/about/page.tsx",
-                                                                        lineNumber: 428,
+                                                                        lineNumber: 422,
                                                                         columnNumber: 21
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/about/page.tsx",
-                                                                lineNumber: 423,
+                                                                lineNumber: 417,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 416,
+                                                        lineNumber: 410,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3011,24 +3016,24 @@ const About = ()=>{
                                                             className: "w-5 h-5 text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 432,
+                                                            lineNumber: 426,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 431,
+                                                        lineNumber: 425,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 401,
+                                                lineNumber: 395,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 289,
+                                        lineNumber: 283,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3043,12 +3048,12 @@ const About = ()=>{
                                                             className: "w-8 h-8 text-primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 441,
+                                                            lineNumber: 435,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 440,
+                                                        lineNumber: 434,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3056,7 +3061,7 @@ const About = ()=>{
                                                         children: "50+"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 443,
+                                                        lineNumber: 437,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3064,13 +3069,13 @@ const About = ()=>{
                                                         children: "Events Spoken At"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 444,
+                                                        lineNumber: 438,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 439,
+                                                lineNumber: 433,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3082,12 +3087,12 @@ const About = ()=>{
                                                             className: "w-8 h-8 text-primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 448,
+                                                            lineNumber: 442,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 447,
+                                                        lineNumber: 441,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3095,7 +3100,7 @@ const About = ()=>{
                                                         children: "15+"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 450,
+                                                        lineNumber: 444,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3103,13 +3108,13 @@ const About = ()=>{
                                                         children: "Countries"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 451,
+                                                        lineNumber: 445,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 446,
+                                                lineNumber: 440,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3121,12 +3126,12 @@ const About = ()=>{
                                                             className: "w-8 h-8 text-primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 455,
+                                                            lineNumber: 449,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 454,
+                                                        lineNumber: 448,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3134,7 +3139,7 @@ const About = ()=>{
                                                         children: "10K+"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 457,
+                                                        lineNumber: 451,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3142,13 +3147,13 @@ const About = ()=>{
                                                         children: "Audience Reached"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 458,
+                                                        lineNumber: 452,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 453,
+                                                lineNumber: 447,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3160,12 +3165,12 @@ const About = ()=>{
                                                             className: "w-8 h-8 text-primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/about/page.tsx",
-                                                            lineNumber: 462,
+                                                            lineNumber: 456,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 461,
+                                                        lineNumber: 455,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3173,7 +3178,7 @@ const About = ()=>{
                                                         children: "4.9"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 464,
+                                                        lineNumber: 458,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3181,44 +3186,44 @@ const About = ()=>{
                                                         children: "Average Rating"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.tsx",
-                                                        lineNumber: 465,
+                                                        lineNumber: 459,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 460,
+                                                lineNumber: 454,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 438,
+                                        lineNumber: 432,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 288,
+                                lineNumber: 282,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 278,
+                        lineNumber: 272,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 271,
+                lineNumber: 265,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Footer"], {
                 onOpenForm: openForm
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 472,
+                lineNumber: 466,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$FormPopup$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FormPopup"], {
@@ -3226,13 +3231,13 @@ const About = ()=>{
                 onClose: closeForm
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 473,
+                lineNumber: 467,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/app/about/page.tsx",
-        lineNumber: 29,
+        lineNumber: 23,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3285,7 +3290,7 @@ const PodcastFeed = ()=>{
                             className: "aspect-square bg-muted animate-pulse"
                         }, void 0, false, {
                             fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 524,
+                            lineNumber: 518,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3295,38 +3300,38 @@ const PodcastFeed = ()=>{
                                     className: "h-4 bg-muted rounded animate-pulse mb-3"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 526,
+                                    lineNumber: 520,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "h-4 bg-muted rounded animate-pulse w-3/4 mb-3"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 527,
+                                    lineNumber: 521,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "h-3 bg-muted rounded animate-pulse w-1/2"
                                 }, void 0, false, {
                                     fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 528,
+                                    lineNumber: 522,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 525,
+                            lineNumber: 519,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, i, true, {
                     fileName: "[project]/app/about/page.tsx",
-                    lineNumber: 523,
+                    lineNumber: 517,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)))
         }, void 0, false, {
             fileName: "[project]/app/about/page.tsx",
-            lineNumber: 521,
+            lineNumber: 515,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -3346,7 +3351,7 @@ const PodcastFeed = ()=>{
                                         className: "w-full h-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 542,
+                                        lineNumber: 536,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3359,23 +3364,23 @@ const PodcastFeed = ()=>{
                                                 className: "h-6 w-6"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 549,
+                                                lineNumber: 543,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/app/about/page.tsx",
-                                            lineNumber: 548,
+                                            lineNumber: 542,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 547,
+                                        lineNumber: 541,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 541,
+                                lineNumber: 535,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3386,7 +3391,7 @@ const PodcastFeed = ()=>{
                                         children: episode.title
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 554,
+                                        lineNumber: 548,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3394,7 +3399,7 @@ const PodcastFeed = ()=>{
                                         children: episode.description
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 555,
+                                        lineNumber: 549,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3405,7 +3410,7 @@ const PodcastFeed = ()=>{
                                                 children: episode.publishDate
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 557,
+                                                lineNumber: 551,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3416,35 +3421,35 @@ const PodcastFeed = ()=>{
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/about/page.tsx",
-                                                    lineNumber: 559,
+                                                    lineNumber: 553,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/about/page.tsx",
-                                                lineNumber: 558,
+                                                lineNumber: 552,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/about/page.tsx",
-                                        lineNumber: 556,
+                                        lineNumber: 550,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 553,
+                                lineNumber: 547,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, episode.id, true, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 540,
+                        lineNumber: 534,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)))
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 538,
+                lineNumber: 532,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             episodes.length > 6 && !showMore && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3456,18 +3461,18 @@ const PodcastFeed = ()=>{
                     children: "Load More Episodes"
                 }, void 0, false, {
                     fileName: "[project]/app/about/page.tsx",
-                    lineNumber: 569,
+                    lineNumber: 563,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 568,
+                lineNumber: 562,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/app/about/page.tsx",
-        lineNumber: 537,
+        lineNumber: 531,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
