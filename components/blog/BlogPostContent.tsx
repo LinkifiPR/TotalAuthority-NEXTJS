@@ -39,96 +39,24 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
     router.push(`/insights?tag=${encodeURIComponent(tag)}`);
   };
 
-  // Content processing - clean up editor elements and ensure proper YouTube embeds
+  // Content processing - clean up editor elements (SSR-safe, no DOM APIs)
   const processContent = (content: string) => {
-    console.log('Processing content...');
+    if (!content) return '';
     
-    // Create a temporary div to manipulate the HTML
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = content;
+    let processed = content;
     
-    // Remove ALL buttons from YouTube embeds (including any editor controls)
-    const allButtons = tempDiv.querySelectorAll('.youtube-embed button, .youtube-embed .editor-btn, .youtube-embed .btn');
-    allButtons.forEach(button => button.remove());
+    // Remove editor buttons and controls using regex (SSR-safe)
+    processed = processed.replace(/<button[^>]*class="[^"]*editor[^"]*"[^>]*>[\s\S]*?<\/button>/gi, '');
+    processed = processed.replace(/<button[^>]*>[\s\S]*?remove[\s\S]*?<\/button>/gi, '');
+    processed = processed.replace(/<div[^>]*class="[^"]*button-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+    processed = processed.replace(/<div[^>]*class="[^"]*editor-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
     
-    // Remove button containers and editor overlays
-    const buttonContainers = tempDiv.querySelectorAll('.youtube-embed .button-overlay, .youtube-embed .editor-overlay, .youtube-embed .button-container');
-    buttonContainers.forEach(container => container.remove());
+    // Remove data attributes related to editor functionality
+    processed = processed.replace(/\s*data-has-buttons="[^"]*"/gi, '');
+    processed = processed.replace(/\s*data-editor-active="[^"]*"/gi, '');
+    processed = processed.replace(/\s*data-button-overlay="[^"]*"/gi, '');
     
-    // Remove all data attributes related to editor functionality
-    const youtubeEmbeds = tempDiv.querySelectorAll('.youtube-embed');
-    youtubeEmbeds.forEach(embed => {
-      const embedElement = embed as HTMLElement;
-      
-      // Remove all editor-related attributes
-      embedElement.removeAttribute('data-has-buttons');
-      embedElement.removeAttribute('data-editor-active');
-      embedElement.removeAttribute('data-button-overlay');
-      
-      // Clean up any inline styles that might interfere
-      embedElement.style.position = 'relative';
-      embedElement.style.margin = '24px 0';
-      embedElement.style.display = 'block';
-      embedElement.style.width = '100%';
-      
-      // Find the iframe container and ensure it's properly structured
-      let iframeContainer = embedElement.querySelector('.relative');
-      if (!iframeContainer) {
-        // If no proper container exists, look for iframe directly
-        const iframe = embedElement.querySelector('iframe');
-        if (iframe) {
-          // Create proper responsive container
-          const container = document.createElement('div');
-          container.className = 'relative w-full overflow-hidden rounded-lg';
-          container.style.paddingBottom = '56.25%'; // 16:9 aspect ratio
-          container.style.height = '0';
-          
-          // Move iframe into container
-          iframe.style.position = 'absolute';
-          iframe.style.top = '0';
-          iframe.style.left = '0';
-          iframe.style.width = '100%';
-          iframe.style.height = '100%';
-          iframe.style.border = 'none';
-          iframe.style.borderRadius = '8px';
-          
-          container.appendChild(iframe);
-          embedElement.innerHTML = '';
-          embedElement.appendChild(container);
-        }
-      } else {
-        // Clean up existing container
-        const containerElement = iframeContainer as HTMLElement;
-        containerElement.style.paddingBottom = '56.25%';
-        containerElement.style.height = '0';
-        containerElement.style.position = 'relative';
-        containerElement.style.width = '100%';
-        containerElement.style.overflow = 'hidden';
-        containerElement.style.borderRadius = '8px';
-        
-        // Clean up iframe
-        const iframe = containerElement.querySelector('iframe');
-        if (iframe) {
-          iframe.style.position = 'absolute';
-          iframe.style.top = '0';
-          iframe.style.left = '0';
-          iframe.style.width = '100%';
-          iframe.style.height = '100%';
-          iframe.style.border = 'none';
-          iframe.style.borderRadius = '8px';
-          
-          // Ensure iframe has proper YouTube embed URL
-          if (iframe.src && !iframe.src.includes('embed')) {
-            const videoId = iframe.src.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
-            if (videoId) {
-              iframe.src = `https://www.youtube.com/embed/${videoId[1]}?rel=0&modestbranding=1`;
-            }
-          }
-        }
-      }
-    });
-    
-    return tempDiv.innerHTML;
+    return processed;
   };
 
   // Function to inject MailerLite scripts when form is detected

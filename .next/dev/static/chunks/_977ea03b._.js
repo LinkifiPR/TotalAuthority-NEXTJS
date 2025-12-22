@@ -1033,84 +1033,20 @@ const BlogPostContent = ({ post })=>{
     const handleTagClick = (tag)=>{
         router.push(`/insights?tag=${encodeURIComponent(tag)}`);
     };
-    // Content processing - clean up editor elements and ensure proper YouTube embeds
+    // Content processing - clean up editor elements (SSR-safe, no DOM APIs)
     const processContent = (content)=>{
-        console.log('Processing content...');
-        // Create a temporary div to manipulate the HTML
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = content;
-        // Remove ALL buttons from YouTube embeds (including any editor controls)
-        const allButtons = tempDiv.querySelectorAll('.youtube-embed button, .youtube-embed .editor-btn, .youtube-embed .btn');
-        allButtons.forEach((button)=>button.remove());
-        // Remove button containers and editor overlays
-        const buttonContainers = tempDiv.querySelectorAll('.youtube-embed .button-overlay, .youtube-embed .editor-overlay, .youtube-embed .button-container');
-        buttonContainers.forEach((container)=>container.remove());
-        // Remove all data attributes related to editor functionality
-        const youtubeEmbeds = tempDiv.querySelectorAll('.youtube-embed');
-        youtubeEmbeds.forEach((embed)=>{
-            const embedElement = embed;
-            // Remove all editor-related attributes
-            embedElement.removeAttribute('data-has-buttons');
-            embedElement.removeAttribute('data-editor-active');
-            embedElement.removeAttribute('data-button-overlay');
-            // Clean up any inline styles that might interfere
-            embedElement.style.position = 'relative';
-            embedElement.style.margin = '24px 0';
-            embedElement.style.display = 'block';
-            embedElement.style.width = '100%';
-            // Find the iframe container and ensure it's properly structured
-            let iframeContainer = embedElement.querySelector('.relative');
-            if (!iframeContainer) {
-                // If no proper container exists, look for iframe directly
-                const iframe = embedElement.querySelector('iframe');
-                if (iframe) {
-                    // Create proper responsive container
-                    const container = document.createElement('div');
-                    container.className = 'relative w-full overflow-hidden rounded-lg';
-                    container.style.paddingBottom = '56.25%'; // 16:9 aspect ratio
-                    container.style.height = '0';
-                    // Move iframe into container
-                    iframe.style.position = 'absolute';
-                    iframe.style.top = '0';
-                    iframe.style.left = '0';
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.border = 'none';
-                    iframe.style.borderRadius = '8px';
-                    container.appendChild(iframe);
-                    embedElement.innerHTML = '';
-                    embedElement.appendChild(container);
-                }
-            } else {
-                // Clean up existing container
-                const containerElement = iframeContainer;
-                containerElement.style.paddingBottom = '56.25%';
-                containerElement.style.height = '0';
-                containerElement.style.position = 'relative';
-                containerElement.style.width = '100%';
-                containerElement.style.overflow = 'hidden';
-                containerElement.style.borderRadius = '8px';
-                // Clean up iframe
-                const iframe = containerElement.querySelector('iframe');
-                if (iframe) {
-                    iframe.style.position = 'absolute';
-                    iframe.style.top = '0';
-                    iframe.style.left = '0';
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.border = 'none';
-                    iframe.style.borderRadius = '8px';
-                    // Ensure iframe has proper YouTube embed URL
-                    if (iframe.src && !iframe.src.includes('embed')) {
-                        const videoId = iframe.src.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
-                        if (videoId) {
-                            iframe.src = `https://www.youtube.com/embed/${videoId[1]}?rel=0&modestbranding=1`;
-                        }
-                    }
-                }
-            }
-        });
-        return tempDiv.innerHTML;
+        if (!content) return '';
+        let processed = content;
+        // Remove editor buttons and controls using regex (SSR-safe)
+        processed = processed.replace(/<button[^>]*class="[^"]*editor[^"]*"[^>]*>[\s\S]*?<\/button>/gi, '');
+        processed = processed.replace(/<button[^>]*>[\s\S]*?remove[\s\S]*?<\/button>/gi, '');
+        processed = processed.replace(/<div[^>]*class="[^"]*button-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+        processed = processed.replace(/<div[^>]*class="[^"]*editor-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+        // Remove data attributes related to editor functionality
+        processed = processed.replace(/\s*data-has-buttons="[^"]*"/gi, '');
+        processed = processed.replace(/\s*data-editor-active="[^"]*"/gi, '');
+        processed = processed.replace(/\s*data-button-overlay="[^"]*"/gi, '');
+        return processed;
     };
     // Function to inject MailerLite scripts when form is detected
     const injectMailerLiteScripts = (formId)=>{
@@ -1286,17 +1222,17 @@ const BlogPostContent = ({ post })=>{
                         loading: "lazy"
                     }, void 0, false, {
                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                        lineNumber: 306,
+                        lineNumber: 234,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/blog/BlogPostContent.tsx",
-                    lineNumber: 305,
+                    lineNumber: 233,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                lineNumber: 304,
+                lineNumber: 232,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1311,12 +1247,12 @@ const BlogPostContent = ({ post })=>{
                                 children: tag
                             }, index, false, {
                                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                lineNumber: 322,
+                                lineNumber: 250,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                        lineNumber: 320,
+                        lineNumber: 248,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1324,7 +1260,7 @@ const BlogPostContent = ({ post })=>{
                         children: post.title
                     }, void 0, false, {
                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                        lineNumber: 335,
+                        lineNumber: 263,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     post.excerpt && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1332,7 +1268,7 @@ const BlogPostContent = ({ post })=>{
                         children: post.excerpt
                     }, void 0, false, {
                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                        lineNumber: 341,
+                        lineNumber: 269,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1345,20 +1281,20 @@ const BlogPostContent = ({ post })=>{
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                        lineNumber: 349,
+                                        lineNumber: 277,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: formatDate(post.published_at)
                                     }, void 0, false, {
                                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                        lineNumber: 350,
+                                        lineNumber: 278,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                lineNumber: 348,
+                                lineNumber: 276,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             post.reading_time && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1368,7 +1304,7 @@ const BlogPostContent = ({ post })=>{
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                        lineNumber: 355,
+                                        lineNumber: 283,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1378,13 +1314,13 @@ const BlogPostContent = ({ post })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                        lineNumber: 356,
+                                        lineNumber: 284,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                lineNumber: 354,
+                                lineNumber: 282,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1394,32 +1330,32 @@ const BlogPostContent = ({ post })=>{
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                        lineNumber: 361,
+                                        lineNumber: 289,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: post.author_name || 'TotalAuthority Team'
                                     }, void 0, false, {
                                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                        lineNumber: 362,
+                                        lineNumber: 290,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                                lineNumber: 360,
+                                lineNumber: 288,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/blog/BlogPostContent.tsx",
-                        lineNumber: 347,
+                        lineNumber: 275,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                lineNumber: 317,
+                lineNumber: 245,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1431,12 +1367,12 @@ const BlogPostContent = ({ post })=>{
                     }
                 }, void 0, false, {
                     fileName: "[project]/components/blog/BlogPostContent.tsx",
-                    lineNumber: 369,
+                    lineNumber: 297,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                lineNumber: 368,
+                lineNumber: 296,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
@@ -1615,13 +1551,13 @@ const BlogPostContent = ({ post })=>{
                 }
             }, void 0, false, {
                 fileName: "[project]/components/blog/BlogPostContent.tsx",
-                lineNumber: 375,
+                lineNumber: 303,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/blog/BlogPostContent.tsx",
-        lineNumber: 301,
+        lineNumber: 229,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -2475,25 +2411,22 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/app/[slug]/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/components/blog/BlogPostClient.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
-    "default",
-    ()=>__TURBOPACK__default__export__
+    "BlogPostClient",
+    ()=>BlogPostClient
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$integrations$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/integrations/supabase/client.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Header.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Footer.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$blog$2f$BlogPostContent$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/blog/BlogPostContent.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$blog$2f$BlogPostSidebar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/blog/BlogPostSidebar.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$FormPopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/FormPopup.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useFormPopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hooks/useFormPopup.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hooks/use-toast.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$integrations$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/integrations/supabase/client.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -2505,120 +2438,61 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-;
-;
-const BlogPost = ()=>{
+function BlogPostClient({ post, isPreview = false }) {
     _s();
-    const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
-    const slug = params?.slug;
-    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
-    const [post, setPost] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [headings, setHeadings] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const { toast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"])();
     const { isOpen, openForm, closeForm } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useFormPopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useFormPopup"])();
-    // Check if this is a preview URL
-    const isPreview = pathname?.startsWith('/preview/') ?? false;
+    // Increment view count on mount (client-side only)
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BlogPost.useEffect": ()=>{
-            const fetchPost = {
-                "BlogPost.useEffect.fetchPost": async ()=>{
-                    if (!slug) {
-                        setLoading(false);
-                        return;
-                    }
-                    try {
-                        let query = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$integrations$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from('blog_posts').select('*').eq('slug', slug);
-                        // If not preview, only get published posts
-                        if (!isPreview) {
-                            query = query.eq('status', 'published');
-                        }
-                        const { data, error } = await query.single();
-                        if (error) {
-                            // PGRST116 means no rows returned - this is expected for non-existent posts
-                            if (error.code === 'PGRST116') {
-                                setPost(null);
-                            } else {
-                                // Clear stale post data and show error toast for unexpected errors
-                                setPost(null);
-                                toast({
-                                    title: "Error",
-                                    description: "Failed to load blog post",
-                                    variant: "destructive"
-                                });
-                            }
-                            setLoading(false);
-                            return;
-                        }
-                        setPost(data);
-                        // Only increment view count for published posts (not previews)
-                        if (!isPreview && data.status === 'published') {
-                            await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$integrations$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from('blog_posts').update({
-                                view_count: (data.view_count || 0) + 1
-                            }).eq('id', data.id);
-                        }
-                    } catch (error) {
-                        // Clear stale post data to avoid showing incorrect content
-                        setPost(null);
-                        // Log errors in development for debugging without triggering error overlay
-                        if ("TURBOPACK compile-time truthy", 1) {
-                            console.warn('Blog post fetch failed:', error?.message || 'Unknown error');
-                        }
-                        // Show user-facing error feedback for unexpected failures
-                        toast({
-                            title: "Error",
-                            description: "An unexpected error occurred while loading the blog post",
-                            variant: "destructive"
-                        });
-                    } finally{
-                        setLoading(false);
-                    }
-                }
-            }["BlogPost.useEffect.fetchPost"];
-            fetchPost();
+        "BlogPostClient.useEffect": ()=>{
+            if (!isPreview && post.status === 'published') {
+                __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$integrations$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from('blog_posts').update({
+                    view_count: (post.view_count || 0) + 1
+                }).eq('id', post.id).then({
+                    "BlogPostClient.useEffect": ()=>{}
+                }["BlogPostClient.useEffect"]);
+            }
         }
-    }["BlogPost.useEffect"], [
-        slug,
-        toast,
+    }["BlogPostClient.useEffect"], [
+        post.id,
+        post.status,
+        post.view_count,
         isPreview
     ]);
     // Listen for CTA button clicks from blog content
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BlogPost.useEffect": ()=>{
+        "BlogPostClient.useEffect": ()=>{
             const handlePostMessage = {
-                "BlogPost.useEffect.handlePostMessage": (event)=>{
+                "BlogPostClient.useEffect.handlePostMessage": (event)=>{
                     if (event.data.type === 'OPEN_FORM') {
                         openForm();
                     }
                 }
-            }["BlogPost.useEffect.handlePostMessage"];
+            }["BlogPostClient.useEffect.handlePostMessage"];
             window.addEventListener('message', handlePostMessage);
             return ({
-                "BlogPost.useEffect": ()=>window.removeEventListener('message', handlePostMessage)
-            })["BlogPost.useEffect"];
+                "BlogPostClient.useEffect": ()=>window.removeEventListener('message', handlePostMessage)
+            })["BlogPostClient.useEffect"];
         }
-    }["BlogPost.useEffect"], [
+    }["BlogPostClient.useEffect"], [
         openForm
     ]);
     // Extract headings from the actual DOM after content is rendered
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BlogPost.useEffect": ()=>{
+        "BlogPostClient.useEffect": ()=>{
             if (post?.content) {
-                // Wait for the content to be fully rendered
                 const extractHeadings = {
-                    "BlogPost.useEffect.extractHeadings": ()=>{
+                    "BlogPostClient.useEffect.extractHeadings": ()=>{
                         const headingElements = document.querySelectorAll('.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4');
                         const extractedHeadings = Array.from(headingElements).filter({
-                            "BlogPost.useEffect.extractHeadings.extractedHeadings": (heading)=>{
-                                // Exclude headings that are inside code blocks or other special containers
+                            "BlogPostClient.useEffect.extractHeadings.extractedHeadings": (heading)=>{
                                 const isInCodeBlock = heading.closest('.code-block, .code-content');
                                 const isInCTABlock = heading.closest('.cta-block');
                                 return !isInCodeBlock && !isInCTABlock;
                             }
-                        }["BlogPost.useEffect.extractHeadings.extractedHeadings"]).map({
-                            "BlogPost.useEffect.extractHeadings.extractedHeadings": (heading, index)=>{
+                        }["BlogPostClient.useEffect.extractHeadings.extractedHeadings"]).map({
+                            "BlogPostClient.useEffect.extractHeadings.extractedHeadings": (heading, index)=>{
                                 let id = heading.id;
-                                // If heading doesn't have an ID, generate one
                                 if (!id) {
                                     const text = heading.textContent || '';
                                     id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `heading-${index}`;
@@ -2630,180 +2504,58 @@ const BlogPost = ()=>{
                                     level: parseInt(heading.tagName.charAt(1))
                                 };
                             }
-                        }["BlogPost.useEffect.extractHeadings.extractedHeadings"]);
-                        console.log('Extracted headings:', extractedHeadings);
+                        }["BlogPostClient.useEffect.extractHeadings.extractedHeadings"]);
                         setHeadings(extractedHeadings);
                     }
-                }["BlogPost.useEffect.extractHeadings"];
-                // Use multiple timeouts to ensure content is fully rendered
+                }["BlogPostClient.useEffect.extractHeadings"];
                 const timeouts = [
                     100,
                     500,
                     1000
                 ];
                 timeouts.forEach({
-                    "BlogPost.useEffect": (delay)=>{
+                    "BlogPostClient.useEffect": (delay)=>{
                         setTimeout(extractHeadings, delay);
                     }
-                }["BlogPost.useEffect"]);
-                // Also extract immediately
+                }["BlogPostClient.useEffect"]);
                 extractHeadings();
             }
         }
-    }["BlogPost.useEffect"], [
+    }["BlogPostClient.useEffect"], [
         post?.content
     ]);
-    if (loading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen bg-white",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Header"], {
-                    onOpenForm: openForm
-                }, void 0, false, {
-                    fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 182,
-                    columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0)),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "container mx-auto px-4 py-8",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "animate-pulse",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-8 bg-gray-200 rounded w-3/4 mb-4"
-                            }, void 0, false, {
-                                fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 185,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-4 bg-gray-200 rounded w-1/2 mb-8"
-                            }, void 0, false, {
-                                fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 186,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "space-y-4",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "h-4 bg-gray-200 rounded"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/[slug]/page.tsx",
-                                        lineNumber: 188,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0)),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "h-4 bg-gray-200 rounded"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/[slug]/page.tsx",
-                                        lineNumber: 189,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0)),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "h-4 bg-gray-200 rounded w-3/4"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/[slug]/page.tsx",
-                                        lineNumber: 190,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 187,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0))
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 184,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0))
-                }, void 0, false, {
-                    fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 183,
-                    columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0)),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Footer"], {
-                    onOpenForm: openForm
-                }, void 0, false, {
-                    fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 194,
-                    columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0))
-            ]
-        }, void 0, true, {
-            fileName: "[project]/app/[slug]/page.tsx",
-            lineNumber: 181,
-            columnNumber: 7
-        }, ("TURBOPACK compile-time value", void 0));
-    }
-    if (!post) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen bg-white flex items-center justify-center",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-center",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "text-4xl font-bold mb-4",
-                        children: "Post Not Found"
-                    }, void 0, false, {
-                        fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 203,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-gray-600",
-                        children: "The blog post you're looking for doesn't exist."
-                    }, void 0, false, {
-                        fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 204,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0))
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 202,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0))
-        }, void 0, false, {
-            fileName: "[project]/app/[slug]/page.tsx",
-            lineNumber: 201,
-            columnNumber: 7
-        }, ("TURBOPACK compile-time value", void 0));
-    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-white",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Header"], {
                 onOpenForm: openForm
             }, void 0, false, {
-                fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 212,
+                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                lineNumber: 111,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
+            }, this),
             isPreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-yellow-100 border-b border-yellow-200 py-2 px-4",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "container mx-auto text-center",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "text-yellow-800 font-medium",
-                        children: "🔍 Preview Mode - This is how your post will look when published"
+                        children: "Preview Mode - This is how your post will look when published"
                     }, void 0, false, {
-                        fileName: "[project]/app/[slug]/page.tsx",
-                        lineNumber: 218,
+                        fileName: "[project]/components/blog/BlogPostClient.tsx",
+                        lineNumber: 116,
                         columnNumber: 13
-                    }, ("TURBOPACK compile-time value", void 0))
+                    }, this)
                 }, void 0, false, {
-                    fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 217,
+                    fileName: "[project]/components/blog/BlogPostClient.tsx",
+                    lineNumber: 115,
                     columnNumber: 11
-                }, ("TURBOPACK compile-time value", void 0))
+                }, this)
             }, void 0, false, {
-                fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 216,
+                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                lineNumber: 114,
                 columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)),
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "container mx-auto px-4 py-8",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2814,78 +2566,74 @@ const BlogPost = ()=>{
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$blog$2f$BlogPostSidebar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BlogPostSidebar"], {
                                 headings: headings
                             }, void 0, false, {
-                                fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 229,
+                                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                                lineNumber: 126,
                                 columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0))
+                            }, this)
                         }, void 0, false, {
-                            fileName: "[project]/app/[slug]/page.tsx",
-                            lineNumber: 228,
+                            fileName: "[project]/components/blog/BlogPostClient.tsx",
+                            lineNumber: 125,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0)),
+                        }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex-1 max-w-4xl min-w-0",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$blog$2f$BlogPostContent$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BlogPostContent"], {
                                 post: post
                             }, void 0, false, {
-                                fileName: "[project]/app/[slug]/page.tsx",
-                                lineNumber: 234,
+                                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                                lineNumber: 130,
                                 columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0))
+                            }, this)
                         }, void 0, false, {
-                            fileName: "[project]/app/[slug]/page.tsx",
-                            lineNumber: 233,
+                            fileName: "[project]/components/blog/BlogPostClient.tsx",
+                            lineNumber: 129,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0))
+                        }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/app/[slug]/page.tsx",
-                    lineNumber: 226,
+                    fileName: "[project]/components/blog/BlogPostClient.tsx",
+                    lineNumber: 124,
                     columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0))
+                }, this)
             }, void 0, false, {
-                fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 225,
+                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                lineNumber: 123,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Footer"], {
                 onOpenForm: openForm
             }, void 0, false, {
-                fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 239,
+                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                lineNumber: 135,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$FormPopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FormPopup"], {
                 isOpen: isOpen,
                 onClose: closeForm
             }, void 0, false, {
-                fileName: "[project]/app/[slug]/page.tsx",
-                lineNumber: 240,
+                fileName: "[project]/components/blog/BlogPostClient.tsx",
+                lineNumber: 136,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0))
+            }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/app/[slug]/page.tsx",
-        lineNumber: 211,
+        fileName: "[project]/components/blog/BlogPostClient.tsx",
+        lineNumber: 110,
         columnNumber: 5
-    }, ("TURBOPACK compile-time value", void 0));
-};
-_s(BlogPost, "75Yrpg3sLWL69F4DCt8uhIqkhmE=", false, function() {
+    }, this);
+}
+_s(BlogPostClient, "0j/xK2l/4/i2Zp9rF4Wojy6E7zI=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useFormPopup$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useFormPopup"]
     ];
 });
-_c = BlogPost;
-const __TURBOPACK__default__export__ = BlogPost;
+_c = BlogPostClient;
 var _c;
-__turbopack_context__.k.register(_c, "BlogPost");
+__turbopack_context__.k.register(_c, "BlogPostClient");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
 ]);
 
-//# sourceMappingURL=_7afdc043._.js.map
+//# sourceMappingURL=_977ea03b._.js.map

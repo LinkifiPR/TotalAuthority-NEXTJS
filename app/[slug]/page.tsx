@@ -1,15 +1,7 @@
-"use client";
-
-import React, { useState, useEffect } from 'react';
-import { useParams, usePathname } from 'next/navigation';
-import { supabase } from '@/lib/integrations/supabase/client';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { BlogPostContent } from '@/components/blog/BlogPostContent';
-import { BlogPostSidebar } from '@/components/blog/BlogPostSidebar';
-import { FormPopup } from '@/components/FormPopup';
-import { useFormPopup } from '@/hooks/useFormPopup';
-import { useToast } from '@/hooks/use-toast';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { createServerSupabaseClient } from '@/lib/integrations/supabase/server';
+import { BlogPostClient } from '@/components/blog/BlogPostClient';
 
 interface BlogPost {
   id: string;
@@ -30,216 +22,82 @@ interface BlogPost {
   view_count: number;
   reading_time?: number;
   tags: string[];
+  author_name?: string;
 }
 
-const BlogPost = () => {
-  const params = useParams();
-  const slug = params?.slug as string;
-  const pathname = usePathname();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [headings, setHeadings] = useState<Array<{id: string, text: string, level: number}>>([]);
-  const { toast } = useToast();
-  const { isOpen, openForm, closeForm } = useFormPopup();
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
-  // Check if this is a preview URL
-  const isPreview = pathname?.startsWith('/preview/') ?? false;
+async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  const supabase = createServerSupabaseClient();
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single();
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      if (!slug) {
-        setLoading(false);
-        return;
-      }
-
-      try {
-        let query = supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('slug', slug);
-
-        // If not preview, only get published posts
-        if (!isPreview) {
-          query = query.eq('status', 'published');
-        }
-
-        const { data, error } = await query.single();
-
-        if (error) {
-          // PGRST116 means no rows returned - this is expected for non-existent posts
-          if (error.code === 'PGRST116') {
-            setPost(null);
-          } else {
-            // Clear stale post data and show error toast for unexpected errors
-            setPost(null);
-            toast({
-              title: "Error",
-              description: "Failed to load blog post",
-              variant: "destructive",
-            });
-          }
-          setLoading(false);
-          return;
-        }
-
-        setPost(data);
-        
-        // Only increment view count for published posts (not previews)
-        if (!isPreview && data.status === 'published') {
-          await supabase
-            .from('blog_posts')
-            .update({ view_count: (data.view_count || 0) + 1 })
-            .eq('id', data.id);
-        }
-
-      } catch (error: any) {
-        // Clear stale post data to avoid showing incorrect content
-        setPost(null);
-        
-        // Log errors in development for debugging without triggering error overlay
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('Blog post fetch failed:', error?.message || 'Unknown error');
-        }
-        
-        // Show user-facing error feedback for unexpected failures
-        toast({
-          title: "Error",
-          description: "An unexpected error occurred while loading the blog post",
-          variant: "destructive",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, [slug, toast, isPreview]);
-
-  // Listen for CTA button clicks from blog content
-  useEffect(() => {
-    const handlePostMessage = (event: MessageEvent) => {
-      if (event.data.type === 'OPEN_FORM') {
-        openForm();
-      }
-    };
-
-    window.addEventListener('message', handlePostMessage);
-    return () => window.removeEventListener('message', handlePostMessage);
-  }, [openForm]);
-
-  // Extract headings from the actual DOM after content is rendered
-  useEffect(() => {
-    if (post?.content) {
-      // Wait for the content to be fully rendered
-      const extractHeadings = () => {
-        const headingElements = document.querySelectorAll('.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4');
-        
-        const extractedHeadings = Array.from(headingElements)
-          .filter((heading) => {
-            // Exclude headings that are inside code blocks or other special containers
-            const isInCodeBlock = heading.closest('.code-block, .code-content');
-            const isInCTABlock = heading.closest('.cta-block');
-            return !isInCodeBlock && !isInCTABlock;
-          })
-          .map((heading, index) => {
-            let id = heading.id;
-            
-            // If heading doesn't have an ID, generate one
-            if (!id) {
-              const text = heading.textContent || '';
-              id = text
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/(^-|-$)/g, '') || `heading-${index}`;
-              heading.id = id;
-            }
-            
-            return {
-              id,
-              text: heading.textContent || '',
-              level: parseInt(heading.tagName.charAt(1))
-            };
-          });
-        
-        console.log('Extracted headings:', extractedHeadings);
-        setHeadings(extractedHeadings);
-      };
-
-      // Use multiple timeouts to ensure content is fully rendered
-      const timeouts = [100, 500, 1000];
-      timeouts.forEach(delay => {
-        setTimeout(extractHeadings, delay);
-      });
-      
-      // Also extract immediately
-      extractHeadings();
-    }
-  }, [post?.content]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white">
-        <Header onOpenForm={openForm} />
-        <div className="container mx-auto px-4 py-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/2 mb-8"></div>
-            <div className="space-y-4">
-              <div className="h-4 bg-gray-200 rounded"></div>
-              <div className="h-4 bg-gray-200 rounded"></div>
-              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-            </div>
-          </div>
-        </div>
-        <Footer onOpenForm={openForm} />
-      </div>
-    );
+  if (error || !data) {
+    return null;
   }
+
+  return data as BlogPost;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="text-gray-600">The blog post you're looking for doesn't exist.</p>
-        </div>
-      </div>
-    );
+    return {
+      title: 'Post Not Found | Total Authority',
+      description: 'The blog post you are looking for could not be found.',
+    };
   }
 
-  return (
-    <div className="min-h-screen bg-white">
-      <Header onOpenForm={openForm} />
-      
-      {/* Preview banner */}
-      {isPreview && (
-        <div className="bg-yellow-100 border-b border-yellow-200 py-2 px-4">
-          <div className="container mx-auto text-center">
-            <span className="text-yellow-800 font-medium">
-              🔍 Preview Mode - This is how your post will look when published
-            </span>
-          </div>
-        </div>
-      )}
-      
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
-          {/* Sidebar Navigation - Now on the left */}
-          <div className="hidden lg:block w-80 flex-shrink-0">
-            <BlogPostSidebar headings={headings} />
-          </div>
-          
-          {/* Main Content */}
-          <div className="flex-1 max-w-4xl min-w-0">
-            <BlogPostContent post={post} />
-          </div>
-        </div>
-      </div>
-      
-      <Footer onOpenForm={openForm} />
-      <FormPopup isOpen={isOpen} onClose={closeForm} />
-    </div>
-  );
-};
+  const title = post.meta_title || post.title;
+  const description = post.meta_description || post.excerpt;
+  const canonicalUrl = post.canonical_url || `https://totalauthority.co/blog/${post.slug}`;
+  const ogImage = post.og_image_url || post.featured_image_url || '/placeholder.svg';
 
-export default BlogPost;
+  return {
+    title: `${title} | Total Authority`,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: 'article',
+      publishedTime: post.published_at,
+      images: [
+        {
+          url: ogImage,
+          alt: post.og_image_alt || post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
+    robots: post.is_indexed ? 'index, follow' : 'noindex, nofollow',
+  };
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  return <BlogPostClient post={post} />;
+}
