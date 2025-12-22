@@ -1483,7 +1483,9 @@ __turbopack_context__.s([
     ()=>NoIdeaSection
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
 "use client";
+;
 ;
 const NoIdeaSection = ({ onOpenForm })=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1508,7 +1510,7 @@ const NoIdeaSection = ({ onOpenForm })=>{
                                         children: "Most Businesses Have No Idea Where They Stand"
                                     }, void 0, false, {
                                         fileName: "[project]/components/NoIdeaSection.tsx",
-                                        lineNumber: 23,
+                                        lineNumber: 20,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1516,7 +1518,7 @@ const NoIdeaSection = ({ onOpenForm })=>{
                                         children: "You can't build an AI strategy without knowing where you stand today. And right now, you're flying blind."
                                     }, void 0, false, {
                                         fileName: "[project]/components/NoIdeaSection.tsx",
-                                        lineNumber: 27,
+                                        lineNumber: 24,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1524,7 +1526,7 @@ const NoIdeaSection = ({ onOpenForm })=>{
                                         children: "Our audit reveals your current AI visibility, competitive gaps, and the exact sources driving recommendations in your market."
                                     }, void 0, false, {
                                         fileName: "[project]/components/NoIdeaSection.tsx",
-                                        lineNumber: 31,
+                                        lineNumber: 28,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1532,61 +1534,57 @@ const NoIdeaSection = ({ onOpenForm })=>{
                                         children: "No fluff. No theory. Just the specific actions that will get you recommended."
                                     }, void 0, false, {
                                         fileName: "[project]/components/NoIdeaSection.tsx",
-                                        lineNumber: 35,
+                                        lineNumber: 32,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/NoIdeaSection.tsx",
-                                lineNumber: 22,
+                                lineNumber: 19,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex justify-center lg:justify-end",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-full max-w-xl h-64 bg-blue-100 rounded-lg flex items-center justify-center",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-blue-400 text-sm",
-                                        children: "Illustration placeholder"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/NoIdeaSection.tsx",
-                                        lineNumber: 44,
-                                        columnNumber: 17
-                                    }, ("TURBOPACK compile-time value", void 0))
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    src: "/lovable-uploads/confusion_to_clarity.png",
+                                    alt: "From confusion to clarity - AI visibility audit illustration",
+                                    width: 500,
+                                    height: 400,
+                                    className: "w-full max-w-xl h-auto object-contain"
                                 }, void 0, false, {
                                     fileName: "[project]/components/NoIdeaSection.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 39,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/NoIdeaSection.tsx",
-                                lineNumber: 41,
+                                lineNumber: 38,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/NoIdeaSection.tsx",
-                        lineNumber: 20,
+                        lineNumber: 17,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/NoIdeaSection.tsx",
-                    lineNumber: 19,
+                    lineNumber: 16,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/NoIdeaSection.tsx",
-                lineNumber: 17,
+                lineNumber: 14,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/components/NoIdeaSection.tsx",
-            lineNumber: 15,
+            lineNumber: 12,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/components/NoIdeaSection.tsx",
-        lineNumber: 14,
+        lineNumber: 11,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -2970,25 +2968,25 @@ const bonuses = [
         title: "The State of Small Business Visibility in ChatGPT (2025 Report)",
         description: "Get the full picture. This exclusive research summary reveals how nearly 100 small businesses perform in real AI answers — and why most don't show up. See what's holding them back and what it takes to get on the map.",
         price: 39,
-        image: "/bonus-images/industry_report.png"
+        image: "/lovable-uploads/industry_report.png"
     },
     {
         title: "LLM Visibility Cheat Sheet",
         description: "Based on insights from 100+ audits, this PDF gives you the exact playbook to become visible in AI results. Covers schema, citations, content gaps, and entity setup — everything you need to get recognised by ChatGPT, Claude, Gemini, and Perplexity.",
         price: 109,
-        image: "/bonus-images/cheat_sheet.png"
+        image: "/lovable-uploads/cheat_sheet.png"
     },
     {
         title: "Build Your Own Brand Tracker (Guide + Workflow)",
         description: "Never miss another brand mention. This guide shows you how to set up a fully automated brand tracking system using free tools and n8n — so you can catch citations, claim unlinked mentions, and turn them into backlinks.",
         price: 129,
-        image: "/bonus-images/brand_tracker.png"
+        image: "/lovable-uploads/brand_tracker.png"
     },
     {
         title: "PR-Ready Checklist",
         description: "Want to get quoted or featured in the media? This checklist shows you what journalists look for before they include you — from your About page to your Google results. Use it to tighten your brand presentation and get press-ready fast.",
         price: 49,
-        image: "/bonus-images/pr_checklist.png"
+        image: "/lovable-uploads/pr_checklist.png"
     }
 ];
 const totalValue = bonuses.reduce((sum, bonus)=>sum + bonus.price, 0);
@@ -3165,7 +3163,7 @@ const BonusSection = ()=>{
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "max-w-4xl w-full relative",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                src: "/bonus-images/all_products_bundle.png",
+                                src: "/lovable-uploads/all_products_bundle.png",
                                 alt: "All bonus products bundle",
                                 width: 1200,
                                 height: 600,
