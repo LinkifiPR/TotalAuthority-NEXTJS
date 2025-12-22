@@ -201,8 +201,8 @@ export const ThankYouAnimation: React.FC = () => {
             key={i}
             className={`absolute transition-all duration-3000 ${stage >= 2 ? 'opacity-60' : 'opacity-0'}`}
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${(i * 17 + 5) % 100}%`,
+              top: `${(i * 23 + 10) % 100}%`,
               animationDelay: `${i * 0.2}s`
             }}
           >
