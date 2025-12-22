@@ -2178,6 +2178,10 @@ body {
   height: 1px;
 }
 
+.h-\[280px\] {
+  height: 280px;
+}
+
 .h-\[420px\] {
   height: 420px;
 }
@@ -2234,10 +2238,6 @@ body {
   height: 100svh;
 }
 
-.h-\[280px\] {
-  height: 280px;
-}
-
 .max-h-0 {
   max-height: 0;
 }
@@ -2256,10 +2256,6 @@ body {
 
 .max-h-\[200px\] {
   max-height: 200px;
-}
-
-.max-h-\[280px\] {
-  max-height: 280px;
 }
 
 .max-h-\[300px\] {

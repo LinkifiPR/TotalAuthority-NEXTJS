@@ -2961,38 +2961,34 @@ __turbopack_context__.s([
     ()=>BonusSection
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
 "use client";
 ;
-// Note: Asset imports temporarily commented out - images need to be added to project
-// import cheatSheetMockup from "@/assets/cheat_sheet_mockup.png";
-// import industryReportMockup from "@/assets/industry_report_mockup.png";
-// import brandTrackerMockup from "@/assets/brand_tracker_mockup.png";
-// import prChecklistMockup from "@/assets/pr_checklist_mockup.png";
-// import allProductsBundle from "@/assets/all_products_bundle.png";
+;
 const bonuses = [
     {
         title: "The State of Small Business Visibility in ChatGPT (2025 Report)",
         description: "Get the full picture. This exclusive research summary reveals how nearly 100 small businesses perform in real AI answers — and why most don't show up. See what's holding them back and what it takes to get on the map.",
         price: 39,
-        image: undefined
+        image: "/bonus-images/industry_report.png"
     },
     {
         title: "LLM Visibility Cheat Sheet",
         description: "Based on insights from 100+ audits, this PDF gives you the exact playbook to become visible in AI results. Covers schema, citations, content gaps, and entity setup — everything you need to get recognised by ChatGPT, Claude, Gemini, and Perplexity.",
         price: 109,
-        image: undefined
+        image: "/bonus-images/cheat_sheet.png"
     },
     {
         title: "Build Your Own Brand Tracker (Guide + Workflow)",
         description: "Never miss another brand mention. This guide shows you how to set up a fully automated brand tracking system using free tools and n8n — so you can catch citations, claim unlinked mentions, and turn them into backlinks.",
         price: 129,
-        image: undefined
+        image: "/bonus-images/brand_tracker.png"
     },
     {
         title: "PR-Ready Checklist",
         description: "Want to get quoted or featured in the media? This checklist shows you what journalists look for before they include you — from your About page to your Google results. Use it to tighten your brand presentation and get press-ready fast.",
         price: 49,
-        image: undefined
+        image: "/bonus-images/pr_checklist.png"
     }
 ];
 const totalValue = bonuses.reduce((sum, bonus)=>sum + bonus.price, 0);
@@ -3008,7 +3004,7 @@ const BonusSection = ()=>{
                 }
             }, void 0, false, {
                 fileName: "[project]/components/BonusSection.tsx",
-                lineNumber: 43,
+                lineNumber: 38,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3023,7 +3019,7 @@ const BonusSection = ()=>{
                                     "Wait—That's Not All.",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 52,
+                                        lineNumber: 47,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     "You're Getting These ",
@@ -3032,14 +3028,14 @@ const BonusSection = ()=>{
                                         children: "Bonuses"
                                     }, void 0, false, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 53,
+                                        lineNumber: 48,
                                         columnNumber: 34
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     " Too."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/BonusSection.tsx",
-                                lineNumber: 51,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3057,7 +3053,7 @@ const BonusSection = ()=>{
                                                         className: "absolute inset-0 bg-orange-500/20 animate-pulse rounded"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 59,
+                                                        lineNumber: 54,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3065,13 +3061,13 @@ const BonusSection = ()=>{
                                                         children: "unbelievable value"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 60,
+                                                        lineNumber: 55,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 58,
+                                                lineNumber: 53,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             " ",
@@ -3087,7 +3083,7 @@ const BonusSection = ()=>{
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 64,
+                                                        lineNumber: 59,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3095,13 +3091,13 @@ const BonusSection = ()=>{
                                                         children: "completely free"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 65,
+                                                        lineNumber: 60,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 63,
+                                                lineNumber: 58,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             " ",
@@ -3109,7 +3105,7 @@ const BonusSection = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 56,
+                                        lineNumber: 51,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3128,7 +3124,7 @@ const BonusSection = ()=>{
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 72,
+                                                        lineNumber: 67,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3136,54 +3132,58 @@ const BonusSection = ()=>{
                                                         children: "real audit insights"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 73,
+                                                        lineNumber: 68,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 71,
+                                                lineNumber: 66,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             ", designed to help you take action fast."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 69,
+                                        lineNumber: 64,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/BonusSection.tsx",
-                                lineNumber: 55,
+                                lineNumber: 50,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/BonusSection.tsx",
-                        lineNumber: 50,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex justify-center mb-16 animate-fade-in",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "max-w-4xl w-full h-64 bg-orange-50 rounded-lg flex items-center justify-center drop-shadow-2xl",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-orange-400 text-sm",
-                                children: "Bundle image placeholder"
+                            className: "max-w-4xl w-full relative",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                src: "/bonus-images/all_products_bundle.png",
+                                alt: "All bonus products bundle",
+                                width: 1200,
+                                height: 600,
+                                className: "w-full h-auto object-contain drop-shadow-2xl",
+                                priority: true
                             }, void 0, false, {
                                 fileName: "[project]/components/BonusSection.tsx",
-                                lineNumber: 84,
+                                lineNumber: 78,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/BonusSection.tsx",
-                            lineNumber: 83,
+                            lineNumber: 77,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/BonusSection.tsx",
-                        lineNumber: 81,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3197,7 +3197,7 @@ const BonusSection = ()=>{
                                         className: "absolute inset-0 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent animate-[shimmer_2s_ease-in-out_infinite]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 93,
+                                        lineNumber: 94,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3208,7 +3208,7 @@ const BonusSection = ()=>{
                                                 children: "Total Value"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 96,
+                                                lineNumber: 97,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3222,7 +3222,7 @@ const BonusSection = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 100,
+                                                        lineNumber: 101,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3235,18 +3235,18 @@ const BonusSection = ()=>{
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/BonusSection.tsx",
-                                                            lineNumber: 102,
+                                                            lineNumber: 103,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 102,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 100,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3257,7 +3257,7 @@ const BonusSection = ()=>{
                                                         children: "FREE"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 110,
+                                                        lineNumber: 111,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3265,35 +3265,35 @@ const BonusSection = ()=>{
                                                         children: "with every order"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/BonusSection.tsx",
-                                                        lineNumber: 111,
+                                                        lineNumber: 112,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 109,
+                                                lineNumber: 110,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 95,
+                                        lineNumber: 96,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/BonusSection.tsx",
-                                lineNumber: 91,
+                                lineNumber: 92,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/BonusSection.tsx",
-                            lineNumber: 90,
+                            lineNumber: 91,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/BonusSection.tsx",
-                        lineNumber: 89,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3303,36 +3303,40 @@ const BonusSection = ()=>{
                                 style: {
                                     animationDelay: `${index * 100}ms`
                                 },
+                                "data-testid": `bonus-card-${index}`,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "mb-6 relative",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                                className: "absolute inset-0 bg-gradient-to-br from-orange-500/30 to-blue-500/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 131,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "relative max-h-[280px] w-full h-64 bg-gradient-to-br from-orange-100 to-blue-100 rounded-lg flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 drop-shadow-2xl",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-gray-400 text-xs",
-                                                    children: "Image placeholder"
+                                                className: "relative transition-all duration-500 ease-out group-hover:scale-105 group-hover:-rotate-2",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    src: bonus.image,
+                                                    alt: bonus.title,
+                                                    width: 280,
+                                                    height: 400,
+                                                    className: "w-auto h-[280px] object-contain drop-shadow-2xl transition-all duration-500 group-hover:drop-shadow-[0_20px_40px_rgba(249,115,22,0.3)]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/BonusSection.tsx",
-                                                    lineNumber: 131,
+                                                    lineNumber: 135,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 130,
+                                                lineNumber: 134,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 129,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3340,7 +3344,7 @@ const BonusSection = ()=>{
                                         children: bonus.title
                                     }, void 0, false, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 136,
+                                        lineNumber: 146,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3348,7 +3352,7 @@ const BonusSection = ()=>{
                                         children: bonus.description
                                     }, void 0, false, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 141,
+                                        lineNumber: 151,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3364,12 +3368,12 @@ const BonusSection = ()=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/BonusSection.tsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 158,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 157,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3379,41 +3383,41 @@ const BonusSection = ()=>{
                                                     children: "FREE"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/BonusSection.tsx",
-                                                    lineNumber: 153,
+                                                    lineNumber: 163,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/BonusSection.tsx",
-                                                lineNumber: 152,
+                                                lineNumber: 162,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/BonusSection.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 156,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, index, true, {
                                 fileName: "[project]/components/BonusSection.tsx",
-                                lineNumber: 121,
+                                lineNumber: 122,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/components/BonusSection.tsx",
-                        lineNumber: 119,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/BonusSection.tsx",
-                lineNumber: 48,
+                lineNumber: 43,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/BonusSection.tsx",
-        lineNumber: 41,
+        lineNumber: 36,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
