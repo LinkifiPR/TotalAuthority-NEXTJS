@@ -1,4 +1,8 @@
 {
+  "/admin/page": "app/admin/page.js",
+  "/admin/posts/page": "app/admin/posts/page.js",
+  "/api/admin/stats/route": "app/api/admin/stats/route.js",
+  "/auth/page": "app/auth/page.js",
   "/page": "app/page.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

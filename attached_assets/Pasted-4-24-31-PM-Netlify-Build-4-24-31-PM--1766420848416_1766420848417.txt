@@ -1,0 +1,70 @@
+4:24:31 PM: Netlify Build                                                 
+4:24:31 PM: ────────────────────────────────────────────────────────────────
+4:24:31 PM: ​
+4:24:31 PM: ❯ Version
+4:24:31 PM:   @netlify/build 35.5.7
+4:24:31 PM: ​
+4:24:31 PM: ❯ Flags
+4:24:31 PM:   accountId: 6841da69490e87884db00e07
+4:24:31 PM:   baseRelDir: true
+4:24:31 PM:   buildId: 694970a137c470de05e56b42
+4:24:31 PM:   deployId: 694970a137c470de05e56b44
+4:24:31 PM: ​
+4:24:31 PM: ❯ Current directory
+4:24:31 PM:   /opt/build/repo
+4:24:31 PM: ​
+4:24:31 PM: ❯ Config file
+4:24:31 PM:   No config file was defined: using default values.
+4:24:31 PM: ​
+4:24:31 PM: ❯ Context
+4:24:31 PM:   production
+4:24:32 PM: ​
+4:24:32 PM: ❯ Installing extensions
+4:24:32 PM:    - prerender
+4:24:52 PM: ​
+4:24:52 PM: ❯ Using Next.js Runtime - v5.15.3
+4:24:52 PM: ​
+4:24:52 PM: ❯ Loading extensions
+4:24:52 PM:    - prerender
+4:24:53 PM: No Next.js cache to restore
+4:24:53 PM: ​
+4:24:53 PM: Build command from Netlify app                                
+4:24:53 PM: ────────────────────────────────────────────────────────────────
+4:24:53 PM: ​
+4:24:53 PM: $ npm run build
+4:24:53 PM: > rest-express@1.0.0 build
+4:24:53 PM: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+4:24:53 PM: vite v5.4.20 building for production...
+4:24:53 PM: ✓ 0 modules transformed.
+4:24:53 PM: x Build failed in 9ms
+4:24:53 PM: error during build:
+4:24:53 PM: Could not resolve entry module "client/index.html".
+4:24:53 PM:     at getRollupError (file:///opt/build/repo/node_modules/rollup/dist/es/shared/parseAst.js:396:41)
+4:24:53 PM:     at error (file:///opt/build/repo/node_modules/rollup/dist/es/shared/parseAst.js:392:42)
+4:24:53 PM:     at ModuleLoader.loadEntryModule (file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:20086:20)
+4:24:53 PM:     at async Promise.all (index 0)
+4:24:54 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+4:24:54 PM: ​
+4:24:54 PM: "build.command" failed                                        
+4:24:54 PM: ────────────────────────────────────────────────────────────────
+4:24:54 PM: ​
+4:24:54 PM:   Error message
+4:24:54 PM:   Command failed with exit code 1: npm run build (https://ntl.fyi/exit-code-1)
+4:24:54 PM: ​
+4:24:54 PM:   Error location
+4:24:54 PM:   In Build command from Netlify app:
+4:24:54 PM:   npm run build
+4:24:54 PM: ​
+4:24:54 PM:   Resolved config
+4:24:54 PM:   build:
+4:24:54 PM:     command: npm run build
+4:24:54 PM:     commandOrigin: ui
+4:24:54 PM:     publish: /opt/build/repo/.next
+4:24:54 PM:     publishOrigin: ui
+4:24:54 PM:   plugins:
+4:24:54 PM:     - inputs: {}
+4:24:54 PM:       origin: ui
+4:24:54 PM:       package: "@netlify/plugin-nextjs"
+4:24:54 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+4:24:54 PM: Failing build: Failed to build site
+4:24:54 PM: Finished processing build request in 51.863s
