@@ -138,9 +138,9 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   };
 
   const toolbarButtons = [
-    { icon: Heading1, label: 'H1', action: () => insertText('<h1 id="', '" class="text-4xl font-bold text-gray-900 mb-4">', 'Heading 1') },
-    { icon: Heading2, label: 'H2', action: () => insertText('<h2 id="', '" class="text-3xl font-bold text-gray-900 mb-3">', 'Heading 2') },
-    { icon: Heading3, label: 'H3', action: () => insertText('<h3 id="', '" class="text-2xl font-bold text-gray-900 mb-2">', 'Heading 3') },
+    { icon: Heading1, label: 'H1', action: () => insertText('<h1 class="text-4xl font-bold text-gray-900 mt-8 mb-4">', '</h1>', 'Heading 1') },
+    { icon: Heading2, label: 'H2', action: () => insertText('<h2 class="text-3xl font-bold text-gray-900 mt-6 mb-3">', '</h2>', 'Heading 2') },
+    { icon: Heading3, label: 'H3', action: () => insertText('<h3 class="text-2xl font-bold text-gray-900 mt-5 mb-2">', '</h3>', 'Heading 3') },
     { icon: Bold, label: 'Bold', action: () => insertText('<strong>', '</strong>', 'bold text') },
     { icon: Italic, label: 'Italic', action: () => insertText('<em>', '</em>', 'italic text') },
     { icon: Code, label: 'Code', action: () => insertText('<code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">', '</code>', 'code') },
