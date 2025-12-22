@@ -380,41 +380,53 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             color: #374151;
           }
           
-          /* Heading styles for blog content */
-          .blog-prose h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #111827;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+          /* Heading styles for blog content - use !important to override inline styles */
+          .blog-prose h1,
+          .blog-prose h1 span {
+            font-size: 2.25rem !important;
+            font-weight: 700 !important;
+            color: #111827 !important;
+            margin-top: 2rem !important;
+            margin-bottom: 1rem !important;
+            line-height: 1.3 !important;
+            font-family: inherit !important;
+            background: none !important;
           }
           
-          .blog-prose h2 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #111827;
-            margin-top: 1.75rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
+          .blog-prose h2,
+          .blog-prose h2 span {
+            font-size: 1.875rem !important;
+            font-weight: 700 !important;
+            color: #111827 !important;
+            margin-top: 1.75rem !important;
+            margin-bottom: 0.75rem !important;
+            line-height: 1.3 !important;
+            font-family: inherit !important;
+            background: none !important;
           }
           
-          .blog-prose h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+          .blog-prose h3,
+          .blog-prose h3 span {
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            color: #1f2937 !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.4 !important;
+            font-family: inherit !important;
+            background: none !important;
           }
           
-          .blog-prose h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #374151;
-            margin-top: 1.25rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+          .blog-prose h4,
+          .blog-prose h4 span {
+            font-size: 1.25rem !important;
+            font-weight: 600 !important;
+            color: #374151 !important;
+            margin-top: 1.25rem !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.4 !important;
+            font-family: inherit !important;
+            background: none !important;
           }
           
           .blog-prose p { 
