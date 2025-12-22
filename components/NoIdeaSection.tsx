@@ -1,9 +1,6 @@
 "use client";
 
-import React from 'react';
-
-// Note: Asset import temporarily commented out - image needs to be added to project
-// import confusionIllustration from '@/assets/confusion-to-clarity-illustration.png';
+import Image from 'next/image';
 
 interface NoIdeaSectionProps {
   onOpenForm?: () => void;
@@ -39,10 +36,13 @@ export const NoIdeaSection: React.FC<NoIdeaSectionProps> = ({ onOpenForm }) => {
 
             {/* Right: Illustration */}
             <div className="flex justify-center lg:justify-end">
-              {/* Image placeholder - asset needs to be added to project */}
-              <div className="w-full max-w-xl h-64 bg-blue-100 rounded-lg flex items-center justify-center">
-                <p className="text-blue-400 text-sm">Illustration placeholder</p>
-              </div>
+              <Image
+                src="/bonus-images/confusion_to_clarity.png"
+                alt="From confusion to clarity - AI visibility audit illustration"
+                width={500}
+                height={400}
+                className="w-full max-w-xl h-auto object-contain"
+              />
             </div>
           </div>
         </div>
