@@ -21,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <Script
           id="meta-pixel-base"
           strategy="afterInteractive"
