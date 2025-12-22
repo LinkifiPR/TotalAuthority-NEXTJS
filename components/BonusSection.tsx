@@ -1,36 +1,31 @@
 "use client";
 
-// Note: Asset imports temporarily commented out - images need to be added to project
-// import cheatSheetMockup from "@/assets/cheat_sheet_mockup.png";
-// import industryReportMockup from "@/assets/industry_report_mockup.png";
-// import brandTrackerMockup from "@/assets/brand_tracker_mockup.png";
-// import prChecklistMockup from "@/assets/pr_checklist_mockup.png";
-// import allProductsBundle from "@/assets/all_products_bundle.png";
+import Image from "next/image";
 
 const bonuses = [
   {
     title: "The State of Small Business Visibility in ChatGPT (2025 Report)",
     description: "Get the full picture. This exclusive research summary reveals how nearly 100 small businesses perform in real AI answers — and why most don't show up. See what's holding them back and what it takes to get on the map.",
     price: 39,
-    image: undefined
+    image: "/bonus-images/industry_report.png"
   },
   {
     title: "LLM Visibility Cheat Sheet",
     description: "Based on insights from 100+ audits, this PDF gives you the exact playbook to become visible in AI results. Covers schema, citations, content gaps, and entity setup — everything you need to get recognised by ChatGPT, Claude, Gemini, and Perplexity.",
     price: 109,
-    image: undefined
+    image: "/bonus-images/cheat_sheet.png"
   },
   {
     title: "Build Your Own Brand Tracker (Guide + Workflow)",
     description: "Never miss another brand mention. This guide shows you how to set up a fully automated brand tracking system using free tools and n8n — so you can catch citations, claim unlinked mentions, and turn them into backlinks.",
     price: 129,
-    image: undefined
+    image: "/bonus-images/brand_tracker.png"
   },
   {
     title: "PR-Ready Checklist",
     description: "Want to get quoted or featured in the media? This checklist shows you what journalists look for before they include you — from your About page to your Google results. Use it to tighten your brand presentation and get press-ready fast.",
     price: 49,
-    image: undefined
+    image: "/bonus-images/pr_checklist.png"
   }
 ];
 
@@ -79,9 +74,15 @@ export const BonusSection = () => {
 
         {/* Bundle Image */}
         <div className="flex justify-center mb-16 animate-fade-in">
-          {/* Image placeholder - asset needs to be added to project */}
-          <div className="max-w-4xl w-full h-64 bg-orange-50 rounded-lg flex items-center justify-center drop-shadow-2xl">
-            <p className="text-orange-400 text-sm">Bundle image placeholder</p>
+          <div className="max-w-4xl w-full relative">
+            <Image
+              src="/bonus-images/all_products_bundle.png"
+              alt="All bonus products bundle"
+              width={1200}
+              height={600}
+              className="w-full h-auto object-contain drop-shadow-2xl"
+              priority
+            />
           </div>
         </div>
 
@@ -122,13 +123,22 @@ export const BonusSection = () => {
               key={index}
               className="animate-fade-in group flex flex-col items-center"
               style={{ animationDelay: `${index * 100}ms` }}
+              data-testid={`bonus-card-${index}`}
             >
               {/* Product Image with Hover Effect */}
               <div className="mb-6 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                {/* Image placeholder - asset needs to be added to project */}
-                <div className="relative max-h-[280px] w-full h-64 bg-gradient-to-br from-orange-100 to-blue-100 rounded-lg flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 drop-shadow-2xl">
-                  <p className="text-gray-400 text-xs">Image placeholder</p>
+                {/* Glowing gradient backdrop - visible on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-blue-500/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+                
+                {/* Image container with hover animations */}
+                <div className="relative transition-all duration-500 ease-out group-hover:scale-105 group-hover:-rotate-2">
+                  <Image
+                    src={bonus.image}
+                    alt={bonus.title}
+                    width={280}
+                    height={400}
+                    className="w-auto h-[280px] object-contain drop-shadow-2xl transition-all duration-500 group-hover:drop-shadow-[0_20px_40px_rgba(249,115,22,0.3)]"
+                  />
                 </div>
               </div>
 

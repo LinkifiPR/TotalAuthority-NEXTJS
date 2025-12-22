@@ -2156,6 +2156,10 @@ body {
   height: 100svh;
 }
 
+.h-\[280px\] {
+  height: 280px;
+}
+
 .max-h-0 {
   max-height: 0;
 }
@@ -9296,6 +9300,11 @@ body {
 
 .group:hover .group-hover\:blur-xl {
   --tw-blur: blur(24px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.group:hover .group-hover\:drop-shadow-\[0_20px_40px_rgba\(249\,115\,22\,0\.3\)\] {
+  --tw-drop-shadow: drop-shadow(0 20px 40px #f973164d);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
