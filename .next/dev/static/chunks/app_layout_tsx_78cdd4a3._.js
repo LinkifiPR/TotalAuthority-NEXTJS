@@ -4,8 +4,8 @@
   "static/chunks/[root-of-the-server]__36b083e1._.css",
   "static/chunks/node_modules_@supabase_storage-js_dist_module_434fd12f._.js",
   "static/chunks/node_modules_@supabase_auth-js_dist_module_e6c70351._.js",
-  "static/chunks/node_modules_2bc19582._.js",
-  "static/chunks/_43f097b4._.js"
+  "static/chunks/node_modules_81fa727c._.js",
+  "static/chunks/_b7e4a78c._.js"
 ],
     source: "dynamic"
 });
