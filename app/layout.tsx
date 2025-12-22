@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Meta Pixel Code */}
+      <head />
+      <body className={inter.className}>
         <Script
           id="meta-pixel-base"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -51,11 +51,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
-        {/* End Meta Pixel Code */}
-      </head>
-      <body className={inter.className}>
         <Providers>{children}</Providers>
-        {/* Client component to track route changes */}
         <FacebookPixel />
       </body>
     </html>
