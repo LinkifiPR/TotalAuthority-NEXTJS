@@ -1,3 +1,5 @@
 {
+  "/[slug]/page": "app/[slug]/page.js",
+  "/llm-visibility-audit/page": "app/llm-visibility-audit/page.js",
   "/page": "app/page.js"
 }
