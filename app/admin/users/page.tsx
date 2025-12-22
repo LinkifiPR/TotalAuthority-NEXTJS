@@ -131,7 +131,7 @@ const AdminUsers = () => {
       // New audit filter logic
       let matchesAudit = true;
       if (auditFilter === 'with-audits') {
-        matchesAudit = user.paidAudits && user.paidAudits.length > 0;
+        matchesAudit = !!(user.paidAudits && user.paidAudits.length > 0);
       } else if (auditFilter === 'without-audits') {
         matchesAudit = !user.paidAudits || user.paidAudits.length === 0;
       }

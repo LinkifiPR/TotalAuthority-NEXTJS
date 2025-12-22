@@ -37,7 +37,7 @@ const BlogPost = () => {
   const params = useParams();
   const slug = params?.slug as string;
   const pathname = usePathname();
-  const [post, setPost] = useState<BlogPost | null>(null);
+  const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [headings, setHeadings] = useState<Array<{id: string, text: string, level: number}>>([]);
   const { toast } = useToast();

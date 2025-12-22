@@ -16,7 +16,7 @@ const AdminPostEditor = () => {
   const params = useParams();
   const id = params?.id as string;
   const router = useRouter();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   const { user, loading: authLoading } = useAuth();

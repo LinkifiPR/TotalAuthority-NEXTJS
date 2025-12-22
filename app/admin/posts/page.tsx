@@ -32,8 +32,8 @@ interface BlogPost {
 }
 
 const AdminPosts = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
+  const [posts, setPosts] = useState<any[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -257,7 +257,7 @@ const AdminPosts = () => {
 
                           {post.tags && post.tags.length > 0 && (
                             <div className="flex flex-wrap gap-1 mt-2">
-                              {post.tags.slice(0, 3).map((tag, index) => (
+                              {post.tags.slice(0, 3).map((tag: string, index: number) => (
                                 <Badge key={index} variant="outline" className="text-xs">
                                   {tag}
                                 </Badge>

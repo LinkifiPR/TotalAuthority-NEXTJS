@@ -463,8 +463,17 @@ const About = () => {
 };
 
 // Podcast Feed Component
+interface PodcastEpisode {
+  id: number;
+  title: string;
+  description: string;
+  publishDate: string;
+  audioUrl: string;
+  imageUrl: string;
+}
+
 const PodcastFeed = () => {
-  const [episodes, setEpisodes] = React.useState([]);
+  const [episodes, setEpisodes] = React.useState<PodcastEpisode[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [showMore, setShowMore] = React.useState(false);
 

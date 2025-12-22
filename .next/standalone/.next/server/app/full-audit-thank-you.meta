@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/full-audit-thank-you/layout,_N_T_/full-audit-thank-you/page,_N_T_/full-audit-thank-you"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/full-audit-thank-you/__PAGE__",
+    "/full-audit-thank-you",
+    "/_index",
+    "/_head"
+  ]
+}

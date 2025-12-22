@@ -185,7 +185,7 @@ const HowItWorksSection: React.FC = () => {
               return (
                 <div
                   key={step.number}
-                  ref={(el) => (stepRefs.current[index] = el)}
+                  ref={(el) => { stepRefs.current[index] = el; }}
                   className="relative"
                 >
                   <div className="grid md:grid-cols-2 gap-12 items-start">

@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
@@ -262,4 +262,12 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+function AuthPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <Auth />
+    </Suspense>
+  );
+}
+
+export default AuthPage;

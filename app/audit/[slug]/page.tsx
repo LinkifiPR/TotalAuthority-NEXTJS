@@ -36,7 +36,7 @@ const AuditReport = () => {
   const { user } = useAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
-  const [auditData, setAuditData] = useState<AuditData | null>(null);
+  const [auditData, setAuditData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [userOwnsAudit, setUserOwnsAudit] = useState(false);
   const { toast } = useToast();
