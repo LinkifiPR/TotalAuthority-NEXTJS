@@ -37,7 +37,7 @@ export const NoIdeaSection: React.FC<NoIdeaSectionProps> = ({ onOpenForm }) => {
             {/* Right: Illustration */}
             <div className="flex justify-center lg:justify-end">
               <Image
-                src="/bonus-images/confusion_to_clarity.png"
+                src="/lovable-uploads/confusion_to_clarity.png"
                 alt="From confusion to clarity - AI visibility audit illustration"
                 width={500}
                 height={400}

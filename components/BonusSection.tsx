@@ -7,25 +7,25 @@ const bonuses = [
     title: "The State of Small Business Visibility in ChatGPT (2025 Report)",
     description: "Get the full picture. This exclusive research summary reveals how nearly 100 small businesses perform in real AI answers — and why most don't show up. See what's holding them back and what it takes to get on the map.",
     price: 39,
-    image: "/bonus-images/industry_report.png"
+    image: "/lovable-uploads/industry_report.png"
   },
   {
     title: "LLM Visibility Cheat Sheet",
     description: "Based on insights from 100+ audits, this PDF gives you the exact playbook to become visible in AI results. Covers schema, citations, content gaps, and entity setup — everything you need to get recognised by ChatGPT, Claude, Gemini, and Perplexity.",
     price: 109,
-    image: "/bonus-images/cheat_sheet.png"
+    image: "/lovable-uploads/cheat_sheet.png"
   },
   {
     title: "Build Your Own Brand Tracker (Guide + Workflow)",
     description: "Never miss another brand mention. This guide shows you how to set up a fully automated brand tracking system using free tools and n8n — so you can catch citations, claim unlinked mentions, and turn them into backlinks.",
     price: 129,
-    image: "/bonus-images/brand_tracker.png"
+    image: "/lovable-uploads/brand_tracker.png"
   },
   {
     title: "PR-Ready Checklist",
     description: "Want to get quoted or featured in the media? This checklist shows you what journalists look for before they include you — from your About page to your Google results. Use it to tighten your brand presentation and get press-ready fast.",
     price: 49,
-    image: "/bonus-images/pr_checklist.png"
+    image: "/lovable-uploads/pr_checklist.png"
   }
 ];
 
@@ -76,7 +76,7 @@ export const BonusSection = () => {
         <div className="flex justify-center mb-16 animate-fade-in">
           <div className="max-w-4xl w-full relative">
             <Image
-              src="/bonus-images/all_products_bundle.png"
+              src="/lovable-uploads/all_products_bundle.png"
               alt="All bonus products bundle"
               width={1200}
               height={600}
