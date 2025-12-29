@@ -2,6 +2,9 @@ import { Metadata } from 'next';
 import { createServerSupabaseClient } from '@/lib/integrations/supabase/server';
 import { BlogListClient } from '@/components/blog/BlogListClient';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Latest Articles | Total Authority',
   description: 'Explore our latest insights on AI visibility, PR strategies, and marketing best practices to help your brand get discovered by AI systems.',
