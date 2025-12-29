@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: 'Total Authority - PR & Marketing Visibility Tool',
   description: 'Comprehensive PR and Marketing visibility tool for businesses. Get AI-powered audits, visibility gap analysis, and strategic blueprints.',
   keywords: ['PR', 'marketing', 'visibility', 'LLM', 'AI', 'audit', 'business'],
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 const FB_PIXEL_ID = '708223408788748';
