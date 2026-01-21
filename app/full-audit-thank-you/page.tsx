@@ -168,7 +168,7 @@ const FullAuditThankYou = () => {
               <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-200">
                 <div className="flex items-center justify-center gap-3 mb-3">
                   <CheckCircle className="w-6 h-6 text-green-600" />
-                  <span className="text-green-800 font-semibold text-lg">Payment Confirmed - $199</span>
+                  <span className="text-green-800 font-semibold text-lg">Payment Confirmed - $499</span>
                 </div>
                 <p className="text-green-800">
                   📧 Check your email for confirmation and next steps

@@ -686,7 +686,7 @@ const FullAudit = () => {
                    <div className="text-center mb-6 md:mb-8 px-4">
                      <div className="relative inline-block">
                        <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-orange-600 via-red-500 to-purple-600 bg-clip-text text-transparent mb-4 tracking-tight leading-none">
-                         $199
+                         $499
                        </div>
                        {/* Subtle underline effect */}
                        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 md:w-24 h-1 bg-gradient-to-r from-orange-500 to-purple-500 rounded-full opacity-60"></div>
