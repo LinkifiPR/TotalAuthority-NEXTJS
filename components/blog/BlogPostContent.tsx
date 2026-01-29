@@ -36,7 +36,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
   };
 
   const handleTagClick = (tag: string) => {
-    router.push(`/insights?tag=${encodeURIComponent(tag)}`);
+    router.push(`/blog?tag=${encodeURIComponent(tag)}`);
   };
 
   // Content processing - clean up editor elements (SSR-safe, no DOM APIs)
