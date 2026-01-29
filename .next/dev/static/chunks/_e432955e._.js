@@ -1978,7 +1978,9 @@ function BlogListContent({ initialPosts, availableTags, basePath }) {
                     const matchesSearch = !searchTerm || post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) || post.tags && post.tags.some({
                         "BlogListContent.useMemo[filteredPosts]": (tag)=>tag.toLowerCase().includes(searchTerm.toLowerCase())
                     }["BlogListContent.useMemo[filteredPosts]"]);
-                    const matchesTag = !selectedTag || post.tags && post.tags.includes(selectedTag);
+                    const matchesTag = !selectedTag || post.tags && post.tags.some({
+                        "BlogListContent.useMemo[filteredPosts]": (tag)=>tag.toLowerCase() === selectedTag.toLowerCase()
+                    }["BlogListContent.useMemo[filteredPosts]"]);
                     return matchesSearch && matchesTag;
                 }
             }["BlogListContent.useMemo[filteredPosts]"]);

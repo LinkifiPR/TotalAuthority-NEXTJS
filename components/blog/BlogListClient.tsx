@@ -85,7 +85,7 @@ function BlogListContent({ initialPosts, availableTags, basePath }: BlogListClie
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) || 
         (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
       
-      const matchesTag = !selectedTag || (post.tags && post.tags.includes(selectedTag));
+      const matchesTag = !selectedTag || (post.tags && post.tags.some(tag => tag.toLowerCase() === selectedTag.toLowerCase()));
       
       return matchesSearch && matchesTag;
     });

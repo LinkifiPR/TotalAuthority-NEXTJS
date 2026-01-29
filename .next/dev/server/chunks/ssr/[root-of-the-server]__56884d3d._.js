@@ -68,8 +68,12 @@ __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$componen
 __turbopack_context__.s([
     "default",
     ()=>BlogPage,
+    "dynamic",
+    ()=>dynamic,
     "metadata",
-    ()=>metadata
+    ()=>metadata,
+    "revalidate",
+    ()=>revalidate
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$integrations$2f$supabase$2f$server$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/integrations/supabase/server.ts [app-rsc] (ecmascript)");
@@ -77,6 +81,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$blog$2f$BlogLi
 ;
 ;
 ;
+const dynamic = 'force-dynamic';
+const revalidate = 0;
 const metadata = {
     title: 'Latest Articles | Total Authority',
     description: 'Explore our latest insights on AI visibility, PR strategies, and marketing best practices to help your brand get discovered by AI systems.',
@@ -113,7 +119,7 @@ async function BlogPage() {
         basePath: "/blog"
     }, void 0, false, {
         fileName: "[project]/app/blog/page.tsx",
-        lineNumber: 58,
+        lineNumber: 61,
         columnNumber: 10
     }, this);
 }
