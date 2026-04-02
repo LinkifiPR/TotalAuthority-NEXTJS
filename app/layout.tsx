@@ -56,6 +56,22 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LY3H85MR9C"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-LY3H85MR9C');
+            `,
+          }}
+        />
         <Providers>{children}</Providers>
         <FacebookPixel />
       </body>
