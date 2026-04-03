@@ -8,8 +8,8 @@ import { FacebookPixel } from '@/components/FacebookPixel';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Total Authority - PR & Marketing Visibility Tool',
-  description: 'Comprehensive PR and Marketing visibility tool for businesses. Get AI-powered audits, visibility gap analysis, and strategic blueprints.',
+  title: 'Total Authority - AI Visibility',
+  description: 'Total Authority helps businesses improve their AI visibility. Get AI-powered audits, visibility gap analysis, and strategic blueprints.',
   keywords: ['PR', 'marketing', 'visibility', 'LLM', 'AI', 'audit', 'business'],
   icons: {
     icon: '/favicon.png',
