@@ -171,4 +171,7 @@ git config user.name "Christopher"
 - Decided to move off Replit entirely — Cowork will be the new editing environment
 - GitHub → Netlify pipeline stays the same
 - Created this CLAUDE.md file
-- **Next steps**: Set up GitHub PAT so Claude can push changes; clean up Replit legacy files
+- GitHub push workflow confirmed working — Christopher provides a GitHub PAT at the start of each session to enable pushing. PAT should be stored securely (e.g. 1Password) and regenerated after sharing in chat
+- To configure push: `git remote set-url origin https://chrispanteli:<PAT>@github.com/LinkifiPR/TotalAuthority-NEXTJS.git`
+- **Change made**: Updated site title in `app/layout.tsx` from "Total Authority - PR & Marketing Visibility Tool" to "Total Authority - AI Visibility". Also updated meta description to match.
+- **Next steps**: Clean up legacy Replit files (`replit.md`, `sync-to-github.sh`); continue iterating on the site
