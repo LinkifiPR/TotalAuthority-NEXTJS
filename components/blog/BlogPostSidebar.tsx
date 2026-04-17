@@ -21,69 +21,51 @@ export const BlogPostSidebar: React.FC<BlogPostSidebarProps> = ({ headings }) =>
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show scroll to top button when scrolled down
-      setShowScrollTop(window.scrollY > 400);
+    const onScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-      // Update active heading based on scroll position
-      const headingElements = headings
-        .map(h => document.getElementById(h.id))
-        .filter((el): el is HTMLElement => el !== null);
-      
-      let currentActive = '';
-      for (let i = headingElements.length - 1; i >= 0; i--) {
-        const element = headingElements[i];
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150) {
-            currentActive = element.id;
-            break;
-          }
+  useEffect(() => {
+    if (headings.length === 0) return;
+    const elements = headings
+      .map(h => document.getElementById(h.id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (elements.length === 0) return;
+
+    const HEADER_OFFSET = 96;
+
+    const computeActive = () => {
+      let current = '';
+      for (const el of elements) {
+        if (el.getBoundingClientRect().top - HEADER_OFFSET <= 0) {
+          current = el.id;
+        } else {
+          break;
         }
       }
-      
-      if (currentActive !== activeHeading) {
-        setActiveHeading(currentActive);
-      }
+      setActiveHeading(prev => (prev === current ? prev : current));
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Run once on mount
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [headings, activeHeading]);
+    const observer = new IntersectionObserver(computeActive, {
+      rootMargin: `-${HEADER_OFFSET}px 0px -60% 0px`,
+      threshold: [0, 1],
+    });
+    elements.forEach(el => observer.observe(el));
+    window.addEventListener('scroll', computeActive, { passive: true });
+    computeActive();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', computeActive);
+    };
+  }, [headings]);
 
   const scrollToHeading = (headingId: string) => {
-    console.log('Attempting to scroll to heading:', headingId);
     const element = document.getElementById(headingId);
-    
-    if (element) {
-      console.log('Found element:', element);
-      const offsetTop = element.offsetTop - 100; // Account for fixed header
-      window.scrollTo({ 
-        top: offsetTop, 
-        behavior: 'smooth' 
-      });
-    } else {
-      console.log('Element not found for ID:', headingId);
-      // Try to find by text content as fallback
-      const allHeadings = document.querySelectorAll('.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4');
-      const targetHeading = headings.find(h => h.id === headingId);
-      
-      if (targetHeading) {
-        const matchingElement = Array.from(allHeadings).find(el => 
-          el.textContent?.trim() === targetHeading.text.trim()
-        );
-        
-        if (matchingElement) {
-          console.log('Found matching element by text:', matchingElement);
-          const offsetTop = matchingElement.getBoundingClientRect().top + window.scrollY - 100;
-          window.scrollTo({ 
-            top: offsetTop, 
-            behavior: 'smooth' 
-          });
-        }
-      }
-    }
+    if (!element) return;
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const scrollToTop = () => {
@@ -95,7 +77,7 @@ export const BlogPostSidebar: React.FC<BlogPostSidebarProps> = ({ headings }) =>
   }
 
   return (
-    <div className="sticky top-8 space-y-6">
+    <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto space-y-6 pr-1">
       {/* Table of Contents */}
       <Card className="border border-gray-200 shadow-sm bg-white">
         <CardHeader className="pb-4">
@@ -110,7 +92,7 @@ export const BlogPostSidebar: React.FC<BlogPostSidebarProps> = ({ headings }) =>
               <button
                 key={heading.id}
                 onClick={() => scrollToHeading(heading.id)}
-                className={`block w-full text-left text-sm py-3 px-4 rounded-lg transition-all duration-200 border-l-3 ${
+                className={`block w-full text-left text-sm py-3 px-4 rounded-lg transition-all duration-200 border-l-4 ${
                   activeHeading === heading.id
                     ? 'bg-orange-50 text-orange-700 font-semibold border-orange-500 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-transparent hover:border-gray-200'

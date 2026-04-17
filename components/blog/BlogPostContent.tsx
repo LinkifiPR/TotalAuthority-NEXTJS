@@ -319,6 +319,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             line-height: 1.3 !important;
             font-family: inherit !important;
             background: none !important;
+            scroll-margin-top: 6rem !important;
           }
           
           .blog-prose h2,
@@ -331,6 +332,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             line-height: 1.3 !important;
             font-family: inherit !important;
             background: none !important;
+            scroll-margin-top: 6rem !important;
           }
           
           .blog-prose h3,
@@ -343,6 +345,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             line-height: 1.4 !important;
             font-family: inherit !important;
             background: none !important;
+            scroll-margin-top: 6rem !important;
           }
           
           .blog-prose h4,
@@ -355,6 +358,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             line-height: 1.4 !important;
             font-family: inherit !important;
             background: none !important;
+            scroll-margin-top: 6rem !important;
           }
           
           .blog-prose p { 

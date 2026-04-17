@@ -63,47 +63,61 @@ export function BlogPostClient({ post, isPreview = false }: BlogPostClientProps)
     return () => window.removeEventListener('message', handlePostMessage);
   }, [openForm]);
 
-  // Extract headings from the actual DOM after content is rendered
+  // Extract headings from the rendered DOM, re-running on mutations until the
+  // content stabilises. Handles async HTML rendering without racey setTimeouts.
   useEffect(() => {
-    if (post?.content) {
-      const extractHeadings = () => {
-        const headingElements = document.querySelectorAll('.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4');
-        
-        const extractedHeadings = Array.from(headingElements)
-          .filter((heading) => {
-            const isInCodeBlock = heading.closest('.code-block, .code-content');
-            const isInCTABlock = heading.closest('.cta-block');
-            return !isInCodeBlock && !isInCTABlock;
-          })
-          .map((heading, index) => {
-            let id = heading.id;
-            
-            if (!id) {
-              const text = heading.textContent || '';
-              id = text
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/(^-|-$)/g, '') || `heading-${index}`;
-              heading.id = id;
-            }
-            
-            return {
-              id,
-              text: heading.textContent || '',
-              level: parseInt(heading.tagName.charAt(1))
-            };
-          });
-        
-        setHeadings(extractedHeadings);
-      };
+    if (!post?.content) return;
 
-      const timeouts = [100, 500, 1000];
-      timeouts.forEach(delay => {
-        setTimeout(extractHeadings, delay);
+    const extractHeadings = () => {
+      const container = document.querySelector('.blog-content');
+      if (!container) return;
+
+      const headingElements = container.querySelectorAll('h1, h2, h3, h4');
+      const extractedHeadings = Array.from(headingElements)
+        .filter((heading) => {
+          const isInCodeBlock = heading.closest('.code-block, .code-content');
+          const isInCTABlock = heading.closest('.cta-block');
+          return !isInCodeBlock && !isInCTABlock;
+        })
+        .map((heading, index) => {
+          let id = heading.id;
+          if (!id) {
+            const text = heading.textContent || '';
+            id = text
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/(^-|-$)/g, '') || `heading-${index}`;
+            heading.id = id;
+          }
+          return {
+            id,
+            text: heading.textContent || '',
+            level: parseInt(heading.tagName.charAt(1)),
+          };
+        });
+
+      setHeadings(prev => {
+        if (prev.length !== extractedHeadings.length) return extractedHeadings;
+        for (let i = 0; i < prev.length; i++) {
+          if (prev[i].id !== extractedHeadings[i].id) return extractedHeadings;
+        }
+        return prev;
       });
-      
-      extractHeadings();
-    }
+    };
+
+    extractHeadings();
+
+    const container = document.querySelector('.blog-content');
+    if (!container) return;
+
+    const observer = new MutationObserver(extractHeadings);
+    observer.observe(container, { childList: true, subtree: true });
+    const stop = window.setTimeout(() => observer.disconnect(), 2000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(stop);
+    };
   }, [post?.content]);
 
   return (
