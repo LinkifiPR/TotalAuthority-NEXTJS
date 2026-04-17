@@ -75,7 +75,7 @@ export function BlogPostClient({ post, isPreview = false }: BlogPostClientProps)
       // Scope to .blog-prose (inner article body) so the post title H1 rendered
        // separately as <h1>{post.title}</h1> in BlogPostContent is excluded.
       const scope = container.querySelector('.blog-prose') || container;
-      const headingElements = scope.querySelectorAll('h1, h2, h3, h4');
+      const headingElements = scope.querySelectorAll('h2');
       const extractedHeadings = Array.from(headingElements)
         .filter((heading) => {
           const isInCodeBlock = heading.closest('.code-block, .code-content');
