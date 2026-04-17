@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 import { createServerSupabaseClient } from '@/lib/integrations/supabase/server';
+import { siteUrl } from '@/lib/siteConfig';
 
-const BASE_URL = 'https://totalauthority.co';
+const BASE_URL = siteUrl;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createServerSupabaseClient();

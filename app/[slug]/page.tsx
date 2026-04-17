@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createServerSupabaseClient } from '@/lib/integrations/supabase/server';
 import { BlogPostClient } from '@/components/blog/BlogPostClient';
+import { buildAbsoluteUrl } from '@/lib/siteConfig';
 
 interface BlogPost {
   id: string;
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = post.meta_title || post.title;
   const description = post.meta_description || post.excerpt;
-  const canonicalUrl = post.canonical_url || `https://totalauthority.co/blog/${post.slug}`;
+  const canonicalUrl = post.canonical_url || buildAbsoluteUrl(`/${post.slug}`);
   const ogImage = post.og_image_url || post.featured_image_url || '/placeholder.svg';
 
   return {

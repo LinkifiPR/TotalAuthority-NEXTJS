@@ -4,10 +4,12 @@ import Script from 'next/script';
 import './globals.css';
 import { Providers } from '@/components/providers';
 import { FacebookPixel } from '@/components/FacebookPixel';
+import { siteUrl } from '@/lib/siteConfig';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Total Authority - AI Visibility',
   description: 'Total Authority helps businesses improve their AI visibility. Get AI-powered audits, visibility gap analysis, and strategic blueprints.',
   keywords: ['PR', 'marketing', 'visibility', 'LLM', 'AI', 'audit', 'business'],

@@ -8,9 +8,13 @@ export const revalidate = 0;
 export const metadata: Metadata = {
   title: 'Latest Articles | Total Authority',
   description: 'Explore our latest insights on AI visibility, PR strategies, and marketing best practices to help your brand get discovered by AI systems.',
+  alternates: {
+    canonical: '/blog',
+  },
   openGraph: {
     title: 'Latest Articles | Total Authority',
     description: 'Explore our latest insights on AI visibility, PR strategies, and marketing best practices.',
+    url: '/blog',
     type: 'website',
   },
 };

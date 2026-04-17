@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://totalauthority.co/sitemap.xml
+Sitemap: https://totalauthority.com/sitemap.xml
