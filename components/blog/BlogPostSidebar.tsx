@@ -1,9 +1,6 @@
 "use client";
 
-
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { ChevronUp } from 'lucide-react';
 
 interface Heading {
@@ -21,111 +18,94 @@ export const BlogPostSidebar: React.FC<BlogPostSidebarProps> = ({ headings }) =>
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShowScrollTop(window.scrollY > 400);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
     if (headings.length === 0) return;
-    const elements = headings
-      .map(h => document.getElementById(h.id))
-      .filter((el): el is HTMLElement => el !== null);
-    if (elements.length === 0) return;
 
-    const HEADER_OFFSET = 96;
+    const HEADER_OFFSET = 110;
 
-    const computeActive = () => {
+    const compute = () => {
+      setShowScrollTop(window.scrollY > 400);
+
       let current = '';
-      for (const el of elements) {
+      for (const h of headings) {
+        const el = document.getElementById(h.id);
+        if (!el) continue;
         if (el.getBoundingClientRect().top - HEADER_OFFSET <= 0) {
-          current = el.id;
+          current = h.id;
         } else {
           break;
         }
       }
+
+      // Before the first heading scrolls past, highlight the first item.
+      if (!current && headings.length > 0 && window.scrollY > 50) {
+        const first = document.getElementById(headings[0].id);
+        if (first && first.getBoundingClientRect().top < window.innerHeight) {
+          current = headings[0].id;
+        }
+      }
+
       setActiveHeading(prev => (prev === current ? prev : current));
     };
 
-    const observer = new IntersectionObserver(computeActive, {
-      rootMargin: `-${HEADER_OFFSET}px 0px -60% 0px`,
-      threshold: [0, 1],
-    });
-    elements.forEach(el => observer.observe(el));
-    window.addEventListener('scroll', computeActive, { passive: true });
-    computeActive();
-
+    compute();
+    window.addEventListener('scroll', compute, { passive: true });
+    window.addEventListener('resize', compute, { passive: true });
     return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', computeActive);
+      window.removeEventListener('scroll', compute);
+      window.removeEventListener('resize', compute);
     };
   }, [headings]);
 
-  const scrollToHeading = (headingId: string) => {
-    const element = document.getElementById(headingId);
-    if (!element) return;
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToHeading = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  if (headings.length === 0) {
-    return null;
-  }
+  if (headings.length === 0) return null;
 
   return (
-    <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto space-y-6 pr-1">
-      {/* Table of Contents */}
-      <Card className="border border-gray-200 shadow-sm bg-white">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-lg font-bold text-gray-900 flex items-center">
-            <div className="w-1 h-6 bg-orange-500 rounded-full mr-3"></div>
+    <div className="space-y-2">
+      <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div className="flex items-center px-3 pt-3 pb-2 border-b border-gray-100">
+          <div className="w-1 h-4 bg-orange-500 rounded-full mr-2"></div>
+          <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide">
             Table of Contents
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <nav className="space-y-1">
-            {headings.map((heading) => (
+          </h3>
+        </div>
+        <nav className="py-1">
+          {headings.map((heading) => {
+            const isActive = activeHeading === heading.id;
+            const indent =
+              heading.level === 3 ? 'pl-7' :
+              heading.level === 4 ? 'pl-10' : 'pl-3';
+            return (
               <button
                 key={heading.id}
                 onClick={() => scrollToHeading(heading.id)}
-                className={`block w-full text-left text-sm py-3 px-4 rounded-lg transition-all duration-200 border-l-4 ${
-                  activeHeading === heading.id
-                    ? 'bg-orange-50 text-orange-700 font-semibold border-orange-500 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-transparent hover:border-gray-200'
-                } ${
-                  heading.level === 2 ? 'ml-0' : 
-                  heading.level === 3 ? 'ml-4' : 
-                  heading.level === 4 ? 'ml-8' : 'ml-0'
+                className={`block w-full text-left text-xs py-1.5 pr-3 ${indent} border-l-2 transition-colors leading-snug ${
+                  isActive
+                    ? 'bg-orange-50 text-orange-700 font-semibold border-orange-500'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-transparent'
                 }`}
               >
-                <span className="line-clamp-2 leading-relaxed">{heading.text}</span>
+                <span className="line-clamp-2">{heading.text}</span>
               </button>
-            ))}
-          </nav>
-        </CardContent>
-      </Card>
+            );
+          })}
+        </nav>
+      </div>
 
-      {/* Scroll to Top Button */}
       {showScrollTop && (
-        <Card className="border border-gray-200 shadow-sm bg-white">
-          <CardContent className="p-4">
-            <Button
-              onClick={scrollToTop}
-              variant="outline"
-              size="sm"
-              className="w-full hover:bg-orange-50 hover:border-orange-200 hover:text-orange-700 transition-colors font-medium"
-            >
-              <ChevronUp className="w-4 h-4 mr-2" />
-              Back to Top
-            </Button>
-          </CardContent>
-        </Card>
+        <button
+          onClick={scrollToTop}
+          className="w-full flex items-center justify-center gap-1 py-2 px-3 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 transition-colors"
+        >
+          <ChevronUp className="w-3.5 h-3.5" />
+          Back to top
+        </button>
       )}
-
     </div>
   );
 };

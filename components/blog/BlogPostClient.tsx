@@ -72,7 +72,10 @@ export function BlogPostClient({ post, isPreview = false }: BlogPostClientProps)
       const container = document.querySelector('.blog-content');
       if (!container) return;
 
-      const headingElements = container.querySelectorAll('h1, h2, h3, h4');
+      // Scope to .blog-prose (inner article body) so the post title H1 rendered
+       // separately as <h1>{post.title}</h1> in BlogPostContent is excluded.
+      const scope = container.querySelector('.blog-prose') || container;
+      const headingElements = scope.querySelectorAll('h1, h2, h3, h4');
       const extractedHeadings = Array.from(headingElements)
         .filter((heading) => {
           const isInCodeBlock = heading.closest('.code-block, .code-content');
@@ -136,9 +139,9 @@ export function BlogPostClient({ post, isPreview = false }: BlogPostClientProps)
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex gap-8">
-          <div className="hidden lg:block w-80 flex-shrink-0">
+          <aside className="hidden lg:block w-72 flex-shrink-0 self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
             <BlogPostSidebar headings={headings} />
-          </div>
+          </aside>
           
           <div className="flex-1 max-w-4xl min-w-0">
             <BlogPostContent post={post} />
