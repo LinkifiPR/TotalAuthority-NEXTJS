@@ -175,3 +175,35 @@ git config user.name "Christopher"
 - To configure push: `git remote set-url origin https://chrispanteli:<PAT>@github.com/LinkifiPR/TotalAuthority-NEXTJS.git`
 - **Change made**: Updated site title in `app/layout.tsx` from "Total Authority - PR & Marketing Visibility Tool" to "Total Authority - AI Visibility". Also updated meta description to match.
 - **Next steps**: Clean up legacy Replit files (`replit.md`, `sync-to-github.sh`); continue iterating on the site
+
+### 2026-04-17
+Focus: canonical-URL bug (Stephen's feedback), client-side exception on page transitions, and blog-post Table of Contents sidebar fixes.
+
+**Canonical URLs**
+- `lib/siteConfig.ts` centralises `siteUrl` (defaults to `https://totalauthority.com`, overridable via `NEXT_PUBLIC_SITE_URL`). All `generateMetadata` / canonical references now go through this, so blog posts canonicalise to `.com`, not `.co`.
+- Home page (`app/page.tsx`) now emits a self-referencing canonical via `metadata.alternates.canonical = '/'`.
+- Blog post canonical fallback (`app/[slug]/page.tsx`) builds from `siteUrl + post.slug` when the editor leaves the Canonical URL field blank.
+- Blog editor Canonical URL field placeholder/helper text updated to `/post-slug` + "leave blank to auto-generate" — stops editors from typing the old `/blog/post-slug` pattern.
+
+**Error boundaries — "Application error: a client-side exception has occurred"**
+- Added `app/error.tsx` to catch per-route errors below the layout (branded reload UI, auto-reloads on ChunkLoadError).
+- Added `app/global-error.tsx` to catch errors in the root layout / providers themselves (this is what Stephen was hitting; the plain-text default fallback renders only when the root layout can't render). Uses inline styles because Tailwind may not be loaded at that boundary.
+- Most common trigger: `ChunkLoadError` after a Netlify deploy invalidates client chunks in already-open tabs. Both boundaries now auto-recover via `window.location.reload()`.
+
+**Blog post Table of Contents sidebar (`/[slug]` pages)**
+All existing and future posts inherit these fixes — TOC entries come from live DOM extraction, not a per-post field.
+- `components/blog/BlogPostClient.tsx`: heading extraction scoped to `.blog-prose` (inner article body) so the post title `<h1>` is excluded. Uses a `MutationObserver` (disconnects after 2s) instead of the old triple-`setTimeout`, so IDs are assigned even when async scripts mutate the article DOM.
+- **Only H2s appear in the TOC** (per owner's preference) — `scope.querySelectorAll('h2')`. H3/H4 still render in the article body and remain anchorable via URL fragment.
+- Sidebar column is now `<aside class="... self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">` — sticky lives on the column itself rather than relying on flex-stretch + inner sticky.
+- `components/blog/BlogPostSidebar.tsx`: rewritten as a compact bordered box (dropped Shadcn Card), `text-xs` entries, 2px orange left-border active indicator, small "Back to top" pill. Active tracking is a plain scroll/resize listener comparing `getBoundingClientRect().top` against a 110px offset (header clearance).
+- `components/blog/BlogPostContent.tsx`: added `scroll-margin-top: 6rem !important` to the `.blog-prose h1–h4` rules so anchor navigation and `scrollIntoView()` always land the heading just below the sticky site Header.
+
+**Infrastructure / workflow**
+- GitHub PAT is stored in `.git/config` (remote URL), NOT in `.env.local` — `.env.local` is currently TRACKED by git (not in `.gitignore`) and contains the Supabase anon key, so writing the PAT there would push it to a public repo. **Action items for Christopher**: (1) regenerate the PAT shared in chat, (2) add `.env*` to `.gitignore` and run `git rm --cached .env.local`.
+
+**Commits pushed to `main` this session**
+- `0e2ffae` — canonical-URL centralisation + blog editor field cleanup
+- `3acb2d3` — `app/global-error.tsx` last-resort boundary
+- `6bdafa3` — initial blog TOC fix (IntersectionObserver + `scroll-margin-top`)
+- `bdcb461` — TOC follow-up: sticky on column, exclude article title, tighter compact design
+- `a331dbc` — TOC scoped to H2s only
