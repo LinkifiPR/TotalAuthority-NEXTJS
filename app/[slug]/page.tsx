@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { createServerSupabaseClient } from '@/lib/integrations/supabase/server';
+import { createServerSupabaseClient, isServerSupabaseConfigured } from '@/lib/integrations/supabase/server';
 import { BlogPostClient } from '@/components/blog/BlogPostClient';
 import { buildAbsoluteUrl } from '@/lib/siteConfig';
 
@@ -31,6 +31,10 @@ interface PageProps {
 }
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  if (!isServerSupabaseConfigured()) {
+    return null;
+  }
+
   const supabase = createServerSupabaseClient();
   
   const { data, error } = await supabase

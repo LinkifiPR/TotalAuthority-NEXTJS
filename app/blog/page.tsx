@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { createServerSupabaseClient } from '@/lib/integrations/supabase/server';
+import { createServerSupabaseClient, isServerSupabaseConfigured } from '@/lib/integrations/supabase/server';
 import { BlogListClient } from '@/components/blog/BlogListClient';
 
 export const dynamic = 'force-dynamic';
@@ -33,6 +33,10 @@ interface BlogPost {
 }
 
 async function getBlogPosts(): Promise<BlogPost[]> {
+  if (!isServerSupabaseConfigured()) {
+    return [];
+  }
+
   const supabase = createServerSupabaseClient();
   
   const { data, error } = await supabase
