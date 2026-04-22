@@ -12,14 +12,15 @@ This is the high-level project control file for planning, status, and timeline.
 - Codex session history: [codex.md](./codex.md)
 
 ## Current Snapshot
-- Last updated: 2026-04-22 20:46 BST
+- Last updated: 2026-04-22 21:06 BST
 - Active project: TotalAuthority-NEXTJS
 - Active branch: main
-- Current focus: Establish Codex collaboration workflow and persistent session logs
+- Current focus: Ship AI Setup Engine page + API pipeline for setup-first AI discovery implementation
 
 ## Project Timeline
 | Date (BST) | Actor | Summary | Reference |
 | --- | --- | --- | --- |
+| 2026-04-22 21:06 | Codex | Implemented `/ai-setup` page, `/api/ai-setup` route, modular scan/extract/detect/generate pipeline, and OpenRouter integration with fallback | `codex.md` |
 | 2026-04-22 20:46 | Codex | Repo connected, push capability tested, tracking files created | `codex.md` |
 
 ## Session Close Checklist

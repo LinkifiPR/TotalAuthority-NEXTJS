@@ -11,3 +11,7 @@ out/
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+# Environment files
+.env
+.env.*
+!.env.example
