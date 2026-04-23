@@ -21,6 +21,7 @@ import {
   LineChart,
   Loader2,
   Network,
+  PanelTopOpen,
   Rocket,
   ShieldCheck,
   Sparkles,
@@ -38,6 +39,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { createDeliverySession } from '@/lib/ai/delivery-session';
 import type { AiSetupResponse, ImplementationGuide, InternalLinkSuggestion } from '@/lib/types/ai-setup';
 
 const LOADING_STEPS = [
@@ -230,6 +232,7 @@ function implementationGuideToText(guide: ImplementationGuide): string {
     renderSection('Webflow', guide.webflow),
     renderSection('Shopify', guide.shopify),
     renderSection('Custom HTML / Developer Handoff', guide.customHtml),
+    renderSection('Vibe-Coded Sites', guide.vibeCoded ?? []),
   ].join('\n\n');
 }
 
@@ -385,27 +388,81 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
-function renderGuideCards(guide: ImplementationGuide) {
+function renderGuideCards(
+  guide: ImplementationGuide,
+  copiedKey: string | null,
+  onCopy: (text: string, key: string) => Promise<void>,
+) {
   const cards = [
-    { title: 'WordPress', steps: guide.wordpress },
-    { title: 'Webflow', steps: guide.webflow },
-    { title: 'Shopify', steps: guide.shopify },
-    { title: 'Custom HTML / Dev Handoff', steps: guide.customHtml },
+    {
+      key: 'wordpress',
+      title: 'WordPress',
+      steps: guide.wordpress,
+      badge: 'CMS',
+      tone: 'from-blue-50 via-white to-blue-100/60',
+    },
+    {
+      key: 'webflow',
+      title: 'Webflow',
+      steps: guide.webflow,
+      badge: 'No-code',
+      tone: 'from-emerald-50 via-white to-emerald-100/60',
+    },
+    {
+      key: 'shopify',
+      title: 'Shopify',
+      steps: guide.shopify,
+      badge: 'Ecommerce',
+      tone: 'from-orange-50 via-white to-orange-100/60',
+    },
+    {
+      key: 'customHtml',
+      title: 'Custom HTML / Developer Handoff',
+      steps: guide.customHtml,
+      badge: 'Code',
+      tone: 'from-slate-50 via-white to-slate-100/70',
+    },
+    {
+      key: 'vibeCoded',
+      title: 'Vibe-Coded Sites Prompt',
+      steps: guide.vibeCoded ?? [],
+      badge: 'Prompt',
+      tone: 'from-violet-50 via-white to-fuchsia-100/55',
+    },
   ];
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {cards.map((card) => (
-        <div key={card.title} className="rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 shadow-sm">
+        <div key={card.key} className={`rounded-2xl border border-slate-200 bg-gradient-to-br ${card.tone} p-5 shadow-sm`}>
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-700">{card.title}</p>
-            <span className="rounded-full border border-slate-300 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-700">
-              {card.steps.length} steps
-            </span>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600">{card.badge}</p>
+              <p className="mt-1 text-sm font-bold text-slate-950">{card.title}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full border border-slate-300 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-700">
+                {card.steps.length} steps
+              </span>
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-8 border-slate-300 bg-white/90 px-3 text-xs text-slate-900 hover:bg-white"
+                onClick={() =>
+                  void onCopy(
+                    card.steps.map((step, index) => `${index + 1}. ${step}`).join('\n'),
+                    `guide-${card.key}`,
+                  )
+                }
+              >
+                {copiedKey === `guide-${card.key}` ? 'Copied' : 'Copy'}
+              </Button>
+            </div>
           </div>
+
           <div className="mt-4 space-y-2.5">
             {card.steps.map((step, index) => (
-              <div key={`${card.title}-${index}`} className="flex items-start gap-2 rounded-xl border border-slate-200 bg-white p-2.5">
+              <div key={`${card.key}-${index}`} className="flex items-start gap-2 rounded-xl border border-slate-200 bg-white/90 p-2.5">
                 <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
                   {index + 1}
                 </span>
@@ -443,6 +500,7 @@ export default function AiSetupEnginePage() {
   const [quickWebsiteUrl, setQuickWebsiteUrl] = useState('');
   const [quickInputError, setQuickInputError] = useState<string | null>(null);
   const [brandFieldFlashActive, setBrandFieldFlashActive] = useState(false);
+  const [deliverySessionId, setDeliverySessionId] = useState<string | null>(null);
 
   const generatedAssetsList = useMemo(
     () => [
@@ -551,6 +609,15 @@ export default function AiSetupEnginePage() {
     inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const openDeliveryDashboard = (sessionId: string) => {
+    const dashboardUrl = `/ai-setup/delivery?session=${encodeURIComponent(sessionId)}`;
+    const popup = window.open(dashboardUrl, '_blank', 'noopener,noreferrer');
+
+    if (!popup) {
+      setApiError('Delivery dashboard popup was blocked by your browser. Use the "Open Dashboard" button in results.');
+    }
+  };
+
   const normalizeWebsiteUrl = (value: string): string | null => {
     const trimmed = value.trim();
 
@@ -632,6 +699,7 @@ export default function AiSetupEnginePage() {
     setApiError(null);
     setResult(null);
     setCopiedKey(null);
+    setDeliverySessionId(null);
     setLoadingStepIndex(0);
 
     const stepInterval = window.setInterval(() => {
@@ -689,13 +757,26 @@ export default function AiSetupEnginePage() {
         throw new Error('Unable to generate your AI setup right now. Please try again.');
       }
 
+      let sessionId = '';
+      try {
+        sessionId = createDeliverySession(resolvedPayload);
+      } catch {
+        sessionId = '';
+      }
       setResult(resolvedPayload);
+      setDeliverySessionId(sessionId || null);
       setActiveTab('aiInfoPage');
       setLoadingStepIndex(LOADING_STEPS.length - 1);
 
       window.setTimeout(() => {
         resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 150);
+
+      if (sessionId) {
+        window.setTimeout(() => {
+          openDeliveryDashboard(sessionId);
+        }, 300);
+      }
     } catch (error) {
       setApiError(error instanceof Error ? error.message : 'Something went wrong while generating your setup.');
     } finally {
@@ -1470,12 +1551,26 @@ export default function AiSetupEnginePage() {
                   <div className="relative flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                     <div>
                       <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Output Studio</p>
-                      <h3 className="mt-2 text-2xl font-black text-slate-950">Beautiful, copy-ready delivery pack</h3>
+                      <h3 className="mt-2 text-2xl font-black text-slate-950">Delivery Pack</h3>
                       <p className="mt-2 max-w-2xl text-sm text-slate-600">
                         Every tab is formatted for direct handoff to marketing and dev teams, with implementation-grade detail.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
+                      <Button
+                        onClick={() => {
+                          if (deliverySessionId) {
+                            openDeliveryDashboard(deliverySessionId);
+                          }
+                        }}
+                        size="sm"
+                        variant="outline"
+                        disabled={!deliverySessionId}
+                        className="border-slate-300 bg-white text-slate-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        <PanelTopOpen className="mr-2 h-4 w-4" />
+                        Open Dashboard
+                      </Button>
                       <Button onClick={copyAll} size="sm" className="bg-orange-500 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-200/60">
                         {copiedKey === 'copy-all' ? (
                           <>
@@ -1522,7 +1617,7 @@ export default function AiSetupEnginePage() {
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     <span className="rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
-                      Copy-ready formatting
+                      Delivery-ready formatting
                     </span>
                     <span className="rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
                       Platform implementation steps
@@ -1712,7 +1807,7 @@ export default function AiSetupEnginePage() {
                               </Button>
                             </div>
 
-                            {renderGuideCards(result.assets.implementationGuide)}
+                            {renderGuideCards(result.assets.implementationGuide, copiedKey, copyToClipboard)}
                           </div>
                         </TabsContent>
 

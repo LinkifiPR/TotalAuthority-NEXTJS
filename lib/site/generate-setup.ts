@@ -448,6 +448,25 @@ function buildImplementationGuide(profile: SiteProfile): ImplementationGuide {
       'Common mistakes to avoid: publishing AI page without internal links, which reduces crawl likelihood and discoverability.',
       ...qaChecklist,
     ],
+    vibeCoded: [
+      'What you are adding: one implementation prompt you can paste into your vibe-coding tool to ship the AI setup assets safely.',
+      'Where to add it: paste this prompt into your vibe-coding chat/session with your project loaded and write access enabled.',
+      'Step-by-step implementation: ask it to create/update /ai page content, merge robots.txt safely, insert schema, and add internal links from footer/about/services.',
+      'Step-by-step implementation: require explicit diffs for each file before final write so you can review changes.',
+      'How to preserve existing setup / avoid overwriting: instruct it to preserve existing robots directives unless clearly invalid and never delete existing schema without comparison.',
+      'How to verify it worked: ask it to return a QA checklist with live URLs, schema-in-source check, sitemap check, and internal-link verification.',
+      'Common mistakes to avoid: one-shot overwrite prompts, no validation step, and publishing without checking indexability settings.',
+      '',
+      'Vibe coding prompt template:',
+      `You are implementing an AI setup delivery pack for ${profile.brandName} on ${profile.origin}.`,
+      'Apply the following in one safe PR/commit with clear diffs and no destructive overwrites:',
+      '1) Create or update /ai (or /ai-info) page with the provided AI Info Page content, preserving heading hierarchy.',
+      '2) Merge robots.txt safely: keep valid existing directives, add sitemap line, and keep syntax plain text.',
+      '3) Insert JSON-LD (Organization, WebSite, Service, optional Person) in the correct template/head locations once only.',
+      '4) Add internal links to the AI page from footer + about + services + resource/blog surfaces where present.',
+      '5) Return a post-implementation QA report covering: live 200 URL, indexability, sitemap inclusion, robots availability, schema visibility in source, and link placement checks.',
+      'Constraints: do not fabricate company facts, do not remove unrelated rules, and flag any uncertainty as TODO for human review.',
+    ],
   };
 }
 
@@ -598,6 +617,10 @@ function mergeAssets(baseAssets: AiSetupAssets, generatedAssets: MergeableAssets
         generatedAssets.implementationGuide?.customHtml && generatedAssets.implementationGuide.customHtml.length > 0
           ? generatedAssets.implementationGuide.customHtml
           : baseAssets.implementationGuide.customHtml,
+      vibeCoded:
+        generatedAssets.implementationGuide?.vibeCoded && generatedAssets.implementationGuide.vibeCoded.length > 0
+          ? generatedAssets.implementationGuide.vibeCoded
+          : baseAssets.implementationGuide.vibeCoded,
     },
     optionalExtras: {
       ...baseAssets.optionalExtras,
@@ -704,7 +727,7 @@ Required output shape:
 - robotsTxt: string
 - schema: { organization: string, website: string, person?: string, service: string, notes: string[] }
 - internalLinking: [{ fromPage, anchorText, placement, reason }]
-- implementationGuide: { wordpress: string[], webflow: string[], shopify: string[], customHtml: string[] }
+- implementationGuide: { wordpress: string[], webflow: string[], shopify: string[], customHtml: string[], vibeCoded: string[] }
 - optionalExtras: { llmsTxt: string, agentsMd: string }
 
 Quality requirements:
@@ -713,6 +736,7 @@ Quality requirements:
 - Schema notes must explain placement, review steps, and validation.
 - Internal linking must be site-structure-aware with anchor variations and priority intent.
 - Implementation guides must follow: what you are adding, where to add it, step-by-step, preserve existing setup, verify, common mistakes, post-implementation QA.
+- Include a vibeCoded prompt section that gives a practical prompt template for coding-assistant implementation.
 - Avoid filler language and generic agency phrasing.`;
 
   try {

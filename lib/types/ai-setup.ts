@@ -97,6 +97,7 @@ export interface ImplementationGuide {
   webflow: string[];
   shopify: string[];
   customHtml: string[];
+  vibeCoded?: string[];
 }
 
 export interface SchemaSuggestions {
@@ -133,6 +134,7 @@ export const ImplementationGuideSchema = z.object({
   webflow: z.array(z.string()),
   shopify: z.array(z.string()),
   customHtml: z.array(z.string()),
+  vibeCoded: z.array(z.string()).default([]),
 });
 
 export const SchemaSuggestionsSchema = z.object({
