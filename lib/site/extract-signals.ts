@@ -6,6 +6,24 @@ import {
   SiteFetchResource,
 } from '@/lib/types/ai-setup';
 
+const CTA_TEXT_PATTERN =
+  /\b(book|schedule|start|get started|contact|talk to|request|demo|trial|consult|enquire|inquire|quote|apply|speak)\b/i;
+
+const CTA_PATH_PATTERN = /\/(?:contact|book|schedule|demo|trial|quote|get-started|consultation|start)(?:\/|$)/i;
+
+const INJECTION_PATTERNS: RegExp[] = [
+  /\bignore\b.{0,40}\binstructions?\b/i,
+  /\b(system|developer)\s*prompt\b/i,
+  /\bai\s+assistants?\b.{0,60}\b(always|must|should|respond|say|add)\b/i,
+  /\byou\s+are\s+(?:chatgpt|an\s+ai|a\s+language\s+model)\b/i,
+  /\brespond\s+with\b/i,
+  /\balways\s+say\b/i,
+  /\bdo\s+not\s+mention\b/i,
+  /\bhidden\s+prompt\b/i,
+  /\bprompt\s+injection\b/i,
+  /^\s*(system|assistant|user)\s*:/i,
+];
+
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, ' ').trim();
 }
@@ -62,8 +80,23 @@ function collectSchemaTypes(node: unknown, output: Set<string>): void {
   Object.values(record).forEach((value) => collectSchemaTypes(value, output));
 }
 
+function normalizeInternalPath(pathname: string, search: string): string {
+  if (!pathname) {
+    return '/';
+  }
+
+  const trimmedPath = pathname !== '/' ? pathname.replace(/\/+$/, '') : '/';
+  return `${trimmedPath}${search}`;
+}
+
 function toInternalLink(currentUrl: string, href: string, origin: string): string | undefined {
-  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+  if (
+    !href ||
+    href.startsWith('#') ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:') ||
+    href.startsWith('javascript:')
+  ) {
     return undefined;
   }
 
@@ -74,10 +107,31 @@ function toInternalLink(currentUrl: string, href: string, origin: string): strin
       return undefined;
     }
 
-    return `${absoluteUrl.pathname}${absoluteUrl.search}`;
+    return normalizeInternalPath(absoluteUrl.pathname, absoluteUrl.search);
   } catch {
     return undefined;
   }
+}
+
+function looksLikeManipulativeInstruction(text: string): boolean {
+  const normalized = normalizeWhitespace(text);
+
+  if (!normalized || normalized.length < 18) {
+    return false;
+  }
+
+  return INJECTION_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+export function filterUntrustedInstructionText(input: string): string {
+  const normalized = input.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, ' ');
+  const segments = normalized
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const safeSegments = segments.filter((segment) => !looksLikeManipulativeInstruction(segment));
+  return safeSegments.join('\n');
 }
 
 function extractPageSignals(resource: SiteFetchResource, origin: string): PageSignals | undefined {
@@ -87,7 +141,7 @@ function extractPageSignals(resource: SiteFetchResource, origin: string): PageSi
 
   const $ = load(resource.body);
 
-  $('script, style, noscript, iframe').remove();
+  $('script, style, noscript, iframe, template, svg, canvas').remove();
 
   const title = normalizeWhitespace($('title').first().text());
   const metaDescription = normalizeWhitespace($('meta[name="description"]').attr('content') ?? '');
@@ -95,20 +149,83 @@ function extractPageSignals(resource: SiteFetchResource, origin: string): PageSi
   const headings = new Set<string>();
   $('h1, h2, h3').each((_, element) => {
     const headingText = normalizeWhitespace($(element).text());
-    if (headingText) {
+    if (headingText && !looksLikeManipulativeInstruction(headingText)) {
       headings.add(headingText);
     }
   });
 
-  const bodyText = normalizeWhitespace($('body').text());
+  const textSource = $('main').length > 0 ? $('main') : $('body');
+  const textSegments: string[] = [];
+
+  textSource.find('h1, h2, h3, h4, p, li').each((_, element) => {
+    const segment = normalizeWhitespace($(element).text());
+    if (!segment || segment.length < 18 || looksLikeManipulativeInstruction(segment)) {
+      return;
+    }
+
+    textSegments.push(segment);
+  });
+
+  if (textSegments.length === 0) {
+    const fallbackText = normalizeWhitespace(textSource.text());
+    if (fallbackText && !looksLikeManipulativeInstruction(fallbackText)) {
+      textSegments.push(fallbackText);
+    }
+  }
+
+  const visibleText = truncate(normalizeWhitespace(filterUntrustedInstructionText(textSegments.join('\n'))), 10_500);
 
   const internalLinks = new Set<string>();
+  const navLinks = new Set<string>();
+  const footerLinks = new Set<string>();
+  const ctaLinks = new Set<string>();
+  const linkDetails: NonNullable<PageSignals['linkDetails']> = [];
+  const linkFingerprints = new Set<string>();
+
   $('a[href]').each((_, element) => {
     const href = $(element).attr('href') ?? '';
     const normalizedLink = toInternalLink(resource.finalUrl ?? resource.url, href, origin);
 
-    if (normalizedLink) {
-      internalLinks.add(normalizedLink);
+    if (!normalizedLink) {
+      return;
+    }
+
+    const linkText = normalizeWhitespace($(element).text());
+
+    if (linkText && looksLikeManipulativeInstruction(linkText)) {
+      return;
+    }
+
+    const location: 'nav' | 'footer' | 'body' = $(element).closest('nav').length
+      ? 'nav'
+      : $(element).closest('footer').length
+        ? 'footer'
+        : 'body';
+
+    internalLinks.add(normalizedLink);
+
+    if (location === 'nav') {
+      navLinks.add(normalizedLink);
+    }
+
+    if (location === 'footer') {
+      footerLinks.add(normalizedLink);
+    }
+
+    if (CTA_PATH_PATTERN.test(normalizedLink) || CTA_TEXT_PATTERN.test(linkText)) {
+      ctaLinks.add(normalizedLink);
+    }
+
+    if (linkText) {
+      const fingerprint = `${normalizedLink}::${linkText.toLowerCase()}::${location}`;
+      if (!linkFingerprints.has(fingerprint) && linkDetails.length < 260) {
+        linkFingerprints.add(fingerprint);
+        linkDetails.push({
+          path: normalizedLink,
+          text: linkText,
+          location,
+        });
+      }
     }
   });
 
@@ -141,9 +258,13 @@ function extractPageSignals(resource: SiteFetchResource, origin: string): PageSi
     url: resource.finalUrl ?? resource.url,
     title: title || undefined,
     metaDescription: metaDescription || undefined,
-    headings: Array.from(headings).slice(0, 30),
-    visibleText: truncate(bodyText, 7_000),
-    internalLinks: Array.from(internalLinks).slice(0, 200),
+    headings: Array.from(headings).slice(0, 40),
+    visibleText,
+    internalLinks: Array.from(internalLinks).slice(0, 260),
+    navLinks: Array.from(navLinks).slice(0, 120),
+    footerLinks: Array.from(footerLinks).slice(0, 120),
+    ctaLinks: Array.from(ctaLinks).slice(0, 120),
+    linkDetails,
     schemaObjects,
     schemaTypes: Array.from(schemaTypes),
     canonical,

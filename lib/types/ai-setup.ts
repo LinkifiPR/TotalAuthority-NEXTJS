@@ -51,6 +51,14 @@ export interface PageSignals {
   headings: string[];
   visibleText: string;
   internalLinks: string[];
+  navLinks?: string[];
+  footerLinks?: string[];
+  ctaLinks?: string[];
+  linkDetails?: Array<{
+    path: string;
+    text: string;
+    location: 'nav' | 'footer' | 'body';
+  }>;
   schemaObjects: unknown[];
   schemaTypes: string[];
   canonical?: string;

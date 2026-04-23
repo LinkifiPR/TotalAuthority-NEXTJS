@@ -6,7 +6,26 @@ const OPTIONAL_PATHS = ['/ai', '/ai-info', '/llms.txt', '/agents.md'];
 const DEFAULT_TIMEOUT_MS = 9_000;
 const DEFAULT_MAX_BODY_CHARS = 300_000;
 const FETCH_USER_AGENT =
-  'TotalAuthority-AISetupBot/1.0 (+https://totalauthority.com, setup-engine for AI visibility assets)';
+  'TotalAuthority-AISetupBot/2.0 (+https://totalauthority.com, setup-engine for AI visibility assets)';
+
+const DISCOVERED_FETCH_LIMIT = 10;
+const SITEMAP_FETCH_LIMIT = 8;
+
+const PRIORITY_PATH_PATTERNS = [
+  /^\/$/,
+  /^\/about(?:-us)?(?:\/|$)/i,
+  /^\/(?:services?|solutions?|offers?|what-we-do)(?:\/|$)/i,
+  /^\/(?:team|founder|leadership|company)(?:\/|$)/i,
+  /^\/(?:industr(?:y|ies)|sectors?)(?:\/|$)/i,
+  /^\/(?:case-studies?|results?|work|portfolio)(?:\/|$)/i,
+  /^\/(?:testimonials?|reviews?)(?:\/|$)/i,
+  /^\/(?:faq|faqs|questions)(?:\/|$)/i,
+  /^\/(?:resources?|blog|guides?)(?:\/|$)/i,
+  /^\/(?:contact|get-in-touch|book|schedule|consultation)(?:\/|$)/i,
+];
+
+const IGNORED_FILE_EXTENSIONS =
+  /\.(?:png|jpe?g|gif|webp|svg|pdf|zip|gz|mp4|mp3|mov|avi|webm|ico|woff2?|ttf|eot|css|js|map|xml|txt|json)$/i;
 
 function isLikelyHtml(path: string, contentType: string | undefined, body: string): boolean {
   if (path.endsWith('.txt') || path.endsWith('.xml') || path.endsWith('.md')) {
@@ -19,6 +38,133 @@ function isLikelyHtml(path: string, contentType: string | undefined, body: strin
 
   const lowerBody = body.trim().toLowerCase();
   return lowerBody.startsWith('<!doctype html') || lowerBody.startsWith('<html');
+}
+
+function normalizePath(path: string): string {
+  if (!path) {
+    return '/';
+  }
+
+  const noHash = path.split('#')[0] ?? path;
+  const noQuery = noHash.split('?')[0] ?? noHash;
+
+  if (!noQuery.startsWith('/')) {
+    return `/${noQuery}`;
+  }
+
+  if (noQuery.length > 1 && noQuery.endsWith('/')) {
+    return noQuery.slice(0, -1);
+  }
+
+  return noQuery || '/';
+}
+
+function isValidFetchCandidate(path: string): boolean {
+  if (!path || path.length < 2) {
+    return false;
+  }
+
+  if (path.startsWith('/wp-content') || path.startsWith('/wp-includes')) {
+    return false;
+  }
+
+  if (IGNORED_FILE_EXTENSIONS.test(path)) {
+    return false;
+  }
+
+  return true;
+}
+
+function parseInternalLinksFromHtml(resourceUrl: string, body: string, origin: string): string[] {
+  const hrefMatches = body.match(/href\s*=\s*["']([^"']+)["']/gi) ?? [];
+  const links = new Set<string>();
+
+  for (const match of hrefMatches) {
+    const hrefMatch = match.match(/href\s*=\s*["']([^"']+)["']/i);
+    const href = hrefMatch?.[1]?.trim();
+
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) {
+      continue;
+    }
+
+    try {
+      const absoluteUrl = new URL(href, resourceUrl);
+
+      if (absoluteUrl.origin !== origin) {
+        continue;
+      }
+
+      const normalized = normalizePath(`${absoluteUrl.pathname}${absoluteUrl.search}`);
+      if (isValidFetchCandidate(normalized)) {
+        links.add(normalized);
+      }
+    } catch {
+      // Ignore malformed URLs.
+    }
+  }
+
+  return Array.from(links);
+}
+
+function parseSitemapUrls(sitemapXml: string | undefined, origin: string): string[] {
+  if (!sitemapXml) {
+    return [];
+  }
+
+  const matches = sitemapXml.match(/<loc>\s*([^<\s]+)\s*<\/loc>/gi) ?? [];
+  const paths = new Set<string>();
+
+  for (const match of matches) {
+    const locMatch = match.match(/<loc>\s*([^<\s]+)\s*<\/loc>/i);
+    const loc = locMatch?.[1];
+
+    if (!loc) {
+      continue;
+    }
+
+    try {
+      const absoluteUrl = new URL(loc);
+      if (absoluteUrl.origin !== origin) {
+        continue;
+      }
+
+      const normalized = normalizePath(`${absoluteUrl.pathname}${absoluteUrl.search}`);
+      if (isValidFetchCandidate(normalized)) {
+        paths.add(normalized);
+      }
+    } catch {
+      // Ignore malformed loc values.
+    }
+  }
+
+  return Array.from(paths);
+}
+
+function scorePath(path: string): number {
+  let score = 0;
+
+  PRIORITY_PATH_PATTERNS.forEach((pattern, index) => {
+    if (pattern.test(path)) {
+      score += 100 - index * 6;
+    }
+  });
+
+  if (/\/(?:blog|resources?|guides?|insights?)(?:\/|$)/i.test(path)) {
+    score += 14;
+  }
+
+  const depth = path.split('/').filter(Boolean).length;
+  score += Math.max(0, 20 - depth * 3);
+
+  return score;
+}
+
+function prioritizePaths(paths: string[], existingPaths: Set<string>, limit: number): string[] {
+  return Array.from(new Set(paths))
+    .map((path) => normalizePath(path))
+    .filter((path) => !existingPaths.has(path) && isValidFetchCandidate(path))
+    .sort((a, b) => scorePath(b) - scorePath(a))
+    .slice(0, limit);
 }
 
 export function normalizeWebsiteUrl(inputUrl: string): URL {
@@ -118,17 +264,44 @@ export async function fetchSiteResources(
   const maxBodyChars = options?.maxBodyChars ?? DEFAULT_MAX_BODY_CHARS;
   const normalizedUrl = normalizeWebsiteUrl(inputUrl);
 
-  const targets = [
+  const initialTargets = [
     ...REQUIRED_PATHS.map((path) => ({ path, required: true })),
     ...OPTIONAL_PATHS.map((path) => ({ path, required: false })),
   ];
 
-  const resources = await Promise.all(
-    targets.map(({ path, required }) => {
+  const initialResources = await Promise.all(
+    initialTargets.map(({ path, required }) => {
       const targetUrl = new URL(path, normalizedUrl).toString();
       return fetchSingleResource(targetUrl, path, required, timeoutMs, maxBodyChars);
     }),
   );
+
+  const fetchedPathSet = new Set(initialResources.map((resource) => normalizePath(resource.path)));
+
+  const discoveredFromHtml = initialResources
+    .filter((resource) => resource.ok && resource.isHtml && resource.body)
+    .flatMap((resource) => parseInternalLinksFromHtml(resource.finalUrl ?? resource.url, resource.body ?? '', normalizedUrl.origin));
+
+  const sitemapResource = initialResources.find((resource) => resource.path === '/sitemap.xml' && resource.ok);
+  const sitemapPaths = parseSitemapUrls(sitemapResource?.body, normalizedUrl.origin);
+
+  const discoveredCandidates = prioritizePaths(discoveredFromHtml, fetchedPathSet, DISCOVERED_FETCH_LIMIT);
+  const sitemapCandidates = prioritizePaths(sitemapPaths, fetchedPathSet, SITEMAP_FETCH_LIMIT);
+
+  const secondPassPaths = prioritizePaths(
+    [...discoveredCandidates, ...sitemapCandidates],
+    fetchedPathSet,
+    DISCOVERED_FETCH_LIMIT + SITEMAP_FETCH_LIMIT,
+  );
+
+  const secondPassResources = await Promise.all(
+    secondPassPaths.map((path) => {
+      const targetUrl = new URL(path, normalizedUrl).toString();
+      return fetchSingleResource(targetUrl, path, false, timeoutMs, maxBodyChars);
+    }),
+  );
+
+  const resources = [...initialResources, ...secondPassResources];
 
   const warnings = resources
     .filter((resource) => !resource.ok && resource.required)

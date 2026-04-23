@@ -1,4 +1,5 @@
 import { DetectedAssets, ExtractedSiteSignals } from '@/lib/types/ai-setup';
+import { parseRobotsTxt } from '@/lib/site/robots-utils';
 
 const AI_PAGE_PATTERNS = [/^\/ai(?:\/|$)/i, /^\/ai-info(?:\/|$)/i, /^\/ai-discovery(?:\/|$)/i];
 
@@ -16,6 +17,10 @@ function normalizePath(path: string): string {
 
 function hasSchemaType(schemaTypes: string[], target: string): boolean {
   return schemaTypes.some((schemaType) => schemaType.toLowerCase() === target.toLowerCase());
+}
+
+function hasCorePage(paths: Set<string>, pattern: RegExp): boolean {
+  return Array.from(paths).some((path) => pattern.test(path));
 }
 
 export function detectAssets(extracted: ExtractedSiteSignals): DetectedAssets {
@@ -48,17 +53,19 @@ export function detectAssets(extracted: ExtractedSiteSignals): DetectedAssets {
     corePagesFound.push('Homepage');
   }
 
-  if (fetchedPaths.has('/about') || fetchedPaths.has('/about-us')) {
+  if (hasCorePage(fetchedPaths, /^\/about(?:-us)?(?:\/|$)/i)) {
     corePagesFound.push('About');
   }
 
-  if (fetchedPaths.has('/services')) {
+  if (hasCorePage(fetchedPaths, /^\/(?:services?|solutions?)(?:\/|$)/i)) {
     corePagesFound.push('Services');
   }
 
-  if (fetchedPaths.has('/contact')) {
+  if (hasCorePage(fetchedPaths, /^\/(?:contact|get-in-touch)(?:\/|$)/i)) {
     corePagesFound.push('Contact');
   }
+
+  const robotsAnalysis = parseRobotsTxt(extracted.robotsTxt);
 
   const existingAssets: string[] = [];
 
@@ -67,7 +74,7 @@ export function detectAssets(extracted: ExtractedSiteSignals): DetectedAssets {
   }
 
   if (hasRobotsTxt) {
-    existingAssets.push('robots.txt detected');
+    existingAssets.push(`robots.txt detected (${robotsAnalysis.quality} structure)`);
   }
 
   if (hasSitemap) {
@@ -116,16 +123,32 @@ export function detectAssets(extracted: ExtractedSiteSignals): DetectedAssets {
     missingAssets.push('Service schema missing');
   }
 
+  if (robotsAnalysis.quality === 'invalid') {
+    missingAssets.push('robots.txt exists but has invalid structure and should be repaired');
+  }
+
+  if (robotsAnalysis.quality === 'incomplete') {
+    missingAssets.push('robots.txt exists but is missing complete crawl/sitemap directives');
+  }
+
   const recommendations: string[] = [
-    'Publish an AI info page that summarizes who you are, what you do, and who you serve.',
-    'Link the AI info page from the main navigation, footer, About page, and Services page.',
-    'Add or update Organization and WebSite schema with accurate brand and contact details.',
-    'Ensure robots.txt references your live sitemap URL and avoid blocking key brand pages.',
+    'Publish an AI info page that summarizes who you are, what you do, and who you serve with factual specificity.',
+    'Link the AI info page from footer, About, Services, and other high-crawl pages with descriptive anchor text.',
+    'Add or update Organization and WebSite schema using real company details and validate JSON-LD before publishing.',
+    'Use a merged robots.txt recommendation instead of overwriting blindly, and keep sitemap lines current.',
   ];
 
   if (!corePagesFound.includes('About')) {
-    recommendations.push('Strengthen your About page so AI systems can validate brand authority faster.');
+    recommendations.push('Strengthen your About page so AI systems can validate company identity and leadership context faster.');
   }
+
+  if (robotsAnalysis.quality !== 'valid') {
+    recommendations.push('Treat robots.txt as crawler guidance only; do not use it as security control for private URLs.');
+  }
+
+  robotsAnalysis.warnings.forEach((warning) => {
+    recommendations.push(`Robots note: ${warning}`);
+  });
 
   return {
     hasAiInfoPage,
@@ -136,6 +159,6 @@ export function detectAssets(extracted: ExtractedSiteSignals): DetectedAssets {
     aiPageCandidates: Array.from(aiPageCandidates),
     existingAssets,
     missingAssets,
-    recommendations,
+    recommendations: Array.from(new Set(recommendations)),
   };
 }
