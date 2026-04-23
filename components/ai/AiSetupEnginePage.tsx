@@ -133,19 +133,27 @@ const ONE_CLICK_OUTPUTS = [
   },
 ];
 
-const HERO_WIDGET_BARS = [
-  { label: 'Scan', value: 32 },
-  { label: 'Detect', value: 56 },
-  { label: 'Generate', value: 70 },
-  { label: 'Ship', value: 48 },
-];
+const IMPLEMENTATION_SCORE = 92;
 
-const HERO_SPARKLINE_POINTS = [8, 14, 12, 20, 18, 24, 22, 29];
-
-const HERO_WIDGET_KPIS = [
+const IMPLEMENTATION_SUMMARY_METRICS = [
   { label: 'Asset Pack', value: '6 Outputs' },
   { label: 'Delivery', value: 'Copy + Paste' },
   { label: 'Guides', value: '4 Platforms' },
+];
+
+const IMPLEMENTATION_BREAKDOWN = [
+  { label: 'Content Assets', value: 94 },
+  { label: 'Technical Files', value: 90 },
+  { label: 'Implementation Guides', value: 92 },
+];
+
+const IMPROVEMENT_TREND = [
+  { label: 'Baseline', score: 58 },
+  { label: 'Week 1', score: 64 },
+  { label: 'Week 2', score: 71 },
+  { label: 'Week 3', score: 79 },
+  { label: 'Week 4', score: 86 },
+  { label: 'Post Setup', score: 92 },
 ];
 
 const SIGNAL_COVERAGE = [
@@ -419,6 +427,59 @@ export default function AiSetupEnginePage() {
       OUTPUT_TAB_ORDER.map((tab) => [tab.value, textStats(buildTabCopyText(result, tab.value))]),
     );
   }, [result]);
+
+  const improvementTrendChart = useMemo(() => {
+    const width = 560;
+    const height = 220;
+    const paddingX = 28;
+    const paddingTop = 16;
+    const paddingBottom = 34;
+    const scores = IMPROVEMENT_TREND.map((point) => point.score);
+    const minScore = Math.min(...scores, 50);
+    const maxScore = Math.max(...scores, 100);
+    const scoreRange = Math.max(maxScore - minScore, 1);
+    const chartWidth = width - paddingX * 2;
+    const chartHeight = height - paddingTop - paddingBottom;
+    const stepX = IMPROVEMENT_TREND.length > 1 ? chartWidth / (IMPROVEMENT_TREND.length - 1) : 0;
+
+    const mapY = (score: number) => {
+      const ratio = (score - minScore) / scoreRange;
+      return paddingTop + (1 - ratio) * chartHeight;
+    };
+
+    const points = IMPROVEMENT_TREND.map((point, index) => ({
+      ...point,
+      x: paddingX + index * stepX,
+      y: mapY(point.score),
+    }));
+
+    const baselineY = height - paddingBottom;
+    const firstPoint = points[0] ?? { label: 'Baseline', score: 0, x: paddingX, y: baselineY };
+    const lastPoint = points[points.length - 1] ?? firstPoint;
+    const linePath = points.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ');
+    const areaPath =
+      points.length > 0
+        ? `${linePath} L ${lastPoint.x} ${baselineY} L ${firstPoint.x} ${baselineY} Z`
+        : '';
+
+    const gridScores = [minScore, minScore + scoreRange * 0.33, minScore + scoreRange * 0.66, maxScore].map((score) =>
+      Math.round(score),
+    );
+
+    const uniqueGridScores = Array.from(new Set(gridScores));
+
+    return {
+      width,
+      height,
+      points,
+      linePath,
+      areaPath,
+      uplift: lastPoint.score - firstPoint.score,
+      baseline: firstPoint.score,
+      latest: lastPoint.score,
+      gridLines: uniqueGridScores.map((score) => ({ score, y: mapY(score) })),
+    };
+  }, []);
 
   const scrollToInput = () => {
     inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -712,55 +773,143 @@ export default function AiSetupEnginePage() {
           <section className="relative z-10 px-4 pb-8">
             <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
               <Card className="border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Implementation Readiness</p>
-                <div className="mt-3 h-2 rounded-full bg-slate-200">
-                  <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" />
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Implementation Readiness</p>
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+                    High confidence
+                  </span>
                 </div>
-                <p className="mt-2 text-sm font-medium text-emerald-700">92% setup completeness on first pass</p>
 
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {HERO_WIDGET_KPIS.map((metric) => (
-                    <div key={metric.label} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700">
-                      <span className="font-semibold text-slate-900">{metric.value}</span>
-                      <span className="mx-1 text-slate-400">·</span>
-                      <span>{metric.label}</span>
+                <div className="mt-4 grid gap-4 sm:grid-cols-[120px,1fr] sm:items-center">
+                  <div className="relative mx-auto h-28 w-28">
+                    <div
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: `conic-gradient(rgb(16 185 129) ${IMPLEMENTATION_SCORE * 3.6}deg, rgb(226 232 240) 0deg)`,
+                      }}
+                    />
+                    <div className="absolute inset-[8px] flex items-center justify-center rounded-full bg-white shadow-inner">
+                      <div className="text-center">
+                        <p className="text-2xl font-extrabold text-slate-950">{IMPLEMENTATION_SCORE}%</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">First pass</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-medium text-emerald-700">Setup completeness after one run</p>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                      Structured outputs are ready to deploy with minimal edits across content assets, technical files, and platform guides.
+                    </p>
+                    <div className="mt-3 space-y-2.5">
+                      {IMPLEMENTATION_BREAKDOWN.map((item) => (
+                        <div key={item.label}>
+                          <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                            <span>{item.label}</span>
+                            <span className="text-slate-700">{item.value}%</span>
+                          </div>
+                          <div className="mt-1.5 h-2.5 rounded-full bg-slate-200/90">
+                            <div
+                              className="h-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400"
+                              style={{ width: `${item.value}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                  {IMPLEMENTATION_SUMMARY_METRICS.map((metric) => (
+                    <div key={metric.label} className="rounded-xl border border-slate-200 bg-white/90 p-2.5">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">{metric.label}</p>
+                      <p className="mt-1 text-sm font-bold text-slate-950">{metric.value}</p>
                     </div>
                   ))}
                 </div>
               </Card>
 
               <Card className="border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Custom Output Widgets</p>
-                <div className="mt-2 h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5">
-                  <svg viewBox="0 0 140 34" className="h-full w-full">
-                    <polyline
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Discovery Improvement Trend</p>
+                  <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-700">
+                    +{improvementTrendChart.uplift} point uplift
+                  </span>
+                </div>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Forecasted readiness improvement from baseline to post-setup once the generated assets are published.
+                </p>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-3 shadow-inner">
+                  <svg viewBox={`0 0 ${improvementTrendChart.width} ${improvementTrendChart.height}`} className="h-52 w-full">
+                    <defs>
+                      <linearGradient id="ai-setup-trend-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="rgb(59 130 246 / 0.32)" />
+                        <stop offset="100%" stopColor="rgb(59 130 246 / 0.05)" />
+                      </linearGradient>
+                    </defs>
+
+                    {improvementTrendChart.gridLines.map((line) => (
+                      <g key={`grid-${line.score}`}>
+                        <line
+                          x1="26"
+                          y1={line.y}
+                          x2={improvementTrendChart.width - 26}
+                          y2={line.y}
+                          stroke="rgb(226 232 240)"
+                          strokeDasharray="4 4"
+                        />
+                        <text x="6" y={line.y + 3} className="fill-slate-400 text-[10px] font-medium">
+                          {line.score}
+                        </text>
+                      </g>
+                    ))}
+
+                    {improvementTrendChart.areaPath && (
+                      <path d={improvementTrendChart.areaPath} fill="url(#ai-setup-trend-fill)" />
+                    )}
+                    <path
+                      d={improvementTrendChart.linePath}
                       fill="none"
                       stroke="rgb(15 23 42)"
-                      strokeWidth="2.5"
-                      points={HERO_SPARKLINE_POINTS.map((point, pointIndex) => `${pointIndex * 18},${34 - point}`).join(' ')}
+                      strokeWidth="3.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
-                    {HERO_SPARKLINE_POINTS.map((point, pointIndex) => (
-                      <circle
-                        key={`${pointIndex}-${point}`}
-                        cx={pointIndex * 18}
-                        cy={34 - point}
-                        r="1.8"
-                        fill={pointIndex > HERO_SPARKLINE_POINTS.length - 3 ? 'rgb(34 197 94)' : 'rgb(148 163 184)'}
-                      />
+
+                    {improvementTrendChart.points.map((point, index) => (
+                      <g key={point.label}>
+                        <circle
+                          cx={point.x}
+                          cy={point.y}
+                          r={index === improvementTrendChart.points.length - 1 ? 5 : 4}
+                          fill={index === improvementTrendChart.points.length - 1 ? 'rgb(16 185 129)' : 'rgb(15 23 42)'}
+                          stroke="white"
+                          strokeWidth="2"
+                        />
+                        <text x={point.x} y={improvementTrendChart.height - 8} textAnchor="middle" className="fill-slate-500 text-[10px] font-medium">
+                          {point.label}
+                        </text>
+                      </g>
                     ))}
                   </svg>
                 </div>
 
-                <div className="mt-3 flex h-12 items-end gap-1">
-                  {HERO_WIDGET_BARS.map((bar, barIndex) => (
-                    <div key={bar.label} className="flex flex-1 flex-col items-center gap-1">
-                      <div
-                        className="w-full rounded-sm bg-gradient-to-t from-slate-900 to-slate-500 animate-[pulse_5s_ease-in-out_infinite]"
-                        style={{ height: `${bar.value}%`, animationDelay: `${barIndex * 0.35}s` }}
-                      />
-                      <p className="text-[9px] uppercase tracking-wide text-slate-500">{bar.label}</p>
-                    </div>
-                  ))}
+                <div className="mt-3 grid grid-cols-3 gap-2">
+                  <div className="rounded-xl border border-slate-200 bg-white/90 p-2.5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Baseline</p>
+                    <p className="mt-1 text-sm font-bold text-slate-900">{improvementTrendChart.baseline}%</p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white/90 p-2.5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Post Setup</p>
+                    <p className="mt-1 text-sm font-bold text-slate-900">{improvementTrendChart.latest}%</p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white/90 p-2.5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Net Gain</p>
+                    <p className="mt-1 text-sm font-bold text-emerald-700">+{improvementTrendChart.uplift} points</p>
+                  </div>
                 </div>
               </Card>
             </div>
