@@ -9,6 +9,18 @@ This file is the running record of all work completed in Codex for this reposito
 
 ## Session Entries
 
+### 2026-04-23 08:48 BST
+- Redesigned `/ai-setup` to use the original shared website `Header` and `Footer` components.
+- Reworked page hierarchy and copy to a more technical enterprise product narrative: clearer setup-engine positioning, technical capability sections, execution flow, and delivery standards.
+- Upgraded visual structure toward premium enterprise styling while preserving existing generation workflow, tabs, and lead-gate functionality.
+- Next step: review live look/feel and tune copy density and spacing based on your feedback.
+
+### 2026-04-22 21:40 BST
+- Updated secret handling workflow for production: added `.env` ignore rules and introduced `.env.example` template.
+- Removed `.env.local` from Git tracking so API keys remain local and out of the repository history going forward.
+- Committed and pushed AI Setup Engine implementation to `main` (`c69e142`) so deployment runs through GitHub-connected hosting.
+- Next step: set `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` in Netlify env vars and trigger/confirm production deploy.
+
 ### 2026-04-22 21:06 BST
 - Built a new production-ready AI Setup Engine page at `/ai-setup` with premium dark styling aligned to Total Authority brand direction.
 - Implemented end-to-end flow: URL input, staged loading experience, setup-focused results summary, premium output tabs, and lead-gated full export actions.

@@ -5,20 +5,29 @@ import Link from 'next/link';
 import {
   ArrowRight,
   Bot,
+  Building2,
   CheckCircle2,
   Clipboard,
   ClipboardCheck,
+  Cpu,
+  Database,
   Download,
   FileCode2,
   FileText,
   Globe,
+  Layers,
   Loader2,
   Lock,
   Network,
   Rocket,
+  ShieldCheck,
   Sparkles,
+  TerminalSquare,
   WandSparkles,
+  Workflow,
 } from 'lucide-react';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { FormPopup } from '@/components/FormPopup';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { Button } from '@/components/ui/button';
@@ -45,6 +54,57 @@ const OUTPUT_TAB_ORDER = [
   { value: 'optionalExtras', label: 'Optional Extras', icon: Sparkles },
 ] as const;
 
+const TECHNICAL_CAPABILITIES = [
+  {
+    title: 'Deterministic Signal Extraction',
+    description:
+      'Collects key site signals from core URLs, metadata, headings, schema, canonical tags, internal links, robots, and sitemap.',
+    icon: Database,
+  },
+  {
+    title: 'Setup Gap Detection',
+    description:
+      'Maps what already exists versus what is missing for AI discovery readiness, then prioritizes practical implementation actions.',
+    icon: Layers,
+  },
+  {
+    title: 'Implementation-Ready Asset Generation',
+    description:
+      'Produces deployable AI page copy, robots recommendations, schema suggestions, linking strategy, and platform-specific handoff instructions.',
+    icon: Workflow,
+  },
+];
+
+const ENGINE_FLOW = [
+  {
+    step: '01',
+    title: 'Targeted Website Scan',
+    description: 'Fetches homepage and core routes including about/services/contact, plus robots.txt and sitemap.xml when available.',
+  },
+  {
+    step: '02',
+    title: 'Technical Signal Parsing',
+    description: 'Extracts title/meta/headings, visible text, internal links, canonical references, and JSON-LD schema blocks.',
+  },
+  {
+    step: '03',
+    title: 'Setup Gap Identification',
+    description: 'Classifies existing assets, missing assets, and immediate setup opportunities without presenting a generic audit experience.',
+  },
+  {
+    step: '04',
+    title: 'Generated Asset Pack',
+    description: 'Creates AI Info Page, robots recommendations, schema suggestions, internal linking plan, and implementation guide.',
+  },
+];
+
+const ENTERPRISE_STANDARDS = [
+  'Graceful partial-result handling when some pages are blocked or unavailable',
+  'Model-backed generation with rule-based fallback for reliability',
+  'Structured outputs designed for direct implementation and dev handoff',
+  'Commercially oriented content that avoids overclaiming outcomes',
+];
+
 type OutputTabValue = (typeof OUTPUT_TAB_ORDER)[number]['value'];
 
 function maskContent(content: string, unlocked: boolean, maxLength = 1_250): string {
@@ -52,7 +112,7 @@ function maskContent(content: string, unlocked: boolean, maxLength = 1_250): str
     return content;
   }
 
-  return `${content.slice(0, maxLength)}\n\n[Preview only — unlock full output to copy/export this section.]`;
+  return `${content.slice(0, maxLength)}\n\n[Preview only - unlock full output to copy/export this section.]`;
 }
 
 function internalLinkingToText(links: InternalLinkSuggestion[]): string {
@@ -148,7 +208,10 @@ function renderGuideCards(guide: ImplementationGuide) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {cards.map((card) => (
-        <div key={card.title} className="rounded-xl border border-slate-700/80 bg-slate-950/70 p-5">
+        <div
+          key={card.title}
+          className="rounded-xl border border-slate-700/80 bg-gradient-to-br from-slate-900 to-slate-950 p-5"
+        >
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-300">{card.title}</p>
           <ol className="mt-3 space-y-2 text-sm text-slate-200">
             {card.steps.map((step, index) => (
@@ -193,12 +256,12 @@ export default function AiSetupEnginePage() {
 
   const generatedAssetsList = useMemo(
     () => [
-      'AI Info Page draft',
-      'Recommended robots.txt update',
-      'Schema JSON-LD suggestions',
-      'Internal linking plan',
-      'Platform implementation guide',
-      'Optional llms.txt + agents.md templates',
+      'AI Info Page draft optimized for machine readability',
+      'Recommended robots.txt update with sitemap directives',
+      'Schema JSON-LD suggestions (Organization/WebSite/Service)',
+      'Internal linking deployment plan for authority transfer',
+      'Platform implementation guide for WordPress/Webflow/Shopify/Custom',
+      'Optional llms.txt + agents.md future-facing templates',
     ],
     [],
   );
@@ -321,221 +384,291 @@ export default function AiSetupEnginePage() {
 
   return (
     <>
-      <div className="relative min-h-screen overflow-hidden bg-[#05070d] text-slate-100">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-56 left-1/2 h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-orange-500/20 blur-[140px]" />
-          <div className="absolute right-[-10rem] top-1/3 h-[20rem] w-[20rem] rounded-full bg-blue-500/20 blur-[110px]" />
-          <div className="absolute bottom-[-8rem] left-[-8rem] h-[18rem] w-[18rem] rounded-full bg-orange-300/15 blur-[90px]" />
-        </div>
-        <header className="sticky top-0 z-40 border-b border-slate-800/90 bg-[#05070d]/95 backdrop-blur">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="relative flex h-10 w-10 items-center justify-center">
-                <div className="absolute inset-0 rounded-full border border-orange-300/40" />
-                <div className="relative h-7 w-7 rounded-full bg-gradient-to-br from-orange-400 to-orange-600">
-                  <div className="absolute left-1.5 top-2 h-1.5 w-1.5 rounded-full bg-white" />
-                  <div className="absolute right-1.5 top-2 h-1.5 w-1.5 rounded-full bg-white" />
-                  <div className="absolute bottom-1.5 left-1/2 h-0.5 w-2 -translate-x-1/2 rounded-full bg-white/90" />
-                </div>
-              </div>
-              <div>
-                <p className="text-lg font-black leading-none text-white">
-                  Total<span className="text-orange-400">Authority</span>
-                </p>
-                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-400">AI Visibility</p>
-              </div>
-            </Link>
+      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-[#05070d] text-slate-100">
+        <Header onOpenForm={openForm} />
 
-            <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-              <Link href="/about" className="transition hover:text-white">
-                About
-              </Link>
-              <Link href="/blog" className="transition hover:text-white">
-                Blog
-              </Link>
-              <Link href="/strategy-blueprint" className="transition hover:text-white">
-                Strategy
-              </Link>
-            </nav>
-
-            <Button
-              size="sm"
-              onClick={openForm}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-400 hover:to-orange-500"
-            >
-              Talk to Team
-            </Button>
+        <main className="relative overflow-hidden pb-20">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-72 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-orange-500/20 blur-[140px]" />
+            <div className="absolute right-[-8rem] top-36 h-[16rem] w-[16rem] rounded-full bg-blue-500/25 blur-[100px]" />
+            <div className="absolute bottom-[-7rem] left-[-7rem] h-[18rem] w-[18rem] rounded-full bg-cyan-500/20 blur-[95px]" />
           </div>
-        </header>
 
-        <main className="relative z-10">
-          <section className="px-4 pb-8 pt-16 md:pt-24">
-            <div className="mx-auto max-w-6xl text-center">
-              <p className="mx-auto inline-flex items-center rounded-full border border-orange-400/40 bg-orange-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-200">
-                AI Discovery Setup Engine
-              </p>
-              <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-black leading-tight text-white md:text-6xl">
-                Set up your website for AI discovery in one click
-              </h1>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">
-                Scan your site and generate the pages, files, and setup instructions that help AI systems understand
-                your business.
-              </p>
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button
-                  onClick={scrollToInput}
-                  size="lg"
-                  className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 text-base font-semibold text-white shadow-[0_0_35px_rgba(249,115,22,0.35)] hover:from-orange-400 hover:to-orange-500"
-                >
-                  Generate My AI Setup
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <p className="text-sm text-slate-400">
-                  Generate the key AI visibility assets businesses are adding right now, all in one flow.
+          <section className="relative z-10 px-4 pb-14 pt-14 md:pt-20">
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+              <div>
+                <p className="inline-flex items-center gap-2 rounded-full border border-orange-400/45 bg-orange-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-orange-200">
+                  <Cpu className="h-3.5 w-3.5" />
+                  Enterprise AI Discovery Setup Engine
                 </p>
-              </div>
-            </div>
-          </section>
+                <h1 className="mt-6 max-w-4xl text-4xl font-black leading-tight text-white md:text-6xl">
+                  Set up your website for AI discovery in one click
+                </h1>
+                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200 md:text-xl">
+                  This engine scans your core web assets, identifies missing AI discovery setup components, and generates
+                  implementation-ready outputs your team can ship immediately.
+                </p>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-300 md:text-base">
+                  It is a setup system, not a generic audit dashboard. You get deployable assets: AI Info Page content,
+                  robots guidance, schema suggestions, internal linking recommendations, and platform-specific
+                  implementation instructions.
+                </p>
 
-          <section className="px-4 pb-10">
-            <div className="mx-auto grid max-w-6xl gap-4 rounded-2xl border border-slate-700/70 bg-slate-900/65 p-4 md:grid-cols-3 md:p-6">
-              {[
-                'Built for setup execution, not vanity reporting',
-                'Outputs aligned for AI clarity and implementation speed',
-                'Designed for commercial credibility and brand authority',
-              ].map((line) => (
-                <div key={line} className="flex items-start gap-3 rounded-xl border border-slate-700/70 bg-slate-950/65 p-4">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-orange-300" />
-                  <p className="text-sm text-slate-200">{line}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section ref={inputRef} className="px-4 pb-12">
-            <div className="mx-auto max-w-5xl">
-              <Card className="border border-slate-700/70 bg-slate-900/80 p-6 shadow-2xl shadow-black/30 backdrop-blur md:p-8">
-                <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Input</p>
-                  <h2 className="mt-2 text-3xl font-bold text-white">Build your AI setup pack</h2>
-                  <p className="mt-2 text-sm text-slate-300">
-                    Enter your site and we will generate implementation-ready assets you can deploy quickly.
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Button
+                    onClick={scrollToInput}
+                    size="lg"
+                    className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 text-base font-semibold text-white shadow-[0_0_34px_rgba(249,115,22,0.35)] hover:from-orange-400 hover:to-orange-500"
+                  >
+                    Generate My AI Setup
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <p className="text-sm text-slate-300">
+                    Built for teams who need technical clarity and implementation speed.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid gap-5 md:grid-cols-2">
-                    <div className="space-y-2 md:col-span-2">
-                      <Label htmlFor="website-url" className="text-slate-200">
-                        Website URL (required)
-                      </Label>
-                      <Input
-                        id="website-url"
-                        type="url"
-                        required
-                        placeholder="https://yourwebsite.com"
-                        value={formValues.url}
-                        onChange={(event) =>
-                          setFormValues((current) => ({
-                            ...current,
-                            url: event.target.value,
-                          }))
-                        }
-                        className="h-12 border-slate-600 bg-slate-950/80 text-white placeholder:text-slate-400"
-                      />
-                    </div>
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/65 p-4">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Scan Scope</p>
+                    <p className="mt-2 text-sm text-slate-200">Core pages + robots + sitemap + schema signals</p>
+                  </div>
+                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/65 p-4">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Output Type</p>
+                    <p className="mt-2 text-sm text-slate-200">Implementation-ready setup pack, not high-level commentary</p>
+                  </div>
+                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/65 p-4">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Delivery</p>
+                    <p className="mt-2 text-sm text-slate-200">Copy/export/download format for handoff and deployment</p>
+                  </div>
+                </div>
+              </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="brand-name" className="text-slate-200">
-                        Brand name (optional)
-                      </Label>
-                      <Input
-                        id="brand-name"
-                        placeholder="Total Authority"
-                        value={formValues.brandName}
-                        onChange={(event) =>
-                          setFormValues((current) => ({
-                            ...current,
-                            brandName: event.target.value,
-                          }))
-                        }
-                        className="h-12 border-slate-600 bg-slate-950/80 text-white placeholder:text-slate-400"
-                      />
+              <Card className="border border-slate-700/80 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-950/95 p-6 shadow-2xl shadow-black/40 md:p-8">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-orange-300">
+                  <TerminalSquare className="h-4 w-4" />
+                  What this engine does
+                </p>
+                <div className="mt-4 space-y-4">
+                  {ENGINE_FLOW.map((item) => (
+                    <div key={item.step} className="rounded-xl border border-slate-700/70 bg-slate-950/70 p-4">
+                      <div className="flex items-center gap-3">
+                        <span className="rounded-md border border-orange-400/40 bg-orange-500/15 px-2 py-1 text-xs font-semibold text-orange-200">
+                          {item.step}
+                        </span>
+                        <p className="text-sm font-semibold text-white">{item.title}</p>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
                     </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </section>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="country" className="text-slate-200">
-                        Country (optional)
-                      </Label>
-                      <Input
-                        id="country"
-                        placeholder="United Kingdom"
-                        value={formValues.country}
-                        onChange={(event) =>
-                          setFormValues((current) => ({
-                            ...current,
-                            country: event.target.value,
-                          }))
-                        }
-                        className="h-12 border-slate-600 bg-slate-950/80 text-white placeholder:text-slate-400"
-                      />
+          <section className="relative z-10 px-4 pb-10">
+            <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-3">
+              {TECHNICAL_CAPABILITIES.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Card
+                    key={item.title}
+                    className="border border-slate-700/80 bg-gradient-to-br from-slate-900/80 to-slate-950/80 p-6"
+                  >
+                    <div className="inline-flex rounded-lg border border-orange-400/30 bg-orange-500/10 p-2">
+                      <Icon className="h-5 w-5 text-orange-300" />
                     </div>
+                    <h3 className="mt-4 text-lg font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
+                  </Card>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="relative z-10 px-4 pb-12">
+            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+              <Card className="border border-slate-700/80 bg-slate-900/80 p-6 md:p-8">
+                <p className="text-xs uppercase tracking-[0.18em] text-orange-300">Technical Positioning</p>
+                <h2 className="mt-3 text-2xl font-bold text-white md:text-3xl">
+                  A setup platform for AI discovery clarity, not another reporting screen
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-slate-300 md:text-base">
+                  Most tools stop at scorecards. This workflow generates the exact pages, files, and implementation
+                  instructions your team needs to improve machine understanding of your brand identity, services, and
+                  authority signals.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
+                  The output is structured for execution: content blocks for the AI page, robots recommendations,
+                  schema snippets, internal linking placements, and CMS-specific deployment instructions.
+                </p>
+              </Card>
+
+              <Card className="border border-slate-700/80 bg-slate-900/80 p-6 md:p-8">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-orange-300">
+                  <ShieldCheck className="h-4 w-4" />
+                  Delivery Standards
+                </p>
+                <ul className="mt-4 space-y-3 text-sm text-slate-200">
+                  {ENTERPRISE_STANDARDS.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-green-300" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </div>
+          </section>
+
+          <section ref={inputRef} className="relative z-10 px-4 pb-12">
+            <div className="mx-auto max-w-6xl">
+              <Card className="border border-slate-700/80 bg-gradient-to-br from-slate-900/90 to-slate-950/90 p-6 shadow-2xl shadow-black/40 md:p-8">
+                <div className="mb-6 flex flex-col gap-2">
+                  <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Configuration Console</p>
+                  <h2 className="text-3xl font-bold text-white">Build your AI setup pack</h2>
+                  <p className="text-sm text-slate-300 md:text-base">
+                    Provide your site context. We run the setup engine and return a deployment-ready pack your team can
+                    copy, export, and implement immediately.
+                  </p>
+                </div>
+
+                <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+                  <div>
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                      <div className="grid gap-5 md:grid-cols-2">
+                        <div className="space-y-2 md:col-span-2">
+                          <Label htmlFor="website-url" className="text-slate-200">
+                            Website URL (required)
+                          </Label>
+                          <Input
+                            id="website-url"
+                            type="url"
+                            required
+                            placeholder="https://yourwebsite.com"
+                            value={formValues.url}
+                            onChange={(event) =>
+                              setFormValues((current) => ({
+                                ...current,
+                                url: event.target.value,
+                              }))
+                            }
+                            className="h-12 border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="brand-name" className="text-slate-200">
+                            Brand name (optional)
+                          </Label>
+                          <Input
+                            id="brand-name"
+                            placeholder="Total Authority"
+                            value={formValues.brandName}
+                            onChange={(event) =>
+                              setFormValues((current) => ({
+                                ...current,
+                                brandName: event.target.value,
+                              }))
+                            }
+                            className="h-12 border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="country" className="text-slate-200">
+                            Country (optional)
+                          </Label>
+                          <Input
+                            id="country"
+                            placeholder="United Kingdom"
+                            value={formValues.country}
+                            onChange={(event) =>
+                              setFormValues((current) => ({
+                                ...current,
+                                country: event.target.value,
+                              }))
+                            }
+                            className="h-12 border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="description" className="text-slate-200">
+                          Short description (optional)
+                        </Label>
+                        <Textarea
+                          id="description"
+                          placeholder="What you do and who you help in one or two lines"
+                          value={formValues.shortDescription}
+                          onChange={(event) =>
+                            setFormValues((current) => ({
+                              ...current,
+                              shortDescription: event.target.value,
+                            }))
+                          }
+                          className="min-h-[110px] border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <p className="text-xs text-slate-400">
+                          Partial result handling is enabled when selected pages cannot be fetched.
+                        </p>
+                        <Button
+                          type="submit"
+                          disabled={isLoading}
+                          className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 font-semibold text-white hover:from-orange-400 hover:to-orange-500"
+                        >
+                          {isLoading ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Building setup
+                            </>
+                          ) : (
+                            <>
+                              Build My AI Setup
+                              <WandSparkles className="ml-2 h-4 w-4" />
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </form>
+
+                    {apiError && (
+                      <div className="mt-5 rounded-xl border border-red-400/40 bg-red-950/40 p-4 text-sm text-red-200">
+                        {apiError}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="description" className="text-slate-200">
-                      Short description (optional)
-                    </Label>
-                    <Textarea
-                      id="description"
-                      placeholder="What you do and who you help in one or two lines"
-                      value={formValues.shortDescription}
-                      onChange={(event) =>
-                        setFormValues((current) => ({
-                          ...current,
-                          shortDescription: event.target.value,
-                        }))
-                      }
-                      className="min-h-[110px] border-slate-600 bg-slate-950/80 text-white placeholder:text-slate-400"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-xs text-slate-400">
-                      We return partial results gracefully if any page cannot be fetched.
+                  <div className="rounded-2xl border border-slate-700/80 bg-slate-950/70 p-5">
+                    <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-orange-300">
+                      <Building2 className="h-4 w-4" />
+                      Included in this run
                     </p>
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 font-semibold text-white hover:from-orange-400 hover:to-orange-500"
-                    >
-                      {isLoading ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Building setup
-                        </>
-                      ) : (
-                        <>
-                          Build My AI Setup
-                          <WandSparkles className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
+                    <ul className="mt-4 space-y-2 text-sm text-slate-200">
+                      {generatedAssetsList.map((item) => (
+                        <li key={item} className="flex gap-2">
+                          <Sparkles className="mt-0.5 h-4 w-4 text-blue-300" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-5 rounded-xl border border-slate-700 bg-slate-900/80 p-4 text-xs leading-relaxed text-slate-300">
+                      Recommended output path for the primary asset: <span className="font-semibold text-white">/ai</span> or{' '}
+                      <span className="font-semibold text-white">/ai-info</span>.
+                    </div>
                   </div>
-                </form>
-
-                {apiError && (
-                  <div className="mt-5 rounded-xl border border-red-400/40 bg-red-950/40 p-4 text-sm text-red-200">
-                    {apiError}
-                  </div>
-                )}
+                </div>
               </Card>
             </div>
           </section>
 
           {isLoading && (
-            <section className="px-4 pb-14">
-              <div className="mx-auto max-w-5xl rounded-2xl border border-slate-700/70 bg-slate-900/80 p-6 md:p-8">
+            <section className="relative z-10 px-4 pb-14">
+              <div className="mx-auto max-w-5xl rounded-2xl border border-slate-700/70 bg-slate-900/85 p-6 md:p-8">
                 <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Generating</p>
                 <h3 className="mt-2 text-2xl font-bold text-white">Building your AI setup pack</h3>
                 <div className="mt-6 space-y-3">
@@ -573,9 +706,9 @@ export default function AiSetupEnginePage() {
           )}
 
           {result && (
-            <section ref={resultsRef} className="px-4 pb-16">
+            <section ref={resultsRef} className="relative z-10 px-4 pb-16">
               <div className="mx-auto max-w-6xl space-y-8">
-                <Card className="border border-slate-700/70 bg-slate-900/80 p-6 md:p-8">
+                <Card className="border border-slate-700/70 bg-slate-900/85 p-6 md:p-8">
                   <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                     <div>
                       <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Setup Summary</p>
@@ -594,7 +727,9 @@ export default function AiSetupEnginePage() {
                     <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
                       <p className="text-xs uppercase tracking-wider text-slate-400">What already exists</p>
                       <ul className="mt-3 space-y-2 text-sm text-slate-200">
-                        {(result.summary.existingAssets.length > 0 ? result.summary.existingAssets : ['No major setup assets detected yet.']).map((item) => (
+                        {(result.summary.existingAssets.length > 0
+                          ? result.summary.existingAssets
+                          : ['No major setup assets detected yet.']).map((item) => (
                           <li key={item} className="flex gap-2">
                             <CheckCircle2 className="mt-0.5 h-4 w-4 text-green-300" />
                             <span>{item}</span>
@@ -643,7 +778,7 @@ export default function AiSetupEnginePage() {
                   </div>
                 </Card>
 
-                <Card className="border border-slate-700/70 bg-slate-900/80 p-6 md:p-8">
+                <Card className="border border-slate-700/70 bg-slate-900/85 p-6 md:p-8">
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
                       <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Output Tabs</p>
@@ -656,11 +791,7 @@ export default function AiSetupEnginePage() {
                       </div>
                     ) : (
                       <div className="flex flex-wrap gap-2">
-                        <Button
-                          onClick={copyAll}
-                          size="sm"
-                          className="bg-slate-100 text-slate-900 hover:bg-white"
-                        >
+                        <Button onClick={copyAll} size="sm" className="bg-slate-100 text-slate-900 hover:bg-white">
                           {copiedKey === 'copy-all' ? (
                             <>
                               <ClipboardCheck className="mr-2 h-4 w-4" />
@@ -673,11 +804,7 @@ export default function AiSetupEnginePage() {
                             </>
                           )}
                         </Button>
-                        <Button
-                          onClick={downloadPack}
-                          size="sm"
-                          className="bg-orange-500 text-white hover:bg-orange-400"
-                        >
+                        <Button onClick={downloadPack} size="sm" className="bg-orange-500 text-white hover:bg-orange-400">
                           <Download className="mr-2 h-4 w-4" />
                           Download Pack
                         </Button>
@@ -867,8 +994,13 @@ export default function AiSetupEnginePage() {
 
                         <div className="space-y-3">
                           {result.assets.internalLinking.map((item, index) => (
-                            <div key={`${item.fromPage}-${index}`} className="rounded-lg border border-slate-700 bg-[#03050a] p-4 text-sm text-slate-200">
-                              <p className="font-semibold text-white">{index + 1}. {item.fromPage}</p>
+                            <div
+                              key={`${item.fromPage}-${index}`}
+                              className="rounded-lg border border-slate-700 bg-[#03050a] p-4 text-sm text-slate-200"
+                            >
+                              <p className="font-semibold text-white">
+                                {index + 1}. {item.fromPage}
+                              </p>
                               <p className="mt-1">
                                 <span className="text-slate-400">Anchor: </span>
                                 <span className="text-orange-200">{item.anchorText}</span>
@@ -972,7 +1104,11 @@ export default function AiSetupEnginePage() {
                     <Link href="/strategy-blueprint">
                       <Button className="bg-orange-500 text-white hover:bg-orange-400">Book Strategy Call</Button>
                     </Link>
-                    <Button variant="outline" onClick={openForm} className="border-slate-300 bg-transparent text-white hover:bg-slate-800">
+                    <Button
+                      variant="outline"
+                      onClick={openForm}
+                      className="border-slate-300 bg-transparent text-white hover:bg-slate-800"
+                    >
                       Talk to the Team
                     </Button>
                   </div>
@@ -982,27 +1118,7 @@ export default function AiSetupEnginePage() {
           )}
         </main>
 
-        <footer className="relative z-10 border-t border-slate-800/80 bg-[#04060b] px-4 py-12">
-          <div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-xl font-bold text-white">TotalAuthority</p>
-              <p className="mt-2 max-w-xl text-sm text-slate-400">
-                Practical AI discovery setup for businesses that want stronger visibility and clearer brand signals.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4 text-sm text-slate-300">
-              <Link href="/privacy-policy" className="transition hover:text-white">
-                Privacy
-              </Link>
-              <Link href="/terms-of-service" className="transition hover:text-white">
-                Terms
-              </Link>
-              <Link href="/cookie-policy" className="transition hover:text-white">
-                Cookies
-              </Link>
-            </div>
-          </div>
-        </footer>
+        <Footer onOpenForm={openForm} />
       </div>
 
       <FormPopup isOpen={isOpen} onClose={closeForm} />
