@@ -720,12 +720,6 @@ export default function AiSetupEnginePage() {
 
           <section className="relative z-10 px-4 pb-10">
             <div className="mx-auto max-w-4xl">
-              <div className="mb-4 flex items-center justify-center">
-                <span className="inline-flex items-center rounded-full bg-orange-500 px-5 py-2 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-orange-200">
-                  Get Started Here
-                </span>
-              </div>
-
               <form
                 onSubmit={handleQuickUrlSubmit}
                 className="rounded-3xl border-2 border-orange-300 bg-white p-4 shadow-2xl shadow-orange-200/60 backdrop-blur-xl"
