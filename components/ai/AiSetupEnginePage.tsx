@@ -20,7 +20,6 @@ import {
   Layers,
   LineChart,
   Loader2,
-  Lock,
   Network,
   Rocket,
   ShieldCheck,
@@ -192,12 +191,12 @@ const OUTPUT_METRICS = [
 
 type OutputTabValue = (typeof OUTPUT_TAB_ORDER)[number]['value'];
 
-function maskContent(content: string, unlocked: boolean, maxLength = 1_250): string {
-  if (unlocked || content.length <= maxLength) {
+function maskContent(content: string, maxLength = 1_250): string {
+  if (content.length <= maxLength) {
     return content;
   }
 
-  return `${content.slice(0, maxLength)}\n\n[Preview only - unlock full output to copy/export this section.]`;
+  return `${content.slice(0, maxLength)}\n\n[Preview truncated for readability.]`;
 }
 
 function internalLinkingToText(links: InternalLinkSuggestion[]): string {
@@ -328,14 +327,6 @@ export default function AiSetupEnginePage() {
   const [result, setResult] = useState<AiSetupResponse | null>(null);
   const [activeTab, setActiveTab] = useState<OutputTabValue>('aiInfoPage');
 
-  const [leadValues, setLeadValues] = useState({
-    name: '',
-    email: '',
-    company: '',
-  });
-  const [leadError, setLeadError] = useState<string | null>(null);
-  const [isUnlocked, setIsUnlocked] = useState(false);
-
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [quickWebsiteUrl, setQuickWebsiteUrl] = useState('');
   const [quickInputError, setQuickInputError] = useState<string | null>(null);
@@ -457,8 +448,6 @@ export default function AiSetupEnginePage() {
     setIsLoading(true);
     setApiError(null);
     setResult(null);
-    setIsUnlocked(false);
-    setLeadError(null);
     setCopiedKey(null);
     setLoadingStepIndex(0);
 
@@ -496,35 +485,38 @@ export default function AiSetupEnginePage() {
     }
   };
 
-  const unlockResults = () => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!leadValues.name.trim() || !leadValues.email.trim() || !leadValues.company.trim()) {
-      setLeadError('Please fill in your name, email, and company to unlock full export.');
-      return;
-    }
-
-    if (!emailPattern.test(leadValues.email.trim())) {
-      setLeadError('Please enter a valid email address.');
-      return;
-    }
-
-    setLeadError(null);
-    setIsUnlocked(true);
-  };
-
   const copyToClipboard = async (text: string, key: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedKey(key);
       window.setTimeout(() => setCopiedKey((current) => (current === key ? null : current)), 1800);
     } catch {
-      setApiError('Clipboard copy failed in this browser. You can still copy manually.');
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        const copied = document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        if (!copied) {
+          throw new Error('copy_failed');
+        }
+
+        setCopiedKey(key);
+        window.setTimeout(() => setCopiedKey((current) => (current === key ? null : current)), 1800);
+      } catch {
+        setApiError('Clipboard copy failed in this browser. You can still copy manually.');
+      }
     }
   };
 
   const copyTab = async (tab: OutputTabValue) => {
-    if (!result || !isUnlocked) {
+    if (!result) {
       return;
     }
 
@@ -532,7 +524,7 @@ export default function AiSetupEnginePage() {
   };
 
   const copyAll = async () => {
-    if (!result || !isUnlocked) {
+    if (!result) {
       return;
     }
 
@@ -540,7 +532,7 @@ export default function AiSetupEnginePage() {
   };
 
   const downloadPack = () => {
-    if (!result || !isUnlocked) {
+    if (!result) {
       return;
     }
 
@@ -1070,7 +1062,7 @@ export default function AiSetupEnginePage() {
                     <div className="rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm text-slate-700 shadow-sm backdrop-blur">
                       <p>
                         Generation mode:{' '}
-                        {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rule-based fallback'}
+                        {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rules-only (fallback mode)'}
                       </p>
                       {result.meta.partial && <p className="mt-1 text-slate-600">Partial fetch completed, results still generated.</p>}
                     </div>
@@ -1158,37 +1150,30 @@ export default function AiSetupEnginePage() {
                       <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Output Studio</p>
                       <h3 className="mt-2 text-2xl font-black text-slate-950">Implementation-ready setup assets</h3>
                     </div>
-                    {!isUnlocked ? (
-                      <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs font-medium text-orange-700">
-                        <Lock className="h-3.5 w-3.5" />
-                        Lead gate active: unlock to export full pack
-                      </div>
-                    ) : (
-                      <div className="flex flex-wrap gap-2">
-                        <Button onClick={copyAll} size="sm" className="bg-slate-950 text-white hover:bg-slate-800">
-                          {copiedKey === 'copy-all' ? (
-                            <>
-                              <ClipboardCheck className="mr-2 h-4 w-4" />
-                              Copied
-                            </>
-                          ) : (
-                            <>
-                              <Clipboard className="mr-2 h-4 w-4" />
-                              Copy All
-                            </>
-                          )}
+                    <div className="flex flex-wrap gap-2">
+                      <Button onClick={copyAll} size="sm" className="bg-slate-950 text-white hover:bg-slate-800">
+                        {copiedKey === 'copy-all' ? (
+                          <>
+                            <ClipboardCheck className="mr-2 h-4 w-4" />
+                            Copied
+                          </>
+                        ) : (
+                          <>
+                            <Clipboard className="mr-2 h-4 w-4" />
+                            Copy All
+                          </>
+                        )}
+                      </Button>
+                      <Button onClick={downloadPack} size="sm" className="bg-slate-700 text-white hover:bg-slate-800">
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Pack
+                      </Button>
+                      <Link href="/strategy-blueprint">
+                        <Button size="sm" variant="outline" className="border-slate-300 text-slate-900 hover:bg-slate-100">
+                          Book Strategy Call
                         </Button>
-                        <Button onClick={downloadPack} size="sm" className="bg-slate-700 text-white hover:bg-slate-800">
-                          <Download className="mr-2 h-4 w-4" />
-                          Download Pack
-                        </Button>
-                        <Link href="/strategy-blueprint">
-                          <Button size="sm" variant="outline" className="border-slate-300 text-slate-900 hover:bg-slate-100">
-                            Book Strategy Call
-                          </Button>
-                        </Link>
-                      </div>
-                    )}
+                      </Link>
+                    </div>
                   </div>
 
                   <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -1201,63 +1186,12 @@ export default function AiSetupEnginePage() {
                       <p className="mt-1 text-2xl font-black text-slate-900">{resultOverview?.internalLinkCount ?? 0}</p>
                     </div>
                     <div className="rounded-xl border border-slate-200 bg-white/85 p-3 shadow-sm">
-                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Generation Source</p>
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Generation Mode</p>
                       <p className="mt-1 text-base font-bold text-slate-900">
-                        {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rule-based fallback'}
+                        {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rules-only (fallback mode)'}
                       </p>
                     </div>
                   </div>
-
-                  {!isUnlocked && (
-                    <div className="mt-6 rounded-2xl border border-orange-200 bg-orange-50/80 p-5">
-                      <p className="text-sm font-semibold text-slate-900">Unlock full export</p>
-                      <p className="mt-1 text-sm text-slate-600">
-                        Enter your details to unlock full copy/export and handoff files.
-                      </p>
-                      <div className="mt-4 grid gap-3 md:grid-cols-3">
-                        <Input
-                          placeholder="Name"
-                          value={leadValues.name}
-                          onChange={(event) =>
-                            setLeadValues((current) => ({
-                              ...current,
-                              name: event.target.value,
-                            }))
-                          }
-                          className="h-11 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
-                        />
-                        <Input
-                          type="email"
-                          placeholder="Email"
-                          value={leadValues.email}
-                          onChange={(event) =>
-                            setLeadValues((current) => ({
-                              ...current,
-                              email: event.target.value,
-                            }))
-                          }
-                          className="h-11 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
-                        />
-                        <Input
-                          placeholder="Company"
-                          value={leadValues.company}
-                          onChange={(event) =>
-                            setLeadValues((current) => ({
-                              ...current,
-                              company: event.target.value,
-                            }))
-                          }
-                          className="h-11 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
-                        />
-                      </div>
-                      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        {leadError ? <p className="text-sm text-red-600">{leadError}</p> : <div />}
-                        <Button onClick={unlockResults} className="h-11 bg-slate-950 px-6 text-white hover:bg-slate-800">
-                          Unlock Full Output
-                        </Button>
-                      </div>
-                    </div>
-                  )}
 
                   <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as OutputTabValue)} className="mt-8">
                     <div className="grid gap-4 lg:grid-cols-[240px_1fr]">
@@ -1285,7 +1219,6 @@ export default function AiSetupEnginePage() {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                disabled={!isUnlocked}
                                 onClick={() => copyTab('aiInfoPage')}
                                 className="border-slate-300 text-slate-900 hover:bg-slate-100"
                               >
@@ -1293,7 +1226,7 @@ export default function AiSetupEnginePage() {
                               </Button>
                             </div>
                             <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-white p-4 text-sm leading-relaxed text-slate-800">
-                              {maskContent(result.assets.aiInfoPage, isUnlocked)}
+                              {maskContent(result.assets.aiInfoPage)}
                             </pre>
                           </div>
                         </TabsContent>
@@ -1305,7 +1238,6 @@ export default function AiSetupEnginePage() {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                disabled={!isUnlocked}
                                 onClick={() => copyTab('robotsTxt')}
                                 className="border-slate-300 text-slate-900 hover:bg-slate-100"
                               >
@@ -1313,7 +1245,7 @@ export default function AiSetupEnginePage() {
                               </Button>
                             </div>
                             <pre className="max-h-[520px] overflow-auto rounded-lg border border-slate-200 bg-white p-4 font-mono text-sm leading-relaxed text-slate-800">
-                              {maskContent(result.assets.robotsTxt, isUnlocked)}
+                              {maskContent(result.assets.robotsTxt)}
                             </pre>
                           </div>
                         </TabsContent>
@@ -1325,7 +1257,6 @@ export default function AiSetupEnginePage() {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                disabled={!isUnlocked}
                                 onClick={() => copyTab('schema')}
                                 className="border-slate-300 text-slate-900 hover:bg-slate-100"
                               >
@@ -1345,7 +1276,7 @@ export default function AiSetupEnginePage() {
                                 <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-3">
                                   <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">{item.title}</p>
                                   <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
-                                    {maskContent(item.value, isUnlocked, 850)}
+                                    {maskContent(item.value, 850)}
                                   </pre>
                                 </div>
                               ))}
@@ -1374,7 +1305,6 @@ export default function AiSetupEnginePage() {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                disabled={!isUnlocked}
                                 onClick={() => copyTab('internalLinking')}
                                 className="border-slate-300 text-slate-900 hover:bg-slate-100"
                               >
@@ -1404,7 +1334,6 @@ export default function AiSetupEnginePage() {
                               ))}
                             </div>
 
-                            {!isUnlocked && <p className="mt-3 text-xs text-slate-500">Unlock to copy/export the complete linking plan.</p>}
                           </div>
                         </TabsContent>
 
@@ -1415,7 +1344,6 @@ export default function AiSetupEnginePage() {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                disabled={!isUnlocked}
                                 onClick={() => copyTab('implementationGuide')}
                                 className="border-slate-300 text-slate-900 hover:bg-slate-100"
                               >
@@ -1423,13 +1351,7 @@ export default function AiSetupEnginePage() {
                               </Button>
                             </div>
 
-                            {isUnlocked ? (
-                              renderGuideCards(result.assets.implementationGuide)
-                            ) : (
-                              <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
-                                {maskContent(implementationGuideToText(result.assets.implementationGuide), false)}
-                              </pre>
-                            )}
+                            {renderGuideCards(result.assets.implementationGuide)}
                           </div>
                         </TabsContent>
 
@@ -1440,7 +1362,6 @@ export default function AiSetupEnginePage() {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                disabled={!isUnlocked}
                                 onClick={() => copyTab('optionalExtras')}
                                 className="border-slate-300 text-slate-900 hover:bg-slate-100"
                               >
@@ -1452,13 +1373,13 @@ export default function AiSetupEnginePage() {
                               <div className="rounded-lg border border-slate-200 bg-white p-3">
                                 <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">llms.txt</p>
                                 <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
-                                  {maskContent(result.assets.optionalExtras.llmsTxt, isUnlocked, 900)}
+                                  {maskContent(result.assets.optionalExtras.llmsTxt, 900)}
                                 </pre>
                               </div>
                               <div className="rounded-lg border border-slate-200 bg-white p-3">
                                 <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">agents.md</p>
                                 <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
-                                  {maskContent(result.assets.optionalExtras.agentsMd, isUnlocked, 900)}
+                                  {maskContent(result.assets.optionalExtras.agentsMd, 900)}
                                 </pre>
                               </div>
                             </div>
