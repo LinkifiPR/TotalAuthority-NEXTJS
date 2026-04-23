@@ -574,7 +574,7 @@ export default function AiSetupEnginePage() {
               <div>
                 <p className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm">
                   <Cpu className="h-3.5 w-3.5 text-slate-700" />
-                  Enterprise AI Discovery Setup Engine
+                  AI Discovery Setup Engine
                 </p>
 
                 <h1 className="mt-6 max-w-4xl text-4xl font-black leading-tight text-slate-950 md:text-6xl">
@@ -600,7 +600,7 @@ export default function AiSetupEnginePage() {
                     Generate My AI Setup
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <p className="text-sm text-slate-600">Designed for technical marketing teams and enterprise handoff workflows.</p>
+                  <p className="text-sm text-slate-600">Designed for technical marketing teams and implementation handoff workflows.</p>
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-2">
