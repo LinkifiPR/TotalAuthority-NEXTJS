@@ -96,6 +96,7 @@ export async function callOpenRouter<T>(
         messages,
         temperature: request.temperature ?? 0.2,
         max_tokens: request.maxTokens ?? 2_800,
+        response_format: { type: 'json_object' },
       }),
       signal: controller.signal,
     });
@@ -131,7 +132,8 @@ export async function callOpenRouter<T>(
     try {
       parsedJson = JSON.parse(candidateJson);
     } catch {
-      throw new Error('OpenRouter did not return valid JSON content.');
+      const snippet = candidateJson.slice(0, 400).replace(/\s+/g, ' ');
+      throw new Error(`OpenRouter did not return valid JSON content. Snippet: ${snippet}`);
     }
 
     const validated = schema.safeParse(parsedJson);
