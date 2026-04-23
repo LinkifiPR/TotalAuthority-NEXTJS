@@ -319,6 +319,66 @@ function textStats(text: string) {
   };
 }
 
+type ParsedApiResponse<T> = {
+  payload: T | null;
+  rawText: string | null;
+  isJson: boolean;
+};
+
+async function parseApiResponse<T>(response: Response): Promise<ParsedApiResponse<T>> {
+  const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
+
+  if (contentType.includes('application/json')) {
+    try {
+      return {
+        payload: (await response.json()) as T,
+        rawText: null,
+        isJson: true,
+      };
+    } catch {
+      return {
+        payload: null,
+        rawText: null,
+        isJson: false,
+      };
+    }
+  }
+
+  try {
+    const rawText = await response.text();
+    return {
+      payload: null,
+      rawText,
+      isJson: false,
+    };
+  } catch {
+    return {
+      payload: null,
+      rawText: null,
+      isJson: false,
+    };
+  }
+}
+
+function buildApiFailureMessage(status: number, rawText: string | null): string {
+  const normalized = (rawText ?? '').trim();
+  const isHtmlResponse = normalized.startsWith('<!DOCTYPE') || normalized.startsWith('<html');
+
+  if (isHtmlResponse) {
+    if (status === 404) {
+      return 'The AI setup API endpoint was not found on this deploy (404 HTML response). Please redeploy and try again.';
+    }
+
+    return `The AI setup API returned HTML instead of JSON (status ${status}). This is usually a deploy/runtime issue. Please retry the deploy.`;
+  }
+
+  if (normalized) {
+    return `The AI setup API request failed (status ${status}). ${normalized.slice(0, 220)}`;
+  }
+
+  return `The AI setup API request failed (status ${status}). Please try again.`;
+}
+
 function renderGuideCards(guide: ImplementationGuide) {
   const cards = [
     { title: 'WordPress', steps: guide.wordpress },
@@ -577,14 +637,26 @@ export default function AiSetupEnginePage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify(formValues),
       });
 
-      const payload = await response.json();
+      const parsedResponse = await parseApiResponse<AiSetupResponse & { error?: string }>(response);
+      const payload = parsedResponse.payload;
 
       if (!response.ok) {
-        throw new Error(payload?.error || 'Unable to generate your AI setup right now.');
+        if (parsedResponse.isJson && payload?.error) {
+          throw new Error(payload.error);
+        }
+
+        throw new Error(buildApiFailureMessage(response.status, parsedResponse.rawText));
+      }
+
+      if (!parsedResponse.isJson || !payload) {
+        throw new Error(
+          `The AI setup API returned a non-JSON response (status ${response.status}). Please retry the deploy and test again.`,
+        );
       }
 
       setResult(payload as AiSetupResponse);
