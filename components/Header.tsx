@@ -113,7 +113,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
           {user ? (
             <div className="flex items-center space-x-4">
               <Link href="/dashboard" onClick={scrollToTop}>
-                <Button variant="outline" className="flex items-center space-x-2">
+                <Button
+                  variant="outline"
+                  className="flex items-center space-x-2 border-slate-300 bg-white text-slate-900 hover:bg-slate-100"
+                >
                   <User className="w-4 h-4" />
                   <span>Dashboard</span>
                 </Button>
@@ -121,7 +124,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
               <Button 
                 variant="outline" 
                 onClick={handleSignOut}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 border-slate-300 bg-white text-slate-900 hover:bg-slate-100"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Sign Out</span>
@@ -135,7 +138,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
                 </Button>
               </Link>
               <Link href="/auth" onClick={scrollToTop}>
-                <Button variant="outline">
+                <Button variant="outline" className="border-slate-300 bg-white text-slate-900 hover:bg-slate-100">
                   Sign In
                 </Button>
               </Link>
@@ -146,7 +149,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
         <div className="lg:hidden">
           {user ? (
             <Link href="/dashboard" onClick={scrollToTop}>
-              <Button variant="outline" size="sm" className="flex items-center space-x-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center space-x-2 border-slate-300 bg-white text-slate-900 hover:bg-slate-100"
+              >
                 <User className="w-4 h-4" />
                 <span>Dashboard</span>
               </Button>
@@ -159,7 +166,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
                 </Button>
               </Link>
               <Link href="/auth" onClick={scrollToTop}>
-                <Button variant="outline" size="sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-slate-300 bg-white text-slate-900 hover:bg-slate-100"
+                >
                   Sign In
                 </Button>
               </Link>

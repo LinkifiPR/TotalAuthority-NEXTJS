@@ -54,55 +54,55 @@ const OUTPUT_TAB_ORDER = [
   { value: 'optionalExtras', label: 'Optional Extras', icon: Sparkles },
 ] as const;
 
-const TECHNICAL_CAPABILITIES = [
+const ENTERPRISE_CAPABILITIES = [
   {
-    title: 'Deterministic Signal Extraction',
+    title: 'Signal Extraction Layer',
     description:
-      'Collects key site signals from core URLs, metadata, headings, schema, canonical tags, internal links, robots, and sitemap.',
+      'Scans core routes and extracts metadata, headings, structured data, internal links, canonical tags, robots, and sitemap signals.',
     icon: Database,
   },
   {
-    title: 'Setup Gap Detection',
+    title: 'Setup Intelligence Layer',
     description:
-      'Maps what already exists versus what is missing for AI discovery readiness, then prioritizes practical implementation actions.',
+      'Classifies what already exists, what is missing, and what should be shipped next for stronger AI discovery clarity.',
     icon: Layers,
   },
   {
-    title: 'Implementation-Ready Asset Generation',
+    title: 'Delivery Layer',
     description:
-      'Produces deployable AI page copy, robots recommendations, schema suggestions, linking strategy, and platform-specific handoff instructions.',
+      'Outputs implementation-ready assets with platform-specific instructions so teams can deploy quickly without guesswork.',
     icon: Workflow,
   },
 ];
 
-const ENGINE_FLOW = [
+const ENGINE_SEQUENCE = [
   {
     step: '01',
-    title: 'Targeted Website Scan',
-    description: 'Fetches homepage and core routes including about/services/contact, plus robots.txt and sitemap.xml when available.',
+    title: 'Targeted Site Scan',
+    description: 'Homepage + core pages + robots.txt + sitemap.xml',
   },
   {
     step: '02',
-    title: 'Technical Signal Parsing',
-    description: 'Extracts title/meta/headings, visible text, internal links, canonical references, and JSON-LD schema blocks.',
+    title: 'Technical Parsing',
+    description: 'Metadata, headings, schema, canonicals, links, and visible text signals',
   },
   {
     step: '03',
-    title: 'Setup Gap Identification',
-    description: 'Classifies existing assets, missing assets, and immediate setup opportunities without presenting a generic audit experience.',
+    title: 'Gap Identification',
+    description: 'Existing assets, missing assets, and practical setup priorities',
   },
   {
     step: '04',
-    title: 'Generated Asset Pack',
-    description: 'Creates AI Info Page, robots recommendations, schema suggestions, internal linking plan, and implementation guide.',
+    title: 'Asset Generation',
+    description: 'AI page, robots recommendations, schema suggestions, linking strategy, implementation guide',
   },
 ];
 
 const ENTERPRISE_STANDARDS = [
-  'Graceful partial-result handling when some pages are blocked or unavailable',
-  'Model-backed generation with rule-based fallback for reliability',
-  'Structured outputs designed for direct implementation and dev handoff',
-  'Commercially oriented content that avoids overclaiming outcomes',
+  'Rule-based detection with model-backed generation and fallback reliability',
+  'Partial-result resilience when some pages are blocked or unavailable',
+  'Structured outputs designed for direct implementation and handoff',
+  'Commercially credible copy that avoids overclaiming outcomes',
 ];
 
 type OutputTabValue = (typeof OUTPUT_TAB_ORDER)[number]['value'];
@@ -208,12 +208,9 @@ function renderGuideCards(guide: ImplementationGuide) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {cards.map((card) => (
-        <div
-          key={card.title}
-          className="rounded-xl border border-slate-700/80 bg-gradient-to-br from-slate-900 to-slate-950 p-5"
-        >
-          <p className="text-sm font-semibold uppercase tracking-wide text-orange-300">{card.title}</p>
-          <ol className="mt-3 space-y-2 text-sm text-slate-200">
+        <div key={card.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-900">{card.title}</p>
+          <ol className="mt-3 space-y-2 text-sm text-slate-700">
             {card.steps.map((step, index) => (
               <li key={`${card.title}-${index}`}>
                 {index + 1}. {step}
@@ -256,12 +253,12 @@ export default function AiSetupEnginePage() {
 
   const generatedAssetsList = useMemo(
     () => [
-      'AI Info Page draft optimized for machine readability',
-      'Recommended robots.txt update with sitemap directives',
-      'Schema JSON-LD suggestions (Organization/WebSite/Service)',
-      'Internal linking deployment plan for authority transfer',
-      'Platform implementation guide for WordPress/Webflow/Shopify/Custom',
-      'Optional llms.txt + agents.md future-facing templates',
+      'AI Info Page content draft optimized for machine extraction',
+      'Recommended robots.txt version with sitemap handling',
+      'Schema JSON-LD suggestions for Organization, WebSite, and Service',
+      'Internal linking deployment recommendations',
+      'Implementation instructions by platform',
+      'Optional future-facing llms.txt and agents.md templates',
     ],
     [],
   );
@@ -384,81 +381,65 @@ export default function AiSetupEnginePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-[#05070d] text-slate-100">
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900">
         <Header onOpenForm={openForm} />
 
         <main className="relative overflow-hidden pb-20">
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-72 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-orange-500/20 blur-[140px]" />
-            <div className="absolute right-[-8rem] top-36 h-[16rem] w-[16rem] rounded-full bg-blue-500/25 blur-[100px]" />
-            <div className="absolute bottom-[-7rem] left-[-7rem] h-[18rem] w-[18rem] rounded-full bg-cyan-500/20 blur-[95px]" />
+            <div className="absolute -top-36 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-orange-100/70 blur-[120px]" />
+            <div className="absolute right-[-6rem] top-28 h-[14rem] w-[14rem] rounded-full bg-blue-100/80 blur-[95px]" />
           </div>
 
-          <section className="relative z-10 px-4 pb-14 pt-14 md:pt-20">
+          <section className="relative z-10 px-4 pb-12 pt-14 md:pt-20">
             <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
               <div>
-                <p className="inline-flex items-center gap-2 rounded-full border border-orange-400/45 bg-orange-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-orange-200">
-                  <Cpu className="h-3.5 w-3.5" />
+                <p className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700">
+                  <Cpu className="h-3.5 w-3.5 text-slate-700" />
                   Enterprise AI Discovery Setup Engine
                 </p>
-                <h1 className="mt-6 max-w-4xl text-4xl font-black leading-tight text-white md:text-6xl">
+
+                <h1 className="mt-6 max-w-4xl text-4xl font-black leading-tight text-slate-950 md:text-6xl">
                   Set up your website for AI discovery in one click
                 </h1>
-                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200 md:text-xl">
-                  This engine scans your core web assets, identifies missing AI discovery setup components, and generates
-                  implementation-ready outputs your team can ship immediately.
+
+                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-700 md:text-xl">
+                  Scan your site and generate the pages, files, and implementation instructions that help AI systems
+                  understand your business with greater precision.
                 </p>
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-300 md:text-base">
-                  It is a setup system, not a generic audit dashboard. You get deployable assets: AI Info Page content,
-                  robots guidance, schema suggestions, internal linking recommendations, and platform-specific
-                  implementation instructions.
+
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base">
+                  This is a setup engine, not a reporting dashboard. It identifies missing setup assets and outputs
+                  implementation-ready deliverables your team can deploy quickly.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <Button
                     onClick={scrollToInput}
                     size="lg"
-                    className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 text-base font-semibold text-white shadow-[0_0_34px_rgba(249,115,22,0.35)] hover:from-orange-400 hover:to-orange-500"
+                    className="h-12 rounded-xl bg-slate-950 px-8 text-base font-semibold text-white hover:bg-slate-800"
                   >
                     Generate My AI Setup
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <p className="text-sm text-slate-300">
-                    Built for teams who need technical clarity and implementation speed.
-                  </p>
-                </div>
-
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/65 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Scan Scope</p>
-                    <p className="mt-2 text-sm text-slate-200">Core pages + robots + sitemap + schema signals</p>
-                  </div>
-                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/65 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Output Type</p>
-                    <p className="mt-2 text-sm text-slate-200">Implementation-ready setup pack, not high-level commentary</p>
-                  </div>
-                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/65 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Delivery</p>
-                    <p className="mt-2 text-sm text-slate-200">Copy/export/download format for handoff and deployment</p>
-                  </div>
+                  <p className="text-sm text-slate-600">Designed for technical marketing teams and enterprise handoff workflows.</p>
                 </div>
               </div>
 
-              <Card className="border border-slate-700/80 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-950/95 p-6 shadow-2xl shadow-black/40 md:p-8">
-                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-orange-300">
+              <Card className="border border-slate-200 bg-white p-6 shadow-lg md:p-8">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-600">
                   <TerminalSquare className="h-4 w-4" />
-                  What this engine does
+                  Engine Sequence
                 </p>
-                <div className="mt-4 space-y-4">
-                  {ENGINE_FLOW.map((item) => (
-                    <div key={item.step} className="rounded-xl border border-slate-700/70 bg-slate-950/70 p-4">
+                <div className="mt-4 space-y-3">
+                  {ENGINE_SEQUENCE.map((item) => (
+                    <div key={item.step} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                       <div className="flex items-center gap-3">
-                        <span className="rounded-md border border-orange-400/40 bg-orange-500/15 px-2 py-1 text-xs font-semibold text-orange-200">
+                        <span className="rounded-md border border-slate-300 bg-white px-2 py-1 text-xs font-semibold text-slate-700">
                           {item.step}
                         </span>
-                        <p className="text-sm font-semibold text-white">{item.title}</p>
+                        <p className="text-sm font-semibold text-slate-900">{item.title}</p>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
+                      <p className="mt-2 text-sm text-slate-600">{item.description}</p>
                     </div>
                   ))}
                 </div>
@@ -468,18 +449,15 @@ export default function AiSetupEnginePage() {
 
           <section className="relative z-10 px-4 pb-10">
             <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-3">
-              {TECHNICAL_CAPABILITIES.map((item) => {
+              {ENTERPRISE_CAPABILITIES.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <Card
-                    key={item.title}
-                    className="border border-slate-700/80 bg-gradient-to-br from-slate-900/80 to-slate-950/80 p-6"
-                  >
-                    <div className="inline-flex rounded-lg border border-orange-400/30 bg-orange-500/10 p-2">
-                      <Icon className="h-5 w-5 text-orange-300" />
+                  <Card key={item.title} className="border border-slate-200 bg-white p-6 shadow-sm">
+                    <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-2">
+                      <Icon className="h-5 w-5 text-slate-700" />
                     </div>
-                    <h3 className="mt-4 text-lg font-bold text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
+                    <h3 className="mt-4 text-lg font-bold text-slate-900">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                   </Card>
                 );
               })}
@@ -487,32 +465,32 @@ export default function AiSetupEnginePage() {
           </section>
 
           <section className="relative z-10 px-4 pb-12">
-            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <Card className="border border-slate-700/80 bg-slate-900/80 p-6 md:p-8">
-                <p className="text-xs uppercase tracking-[0.18em] text-orange-300">Technical Positioning</p>
-                <h2 className="mt-3 text-2xl font-bold text-white md:text-3xl">
-                  A setup platform for AI discovery clarity, not another reporting screen
+            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+              <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-600">Platform Positioning</p>
+                <h2 className="mt-3 text-2xl font-bold text-slate-950 md:text-3xl">
+                  Built for implementation, not just diagnosis
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300 md:text-base">
-                  Most tools stop at scorecards. This workflow generates the exact pages, files, and implementation
-                  instructions your team needs to improve machine understanding of your brand identity, services, and
-                  authority signals.
+                <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
+                  Most products stop at visibility scores. This workflow produces the pages, technical files, and
+                  deployment instructions your team needs to improve AI understanding of your brand identity,
+                  proposition, and service context.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
-                  The output is structured for execution: content blocks for the AI page, robots recommendations,
-                  schema snippets, internal linking placements, and CMS-specific deployment instructions.
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">
+                  Outputs are formatted for action: copy blocks, schema suggestions, robots recommendations, internal
+                  linking guidance, and platform-specific implementation paths.
                 </p>
               </Card>
 
-              <Card className="border border-slate-700/80 bg-slate-900/80 p-6 md:p-8">
-                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-orange-300">
+              <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-600">
                   <ShieldCheck className="h-4 w-4" />
                   Delivery Standards
                 </p>
-                <ul className="mt-4 space-y-3 text-sm text-slate-200">
+                <ul className="mt-4 space-y-3 text-sm text-slate-700">
                   {ENTERPRISE_STANDARDS.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-green-300" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -523,13 +501,12 @@ export default function AiSetupEnginePage() {
 
           <section ref={inputRef} className="relative z-10 px-4 pb-12">
             <div className="mx-auto max-w-6xl">
-              <Card className="border border-slate-700/80 bg-gradient-to-br from-slate-900/90 to-slate-950/90 p-6 shadow-2xl shadow-black/40 md:p-8">
+              <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
                 <div className="mb-6 flex flex-col gap-2">
-                  <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Configuration Console</p>
-                  <h2 className="text-3xl font-bold text-white">Build your AI setup pack</h2>
-                  <p className="text-sm text-slate-300 md:text-base">
-                    Provide your site context. We run the setup engine and return a deployment-ready pack your team can
-                    copy, export, and implement immediately.
+                  <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Configuration Console</p>
+                  <h2 className="text-3xl font-bold text-slate-950">Build your AI setup pack</h2>
+                  <p className="text-sm text-slate-600 md:text-base">
+                    Provide your website context and generate a structured setup pack your team can copy, export, and deploy.
                   </p>
                 </div>
 
@@ -538,7 +515,7 @@ export default function AiSetupEnginePage() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid gap-5 md:grid-cols-2">
                         <div className="space-y-2 md:col-span-2">
-                          <Label htmlFor="website-url" className="text-slate-200">
+                          <Label htmlFor="website-url" className="text-slate-700">
                             Website URL (required)
                           </Label>
                           <Input
@@ -553,12 +530,12 @@ export default function AiSetupEnginePage() {
                                 url: event.target.value,
                               }))
                             }
-                            className="h-12 border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                            className="h-12 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                           />
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="brand-name" className="text-slate-200">
+                          <Label htmlFor="brand-name" className="text-slate-700">
                             Brand name (optional)
                           </Label>
                           <Input
@@ -571,12 +548,12 @@ export default function AiSetupEnginePage() {
                                 brandName: event.target.value,
                               }))
                             }
-                            className="h-12 border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                            className="h-12 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                           />
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="country" className="text-slate-200">
+                          <Label htmlFor="country" className="text-slate-700">
                             Country (optional)
                           </Label>
                           <Input
@@ -589,13 +566,13 @@ export default function AiSetupEnginePage() {
                                 country: event.target.value,
                               }))
                             }
-                            className="h-12 border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                            className="h-12 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="description" className="text-slate-200">
+                        <Label htmlFor="description" className="text-slate-700">
                           Short description (optional)
                         </Label>
                         <Textarea
@@ -608,18 +585,18 @@ export default function AiSetupEnginePage() {
                               shortDescription: event.target.value,
                             }))
                           }
-                          className="min-h-[110px] border-slate-600 bg-slate-950/90 text-white placeholder:text-slate-500"
+                          className="min-h-[110px] border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                         />
                       </div>
 
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="text-xs text-slate-400">
-                          Partial result handling is enabled when selected pages cannot be fetched.
+                        <p className="text-xs text-slate-500">
+                          Partial result handling is enabled if some pages cannot be fetched.
                         </p>
                         <Button
                           type="submit"
                           disabled={isLoading}
-                          className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 font-semibold text-white hover:from-orange-400 hover:to-orange-500"
+                          className="h-12 rounded-xl bg-slate-950 px-8 font-semibold text-white hover:bg-slate-800"
                         >
                           {isLoading ? (
                             <>
@@ -637,28 +614,28 @@ export default function AiSetupEnginePage() {
                     </form>
 
                     {apiError && (
-                      <div className="mt-5 rounded-xl border border-red-400/40 bg-red-950/40 p-4 text-sm text-red-200">
+                      <div className="mt-5 rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-700">
                         {apiError}
                       </div>
                     )}
                   </div>
 
-                  <div className="rounded-2xl border border-slate-700/80 bg-slate-950/70 p-5">
-                    <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-orange-300">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-600">
                       <Building2 className="h-4 w-4" />
                       Included in this run
                     </p>
-                    <ul className="mt-4 space-y-2 text-sm text-slate-200">
+                    <ul className="mt-4 space-y-2 text-sm text-slate-700">
                       {generatedAssetsList.map((item) => (
                         <li key={item} className="flex gap-2">
-                          <Sparkles className="mt-0.5 h-4 w-4 text-blue-300" />
+                          <Sparkles className="mt-0.5 h-4 w-4 text-slate-700" />
                           <span>{item}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-5 rounded-xl border border-slate-700 bg-slate-900/80 p-4 text-xs leading-relaxed text-slate-300">
-                      Recommended output path for the primary asset: <span className="font-semibold text-white">/ai</span> or{' '}
-                      <span className="font-semibold text-white">/ai-info</span>.
+                    <div className="mt-5 rounded-xl border border-slate-200 bg-white p-4 text-xs leading-relaxed text-slate-600">
+                      Recommended primary asset path: <span className="font-semibold text-slate-900">/ai</span> or{' '}
+                      <span className="font-semibold text-slate-900">/ai-info</span>.
                     </div>
                   </div>
                 </div>
@@ -668,9 +645,9 @@ export default function AiSetupEnginePage() {
 
           {isLoading && (
             <section className="relative z-10 px-4 pb-14">
-              <div className="mx-auto max-w-5xl rounded-2xl border border-slate-700/70 bg-slate-900/85 p-6 md:p-8">
-                <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Generating</p>
-                <h3 className="mt-2 text-2xl font-bold text-white">Building your AI setup pack</h3>
+              <div className="mx-auto max-w-5xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Generating</p>
+                <h3 className="mt-2 text-2xl font-bold text-slate-950">Building your AI setup pack</h3>
                 <div className="mt-6 space-y-3">
                   {LOADING_STEPS.map((step, index) => {
                     const isActive = index === loadingStepIndex;
@@ -681,20 +658,20 @@ export default function AiSetupEnginePage() {
                         key={step}
                         className={`rounded-xl border px-4 py-3 transition ${
                           isComplete
-                            ? 'border-green-400/40 bg-green-500/10'
+                            ? 'border-emerald-200 bg-emerald-50'
                             : isActive
-                              ? 'border-orange-400/60 bg-orange-500/10'
-                              : 'border-slate-700 bg-slate-950/65'
+                              ? 'border-slate-300 bg-slate-100'
+                              : 'border-slate-200 bg-white'
                         }`}
                       >
                         <div className="flex items-center justify-between gap-3">
-                          <p className="text-sm font-medium text-slate-100">{step}</p>
+                          <p className="text-sm font-medium text-slate-800">{step}</p>
                           {isComplete ? (
-                            <CheckCircle2 className="h-4 w-4 text-green-300" />
+                            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                           ) : isActive ? (
-                            <Loader2 className="h-4 w-4 animate-spin text-orange-300" />
+                            <Loader2 className="h-4 w-4 animate-spin text-slate-700" />
                           ) : (
-                            <div className="h-2 w-2 rounded-full bg-slate-500" />
+                            <div className="h-2 w-2 rounded-full bg-slate-400" />
                           )}
                         </div>
                       </div>
@@ -708,68 +685,71 @@ export default function AiSetupEnginePage() {
           {result && (
             <section ref={resultsRef} className="relative z-10 px-4 pb-16">
               <div className="mx-auto max-w-6xl space-y-8">
-                <Card className="border border-slate-700/70 bg-slate-900/85 p-6 md:p-8">
+                <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
                   <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Setup Summary</p>
-                      <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">{result.summary.headline}</h3>
-                      <p className="mt-2 text-sm text-slate-300">
-                        Scanned: <span className="font-medium text-slate-100">{result.site.normalizedUrl}</span>
+                      <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Setup Summary</p>
+                      <h3 className="mt-2 text-2xl font-bold text-slate-950 md:text-3xl">{result.summary.headline}</h3>
+                      <p className="mt-2 text-sm text-slate-600">
+                        Scanned: <span className="font-medium text-slate-900">{result.site.normalizedUrl}</span>
                       </p>
                     </div>
-                    <div className="rounded-xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 text-sm text-slate-300">
-                      <p>Generation mode: {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rule-based fallback'}</p>
-                      {result.meta.partial && <p className="mt-1 text-orange-200">Partial fetch completed, results still generated.</p>}
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+                      <p>
+                        Generation mode:{' '}
+                        {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rule-based fallback'}
+                      </p>
+                      {result.meta.partial && <p className="mt-1 text-slate-600">Partial fetch completed, results still generated.</p>}
                     </div>
                   </div>
 
                   <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-400">What already exists</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <p className="text-xs uppercase tracking-wider text-slate-500">What already exists</p>
+                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
                         {(result.summary.existingAssets.length > 0
                           ? result.summary.existingAssets
                           : ['No major setup assets detected yet.']).map((item) => (
                           <li key={item} className="flex gap-2">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 text-green-300" />
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-400">What was missing</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <p className="text-xs uppercase tracking-wider text-slate-500">What was missing</p>
+                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
                         {(result.summary.missingAssets.length > 0
                           ? result.summary.missingAssets
                           : ['No critical setup gaps found.']).map((item) => (
                           <li key={item} className="flex gap-2">
-                            <Bot className="mt-0.5 h-4 w-4 text-orange-300" />
+                            <Bot className="mt-0.5 h-4 w-4 text-slate-700" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-400">What we generated</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <p className="text-xs uppercase tracking-wider text-slate-500">What we generated</p>
+                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
                         {generatedAssetsList.map((item) => (
                           <li key={item} className="flex gap-2">
-                            <Sparkles className="mt-0.5 h-4 w-4 text-blue-300" />
+                            <Sparkles className="mt-0.5 h-4 w-4 text-slate-700" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-400">What to do next</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <p className="text-xs uppercase tracking-wider text-slate-500">What to do next</p>
+                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
                         {result.summary.recommendations.slice(0, 4).map((item) => (
                           <li key={item} className="flex gap-2">
-                            <ArrowRight className="mt-0.5 h-4 w-4 text-orange-300" />
+                            <ArrowRight className="mt-0.5 h-4 w-4 text-slate-700" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -778,20 +758,20 @@ export default function AiSetupEnginePage() {
                   </div>
                 </Card>
 
-                <Card className="border border-slate-700/70 bg-slate-900/85 p-6 md:p-8">
+                <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.2em] text-orange-300">Output Tabs</p>
-                      <h3 className="mt-2 text-2xl font-bold text-white">Implementation-ready setup assets</h3>
+                      <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Output Tabs</p>
+                      <h3 className="mt-2 text-2xl font-bold text-slate-950">Implementation-ready setup assets</h3>
                     </div>
                     {!isUnlocked ? (
-                      <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/40 bg-orange-500/10 px-4 py-2 text-xs text-orange-100">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-slate-100 px-4 py-2 text-xs text-slate-700">
                         <Lock className="h-3.5 w-3.5" />
                         Lead gate active: unlock to export full pack
                       </div>
                     ) : (
                       <div className="flex flex-wrap gap-2">
-                        <Button onClick={copyAll} size="sm" className="bg-slate-100 text-slate-900 hover:bg-white">
+                        <Button onClick={copyAll} size="sm" className="bg-slate-950 text-white hover:bg-slate-800">
                           {copiedKey === 'copy-all' ? (
                             <>
                               <ClipboardCheck className="mr-2 h-4 w-4" />
@@ -804,12 +784,12 @@ export default function AiSetupEnginePage() {
                             </>
                           )}
                         </Button>
-                        <Button onClick={downloadPack} size="sm" className="bg-orange-500 text-white hover:bg-orange-400">
+                        <Button onClick={downloadPack} size="sm" className="bg-slate-700 text-white hover:bg-slate-800">
                           <Download className="mr-2 h-4 w-4" />
                           Download Pack
                         </Button>
                         <Link href="/strategy-blueprint">
-                          <Button size="sm" variant="outline" className="border-slate-500 bg-transparent text-white hover:bg-slate-800">
+                          <Button size="sm" variant="outline" className="border-slate-300 text-slate-900 hover:bg-slate-100">
                             Book Strategy Call
                           </Button>
                         </Link>
@@ -818,9 +798,9 @@ export default function AiSetupEnginePage() {
                   </div>
 
                   {!isUnlocked && (
-                    <div className="mt-6 rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
-                      <p className="text-sm font-semibold text-white">Unlock full export</p>
-                      <p className="mt-1 text-sm text-slate-300">
+                    <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                      <p className="text-sm font-semibold text-slate-900">Unlock full export</p>
+                      <p className="mt-1 text-sm text-slate-600">
                         Enter your details to unlock full copy/export and handoff files.
                       </p>
                       <div className="mt-4 grid gap-3 md:grid-cols-3">
@@ -833,7 +813,7 @@ export default function AiSetupEnginePage() {
                               name: event.target.value,
                             }))
                           }
-                          className="h-11 border-slate-600 bg-slate-900 text-white placeholder:text-slate-400"
+                          className="h-11 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                         />
                         <Input
                           type="email"
@@ -845,7 +825,7 @@ export default function AiSetupEnginePage() {
                               email: event.target.value,
                             }))
                           }
-                          className="h-11 border-slate-600 bg-slate-900 text-white placeholder:text-slate-400"
+                          className="h-11 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                         />
                         <Input
                           placeholder="Company"
@@ -856,15 +836,12 @@ export default function AiSetupEnginePage() {
                               company: event.target.value,
                             }))
                           }
-                          className="h-11 border-slate-600 bg-slate-900 text-white placeholder:text-slate-400"
+                          className="h-11 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
                         />
                       </div>
                       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        {leadError ? <p className="text-sm text-red-300">{leadError}</p> : <div />}
-                        <Button
-                          onClick={unlockResults}
-                          className="h-11 bg-gradient-to-r from-orange-500 to-orange-600 px-6 text-white hover:from-orange-400 hover:to-orange-500"
-                        >
+                        {leadError ? <p className="text-sm text-red-600">{leadError}</p> : <div />}
+                        <Button onClick={unlockResults} className="h-11 bg-slate-950 px-6 text-white hover:bg-slate-800">
                           Unlock Full Output
                         </Button>
                       </div>
@@ -872,14 +849,14 @@ export default function AiSetupEnginePage() {
                   )}
 
                   <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as OutputTabValue)} className="mt-8">
-                    <TabsList className="grid h-auto w-full grid-cols-2 gap-2 rounded-xl bg-slate-950 p-2 md:grid-cols-3 lg:grid-cols-6">
+                    <TabsList className="grid h-auto w-full grid-cols-2 gap-2 rounded-xl bg-slate-100 p-2 md:grid-cols-3 lg:grid-cols-6">
                       {OUTPUT_TAB_ORDER.map((tab) => {
                         const Icon = tab.icon;
                         return (
                           <TabsTrigger
                             key={tab.value}
                             value={tab.value}
-                            className="flex h-12 items-center justify-center gap-2 rounded-lg border border-transparent bg-slate-900/70 px-2 text-xs font-semibold text-slate-200 data-[state=active]:border-orange-400/60 data-[state=active]:bg-orange-500/20 data-[state=active]:text-white"
+                            className="flex h-12 items-center justify-center gap-2 rounded-lg border border-transparent bg-white px-2 text-xs font-semibold text-slate-700 data-[state=active]:border-slate-300 data-[state=active]:bg-slate-900 data-[state=active]:text-white"
                           >
                             <Icon className="h-3.5 w-3.5" />
                             <span>{tab.label}</span>
@@ -889,55 +866,55 @@ export default function AiSetupEnginePage() {
                     </TabsList>
 
                     <TabsContent value="aiInfoPage" className="mt-4">
-                      <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-white">AI Info Page</p>
+                          <p className="text-sm font-semibold text-slate-900">AI Info Page</p>
                           <Button
                             size="sm"
                             variant="outline"
                             disabled={!isUnlocked}
                             onClick={() => copyTab('aiInfoPage')}
-                            className="border-slate-600 bg-transparent text-slate-100 hover:bg-slate-800"
+                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
                           >
                             {copiedKey === 'tab-aiInfoPage' ? 'Copied' : 'Copy'}
                           </Button>
                         </div>
-                        <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg bg-[#03050a] p-4 text-sm leading-relaxed text-slate-200">
+                        <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg bg-white p-4 text-sm leading-relaxed text-slate-800">
                           {maskContent(result.assets.aiInfoPage, isUnlocked)}
                         </pre>
                       </div>
                     </TabsContent>
 
                     <TabsContent value="robotsTxt" className="mt-4">
-                      <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-white">Recommended robots.txt</p>
+                          <p className="text-sm font-semibold text-slate-900">Recommended robots.txt</p>
                           <Button
                             size="sm"
                             variant="outline"
                             disabled={!isUnlocked}
                             onClick={() => copyTab('robotsTxt')}
-                            className="border-slate-600 bg-transparent text-slate-100 hover:bg-slate-800"
+                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
                           >
                             {copiedKey === 'tab-robotsTxt' ? 'Copied' : 'Copy'}
                           </Button>
                         </div>
-                        <pre className="max-h-[520px] overflow-auto rounded-lg bg-[#03050a] p-4 font-mono text-sm leading-relaxed text-emerald-200">
+                        <pre className="max-h-[520px] overflow-auto rounded-lg bg-white p-4 font-mono text-sm leading-relaxed text-slate-800">
                           {maskContent(result.assets.robotsTxt, isUnlocked)}
                         </pre>
                       </div>
                     </TabsContent>
 
                     <TabsContent value="schema" className="mt-4">
-                      <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-white">Schema Suggestions</p>
+                          <p className="text-sm font-semibold text-slate-900">Schema Suggestions</p>
                           <Button
                             size="sm"
                             variant="outline"
                             disabled={!isUnlocked}
                             onClick={() => copyTab('schema')}
-                            className="border-slate-600 bg-transparent text-slate-100 hover:bg-slate-800"
+                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
                           >
                             {copiedKey === 'tab-schema' ? 'Copied' : 'Copy'}
                           </Button>
@@ -952,9 +929,9 @@ export default function AiSetupEnginePage() {
                               ? [{ title: 'Person', value: result.assets.schema.person }]
                               : []),
                           ].map((item) => (
-                            <div key={item.title} className="rounded-lg border border-slate-700 bg-[#03050a] p-3">
-                              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-orange-300">{item.title}</p>
-                              <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-200">
+                            <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-3">
+                              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">{item.title}</p>
+                              <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
                                 {maskContent(item.value, isUnlocked, 850)}
                               </pre>
                             </div>
@@ -962,12 +939,12 @@ export default function AiSetupEnginePage() {
                         </div>
 
                         {result.assets.schema.notes.length > 0 && (
-                          <div className="mt-4 rounded-lg border border-slate-700 bg-[#03050a] p-3">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-orange-300">Schema Notes</p>
-                            <ul className="mt-2 space-y-2 text-sm text-slate-200">
+                          <div className="mt-4 rounded-lg border border-slate-200 bg-white p-3">
+                            <p className="text-xs font-semibold uppercase tracking-wider text-slate-700">Schema Notes</p>
+                            <ul className="mt-2 space-y-2 text-sm text-slate-700">
                               {result.assets.schema.notes.map((note) => (
                                 <li key={note} className="flex gap-2">
-                                  <ArrowRight className="mt-0.5 h-4 w-4 text-orange-300" />
+                                  <ArrowRight className="mt-0.5 h-4 w-4 text-slate-600" />
                                   <span>{note}</span>
                                 </li>
                               ))}
@@ -978,15 +955,15 @@ export default function AiSetupEnginePage() {
                     </TabsContent>
 
                     <TabsContent value="internalLinking" className="mt-4">
-                      <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-white">Internal Linking Plan</p>
+                          <p className="text-sm font-semibold text-slate-900">Internal Linking Plan</p>
                           <Button
                             size="sm"
                             variant="outline"
                             disabled={!isUnlocked}
                             onClick={() => copyTab('internalLinking')}
-                            className="border-slate-600 bg-transparent text-slate-100 hover:bg-slate-800"
+                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
                           >
                             {copiedKey === 'tab-internalLinking' ? 'Copied' : 'Copy'}
                           </Button>
@@ -994,45 +971,38 @@ export default function AiSetupEnginePage() {
 
                         <div className="space-y-3">
                           {result.assets.internalLinking.map((item, index) => (
-                            <div
-                              key={`${item.fromPage}-${index}`}
-                              className="rounded-lg border border-slate-700 bg-[#03050a] p-4 text-sm text-slate-200"
-                            >
-                              <p className="font-semibold text-white">
-                                {index + 1}. {item.fromPage}
-                              </p>
+                            <div key={`${item.fromPage}-${index}`} className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
+                              <p className="font-semibold text-slate-900">{index + 1}. {item.fromPage}</p>
                               <p className="mt-1">
-                                <span className="text-slate-400">Anchor: </span>
-                                <span className="text-orange-200">{item.anchorText}</span>
+                                <span className="text-slate-500">Anchor: </span>
+                                <span className="text-slate-900">{item.anchorText}</span>
                               </p>
                               <p>
-                                <span className="text-slate-400">Placement: </span>
+                                <span className="text-slate-500">Placement: </span>
                                 {item.placement}
                               </p>
                               <p>
-                                <span className="text-slate-400">Why: </span>
+                                <span className="text-slate-500">Why: </span>
                                 {item.reason}
                               </p>
                             </div>
                           ))}
                         </div>
 
-                        {!isUnlocked && (
-                          <p className="mt-3 text-xs text-slate-400">Unlock to copy/export the complete linking plan.</p>
-                        )}
+                        {!isUnlocked && <p className="mt-3 text-xs text-slate-500">Unlock to copy/export the complete linking plan.</p>}
                       </div>
                     </TabsContent>
 
                     <TabsContent value="implementationGuide" className="mt-4">
-                      <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-white">Implementation Guide</p>
+                          <p className="text-sm font-semibold text-slate-900">Implementation Guide</p>
                           <Button
                             size="sm"
                             variant="outline"
                             disabled={!isUnlocked}
                             onClick={() => copyTab('implementationGuide')}
-                            className="border-slate-600 bg-transparent text-slate-100 hover:bg-slate-800"
+                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
                           >
                             {copiedKey === 'tab-implementationGuide' ? 'Copied' : 'Copy'}
                           </Button>
@@ -1041,7 +1011,7 @@ export default function AiSetupEnginePage() {
                         {isUnlocked ? (
                           renderGuideCards(result.assets.implementationGuide)
                         ) : (
-                          <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg bg-[#03050a] p-4 text-sm text-slate-200">
+                          <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg bg-white p-4 text-sm text-slate-700">
                             {maskContent(implementationGuideToText(result.assets.implementationGuide), false)}
                           </pre>
                         )}
@@ -1049,30 +1019,30 @@ export default function AiSetupEnginePage() {
                     </TabsContent>
 
                     <TabsContent value="optionalExtras" className="mt-4">
-                      <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-white">Optional / Future-Facing Extras</p>
+                          <p className="text-sm font-semibold text-slate-900">Optional / Future-Facing Extras</p>
                           <Button
                             size="sm"
                             variant="outline"
                             disabled={!isUnlocked}
                             onClick={() => copyTab('optionalExtras')}
-                            className="border-slate-600 bg-transparent text-slate-100 hover:bg-slate-800"
+                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
                           >
                             {copiedKey === 'tab-optionalExtras' ? 'Copied' : 'Copy'}
                           </Button>
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
-                          <div className="rounded-lg border border-slate-700 bg-[#03050a] p-3">
-                            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-orange-300">llms.txt</p>
-                            <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-200">
+                          <div className="rounded-lg border border-slate-200 bg-white p-3">
+                            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">llms.txt</p>
+                            <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
                               {maskContent(result.assets.optionalExtras.llmsTxt, isUnlocked, 900)}
                             </pre>
                           </div>
-                          <div className="rounded-lg border border-slate-700 bg-[#03050a] p-3">
-                            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-orange-300">agents.md</p>
-                            <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-200">
+                          <div className="rounded-lg border border-slate-200 bg-white p-3">
+                            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">agents.md</p>
+                            <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
                               {maskContent(result.assets.optionalExtras.agentsMd, isUnlocked, 900)}
                             </pre>
                           </div>
@@ -1082,33 +1052,29 @@ export default function AiSetupEnginePage() {
                   </Tabs>
                 </Card>
 
-                <section className="rounded-2xl border border-orange-400/30 bg-gradient-to-r from-orange-500/20 via-slate-900 to-slate-900 p-7 md:p-10">
-                  <p className="text-sm uppercase tracking-[0.2em] text-orange-200">Next Step Support</p>
-                  <h3 className="mt-2 text-3xl font-bold text-white">Need help implementing this setup?</h3>
-                  <p className="mt-3 max-w-3xl text-slate-200">
-                    We can implement this pack for your team, validate rollout quality, and align your AI visibility setup
-                    with your broader authority strategy.
+                <section className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm md:p-10">
+                  <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Next Step Support</p>
+                  <h3 className="mt-2 text-3xl font-bold text-slate-950">Need implementation support?</h3>
+                  <p className="mt-3 max-w-3xl text-slate-600">
+                    We can implement this setup pack, validate rollout quality, and align your AI visibility setup with
+                    your broader authority and content strategy.
                   </p>
                   <div className="mt-6 grid gap-3 md:grid-cols-3">
-                    <div className="rounded-xl border border-slate-600/70 bg-slate-950/70 p-4 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
                       Implementation support
                     </div>
-                    <div className="rounded-xl border border-slate-600/70 bg-slate-950/70 p-4 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
                       Strategy call + roadmap
                     </div>
-                    <div className="rounded-xl border border-slate-600/70 bg-slate-950/70 p-4 text-sm text-slate-200">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
                       Done-for-you AI visibility execution
                     </div>
                   </div>
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Link href="/strategy-blueprint">
-                      <Button className="bg-orange-500 text-white hover:bg-orange-400">Book Strategy Call</Button>
+                      <Button className="bg-slate-950 text-white hover:bg-slate-800">Book Strategy Call</Button>
                     </Link>
-                    <Button
-                      variant="outline"
-                      onClick={openForm}
-                      className="border-slate-300 bg-transparent text-white hover:bg-slate-800"
-                    >
+                    <Button variant="outline" onClick={openForm} className="border-slate-300 text-slate-900 hover:bg-slate-100">
                       Talk to the Team
                     </Button>
                   </div>
