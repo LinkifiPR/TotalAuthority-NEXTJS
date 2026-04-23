@@ -312,6 +312,8 @@ export default function AiSetupEnginePage() {
   const { isOpen, openForm, closeForm } = useFormPopup();
   const inputRef = useRef<HTMLDivElement | null>(null);
   const resultsRef = useRef<HTMLDivElement | null>(null);
+  const brandInputRef = useRef<HTMLInputElement | null>(null);
+  const brandFlashIntervalRef = useRef<number | null>(null);
 
   const [formValues, setFormValues] = useState({
     url: '',
@@ -335,6 +337,9 @@ export default function AiSetupEnginePage() {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const [quickWebsiteUrl, setQuickWebsiteUrl] = useState('');
+  const [quickInputError, setQuickInputError] = useState<string | null>(null);
+  const [brandFieldFlashActive, setBrandFieldFlashActive] = useState(false);
 
   const generatedAssetsList = useMemo(
     () => [
@@ -350,6 +355,75 @@ export default function AiSetupEnginePage() {
 
   const scrollToInput = () => {
     inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const normalizeWebsiteUrl = (value: string): string | null => {
+    const trimmed = value.trim();
+
+    if (!trimmed) {
+      return null;
+    }
+
+    const withProtocol = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+
+    try {
+      const parsed = new URL(withProtocol);
+
+      if (!parsed.hostname || !parsed.hostname.includes('.')) {
+        return null;
+      }
+
+      return parsed.toString().replace(/\/$/, '');
+    } catch {
+      return null;
+    }
+  };
+
+  const triggerBrandFieldFlash = () => {
+    if (brandFlashIntervalRef.current) {
+      window.clearInterval(brandFlashIntervalRef.current);
+      brandFlashIntervalRef.current = null;
+    }
+
+    brandInputRef.current?.focus({ preventScroll: true });
+
+    let pulseCount = 0;
+    brandFlashIntervalRef.current = window.setInterval(() => {
+      pulseCount += 1;
+      setBrandFieldFlashActive((current) => !current);
+
+      if (pulseCount >= 6) {
+        if (brandFlashIntervalRef.current) {
+          window.clearInterval(brandFlashIntervalRef.current);
+          brandFlashIntervalRef.current = null;
+        }
+        setBrandFieldFlashActive(false);
+      }
+    }, 220);
+  };
+
+  const handleQuickUrlSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const normalizedUrl = normalizeWebsiteUrl(quickWebsiteUrl);
+
+    if (!normalizedUrl) {
+      setQuickInputError('Please enter a valid website URL (for example: yoursite.com).');
+      return;
+    }
+
+    setQuickInputError(null);
+    setQuickWebsiteUrl(normalizedUrl);
+    setFormValues((current) => ({
+      ...current,
+      url: normalizedUrl,
+    }));
+
+    scrollToInput();
+
+    window.setTimeout(() => {
+      triggerBrandFieldFlash();
+    }, 550);
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -476,7 +550,7 @@ export default function AiSetupEnginePage() {
           </div>
 
           <section className="relative z-10 px-4 pb-12 pt-14 md:pt-20">
-            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
               <div>
                 <p className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm">
                   <Cpu className="h-3.5 w-3.5 text-slate-700" />
@@ -525,7 +599,7 @@ export default function AiSetupEnginePage() {
                 </div>
               </div>
 
-              <Card className="relative overflow-hidden border border-white/70 bg-white/65 p-6 shadow-2xl shadow-slate-200/70 backdrop-blur-xl md:p-8">
+              <Card className="relative self-start overflow-hidden border border-white/70 bg-white/65 p-6 shadow-2xl shadow-slate-200/70 backdrop-blur-xl md:p-8">
                 <div className="pointer-events-none absolute -right-12 top-[-2.8rem] h-40 w-40 rounded-full bg-orange-200/45 blur-2xl animate-[pulse_8s_ease-in-out_infinite]" />
                 <div className="pointer-events-none absolute -left-10 bottom-[-3.2rem] h-36 w-36 rounded-full bg-emerald-200/45 blur-2xl animate-[pulse_7s_ease-in-out_infinite]" />
 
@@ -546,78 +620,123 @@ export default function AiSetupEnginePage() {
                   The engine generates production-ready outputs your team can copy, paste, and implement without extra tooling.
                 </p>
 
-                <div className="relative mt-5 space-y-2.5">
+                <div className="relative mt-5 space-y-2">
                   {ONE_CLICK_OUTPUTS.map((output, index) => (
                     <div
                       key={output.title}
-                      className="rounded-xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                      className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
                       style={{ animationDelay: `${index * 80}ms` }}
                     >
                       <div className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-500" />
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
                         <div>
                           <p className="text-sm font-semibold text-slate-900">{output.title}</p>
-                          <p className="mt-0.5 text-xs leading-relaxed text-slate-600">{output.description}</p>
+                          <p className="mt-0.5 text-[11px] leading-relaxed text-slate-600">{output.description}</p>
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
+              </Card>
+            </div>
+          </section>
 
-                <div className="relative mt-5 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">Implementation Readiness</p>
-                    <div className="mt-3 h-2 rounded-full bg-slate-200">
-                      <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" />
-                    </div>
-                    <p className="mt-2 text-xs text-emerald-700">92% setup completeness on first pass</p>
+          <section className="relative z-10 px-4 pb-8">
+            <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
+              <Card className="border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Implementation Readiness</p>
+                <div className="mt-3 h-2 rounded-full bg-slate-200">
+                  <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" />
+                </div>
+                <p className="mt-2 text-sm font-medium text-emerald-700">92% setup completeness on first pass</p>
 
-                    <div className="mt-3 grid grid-cols-3 gap-2">
-                      {HERO_WIDGET_KPIS.map((metric) => (
-                        <div key={metric.label} className="rounded-md border border-slate-200 bg-white p-2">
-                          <p className="text-[10px] uppercase tracking-wide text-slate-500">{metric.label}</p>
-                          <p className="mt-1 text-xs font-semibold text-slate-900">{metric.value}</p>
-                        </div>
-                      ))}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {HERO_WIDGET_KPIS.map((metric) => (
+                    <div key={metric.label} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700">
+                      <span className="font-semibold text-slate-900">{metric.value}</span>
+                      <span className="mx-1 text-slate-400">·</span>
+                      <span>{metric.label}</span>
                     </div>
-                  </div>
-
-                  <div className="rounded-xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">Custom Output Widgets</p>
-                    <div className="mt-2 h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5">
-                      <svg viewBox="0 0 140 34" className="h-full w-full">
-                        <polyline
-                          fill="none"
-                          stroke="rgb(15 23 42)"
-                          strokeWidth="2.5"
-                          points={HERO_SPARKLINE_POINTS.map((point, pointIndex) => `${pointIndex * 18},${34 - point}`).join(' ')}
-                        />
-                        {HERO_SPARKLINE_POINTS.map((point, pointIndex) => (
-                          <circle
-                            key={`${pointIndex}-${point}`}
-                            cx={pointIndex * 18}
-                            cy={34 - point}
-                            r="1.8"
-                            fill={pointIndex > HERO_SPARKLINE_POINTS.length - 3 ? 'rgb(34 197 94)' : 'rgb(148 163 184)'}
-                          />
-                        ))}
-                      </svg>
-                    </div>
-
-                    <div className="mt-3 flex h-12 items-end gap-1">
-                      {HERO_WIDGET_BARS.map((bar, barIndex) => (
-                        <div key={bar.label} className="flex flex-1 flex-col items-center gap-1">
-                          <div
-                            className="w-full rounded-sm bg-gradient-to-t from-slate-900 to-slate-500 animate-[pulse_5s_ease-in-out_infinite]"
-                            style={{ height: `${bar.value}%`, animationDelay: `${barIndex * 0.35}s` }}
-                          />
-                          <p className="text-[9px] uppercase tracking-wide text-slate-500">{bar.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </Card>
+
+              <Card className="border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Custom Output Widgets</p>
+                <div className="mt-2 h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5">
+                  <svg viewBox="0 0 140 34" className="h-full w-full">
+                    <polyline
+                      fill="none"
+                      stroke="rgb(15 23 42)"
+                      strokeWidth="2.5"
+                      points={HERO_SPARKLINE_POINTS.map((point, pointIndex) => `${pointIndex * 18},${34 - point}`).join(' ')}
+                    />
+                    {HERO_SPARKLINE_POINTS.map((point, pointIndex) => (
+                      <circle
+                        key={`${pointIndex}-${point}`}
+                        cx={pointIndex * 18}
+                        cy={34 - point}
+                        r="1.8"
+                        fill={pointIndex > HERO_SPARKLINE_POINTS.length - 3 ? 'rgb(34 197 94)' : 'rgb(148 163 184)'}
+                      />
+                    ))}
+                  </svg>
+                </div>
+
+                <div className="mt-3 flex h-12 items-end gap-1">
+                  {HERO_WIDGET_BARS.map((bar, barIndex) => (
+                    <div key={bar.label} className="flex flex-1 flex-col items-center gap-1">
+                      <div
+                        className="w-full rounded-sm bg-gradient-to-t from-slate-900 to-slate-500 animate-[pulse_5s_ease-in-out_infinite]"
+                        style={{ height: `${bar.value}%`, animationDelay: `${barIndex * 0.35}s` }}
+                      />
+                      <p className="text-[9px] uppercase tracking-wide text-slate-500">{bar.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </section>
+
+          <section className="relative z-10 px-4 pb-10">
+            <div className="mx-auto max-w-4xl">
+              <form
+                onSubmit={handleQuickUrlSubmit}
+                className="rounded-2xl border border-white/70 bg-white/80 p-3 shadow-xl shadow-slate-200/60 backdrop-blur-xl"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                    <Globe className="h-5 w-5 text-slate-700" />
+                  </div>
+                  <Input
+                    type="text"
+                    value={quickWebsiteUrl}
+                    onChange={(event) => {
+                      setQuickWebsiteUrl(event.target.value);
+                      if (quickInputError) {
+                        setQuickInputError(null);
+                      }
+                    }}
+                    placeholder="Enter your website URL (e.g. yoursite.com) and press Enter"
+                    className="h-11 border-0 bg-transparent text-base text-slate-900 placeholder:text-slate-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                  <Button
+                    type="submit"
+                    className="h-11 rounded-xl bg-orange-500 px-5 text-white shadow-lg shadow-orange-200 transition hover:bg-orange-600"
+                  >
+                    <span className="hidden sm:inline">Continue</span>
+                    <ArrowRight className="h-4 w-4 sm:ml-2" />
+                  </Button>
+                </div>
+              </form>
+
+              <p className="mt-2 px-2 text-xs text-slate-600">
+                Enter URL, press Enter, and we jump you into the full configuration flow.
+              </p>
+
+              {quickInputError && (
+                <div className="mt-3 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">{quickInputError}</div>
+              )}
             </div>
           </section>
 
@@ -768,6 +887,7 @@ export default function AiSetupEnginePage() {
                             Brand name (optional)
                           </Label>
                           <Input
+                            ref={brandInputRef}
                             id="brand-name"
                             placeholder="Total Authority"
                             value={formValues.brandName}
@@ -777,7 +897,9 @@ export default function AiSetupEnginePage() {
                                 brandName: event.target.value,
                               }))
                             }
-                            className="h-12 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400"
+                            className={`h-12 border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 transition ${
+                              brandFieldFlashActive ? 'border-orange-400 ring-2 ring-orange-300/70' : ''
+                            }`}
                           />
                         </div>
 
