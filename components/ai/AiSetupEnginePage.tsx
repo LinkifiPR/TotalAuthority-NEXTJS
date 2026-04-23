@@ -3,7 +3,9 @@
 import { FormEvent, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
+  Activity,
   ArrowRight,
+  BarChart3,
   Bot,
   Building2,
   CheckCircle2,
@@ -14,8 +16,10 @@ import {
   Download,
   FileCode2,
   FileText,
+  Gauge,
   Globe,
   Layers,
+  LineChart,
   Loader2,
   Lock,
   Network,
@@ -103,6 +107,95 @@ const ENTERPRISE_STANDARDS = [
   'Partial-result resilience when some pages are blocked or unavailable',
   'Structured outputs designed for direct implementation and handoff',
   'Commercially credible copy that avoids overclaiming outcomes',
+];
+
+const AI_PLATFORM_LOGOS = [
+  {
+    name: 'OpenAI',
+    url: 'https://cdn.brandfetch.io/openai.com/w/512/h/139/logo?c=1idP0DrE2OZDRG5HYTw',
+  },
+  {
+    name: 'Claude',
+    url: 'https://cdn.brandfetch.io/claude.ai/w/512/h/111/logo?c=1idP0DrE2OZDRG5HYTw',
+  },
+  {
+    name: 'Perplexity',
+    url: 'https://cdn.brandfetch.io/perplexity.ai/w/512/h/512?c=1idP0DrE2OZDRG5HYTw',
+  },
+  {
+    name: 'Google Gemini',
+    url: 'https://cdn.brandfetch.io/gemini.google.com/w/512/h/512/logo',
+  },
+];
+
+const DASHBOARD_KPIS = [
+  {
+    label: 'Core Pages',
+    value: '7 Targets',
+    icon: Globe,
+  },
+  {
+    label: 'Signals Parsed',
+    value: '42',
+    icon: Activity,
+  },
+  {
+    label: 'Assets Generated',
+    value: '6',
+    icon: Sparkles,
+  },
+];
+
+const PIPELINE_BARS = [
+  { label: 'Scan', height: 32 },
+  { label: 'Parse', height: 56 },
+  { label: 'Detect', height: 44 },
+  { label: 'Generate', height: 68 },
+  { label: 'Guide', height: 50 },
+];
+
+const SIGNAL_COVERAGE = [
+  {
+    title: 'Metadata + Canonicals',
+    coverage: 96,
+    icon: FileText,
+  },
+  {
+    title: 'Schema + JSON-LD',
+    coverage: 84,
+    icon: Network,
+  },
+  {
+    title: 'Internal Linking Signals',
+    coverage: 89,
+    icon: Globe,
+  },
+  {
+    title: 'Robots + Sitemap Signals',
+    coverage: 91,
+    icon: ShieldCheck,
+  },
+];
+
+const OUTPUT_METRICS = [
+  {
+    label: 'Detection Confidence',
+    value: 'High',
+    trend: '+14%',
+    icon: Gauge,
+  },
+  {
+    label: 'Implementation Readiness',
+    value: 'Deployable',
+    trend: '6 Assets',
+    icon: BarChart3,
+  },
+  {
+    label: 'Execution Velocity',
+    value: 'Fast',
+    trend: '< 3 min',
+    icon: LineChart,
+  },
 ];
 
 type OutputTabValue = (typeof OUTPUT_TAB_ORDER)[number]['value'];
@@ -391,9 +484,9 @@ export default function AiSetupEnginePage() {
           </div>
 
           <section className="relative z-10 px-4 pb-12 pt-14 md:pt-20">
-            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
-                <p className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700">
+                <p className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm">
                   <Cpu className="h-3.5 w-3.5 text-slate-700" />
                   Enterprise AI Discovery Setup Engine
                 </p>
@@ -423,23 +516,91 @@ export default function AiSetupEnginePage() {
                   </Button>
                   <p className="text-sm text-slate-600">Designed for technical marketing teams and enterprise handoff workflows.</p>
                 </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                    <Database className="h-3.5 w-3.5" />
+                    Rule-Based Scan
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                    <Network className="h-3.5 w-3.5" />
+                    Setup Detection
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                    <Sparkles className="h-3.5 w-3.5" />
+                    AI Asset Generation
+                  </span>
+                </div>
               </div>
 
               <Card className="border border-slate-200 bg-white p-6 shadow-lg md:p-8">
-                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-600">
-                  <TerminalSquare className="h-4 w-4" />
-                  Engine Sequence
-                </p>
-                <div className="mt-4 space-y-3">
-                  {ENGINE_SEQUENCE.map((item) => (
-                    <div key={item.step} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <div className="flex items-center gap-3">
-                        <span className="rounded-md border border-slate-300 bg-white px-2 py-1 text-xs font-semibold text-slate-700">
-                          {item.step}
-                        </span>
-                        <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-600">
+                    <TerminalSquare className="h-4 w-4" />
+                    Live Setup Preview
+                  </p>
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+                    Enterprise Mode
+                  </span>
+                </div>
+
+                <div className="mt-4 grid grid-cols-3 gap-2">
+                  {DASHBOARD_KPIS.map((kpi) => {
+                    const Icon = kpi.icon;
+                    return (
+                      <div key={kpi.label} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                        <div className="inline-flex rounded-md bg-white p-1.5">
+                          <Icon className="h-3.5 w-3.5 text-slate-700" />
+                        </div>
+                        <p className="mt-2 text-xs text-slate-500">{kpi.label}</p>
+                        <p className="text-sm font-semibold text-slate-900">{kpi.value}</p>
                       </div>
-                      <p className="mt-2 text-sm text-slate-600">{item.description}</p>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-4 rounded-xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Pipeline Throughput</p>
+                  <div className="mt-3 flex h-24 items-end gap-2">
+                    {PIPELINE_BARS.map((bar) => (
+                      <div key={bar.label} className="flex flex-1 flex-col items-center gap-2">
+                        <div
+                          className="w-full rounded-md bg-gradient-to-t from-slate-900 to-slate-500"
+                          style={{ height: `${bar.height}px` }}
+                        />
+                        <span className="text-[10px] font-medium uppercase tracking-wide text-slate-500">{bar.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-2">
+                  {ENGINE_SEQUENCE.map((item) => (
+                    <div key={item.step} className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2">
+                      <p className="text-xs font-semibold text-slate-900">
+                        {item.step}. {item.title}
+                      </p>
+                      <span className="text-[11px] text-slate-500">{item.description}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </section>
+
+          <section className="relative z-10 px-4 pb-10">
+            <div className="mx-auto max-w-6xl">
+              <Card className="border border-slate-200 bg-white p-5 shadow-sm md:p-7">
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-700">
+                    Optimized for AI Discovery Surfaces
+                  </p>
+                  <p className="text-sm text-slate-600">Generated outputs are structured for major AI assistants and search interfaces.</p>
+                </div>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {AI_PLATFORM_LOGOS.map((logo) => (
+                    <div key={logo.name} className="flex h-20 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4">
+                      <img src={logo.url} alt={`${logo.name} logo`} className="h-8 w-auto object-contain opacity-95" />
                     </div>
                   ))}
                 </div>
@@ -453,7 +614,7 @@ export default function AiSetupEnginePage() {
                 const Icon = item.icon;
                 return (
                   <Card key={item.title} className="border border-slate-200 bg-white p-6 shadow-sm">
-                    <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-2">
+                    <div className="inline-flex rounded-lg border border-slate-200 bg-gradient-to-br from-slate-100 to-white p-2">
                       <Icon className="h-5 w-5 text-slate-700" />
                     </div>
                     <h3 className="mt-4 text-lg font-bold text-slate-900">{item.title}</h3>
@@ -465,21 +626,33 @@ export default function AiSetupEnginePage() {
           </section>
 
           <section className="relative z-10 px-4 pb-12">
-            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.15fr_0.85fr]">
               <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
-                <p className="text-xs uppercase tracking-[0.18em] text-slate-600">Platform Positioning</p>
-                <h2 className="mt-3 text-2xl font-bold text-slate-950 md:text-3xl">
-                  Built for implementation, not just diagnosis
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
-                  Most products stop at visibility scores. This workflow produces the pages, technical files, and
-                  deployment instructions your team needs to improve AI understanding of your brand identity,
-                  proposition, and service context.
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-600">Signal Coverage Matrix</p>
+                <h2 className="mt-3 text-2xl font-bold text-slate-950 md:text-3xl">Technical depth with deployment clarity</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  The engine inspects high-impact AI discovery signals, flags setup gaps, and generates implementation-ready assets.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">
-                  Outputs are formatted for action: copy blocks, schema suggestions, robots recommendations, internal
-                  linking guidance, and platform-specific implementation paths.
-                </p>
+
+                <div className="mt-6 space-y-3">
+                  {SIGNAL_COVERAGE.map((signal) => {
+                    const Icon = signal.icon;
+                    return (
+                      <div key={signal.title} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                        <div className="mb-2 flex items-center justify-between gap-3">
+                          <p className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                            <Icon className="h-4 w-4 text-slate-700" />
+                            {signal.title}
+                          </p>
+                          <span className="text-xs font-semibold text-slate-600">{signal.coverage}%</span>
+                        </div>
+                        <div className="h-2 rounded-full bg-slate-200">
+                          <div className="h-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-500" style={{ width: `${signal.coverage}%` }} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </Card>
 
               <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
@@ -487,7 +660,26 @@ export default function AiSetupEnginePage() {
                   <ShieldCheck className="h-4 w-4" />
                   Delivery Standards
                 </p>
-                <ul className="mt-4 space-y-3 text-sm text-slate-700">
+                <div className="mt-4 space-y-3">
+                  {OUTPUT_METRICS.map((metric) => {
+                    const Icon = metric.icon;
+                    return (
+                      <div key={metric.label} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                            <Icon className="h-4 w-4 text-slate-700" />
+                            {metric.label}
+                          </p>
+                          <span className="rounded-full border border-slate-300 bg-white px-2 py-0.5 text-xs font-medium text-slate-700">
+                            {metric.trend}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm text-slate-600">{metric.value}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <ul className="mt-5 space-y-3 text-sm text-slate-700">
                   {ENTERPRISE_STANDARDS.map((item) => (
                     <li key={item} className="flex gap-2">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" />
