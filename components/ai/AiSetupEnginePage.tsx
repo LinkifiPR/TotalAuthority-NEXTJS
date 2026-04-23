@@ -325,6 +325,8 @@ type ParsedApiResponse<T> = {
   isJson: boolean;
 };
 
+const RETRYABLE_API_STATUS = new Set([502, 503, 504]);
+
 async function parseApiResponse<T>(response: Response): Promise<ParsedApiResponse<T>> {
   const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
 
@@ -377,6 +379,10 @@ function buildApiFailureMessage(status: number, rawText: string | null): string 
   }
 
   return `The AI setup API request failed (status ${status}). Please try again.`;
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
 function renderGuideCards(guide: ImplementationGuide) {
@@ -633,33 +639,57 @@ export default function AiSetupEnginePage() {
     }, 1200);
 
     try {
-      const response = await fetch('/api/ai-setup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(formValues),
-      });
+      const maxAttempts = 3;
+      let resolvedPayload: AiSetupResponse | null = null;
 
-      const parsedResponse = await parseApiResponse<AiSetupResponse & { error?: string }>(response);
-      const payload = parsedResponse.payload;
+      for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+        const response = await fetch('/api/ai-setup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(formValues),
+        });
 
-      if (!response.ok) {
-        if (parsedResponse.isJson && payload?.error) {
-          throw new Error(payload.error);
+        const parsedResponse = await parseApiResponse<AiSetupResponse & { error?: string }>(response);
+        const payload = parsedResponse.payload;
+
+        if (response.ok && parsedResponse.isJson && payload) {
+          resolvedPayload = payload as AiSetupResponse;
+          break;
         }
 
-        throw new Error(buildApiFailureMessage(response.status, parsedResponse.rawText));
-      }
+        if (!response.ok) {
+          const isRetryable = RETRYABLE_API_STATUS.has(response.status);
 
-      if (!parsedResponse.isJson || !payload) {
+          if (isRetryable && attempt < maxAttempts) {
+            await sleep(600 * attempt);
+            continue;
+          }
+
+          if (parsedResponse.isJson && payload?.error) {
+            throw new Error(payload.error);
+          }
+
+          throw new Error(buildApiFailureMessage(response.status, parsedResponse.rawText));
+        }
+
+        if (attempt < maxAttempts) {
+          await sleep(500 * attempt);
+          continue;
+        }
+
         throw new Error(
           `The AI setup API returned a non-JSON response (status ${response.status}). Please retry the deploy and test again.`,
         );
       }
 
-      setResult(payload as AiSetupResponse);
+      if (!resolvedPayload) {
+        throw new Error('Unable to generate your AI setup right now. Please try again.');
+      }
+
+      setResult(resolvedPayload);
       setActiveTab('aiInfoPage');
       setLoadingStepIndex(LOADING_STEPS.length - 1);
 
@@ -1238,7 +1268,7 @@ export default function AiSetupEnginePage() {
 
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <p className="text-xs text-slate-500">
-                          Partial result handling is enabled if some pages cannot be fetched.
+                          Every run returns a complete setup pack with all implementation assets.
                         </p>
                         <Button
                           type="submit"
@@ -1349,11 +1379,6 @@ export default function AiSetupEnginePage() {
                         <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Generation Source</p>
                         <p className="mt-1 font-semibold text-slate-900">{generationModeMeta.label}</p>
                         <p className="mt-1 text-xs text-slate-600">{generationModeMeta.description}</p>
-                        {result.meta.partial && (
-                          <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-700">
-                            Partial fetch completed. Outputs were still generated.
-                          </p>
-                        )}
                       </div>
                     )}
                   </div>

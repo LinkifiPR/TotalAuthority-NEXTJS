@@ -8,6 +8,13 @@ import { AiSetupRequestSchema, AiSetupResponse } from '@/lib/types/ai-setup';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
+// Netlify serverless routes can fail with 502 if request time exceeds runtime limits.
+// Keep these tuned to return a full setup pack reliably within one request.
+const FETCH_TIMEOUT_MS = 4_500;
+const DISCOVERED_FETCH_LIMIT = 6;
+const SITEMAP_FETCH_LIMIT = 4;
+const MODEL_TIMEOUT_MS = 8_500;
+
 function buildSummaryHeadline(missingAssetsCount: number, existingAssetsCount: number): string {
   if (missingAssetsCount === 0) {
     return 'Your setup is in strong shape. We generated a complete implementation pack to tighten AI clarity.';
@@ -69,7 +76,11 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const fetched = await fetchSiteResources(normalizedUrl.toString());
+    const fetched = await fetchSiteResources(normalizedUrl.toString(), {
+      timeoutMs: FETCH_TIMEOUT_MS,
+      discoveredFetchLimit: DISCOVERED_FETCH_LIMIT,
+      sitemapFetchLimit: SITEMAP_FETCH_LIMIT,
+    });
     const extracted = extractSiteSignals(fetched);
     const detected = detectAssets(extracted);
 
@@ -78,6 +89,9 @@ export async function POST(request: NextRequest) {
       origin: normalizedUrl.origin,
       extracted,
       detected,
+    }, {}, {
+      modelTimeoutMs: MODEL_TIMEOUT_MS,
+      allowRefinement: false,
     });
 
     const summaryRecommendations = dedupe([

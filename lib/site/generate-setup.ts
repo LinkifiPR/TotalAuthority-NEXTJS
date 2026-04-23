@@ -46,6 +46,13 @@ interface GenerationDependencies {
   modelClient?: typeof callOpenRouter;
 }
 
+interface GenerateRuntimeOptions {
+  forceFallback?: boolean;
+  modelTimeoutMs?: number;
+  allowRefinement?: boolean;
+  refinementTimeoutMs?: number;
+}
+
 const AI_INFO_PATH = '/ai';
 const MAX_EVIDENCE_SNIPPETS = 22;
 
@@ -606,6 +613,7 @@ function qualityIssueSummary(issues: QualityIssue[]): string[] {
 export async function generateSetupAssets(
   input: GenerateSetupInput,
   dependencies: GenerationDependencies = {},
+  runtimeOptions: GenerateRuntimeOptions = {},
 ): Promise<GenerateSetupResult> {
   const profile = buildSiteProfile({
     request: input.request,
@@ -616,6 +624,27 @@ export async function generateSetupAssets(
   const fallbackQuality = evaluateSetupQuality({ assets: fallbackAssets, profile });
 
   const warnings: string[] = [];
+  const modelTimeoutMs = runtimeOptions.modelTimeoutMs ?? 28_000;
+  const allowRefinement = runtimeOptions.allowRefinement ?? true;
+  const refinementTimeoutMs = runtimeOptions.refinementTimeoutMs ?? 28_000;
+
+  if (runtimeOptions.forceFallback) {
+    warnings.push('Rules-only mode enforced for this run to guarantee a stable response window.');
+
+    if (fallbackQuality.issues.length > 0) {
+      warnings.push(
+        `Fallback QA notes: ${qualityIssueSummary(fallbackQuality.issues)
+          .slice(0, 3)
+          .join(' | ')}`,
+      );
+    }
+
+    return {
+      assets: fallbackAssets,
+      mode: 'fallback',
+      warnings,
+    };
+  }
 
   const modelConfigured = Boolean(process.env.OPENROUTER_API_KEY && process.env.OPENROUTER_MODEL);
   if (!modelConfigured) {
@@ -691,7 +720,7 @@ Quality requirements:
       {
         systemPrompt,
         userPrompt: baseUserPrompt,
-        timeoutMs: 28_000,
+        timeoutMs: modelTimeoutMs,
         temperature: 0.15,
         maxTokens: 4_500,
       },
@@ -704,7 +733,7 @@ Quality requirements:
     let finalAssets = firstMerged;
     let finalQuality = firstQuality;
 
-    if (firstQuality.needsRefinement) {
+    if (allowRefinement && firstQuality.needsRefinement) {
       const refinePrompt = `${baseUserPrompt}
 
 The first draft failed quality checks.
@@ -721,7 +750,7 @@ Rewrite and return a stronger JSON draft that resolves all issues while preservi
           {
             systemPrompt,
             userPrompt: refinePrompt,
-            timeoutMs: 28_000,
+            timeoutMs: refinementTimeoutMs,
             temperature: 0.1,
             maxTokens: 4_500,
           },

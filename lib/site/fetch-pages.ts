@@ -258,10 +258,14 @@ export async function fetchSiteResources(
   options?: {
     timeoutMs?: number;
     maxBodyChars?: number;
+    discoveredFetchLimit?: number;
+    sitemapFetchLimit?: number;
   },
 ): Promise<FetchedSiteResources> {
   const timeoutMs = options?.timeoutMs ?? DEFAULT_TIMEOUT_MS;
   const maxBodyChars = options?.maxBodyChars ?? DEFAULT_MAX_BODY_CHARS;
+  const discoveredFetchLimit = options?.discoveredFetchLimit ?? DISCOVERED_FETCH_LIMIT;
+  const sitemapFetchLimit = options?.sitemapFetchLimit ?? SITEMAP_FETCH_LIMIT;
   const normalizedUrl = normalizeWebsiteUrl(inputUrl);
 
   const initialTargets = [
@@ -285,13 +289,13 @@ export async function fetchSiteResources(
   const sitemapResource = initialResources.find((resource) => resource.path === '/sitemap.xml' && resource.ok);
   const sitemapPaths = parseSitemapUrls(sitemapResource?.body, normalizedUrl.origin);
 
-  const discoveredCandidates = prioritizePaths(discoveredFromHtml, fetchedPathSet, DISCOVERED_FETCH_LIMIT);
-  const sitemapCandidates = prioritizePaths(sitemapPaths, fetchedPathSet, SITEMAP_FETCH_LIMIT);
+  const discoveredCandidates = prioritizePaths(discoveredFromHtml, fetchedPathSet, discoveredFetchLimit);
+  const sitemapCandidates = prioritizePaths(sitemapPaths, fetchedPathSet, sitemapFetchLimit);
 
   const secondPassPaths = prioritizePaths(
     [...discoveredCandidates, ...sitemapCandidates],
     fetchedPathSet,
-    DISCOVERED_FETCH_LIMIT + SITEMAP_FETCH_LIMIT,
+    discoveredFetchLimit + sitemapFetchLimit,
   );
 
   const secondPassResources = await Promise.all(
