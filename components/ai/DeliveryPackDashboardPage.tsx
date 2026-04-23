@@ -27,7 +27,12 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useFormPopup } from '@/hooks/useFormPopup';
-import { readDeliverySessionPayload, writeDeliverySessionResult } from '@/lib/ai/delivery-session';
+import {
+  readDeliverySessionPayload,
+  writeDeliverySessionError,
+  writeDeliverySessionJob,
+  writeDeliverySessionResult,
+} from '@/lib/ai/delivery-session';
 import type {
   AiSetupRequest,
   AiSetupResponse,
@@ -51,7 +56,9 @@ const LOADING_STEPS = [
   'Preparing implementation guide',
 ];
 
-const RETRYABLE_API_STATUS = new Set([502, 503, 504]);
+const RETRYABLE_API_STATUS = new Set([429, 502, 503, 504]);
+const POLL_INTERVAL_MS = 1_800;
+const MAX_POLL_WINDOW_MS = 10 * 60 * 1_000;
 
 type OutputTabValue = (typeof OUTPUT_TAB_ORDER)[number]['value'];
 
@@ -59,6 +66,22 @@ type ParsedApiResponse<T> = {
   payload: T | null;
   rawText: string | null;
   isJson: boolean;
+};
+
+type AiSetupStartResponse = {
+  jobId: string;
+  status: 'queued' | 'running';
+  error?: string;
+};
+
+type AiSetupStatusResponse = {
+  jobId: string;
+  status: 'queued' | 'running' | 'completed' | 'failed';
+  stepIndex: number;
+  stepLabel: string;
+  warnings: string[];
+  error?: string;
+  result?: AiSetupResponse;
 };
 
 type GuideBuckets = {
@@ -476,6 +499,7 @@ export default function DeliveryPackDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
   const [loadingStepIndex, setLoadingStepIndex] = useState(0);
+  const [loadingStepLabel, setLoadingStepLabel] = useState(LOADING_STEPS[0] ?? 'Scanning your website');
   const [loadError, setLoadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<OutputTabValue>('aiInfoPage');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -523,43 +547,92 @@ export default function DeliveryPackDashboardPage() {
 
   useEffect(() => {
     let cancelled = false;
-    let stepInterval: number | null = null;
 
-    const runGeneration = async (payload: AiSetupRequest) => {
-      setIsGenerating(true);
-      setLoadError(null);
-      setLoadingStepIndex(0);
+    const startGenerationJob = async (payload: AiSetupRequest): Promise<string> => {
+      const maxAttempts = 3;
 
-      stepInterval = window.setInterval(() => {
-        setLoadingStepIndex((previous) => Math.min(previous + 1, LOADING_STEPS.length - 1));
-      }, 1200);
+      for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+        const response = await fetch('/api/ai-setup/start', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
 
-      try {
-        const maxAttempts = 3;
+        const parsedResponse = await parseApiResponse<AiSetupStartResponse & { error?: string }>(response);
+        const apiPayload = parsedResponse.payload;
 
+        if (response.ok && parsedResponse.isJson && apiPayload?.jobId) {
+          return apiPayload.jobId;
+        }
+
+        if (!response.ok) {
+          const isRetryable = RETRYABLE_API_STATUS.has(response.status);
+          if (isRetryable && attempt < maxAttempts) {
+            await sleep(700 * attempt);
+            continue;
+          }
+
+          if (parsedResponse.isJson && apiPayload?.error) {
+            throw new Error(apiPayload.error);
+          }
+
+          throw new Error(buildApiFailureMessage(response.status, parsedResponse.rawText));
+        }
+
+        if (attempt < maxAttempts) {
+          await sleep(600 * attempt);
+          continue;
+        }
+
+        throw new Error(
+          `The AI setup start endpoint returned a non-JSON response (status ${response.status}). Please retry the deploy and test again.`,
+        );
+      }
+
+      throw new Error('Unable to start the AI setup job.');
+    };
+
+    const pollGenerationJob = async (jobId: string): Promise<void> => {
+      const startedAt = Date.now();
+      const maxAttempts = 5;
+
+      while (!cancelled) {
         for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-          const response = await fetch('/api/ai-setup', {
-            method: 'POST',
+          const response = await fetch(`/api/ai-setup/status?jobId=${encodeURIComponent(jobId)}`, {
+            method: 'GET',
             headers: {
-              'Content-Type': 'application/json',
               Accept: 'application/json',
             },
-            body: JSON.stringify(payload),
+            cache: 'no-store',
           });
 
-          const parsedResponse = await parseApiResponse<AiSetupResponse & { error?: string }>(response);
+          const parsedResponse = await parseApiResponse<AiSetupStatusResponse & { error?: string }>(response);
           const apiPayload = parsedResponse.payload;
 
           if (response.ok && parsedResponse.isJson && apiPayload) {
-            if (cancelled) {
+            const safeStepIndex = Math.max(0, Math.min(apiPayload.stepIndex ?? 0, LOADING_STEPS.length - 1));
+            setLoadingStepIndex(safeStepIndex);
+            setLoadingStepLabel(apiPayload.stepLabel ?? LOADING_STEPS[safeStepIndex] ?? 'Processing');
+
+            if (apiPayload.status === 'completed' && apiPayload.result) {
+              if (!cancelled) {
+                setResult(apiPayload.result);
+                writeDeliverySessionResult(sessionId, apiPayload.result);
+                setIsGenerating(false);
+                setLoadingStepIndex(LOADING_STEPS.length - 1);
+                setLoadingStepLabel('Delivery pack ready');
+              }
               return;
             }
 
-            setResult(apiPayload as AiSetupResponse);
-            writeDeliverySessionResult(sessionId, apiPayload as AiSetupResponse);
-            setIsGenerating(false);
-            setLoadingStepIndex(LOADING_STEPS.length - 1);
-            return;
+            if (apiPayload.status === 'failed') {
+              throw new Error(apiPayload.error ?? 'The AI setup job failed during generation.');
+            }
+
+            break;
           }
 
           if (!response.ok) {
@@ -575,24 +648,32 @@ export default function DeliveryPackDashboardPage() {
 
             throw new Error(buildApiFailureMessage(response.status, parsedResponse.rawText));
           }
-
-          if (attempt < maxAttempts) {
-            await sleep(500 * attempt);
-            continue;
-          }
-
-          throw new Error(
-            `The AI setup API returned a non-JSON response (status ${response.status}). Please retry the deploy and test again.`,
-          );
         }
+
+        if (Date.now() - startedAt > MAX_POLL_WINDOW_MS) {
+          throw new Error('The generation job is taking too long. Please try running it again.');
+        }
+
+        await sleep(POLL_INTERVAL_MS);
+      }
+    };
+
+    const runGeneration = async (payload: AiSetupRequest, existingJobId?: string) => {
+      setIsGenerating(true);
+      setLoadError(null);
+      setLoadingStepIndex(0);
+      setLoadingStepLabel(LOADING_STEPS[0] ?? 'Scanning your website');
+
+      try {
+        const jobId = existingJobId ?? (await startGenerationJob(payload));
+        writeDeliverySessionJob(sessionId, jobId);
+        await pollGenerationJob(jobId);
       } catch (error) {
         if (!cancelled) {
-          setLoadError(error instanceof Error ? error.message : 'Unable to generate your delivery pack.');
+          const message = error instanceof Error ? error.message : 'Unable to generate your delivery pack.';
+          setLoadError(message);
+          writeDeliverySessionError(sessionId, message);
           setIsGenerating(false);
-        }
-      } finally {
-        if (stepInterval) {
-          window.clearInterval(stepInterval);
         }
       }
     };
@@ -625,6 +706,13 @@ export default function DeliveryPackDashboardPage() {
       };
     }
 
+    if (sessionPayload.status === 'failed' && sessionPayload.error) {
+      setLoadError(sessionPayload.error);
+      return () => {
+        cancelled = true;
+      };
+    }
+
     if (!sessionPayload.request) {
       setLoadError('No input payload found for this delivery session. Start a new run from /ai-setup.');
       return () => {
@@ -636,14 +724,11 @@ export default function DeliveryPackDashboardPage() {
 
     if (generationStartedRef.current !== sessionId) {
       generationStartedRef.current = sessionId;
-      void runGeneration(sessionPayload.request);
+      void runGeneration(sessionPayload.request, sessionPayload.jobId);
     }
 
     return () => {
       cancelled = true;
-      if (stepInterval) {
-        window.clearInterval(stepInterval);
-      }
     };
   }, [sessionId]);
 
@@ -766,6 +851,10 @@ export default function DeliveryPackDashboardPage() {
             <p className="mt-2 text-base text-slate-600">
               Target:{' '}
               <span className="font-semibold text-slate-900">{requestPayload?.url ?? 'Website URL'}</span>
+            </p>
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm font-semibold text-orange-700">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              {loadingStepLabel}
             </p>
           </Card>
 

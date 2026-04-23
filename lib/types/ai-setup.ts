@@ -140,7 +140,7 @@ export const ImplementationGuideSchema = z.object({
 export const SchemaSuggestionsSchema = z.object({
   organization: z.string().min(1),
   website: z.string().min(1),
-  person: z.string().optional(),
+  person: z.union([z.string(), z.null()]).optional().transform((value) => value ?? undefined),
   service: z.string().min(1),
   notes: z.array(z.string()).default([]),
 });

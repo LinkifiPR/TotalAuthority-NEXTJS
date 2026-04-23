@@ -24,6 +24,10 @@ const PRIORITY_PATH_PATTERNS = [
   /^\/(?:contact|get-in-touch|book|schedule|consultation)(?:\/|$)/i,
 ];
 
+const ABOUT_EQUIVALENT_PATTERN = /^\/(?:about|about-us|company|who-we-are|our-story|team|leadership)(?:\/|$)/i;
+const SERVICES_EQUIVALENT_PATTERN = /^\/(?:services?|solutions?|what-we-do|offers?|capabilities)(?:\/|$)/i;
+const CONTACT_EQUIVALENT_PATTERN = /^\/(?:contact|get-in-touch|book|schedule|consultation|book-a-call)(?:\/|$)/i;
+
 const IGNORED_FILE_EXTENSIONS =
   /\.(?:png|jpe?g|gif|webp|svg|pdf|zip|gz|mp4|mp3|mov|avi|webm|ico|woff2?|ttf|eot|css|js|map|xml|txt|json)$/i;
 
@@ -306,9 +310,31 @@ export async function fetchSiteResources(
   );
 
   const resources = [...initialResources, ...secondPassResources];
+  const successfulPathSet = new Set(
+    resources.filter((resource) => resource.ok).map((resource) => normalizePath(resource.path)),
+  );
+
+  const hasAboutEquivalent = Array.from(successfulPathSet).some((path) => ABOUT_EQUIVALENT_PATTERN.test(path));
+  const hasServicesEquivalent = Array.from(successfulPathSet).some((path) => SERVICES_EQUIVALENT_PATTERN.test(path));
+  const hasContactEquivalent = Array.from(successfulPathSet).some((path) => CONTACT_EQUIVALENT_PATTERN.test(path));
 
   const warnings = resources
     .filter((resource) => !resource.ok && resource.required)
+    .filter((resource) => {
+      if ((resource.path === '/about' || resource.path === '/about-us') && hasAboutEquivalent) {
+        return false;
+      }
+
+      if (resource.path === '/services' && hasServicesEquivalent) {
+        return false;
+      }
+
+      if (resource.path === '/contact' && hasContactEquivalent) {
+        return false;
+      }
+
+      return true;
+    })
     .map((resource) => `Could not fetch ${resource.path}: ${resource.error ?? 'Unknown error'}`);
 
   return {

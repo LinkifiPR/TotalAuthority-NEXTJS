@@ -1,39 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { detectAssets } from '@/lib/site/detect-assets';
-import { extractSiteSignals } from '@/lib/site/extract-signals';
-import { fetchSiteResources, normalizeWebsiteUrl } from '@/lib/site/fetch-pages';
-import { generateSetupAssets } from '@/lib/site/generate-setup';
-import { AiSetupRequestSchema, AiSetupResponse } from '@/lib/types/ai-setup';
+import { runAiSetupPipeline } from '@/lib/ai/ai-setup-pipeline';
+import { AiSetupRequestSchema } from '@/lib/types/ai-setup';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-// Netlify serverless routes can fail with 502 if request time exceeds runtime limits.
-// Keep these tuned to return a full setup pack reliably within one request.
-const FETCH_TIMEOUT_MS = 2_500;
-const DISCOVERED_FETCH_LIMIT = 4;
-const SITEMAP_FETCH_LIMIT = 2;
-const MODEL_TIMEOUT_MS = 12_000;
-
-function buildSummaryHeadline(missingAssetsCount: number, existingAssetsCount: number): string {
-  if (missingAssetsCount === 0) {
-    return 'Your setup is in strong shape. We generated a complete implementation pack to tighten AI clarity.';
-  }
-
-  if (missingAssetsCount <= 2) {
-    return 'You already have key foundations in place. We generated the remaining setup assets for a clean rollout.';
-  }
-
-  if (existingAssetsCount >= 3) {
-    return 'Your site has solid signals, but a few important AI setup assets were missing. We generated them for you.';
-  }
-
-  return 'We found core opportunities and generated the key AI setup assets so you can implement quickly.';
-}
-
-function dedupe(values: string[]): string[] {
-  return Array.from(new Set(values.filter(Boolean)));
-}
+const SYNC_ROUTE_OPTIONS = {
+  fetchTimeoutMs: 2_500,
+  discoveredFetchLimit: 4,
+  sitemapFetchLimit: 2,
+  modelTimeoutMs: 12_000,
+  refinementTimeoutMs: 10_000,
+  allowRefinement: false,
+  requireLlm: true,
+  preferredModel:
+    process.env.OPENROUTER_RUNTIME_MODEL ??
+    process.env.OPENROUTER_FALLBACK_MODEL ??
+    process.env.OPENROUTER_MODEL ??
+    'openai/gpt-4.1-mini',
+} as const;
 
 export async function POST(request: NextRequest) {
   let body: unknown;
@@ -61,77 +46,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const payload = parsedRequest.data;
-
-  let normalizedUrl: URL;
   try {
-    normalizedUrl = normalizeWebsiteUrl(payload.url);
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : 'Please enter a valid URL.',
-      },
-      { status: 400 },
-    );
-  }
-
-  try {
-    const fetched = await fetchSiteResources(normalizedUrl.toString(), {
-      timeoutMs: FETCH_TIMEOUT_MS,
-      discoveredFetchLimit: DISCOVERED_FETCH_LIMIT,
-      sitemapFetchLimit: SITEMAP_FETCH_LIMIT,
-    });
-    const extracted = extractSiteSignals(fetched);
-    const detected = detectAssets(extracted);
-
-    const generated = await generateSetupAssets({
-      request: payload,
-      origin: normalizedUrl.origin,
-      extracted,
-      detected,
-    }, {}, {
-      modelTimeoutMs: MODEL_TIMEOUT_MS,
-      allowRefinement: false,
-      requireLlm: true,
-      preferredModel: process.env.OPENROUTER_RUNTIME_MODEL ?? process.env.OPENROUTER_FALLBACK_MODEL ?? 'openai/gpt-4.1-mini',
-    });
-
-    const summaryRecommendations = dedupe([
-      ...detected.recommendations,
-      'Use the implementation guide to publish assets in a single rollout, then verify indexation and internal links.',
-      'Keep the AI info page concise and update it when services, team, or positioning changes.',
-    ]);
-
-    const warnings = dedupe([...fetched.warnings, ...extracted.warnings, ...generated.warnings]);
-
-    const response: AiSetupResponse = {
-      site: {
-        inputUrl: payload.url,
-        normalizedUrl: normalizedUrl.origin,
-        domain: normalizedUrl.hostname,
-        brandName: payload.brandName,
-        shortDescription: payload.shortDescription,
-        country: payload.country,
-        scannedPaths: fetched.resources.map((resource) => resource.path),
-        scannedAt: fetched.scannedAt,
-        warnings,
-      },
-      detected,
-      summary: {
-        headline: buildSummaryHeadline(detected.missingAssets.length, detected.existingAssets.length),
-        existingAssets: detected.existingAssets,
-        missingAssets: detected.missingAssets,
-        recommendations: summaryRecommendations,
-      },
-      assets: generated.assets,
-      meta: {
-        partial: fetched.resources.some((resource) => resource.required && !resource.ok),
-        generationMode: generated.mode,
-        model: generated.modelUsed,
-        warnings,
-      },
-    };
-
+    const response = await runAiSetupPipeline(parsedRequest.data, SYNC_ROUTE_OPTIONS);
     return NextResponse.json(response);
   } catch (error) {
     console.error('AI setup route failed:', error);

@@ -5,9 +5,11 @@ const DELIVERY_SESSION_TTL_MS = 4 * 60 * 60 * 1000;
 
 export interface DeliverySessionPayload {
   createdAt: string;
-  status: 'pending' | 'completed';
+  status: 'pending' | 'processing' | 'completed' | 'failed';
+  jobId?: string;
   request?: AiSetupRequest;
   result?: AiSetupResponse;
+  error?: string;
 }
 
 function getStorageKey(sessionId: string): string {
@@ -75,8 +77,46 @@ export function writeDeliverySessionResult(sessionId: string, result: AiSetupRes
   const payload: DeliverySessionPayload = {
     createdAt: existing?.createdAt ?? new Date().toISOString(),
     status: 'completed',
+    jobId: existing?.jobId,
     request: existing?.request,
     result,
+    error: undefined,
+  };
+
+  window.sessionStorage.setItem(getStorageKey(sessionId), JSON.stringify(payload));
+}
+
+export function writeDeliverySessionJob(sessionId: string, jobId: string): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const existing = safeParsePayload(window.sessionStorage.getItem(getStorageKey(sessionId)));
+  const payload: DeliverySessionPayload = {
+    createdAt: existing?.createdAt ?? new Date().toISOString(),
+    status: 'processing',
+    jobId,
+    request: existing?.request,
+    result: existing?.result,
+    error: undefined,
+  };
+
+  window.sessionStorage.setItem(getStorageKey(sessionId), JSON.stringify(payload));
+}
+
+export function writeDeliverySessionError(sessionId: string, error: string): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const existing = safeParsePayload(window.sessionStorage.getItem(getStorageKey(sessionId)));
+  const payload: DeliverySessionPayload = {
+    createdAt: existing?.createdAt ?? new Date().toISOString(),
+    status: 'failed',
+    jobId: existing?.jobId,
+    request: existing?.request,
+    result: existing?.result,
+    error,
   };
 
   window.sessionStorage.setItem(getStorageKey(sessionId), JSON.stringify(payload));
