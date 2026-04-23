@@ -3,7 +3,6 @@
 import { FormEvent, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
-  Activity,
   ArrowRight,
   BarChart3,
   Bot,
@@ -79,29 +78,6 @@ const ENTERPRISE_CAPABILITIES = [
   },
 ];
 
-const ENGINE_SEQUENCE = [
-  {
-    step: '01',
-    title: 'Targeted Site Scan',
-    description: 'Homepage + core pages + robots.txt + sitemap.xml',
-  },
-  {
-    step: '02',
-    title: 'Technical Parsing',
-    description: 'Metadata, headings, schema, canonicals, links, and visible text signals',
-  },
-  {
-    step: '03',
-    title: 'Gap Identification',
-    description: 'Existing assets, missing assets, and practical setup priorities',
-  },
-  {
-    step: '04',
-    title: 'Asset Generation',
-    description: 'AI page, robots recommendations, schema suggestions, linking strategy, implementation guide',
-  },
-];
-
 const ENTERPRISE_STANDARDS = [
   'Rule-based detection with model-backed generation and fallback reliability',
   'Partial-result resilience when some pages are blocked or unavailable',
@@ -128,30 +104,46 @@ const AI_PLATFORM_LOGOS = [
   },
 ];
 
-const DASHBOARD_KPIS = [
+const ONE_CLICK_OUTPUTS = [
   {
-    label: 'Core Pages',
-    value: '7 Targets',
-    icon: Globe,
+    title: 'AI Info Page Draft',
+    description: 'Structured page content for /ai or /ai-info that AI systems can parse fast.',
   },
   {
-    label: 'Signals Parsed',
-    value: '42',
-    icon: Activity,
+    title: 'Recommended robots.txt',
+    description: 'Deployment-safe recommendations with sitemap handling and optional AI directives.',
   },
   {
-    label: 'Assets Generated',
-    value: '6',
-    icon: Sparkles,
+    title: 'Schema JSON-LD Pack',
+    description: 'Organization, WebSite, Service, and optional Person schema suggestions.',
+  },
+  {
+    title: 'Internal Linking Blueprint',
+    description: 'Exactly where to link the AI page, with anchor text and placement guidance.',
+  },
+  {
+    title: 'Platform Implementation Guides',
+    description: 'WordPress, Webflow, Shopify, and custom HTML handoff instructions.',
+  },
+  {
+    title: 'Optional Future-Facing Extras',
+    description: 'llms.txt and agents.md templates in copy-paste format.',
   },
 ];
 
-const PIPELINE_BARS = [
-  { label: 'Scan', height: 32 },
-  { label: 'Parse', height: 56 },
-  { label: 'Detect', height: 44 },
-  { label: 'Generate', height: 68 },
-  { label: 'Guide', height: 50 },
+const HERO_WIDGET_BARS = [
+  { label: 'Scan', value: 32 },
+  { label: 'Detect', value: 56 },
+  { label: 'Generate', value: 70 },
+  { label: 'Ship', value: 48 },
+];
+
+const HERO_SPARKLINE_POINTS = [8, 14, 12, 20, 18, 24, 22, 29];
+
+const HERO_WIDGET_KPIS = [
+  { label: 'Asset Pack', value: '6 Outputs' },
+  { label: 'Delivery', value: 'Copy + Paste' },
+  { label: 'Guides', value: '4 Platforms' },
 ];
 
 const SIGNAL_COVERAGE = [
@@ -509,7 +501,7 @@ export default function AiSetupEnginePage() {
                   <Button
                     onClick={scrollToInput}
                     size="lg"
-                    className="h-12 rounded-xl bg-slate-950 px-8 text-base font-semibold text-white hover:bg-slate-800"
+                    className="h-12 rounded-xl bg-orange-500 px-8 text-base font-semibold text-white shadow-lg shadow-orange-200 transition hover:bg-orange-600"
                   >
                     Generate My AI Setup
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -533,56 +525,97 @@ export default function AiSetupEnginePage() {
                 </div>
               </div>
 
-              <Card className="border border-slate-200 bg-white p-6 shadow-lg md:p-8">
-                <div className="flex items-center justify-between gap-3">
+              <Card className="relative overflow-hidden border border-white/70 bg-white/65 p-6 shadow-2xl shadow-slate-200/70 backdrop-blur-xl md:p-8">
+                <div className="pointer-events-none absolute -right-12 top-[-2.8rem] h-40 w-40 rounded-full bg-orange-200/45 blur-2xl animate-[pulse_8s_ease-in-out_infinite]" />
+                <div className="pointer-events-none absolute -left-10 bottom-[-3.2rem] h-36 w-36 rounded-full bg-emerald-200/45 blur-2xl animate-[pulse_7s_ease-in-out_infinite]" />
+
+                <div className="relative flex items-center justify-between gap-3">
                   <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-600">
                     <TerminalSquare className="h-4 w-4" />
-                    Live Setup Preview
+                    One-Click Output Pack
                   </p>
-                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
-                    Enterprise Mode
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                    Ready to Deploy
                   </span>
                 </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-2">
-                  {DASHBOARD_KPIS.map((kpi) => {
-                    const Icon = kpi.icon;
-                    return (
-                      <div key={kpi.label} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                        <div className="inline-flex rounded-md bg-white p-1.5">
-                          <Icon className="h-3.5 w-3.5 text-slate-700" />
+                <h3 className="relative mt-4 text-2xl font-extrabold text-slate-950">
+                  What You Get In One Run
+                </h3>
+                <p className="relative mt-2 text-sm text-slate-600">
+                  The engine generates production-ready outputs your team can copy, paste, and implement without extra tooling.
+                </p>
+
+                <div className="relative mt-5 space-y-2.5">
+                  {ONE_CLICK_OUTPUTS.map((output, index) => (
+                    <div
+                      key={output.title}
+                      className="rounded-xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                      style={{ animationDelay: `${index * 80}ms` }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-500" />
+                        <div>
+                          <p className="text-sm font-semibold text-slate-900">{output.title}</p>
+                          <p className="mt-0.5 text-xs leading-relaxed text-slate-600">{output.description}</p>
                         </div>
-                        <p className="mt-2 text-xs text-slate-500">{kpi.label}</p>
-                        <p className="text-sm font-semibold text-slate-900">{kpi.value}</p>
                       </div>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-4 rounded-xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Pipeline Throughput</p>
-                  <div className="mt-3 flex h-24 items-end gap-2">
-                    {PIPELINE_BARS.map((bar) => (
-                      <div key={bar.label} className="flex flex-1 flex-col items-center gap-2">
-                        <div
-                          className="w-full rounded-md bg-gradient-to-t from-slate-900 to-slate-500"
-                          style={{ height: `${bar.height}px` }}
-                        />
-                        <span className="text-[10px] font-medium uppercase tracking-wide text-slate-500">{bar.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-4 space-y-2">
-                  {ENGINE_SEQUENCE.map((item) => (
-                    <div key={item.step} className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2">
-                      <p className="text-xs font-semibold text-slate-900">
-                        {item.step}. {item.title}
-                      </p>
-                      <span className="text-[11px] text-slate-500">{item.description}</span>
                     </div>
                   ))}
+                </div>
+
+                <div className="relative mt-5 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">Implementation Readiness</p>
+                    <div className="mt-3 h-2 rounded-full bg-slate-200">
+                      <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" />
+                    </div>
+                    <p className="mt-2 text-xs text-emerald-700">92% setup completeness on first pass</p>
+
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      {HERO_WIDGET_KPIS.map((metric) => (
+                        <div key={metric.label} className="rounded-md border border-slate-200 bg-white p-2">
+                          <p className="text-[10px] uppercase tracking-wide text-slate-500">{metric.label}</p>
+                          <p className="mt-1 text-xs font-semibold text-slate-900">{metric.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">Custom Output Widgets</p>
+                    <div className="mt-2 h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5">
+                      <svg viewBox="0 0 140 34" className="h-full w-full">
+                        <polyline
+                          fill="none"
+                          stroke="rgb(15 23 42)"
+                          strokeWidth="2.5"
+                          points={HERO_SPARKLINE_POINTS.map((point, pointIndex) => `${pointIndex * 18},${34 - point}`).join(' ')}
+                        />
+                        {HERO_SPARKLINE_POINTS.map((point, pointIndex) => (
+                          <circle
+                            key={`${pointIndex}-${point}`}
+                            cx={pointIndex * 18}
+                            cy={34 - point}
+                            r="1.8"
+                            fill={pointIndex > HERO_SPARKLINE_POINTS.length - 3 ? 'rgb(34 197 94)' : 'rgb(148 163 184)'}
+                          />
+                        ))}
+                      </svg>
+                    </div>
+
+                    <div className="mt-3 flex h-12 items-end gap-1">
+                      {HERO_WIDGET_BARS.map((bar, barIndex) => (
+                        <div key={bar.label} className="flex flex-1 flex-col items-center gap-1">
+                          <div
+                            className="w-full rounded-sm bg-gradient-to-t from-slate-900 to-slate-500 animate-[pulse_5s_ease-in-out_infinite]"
+                            style={{ height: `${bar.value}%`, animationDelay: `${barIndex * 0.35}s` }}
+                          />
+                          <p className="text-[9px] uppercase tracking-wide text-slate-500">{bar.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </Card>
             </div>
@@ -590,7 +623,7 @@ export default function AiSetupEnginePage() {
 
           <section className="relative z-10 px-4 pb-10">
             <div className="mx-auto max-w-6xl">
-              <Card className="border border-slate-200 bg-white p-5 shadow-sm md:p-7">
+              <Card className="border border-white/70 bg-white/70 p-5 shadow-sm backdrop-blur-xl md:p-7">
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-700">
                     Optimized for AI Discovery Surfaces
@@ -598,8 +631,12 @@ export default function AiSetupEnginePage() {
                   <p className="text-sm text-slate-600">Generated outputs are structured for major AI assistants and search interfaces.</p>
                 </div>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                  {AI_PLATFORM_LOGOS.map((logo) => (
-                    <div key={logo.name} className="flex h-20 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4">
+                  {AI_PLATFORM_LOGOS.map((logo, index) => (
+                    <div
+                      key={logo.name}
+                      className="flex h-20 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 px-4 shadow-sm backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                      style={{ animationDelay: `${index * 0.25}s` }}
+                    >
                       <img src={logo.url} alt={`${logo.name} logo`} className="h-8 w-auto object-contain opacity-95" />
                     </div>
                   ))}
@@ -788,7 +825,7 @@ export default function AiSetupEnginePage() {
                         <Button
                           type="submit"
                           disabled={isLoading}
-                          className="h-12 rounded-xl bg-slate-950 px-8 font-semibold text-white hover:bg-slate-800"
+                          className="h-12 rounded-xl bg-orange-500 px-8 font-semibold text-white shadow-lg shadow-orange-200 transition hover:bg-orange-600"
                         >
                           {isLoading ? (
                             <>
