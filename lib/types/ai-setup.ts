@@ -184,6 +184,7 @@ export interface AiSetupResponse {
   meta: {
     partial: boolean;
     generationMode: 'openrouter' | 'fallback';
+    model?: string;
     warnings: string[];
   };
 }

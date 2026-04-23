@@ -51,6 +51,7 @@ interface GenerateRuntimeOptions {
   modelTimeoutMs?: number;
   allowRefinement?: boolean;
   refinementTimeoutMs?: number;
+  requireLlm?: boolean;
 }
 
 const AI_INFO_PATH = '/ai';
@@ -650,8 +651,13 @@ export async function generateSetupAssets(
   const modelTimeoutMs = runtimeOptions.modelTimeoutMs ?? 28_000;
   const allowRefinement = runtimeOptions.allowRefinement ?? true;
   const refinementTimeoutMs = runtimeOptions.refinementTimeoutMs ?? 28_000;
+  const requireLlm = runtimeOptions.requireLlm ?? false;
 
   if (runtimeOptions.forceFallback) {
+    if (requireLlm) {
+      throw new Error('LLM strict mode is enabled. Rules-only fallback cannot be used.');
+    }
+
     warnings.push('Rules-only mode enforced for this run to guarantee a stable response window.');
 
     if (fallbackQuality.issues.length > 0) {
@@ -671,6 +677,12 @@ export async function generateSetupAssets(
 
   const modelConfigured = Boolean(process.env.OPENROUTER_API_KEY && process.env.OPENROUTER_MODEL);
   if (!modelConfigured) {
+    if (requireLlm) {
+      throw new Error(
+        'OpenRouter is not configured in this environment. Set OPENROUTER_API_KEY and OPENROUTER_MODEL in deployment variables.',
+      );
+    }
+
     warnings.push('OpenRouter is not configured. Returning rules-only generation mode with deterministic outputs.');
 
     if (fallbackQuality.issues.length > 0) {
@@ -797,7 +809,7 @@ Rewrite and return a stronger JSON draft that resolves all issues while preservi
       }
     }
 
-    if (fallbackQuality.score > finalQuality.score) {
+    if (fallbackQuality.score > finalQuality.score && !requireLlm) {
       warnings.push('Rules-based output quality score exceeded model output for this run; returning deterministic output.');
       finalAssets = fallbackAssets;
       finalQuality = fallbackQuality;
@@ -823,6 +835,12 @@ Rewrite and return a stronger JSON draft that resolves all issues while preservi
       warnings,
     };
   } catch (error) {
+    if (requireLlm) {
+      throw error instanceof Error
+        ? error
+        : new Error('OpenRouter generation failed in strict LLM mode.');
+    }
+
     warnings.push(
       error instanceof Error
         ? `OpenRouter generation failed. Returning rules-only output. (${error.message})`

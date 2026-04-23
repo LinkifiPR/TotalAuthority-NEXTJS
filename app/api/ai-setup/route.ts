@@ -13,7 +13,8 @@ export const dynamic = 'force-dynamic';
 const FETCH_TIMEOUT_MS = 4_500;
 const DISCOVERED_FETCH_LIMIT = 6;
 const SITEMAP_FETCH_LIMIT = 4;
-const MODEL_TIMEOUT_MS = 8_500;
+const MODEL_TIMEOUT_MS = 24_000;
+const REFINEMENT_TIMEOUT_MS = 22_000;
 
 function buildSummaryHeadline(missingAssetsCount: number, existingAssetsCount: number): string {
   if (missingAssetsCount === 0) {
@@ -91,7 +92,9 @@ export async function POST(request: NextRequest) {
       detected,
     }, {}, {
       modelTimeoutMs: MODEL_TIMEOUT_MS,
-      allowRefinement: false,
+      allowRefinement: true,
+      refinementTimeoutMs: REFINEMENT_TIMEOUT_MS,
+      requireLlm: true,
     });
 
     const summaryRecommendations = dedupe([
@@ -125,6 +128,7 @@ export async function POST(request: NextRequest) {
       meta: {
         partial: fetched.resources.some((resource) => resource.required && !resource.ok),
         generationMode: generated.mode,
+        model: process.env.OPENROUTER_MODEL,
         warnings,
       },
     };
@@ -133,9 +137,24 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('AI setup route failed:', error);
 
+    const message = error instanceof Error ? error.message : 'We could not complete the AI setup generation right now.';
+    const isLlmError =
+      message.includes('OpenRouter') ||
+      message.includes('LLM strict mode') ||
+      message.includes('OPENROUTER_');
+
+    if (isLlmError) {
+      return NextResponse.json(
+        {
+          error: `LLM generation failed and fallback is disabled: ${message}`,
+        },
+        { status: 502 },
+      );
+    }
+
     return NextResponse.json(
       {
-        error: 'We could not complete the AI setup generation right now. Please try again.',
+        error: message,
       },
       { status: 500 },
     );

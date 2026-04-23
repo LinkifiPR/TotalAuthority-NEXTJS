@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import {
@@ -20,9 +20,13 @@ import {
   Sparkles,
   WandSparkles,
 } from 'lucide-react';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { FormPopup } from '@/components/FormPopup';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useFormPopup } from '@/hooks/useFormPopup';
 import { readDeliverySessionPayload, writeDeliverySessionResult } from '@/lib/ai/delivery-session';
 import type {
   AiSetupRequest,
@@ -462,6 +466,7 @@ function renderImplementationGuideCards(
 }
 
 export default function DeliveryPackDashboardPage() {
+  const { isOpen, openForm, closeForm } = useFormPopup();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session') ?? '';
   const generationStartedRef = useRef<string | null>(null);
@@ -474,6 +479,47 @@ export default function DeliveryPackDashboardPage() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<OutputTabValue>('aiInfoPage');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const renderShell = (body: ReactNode, options?: { includeBottomCta?: boolean }) => (
+    <>
+      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900">
+        <Header onOpenForm={openForm} />
+        <main className="pb-14 pt-6 md:pt-8">{body}</main>
+
+        {options?.includeBottomCta && (
+          <section className="px-4 pb-10 md:px-8">
+            <div className="mx-auto max-w-[1320px] rounded-2xl border border-slate-200 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-6 text-white shadow-xl md:p-8">
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange-300">Need Implementation Support?</p>
+                  <h3 className="mt-2 text-3xl font-black">Ship This AI Setup Without Guesswork</h3>
+                  <p className="mt-2 max-w-2xl text-sm text-slate-200">
+                    Get hands-on help publishing the AI page, robots updates, schema, and internal linking plan correctly on your stack.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Link href="/strategy-blueprint">
+                    <Button className="bg-orange-500 text-white hover:bg-orange-600">Book Strategy Call</Button>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    className="border-slate-500 bg-slate-800 text-white hover:bg-slate-700"
+                    onClick={openForm}
+                  >
+                    Get Implementation Help
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <Footer onOpenForm={openForm} />
+      </div>
+
+      <FormPopup isOpen={isOpen} onClose={closeForm} />
+    </>
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -695,7 +741,7 @@ export default function DeliveryPackDashboardPage() {
   };
 
   if (loading) {
-    return (
+    return renderShell(
       <div className="min-h-screen bg-slate-100 px-4 py-16 text-slate-900 md:px-8">
         <div className="mx-auto w-full max-w-4xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Opening Delivery Pack</p>
@@ -706,12 +752,12 @@ export default function DeliveryPackDashboardPage() {
             Initializing
           </div>
         </div>
-      </div>
+      </div>,
     );
   }
 
   if (isGenerating && !result) {
-    return (
+    return renderShell(
       <div className="min-h-screen bg-slate-100 px-4 py-8 text-slate-900 md:px-8 md:py-10">
         <div className="mx-auto w-full max-w-[1240px] space-y-6">
           <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-7">
@@ -777,12 +823,12 @@ export default function DeliveryPackDashboardPage() {
             </Card>
           </div>
         </div>
-      </div>
+      </div>,
     );
   }
 
   if (!result) {
-    return (
+    return renderShell(
       <div className="min-h-screen bg-slate-100 px-4 py-16 text-slate-900 md:px-8">
         <div className="mx-auto w-full max-w-4xl rounded-2xl border border-red-300 bg-white p-8 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600">Delivery Session Error</p>
@@ -794,13 +840,12 @@ export default function DeliveryPackDashboardPage() {
             </Button>
           </Link>
         </div>
-      </div>
+      </div>,
     );
   }
 
-  return (
-    <div className="min-h-screen bg-slate-100 pb-12 text-slate-900">
-      <div className="mx-auto w-full max-w-[1320px] space-y-6 px-4 pt-6 md:px-8 md:pt-8">
+  return renderShell(
+    <div className="mx-auto w-full max-w-[1320px] space-y-6 px-4 pt-2 md:px-8">
         <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-7">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div>
@@ -809,6 +854,19 @@ export default function DeliveryPackDashboardPage() {
               <p className="mt-2 text-sm text-slate-600">
                 Domain: <span className="font-semibold text-slate-900">{result.site.normalizedUrl}</span>
               </p>
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                <span className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
+                  Generation Source: {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rules-only fallback'}
+                </span>
+                {result.meta.model && (
+                  <span className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
+                    Model: {result.meta.model}
+                  </span>
+                )}
+                <span className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
+                  Scanned at: {new Date(result.site.scannedAt).toLocaleString()}
+                </span>
+              </div>
             </div>
             <div className="flex flex-wrap gap-2">
               <Link href="/ai-setup">
@@ -836,6 +894,12 @@ export default function DeliveryPackDashboardPage() {
               </Button>
             </div>
           </div>
+
+          {result.meta.generationMode !== 'openrouter' && (
+            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              OpenRouter was not used for this run. Start a new run and verify deployment environment variables.
+            </div>
+          )}
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
@@ -1016,6 +1080,17 @@ export default function DeliveryPackDashboardPage() {
           </Card>
         )}
 
+        {result.meta.warnings.length > 0 && (
+          <Card className="border border-amber-200 bg-amber-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-amber-700">Runtime Warnings</p>
+            <ul className="mt-2 space-y-1 text-sm text-amber-900">
+              {result.meta.warnings.slice(0, 5).map((warning) => (
+                <li key={warning}>- {warning}</li>
+              ))}
+            </ul>
+          </Card>
+        )}
+
         <Card className="border border-slate-200 bg-white p-5 shadow-sm">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
@@ -1038,7 +1113,7 @@ export default function DeliveryPackDashboardPage() {
             </div>
           </div>
         </Card>
-      </div>
-    </div>
+    </div>,
+    { includeBottomCta: true },
   );
 }
