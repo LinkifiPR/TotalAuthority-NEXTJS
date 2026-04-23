@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { jsonrepair } from 'jsonrepair';
 
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -131,9 +132,15 @@ export async function callOpenRouter<T>(
     let parsedJson: unknown;
     try {
       parsedJson = JSON.parse(candidateJson);
-    } catch {
-      const snippet = candidateJson.slice(0, 400).replace(/\s+/g, ' ');
-      throw new Error(`OpenRouter did not return valid JSON content. Snippet: ${snippet}`);
+    } catch (parseError) {
+      try {
+        parsedJson = JSON.parse(jsonrepair(candidateJson));
+      } catch {
+        const snippet = candidateJson.slice(0, 400).replace(/\s+/g, ' ');
+        throw new Error(`OpenRouter did not return valid JSON content. Snippet: ${snippet}`, {
+          cause: parseError,
+        });
+      }
     }
 
     const validated = schema.safeParse(parsedJson);

@@ -101,6 +101,223 @@ test('generateSetupAssets runs refinement pass when first model draft is weak', 
   });
 });
 
+test('generateSetupAssets repairs mandatory output structure without leaving OpenRouter mode', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+
+    const incompleteModelAssets: AiSetupAssets = {
+      aiInfoPage: `# Official Information About Linkifi PR
+
+## Core services
+- Digital PR campaigns
+- PR-led link building
+
+## FAQ
+### How should this page be used?
+Use this as a factual company reference.
+
+## Last updated
+2026-04-23`,
+      robotsTxt: '# Recommended robots notes\nAllow: /',
+      schema: __testables.buildSchema(profile),
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+      implementationGuide: __testables.buildImplementationGuide(profile),
+      optionalExtras: __testables.buildOptionalExtras(profile),
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async () => incompleteModelAssets,
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(result.mode, 'openrouter');
+    assert.equal(result.assets.aiInfoPage.includes('## What the company is'), true);
+    assert.equal(result.assets.aiInfoPage.includes('## What the company does'), true);
+    assert.equal(result.assets.aiInfoPage.includes('## Who the company serves'), true);
+    assert.equal(/User-agent\s*:/i.test(result.assets.robotsTxt), true);
+    assert.equal(/Sitemap\s*:/i.test(result.assets.robotsTxt), true);
+    assert.equal(
+      result.warnings.some((warning) => warning.includes('AI Info Page is missing required section')),
+      false,
+    );
+    assert.equal(result.warnings.some((warning) => warning.includes('robots.txt is missing')), false);
+  });
+});
+
+test('generateSetupAssets does not surface primary retry diagnostics when backup model succeeds', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+    const strongAssets: AiSetupAssets = {
+      aiInfoPage: __testables.buildAiInfoPage(profile),
+      robotsTxt:
+        '# Recommended merged robots.txt\n# Important: robots.txt is not access control.\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml',
+      schema: __testables.buildSchema(profile),
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+      implementationGuide: __testables.buildImplementationGuide(profile),
+      optionalExtras: __testables.buildOptionalExtras(profile),
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async ({ model }) => {
+          if (model === 'test-model') {
+            throw new Error('simulated primary model parse failure');
+          }
+
+          return strongAssets;
+        },
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(result.mode, 'openrouter');
+    assert.equal(result.modelUsed, 'openai/gpt-4.1-mini');
+    assert.equal(result.warnings.some((warning) => warning.includes('Primary model')), false);
+  });
+});
+
+test('generateSetupAssets preserves detailed implementation guides when model guide arrays are thin', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+    const modelAssetsWithThinGuides: AiSetupAssets = {
+      aiInfoPage: __testables.buildAiInfoPage(profile),
+      robotsTxt:
+        '# Recommended merged robots.txt\n# Important: robots.txt is not access control.\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml',
+      schema: __testables.buildSchema(profile),
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+      implementationGuide: {
+        wordpress: ['Create an AI page.'],
+        webflow: ['Create an AI page.'],
+        shopify: ['Create an AI page.'],
+        customHtml: ['Create an AI page.'],
+        vibeCoded: ['Ask your coding tool to add it.'],
+      },
+      optionalExtras: __testables.buildOptionalExtras(profile),
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async () => modelAssetsWithThinGuides,
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(result.mode, 'openrouter');
+    assert.equal(result.assets.implementationGuide.wordpress.length >= 10, true);
+    assert.equal(result.assets.implementationGuide.webflow.length >= 10, true);
+    assert.equal(result.assets.implementationGuide.shopify.length >= 10, true);
+    assert.equal(result.assets.implementationGuide.customHtml.length >= 10, true);
+    assert.equal(result.assets.implementationGuide.vibeCoded.length >= 10, true);
+    assert.equal(result.warnings.some((warning) => warning.includes('implementation guide needs')), false);
+  });
+});
+
+test('generateSetupAssets preserves optional/future-facing labels for optional extras', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+    const modelAssetsWithUnlabeledExtras: AiSetupAssets = {
+      aiInfoPage: __testables.buildAiInfoPage(profile),
+      robotsTxt:
+        '# Recommended merged robots.txt\n# Important: robots.txt is not access control.\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml',
+      schema: __testables.buildSchema(profile),
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+      implementationGuide: __testables.buildImplementationGuide(profile),
+      optionalExtras: {
+        llmsTxt: '# Linkifi PR\n\n## Primary Pages\n- Homepage',
+        agentsMd: '# agents.md\n\n## Site profile\n- Brand: Linkifi PR',
+      },
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async () => modelAssetsWithUnlabeledExtras,
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(result.mode, 'openrouter');
+    assert.equal(result.assets.optionalExtras.llmsTxt.toLowerCase().includes('optional'), true);
+    assert.equal(result.assets.optionalExtras.agentsMd.toLowerCase().includes('optional'), true);
+    assert.equal(result.warnings.some((warning) => warning.includes('Optional extras should')), false);
+  });
+});
+
+test('generateSetupAssets preserves detailed schema notes when model notes are thin', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+    const modelAssetsWithThinSchemaNotes: AiSetupAssets = {
+      aiInfoPage: __testables.buildAiInfoPage(profile),
+      robotsTxt:
+        '# Recommended merged robots.txt\n# Important: robots.txt is not access control.\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml',
+      schema: {
+        ...__testables.buildSchema(profile),
+        notes: ['Validate the schema.'],
+      },
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+      implementationGuide: __testables.buildImplementationGuide(profile),
+      optionalExtras: __testables.buildOptionalExtras(profile),
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async () => modelAssetsWithThinSchemaNotes,
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(result.mode, 'openrouter');
+    assert.equal(result.assets.schema.notes.length >= 6, true);
+    assert.equal(result.warnings.some((warning) => warning.includes('Schema notes should')), false);
+  });
+});
+
 test('generateSetupAssets returns deterministic fallback when model generation fails', async () => {
   await withOpenRouterEnv(async () => {
     const result = await generateSetupAssets(

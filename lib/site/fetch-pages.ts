@@ -1,6 +1,7 @@
 import { FetchedSiteResources, SiteFetchResource } from '@/lib/types/ai-setup';
 
-const REQUIRED_PATHS = ['/', '/about', '/about-us', '/services', '/contact', '/robots.txt', '/sitemap.xml'];
+const REQUIRED_PATHS = ['/'];
+const CORE_PROBE_PATHS = ['/about', '/about-us', '/services', '/contact', '/robots.txt', '/sitemap.xml'];
 const OPTIONAL_PATHS = ['/ai', '/ai-info', '/llms.txt', '/agents.md'];
 
 const DEFAULT_TIMEOUT_MS = 9_000;
@@ -274,6 +275,7 @@ export async function fetchSiteResources(
 
   const initialTargets = [
     ...REQUIRED_PATHS.map((path) => ({ path, required: true })),
+    ...CORE_PROBE_PATHS.map((path) => ({ path, required: false })),
     ...OPTIONAL_PATHS.map((path) => ({ path, required: false })),
   ];
 
@@ -347,5 +349,5 @@ export async function fetchSiteResources(
 
 export const SCAN_PATHS = {
   required: REQUIRED_PATHS,
-  optional: OPTIONAL_PATHS,
+  optional: [...CORE_PROBE_PATHS, ...OPTIONAL_PATHS],
 };

@@ -58,6 +58,20 @@ interface GenerateRuntimeOptions {
 
 const AI_INFO_PATH = '/ai';
 const MAX_EVIDENCE_SNIPPETS = 22;
+const REQUIRED_AI_INFO_SECTION_HEADINGS = [
+  'What the company is',
+  'What the company does',
+  'Who the company serves',
+  'Core services',
+  'Secondary services',
+  'Key differentiators',
+  'Process / methodology',
+  'Team / founder / leadership',
+  'Industries served',
+  'FAQ',
+  'Contact / next step',
+  'Last updated',
+];
 
 function formatDate(date = new Date()): string {
   return date.toISOString().slice(0, 10);
@@ -73,6 +87,29 @@ function truncate(value: string, maxLength: number): string {
   }
 
   return `${value.slice(0, maxLength).trim()}…`;
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function hasMarkdownHeading(markdown: string, heading: string): boolean {
+  return new RegExp(`^#{1,6}\\s+${escapeRegExp(heading)}\\b`, 'im').test(markdown);
+}
+
+function extractMarkdownSection(markdown: string, heading: string): string | undefined {
+  const headingMatch = new RegExp(`^#{1,6}\\s+${escapeRegExp(heading)}\\b.*$`, 'im').exec(markdown);
+  if (!headingMatch || headingMatch.index === undefined) {
+    return undefined;
+  }
+
+  const sectionStart = headingMatch.index;
+  const afterHeading = sectionStart + headingMatch[0].length;
+  const remaining = markdown.slice(afterHeading);
+  const nextHeadingMatch = /\n#{1,6}\s+\S/m.exec(remaining);
+  const sectionEnd = nextHeadingMatch ? afterHeading + nextHeadingMatch.index : markdown.length;
+
+  return markdown.slice(sectionStart, sectionEnd).trim();
 }
 
 function serializeFact(fact: SiteFact): string {
@@ -632,6 +669,118 @@ function mergeAssets(baseAssets: AiSetupAssets, generatedAssets: MergeableAssets
   };
 }
 
+function ensureAiInfoStructure(aiInfoPage: string, fallbackAiInfoPage: string): string {
+  let repaired = aiInfoPage.trim();
+
+  if (!/Official Information About/i.test(repaired)) {
+    const fallbackTitle = fallbackAiInfoPage.match(/^#\s+Official Information About.+$/im)?.[0];
+    if (fallbackTitle) {
+      repaired = `${fallbackTitle}\n\n${repaired.replace(/^#\s+.+$/m, '').trim()}`.trim();
+    }
+  }
+
+  const missingSections = REQUIRED_AI_INFO_SECTION_HEADINGS.filter((heading) => !hasMarkdownHeading(repaired, heading))
+    .map((heading) => extractMarkdownSection(fallbackAiInfoPage, heading))
+    .filter((section): section is string => Boolean(section));
+
+  if (missingSections.length === 0) {
+    return repaired;
+  }
+
+  return `${repaired}\n\n---\n\n${missingSections.join('\n\n')}`.trim();
+}
+
+function ensureRobotsStructure(robotsTxt: string, fallbackRobotsTxt: string): string {
+  const hasUserAgent = /User-agent\s*:/i.test(robotsTxt);
+  const hasSitemap = /Sitemap\s*:/i.test(robotsTxt);
+  const hasSafetyNote = /not\s+.*access\s+control/i.test(robotsTxt);
+
+  if (hasUserAgent && hasSitemap && hasSafetyNote) {
+    return robotsTxt.trim();
+  }
+
+  // robots.txt is syntax-sensitive, so use the deterministic merged recommendation
+  // whenever a model draft drops required technical structure.
+  return fallbackRobotsTxt.trim();
+}
+
+function guideSectionIsComplete(lines: string[] | undefined, options?: { requireStructure?: boolean }): boolean {
+  if (!lines || lines.length < 10) {
+    return false;
+  }
+
+  if (!options?.requireStructure) {
+    return true;
+  }
+
+  const blob = lines.join(' ').toLowerCase();
+  return ['what you are adding', 'where to add', 'verify', 'common mistakes'].every((concept) =>
+    blob.includes(concept),
+  );
+}
+
+function normalizeImplementationGuide(
+  guide: ImplementationGuide,
+  fallbackGuide: ImplementationGuide,
+): ImplementationGuide {
+  return {
+    wordpress: guideSectionIsComplete(guide.wordpress, { requireStructure: true })
+      ? guide.wordpress
+      : fallbackGuide.wordpress,
+    webflow: guideSectionIsComplete(guide.webflow, { requireStructure: true })
+      ? guide.webflow
+      : fallbackGuide.webflow,
+    shopify: guideSectionIsComplete(guide.shopify, { requireStructure: true })
+      ? guide.shopify
+      : fallbackGuide.shopify,
+    customHtml: guideSectionIsComplete(guide.customHtml, { requireStructure: true })
+      ? guide.customHtml
+      : fallbackGuide.customHtml,
+    vibeCoded: guideSectionIsComplete(guide.vibeCoded) ? guide.vibeCoded : fallbackGuide.vibeCoded,
+  };
+}
+
+function optionalExtraIsClearlyLabeled(value: string): boolean {
+  const lower = value.toLowerCase();
+  return lower.includes('optional') && (lower.includes('future-facing') || lower.includes('future facing'));
+}
+
+function normalizeOptionalExtras(optionalExtras: OptionalExtras, fallbackOptionalExtras: OptionalExtras): OptionalExtras {
+  return {
+    llmsTxt: optionalExtraIsClearlyLabeled(optionalExtras.llmsTxt)
+      ? optionalExtras.llmsTxt
+      : fallbackOptionalExtras.llmsTxt,
+    agentsMd: optionalExtraIsClearlyLabeled(optionalExtras.agentsMd)
+      ? optionalExtras.agentsMd
+      : fallbackOptionalExtras.agentsMd,
+  };
+}
+
+function looksLikeJsonObject(value: string | undefined): boolean {
+  return Boolean(value?.trim().startsWith('{'));
+}
+
+function normalizeSchema(schema: SchemaSuggestions, fallbackSchema: SchemaSuggestions): SchemaSuggestions {
+  return {
+    organization: looksLikeJsonObject(schema.organization) ? schema.organization : fallbackSchema.organization,
+    website: looksLikeJsonObject(schema.website) ? schema.website : fallbackSchema.website,
+    person: looksLikeJsonObject(schema.person) ? schema.person : fallbackSchema.person,
+    service: looksLikeJsonObject(schema.service) ? schema.service : fallbackSchema.service,
+    notes: schema.notes.length >= 6 ? schema.notes : fallbackSchema.notes,
+  };
+}
+
+function normalizeGeneratedAssets(assets: AiSetupAssets, fallbackAssets: AiSetupAssets): AiSetupAssets {
+  return {
+    ...assets,
+    aiInfoPage: ensureAiInfoStructure(assets.aiInfoPage, fallbackAssets.aiInfoPage),
+    robotsTxt: ensureRobotsStructure(assets.robotsTxt, fallbackAssets.robotsTxt),
+    schema: normalizeSchema(assets.schema, fallbackAssets.schema),
+    implementationGuide: normalizeImplementationGuide(assets.implementationGuide, fallbackAssets.implementationGuide),
+    optionalExtras: normalizeOptionalExtras(assets.optionalExtras, fallbackAssets.optionalExtras),
+  };
+}
+
 function qualityIssueSummary(issues: QualityIssue[]): string[] {
   return issues.map((issue) => `[${issue.severity.toUpperCase()}] ${issue.message}`);
 }
@@ -796,23 +945,28 @@ Quality requirements:
         throw primaryError;
       }
 
-      warnings.push(
-        primaryError instanceof Error
-          ? `Primary model ${modelUsed} failed: ${primaryError.message}. Retrying with backup model ${backupModel}.`
-          : `Primary model ${modelUsed} failed. Retrying with backup model ${backupModel}.`,
-      );
-
+      const primaryFailureMessage =
+        primaryError instanceof Error ? primaryError.message : 'unknown primary model failure';
+      const failedPrimaryModel = modelUsed;
       modelUsed = backupModel;
-      firstPass = await runModelPass(
-        modelUsed,
-        baseUserPrompt,
-        Math.min(modelTimeoutMs, 60_000),
-        2_400,
-        0.1,
-      );
+      try {
+        firstPass = await runModelPass(
+          modelUsed,
+          baseUserPrompt,
+          Math.min(modelTimeoutMs, 60_000),
+          2_400,
+          0.1,
+        );
+      } catch (backupError) {
+        const backupFailureMessage =
+          backupError instanceof Error ? backupError.message : 'unknown backup model failure';
+        throw new Error(
+          `Primary model ${failedPrimaryModel} failed (${primaryFailureMessage}); backup model ${backupModel} failed (${backupFailureMessage}).`,
+        );
+      }
     }
 
-    const firstMerged = mergeAssets(fallbackAssets, firstPass);
+    const firstMerged = normalizeGeneratedAssets(mergeAssets(fallbackAssets, firstPass), fallbackAssets);
     const firstQuality = evaluateSetupQuality({ assets: firstMerged, profile });
 
     let finalAssets = firstMerged;
@@ -843,7 +997,7 @@ Rewrite and return a stronger JSON draft that resolves all issues while preservi
           AiSetupAssetsSchema,
         );
 
-        const refinedMerged = mergeAssets(fallbackAssets, refined);
+        const refinedMerged = normalizeGeneratedAssets(mergeAssets(fallbackAssets, refined), fallbackAssets);
         const refinedQuality = evaluateSetupQuality({ assets: refinedMerged, profile });
 
         if (refinedQuality.score >= firstQuality.score) {
