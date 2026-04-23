@@ -1,11 +1,13 @@
-import type { AiSetupResponse } from '@/lib/types/ai-setup';
+import type { AiSetupRequest, AiSetupResponse } from '@/lib/types/ai-setup';
 
 export const DELIVERY_SESSION_STORAGE_PREFIX = 'ta-ai-setup-delivery:';
 const DELIVERY_SESSION_TTL_MS = 4 * 60 * 60 * 1000;
 
-interface DeliverySessionPayload {
+export interface DeliverySessionPayload {
   createdAt: string;
-  result: AiSetupResponse;
+  status: 'pending' | 'completed';
+  request?: AiSetupRequest;
+  result?: AiSetupResponse;
 }
 
 function getStorageKey(sessionId: string): string {
@@ -20,7 +22,7 @@ function safeParsePayload(value: string | null): DeliverySessionPayload | null {
   try {
     const parsed = JSON.parse(value) as DeliverySessionPayload;
 
-    if (!parsed || typeof parsed !== 'object' || !parsed.result || !parsed.createdAt) {
+    if (!parsed || typeof parsed !== 'object' || !parsed.createdAt || !parsed.status) {
       return null;
     }
 
@@ -38,6 +40,7 @@ export function createDeliverySession(result: AiSetupResponse): string {
   const sessionId = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
   const payload: DeliverySessionPayload = {
     createdAt: new Date().toISOString(),
+    status: 'completed',
     result,
   };
 
@@ -46,7 +49,40 @@ export function createDeliverySession(result: AiSetupResponse): string {
   return sessionId;
 }
 
-export function readDeliverySession(sessionId: string): AiSetupResponse | null {
+export function createPendingDeliverySession(request: AiSetupRequest): string {
+  if (typeof window === 'undefined') {
+    return '';
+  }
+
+  const sessionId = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+  const payload: DeliverySessionPayload = {
+    createdAt: new Date().toISOString(),
+    status: 'pending',
+    request,
+  };
+
+  window.sessionStorage.setItem(getStorageKey(sessionId), JSON.stringify(payload));
+
+  return sessionId;
+}
+
+export function writeDeliverySessionResult(sessionId: string, result: AiSetupResponse): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const existing = safeParsePayload(window.sessionStorage.getItem(getStorageKey(sessionId)));
+  const payload: DeliverySessionPayload = {
+    createdAt: existing?.createdAt ?? new Date().toISOString(),
+    status: 'completed',
+    request: existing?.request,
+    result,
+  };
+
+  window.sessionStorage.setItem(getStorageKey(sessionId), JSON.stringify(payload));
+}
+
+export function readDeliverySessionPayload(sessionId: string): DeliverySessionPayload | null {
   if (typeof window === 'undefined') {
     return null;
   }
@@ -63,5 +99,10 @@ export function readDeliverySession(sessionId: string): AiSetupResponse | null {
     return null;
   }
 
-  return payload.result;
+  return payload;
+}
+
+export function readDeliverySession(sessionId: string): AiSetupResponse | null {
+  const payload = readDeliverySessionPayload(sessionId);
+  return payload?.result ?? null;
 }

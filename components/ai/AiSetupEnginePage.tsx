@@ -39,8 +39,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { createDeliverySession } from '@/lib/ai/delivery-session';
-import type { AiSetupResponse, ImplementationGuide, InternalLinkSuggestion } from '@/lib/types/ai-setup';
+import { createPendingDeliverySession } from '@/lib/ai/delivery-session';
+import type { AiSetupRequest, AiSetupResponse, ImplementationGuide, InternalLinkSuggestion } from '@/lib/types/ai-setup';
 
 const LOADING_STEPS = [
   'Scanning your website',
@@ -84,7 +84,7 @@ const ENTERPRISE_CAPABILITIES = [
 
 const ENTERPRISE_STANDARDS = [
   'Rule-based detection with model-backed generation and fallback reliability',
-  'Partial-result resilience when some pages are blocked or unavailable',
+  'Retry-backed generation designed to return complete output packs',
   'Structured outputs designed for direct implementation and handoff',
   'Commercially credible copy that avoids overclaiming outcomes',
 ];
@@ -322,72 +322,6 @@ function textStats(text: string) {
   };
 }
 
-type ParsedApiResponse<T> = {
-  payload: T | null;
-  rawText: string | null;
-  isJson: boolean;
-};
-
-const RETRYABLE_API_STATUS = new Set([502, 503, 504]);
-
-async function parseApiResponse<T>(response: Response): Promise<ParsedApiResponse<T>> {
-  const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
-
-  if (contentType.includes('application/json')) {
-    try {
-      return {
-        payload: (await response.json()) as T,
-        rawText: null,
-        isJson: true,
-      };
-    } catch {
-      return {
-        payload: null,
-        rawText: null,
-        isJson: false,
-      };
-    }
-  }
-
-  try {
-    const rawText = await response.text();
-    return {
-      payload: null,
-      rawText,
-      isJson: false,
-    };
-  } catch {
-    return {
-      payload: null,
-      rawText: null,
-      isJson: false,
-    };
-  }
-}
-
-function buildApiFailureMessage(status: number, rawText: string | null): string {
-  const normalized = (rawText ?? '').trim();
-  const isHtmlResponse = normalized.startsWith('<!DOCTYPE') || normalized.startsWith('<html');
-
-  if (isHtmlResponse) {
-    if (status === 404) {
-      return 'The AI setup API endpoint was not found on this deploy (404 HTML response). Please redeploy and try again.';
-    }
-
-    return `The AI setup API returned HTML instead of JSON (status ${status}). This is usually a deploy/runtime issue. Please retry the deploy.`;
-  }
-
-  if (normalized) {
-    return `The AI setup API request failed (status ${status}). ${normalized.slice(0, 220)}`;
-  }
-
-  return `The AI setup API request failed (status ${status}). Please try again.`;
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => window.setTimeout(resolve, ms));
-}
-
 function renderGuideCards(
   guide: ImplementationGuide,
   copiedKey: string | null,
@@ -611,11 +545,21 @@ export default function AiSetupEnginePage() {
 
   const openDeliveryDashboard = (sessionId: string) => {
     const dashboardUrl = `/ai-setup/delivery?session=${encodeURIComponent(sessionId)}`;
-    const popup = window.open(dashboardUrl, '_blank', 'noopener,noreferrer');
+    window.location.assign(dashboardUrl);
+  };
 
-    if (!popup) {
-      setApiError('Delivery dashboard popup was blocked by your browser. Use the "Open Dashboard" button in results.');
-    }
+  const buildRequestPayload = (normalizedUrl: string): AiSetupRequest => {
+    const normalizeOptionalValue = (value: string): string | undefined => {
+      const trimmed = value.trim();
+      return trimmed ? trimmed : undefined;
+    };
+
+    return {
+      url: normalizedUrl,
+      brandName: normalizeOptionalValue(formValues.brandName),
+      shortDescription: normalizeOptionalValue(formValues.shortDescription),
+      country: normalizeOptionalValue(formValues.country),
+    };
   };
 
   const normalizeWebsiteUrl = (value: string): string | null => {
@@ -690,97 +634,36 @@ export default function AiSetupEnginePage() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!formValues.url.trim()) {
-      setApiError('Please enter a website URL.');
+    const normalizedUrl = normalizeWebsiteUrl(formValues.url);
+
+    if (!normalizedUrl) {
+      setApiError('Please enter a valid website URL (for example: yoursite.com).');
       return;
     }
 
-    setIsLoading(true);
+    setFormValues((current) => ({
+      ...current,
+      url: normalizedUrl,
+    }));
+    setQuickWebsiteUrl(normalizedUrl);
+
+    const requestPayload = buildRequestPayload(normalizedUrl);
+
     setApiError(null);
     setResult(null);
     setCopiedKey(null);
     setDeliverySessionId(null);
-    setLoadingStepIndex(0);
-
-    const stepInterval = window.setInterval(() => {
-      setLoadingStepIndex((previous) => Math.min(previous + 1, LOADING_STEPS.length - 1));
-    }, 1200);
+    setIsLoading(true);
 
     try {
-      const maxAttempts = 3;
-      let resolvedPayload: AiSetupResponse | null = null;
-
-      for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-        const response = await fetch('/api/ai-setup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(formValues),
-        });
-
-        const parsedResponse = await parseApiResponse<AiSetupResponse & { error?: string }>(response);
-        const payload = parsedResponse.payload;
-
-        if (response.ok && parsedResponse.isJson && payload) {
-          resolvedPayload = payload as AiSetupResponse;
-          break;
-        }
-
-        if (!response.ok) {
-          const isRetryable = RETRYABLE_API_STATUS.has(response.status);
-
-          if (isRetryable && attempt < maxAttempts) {
-            await sleep(600 * attempt);
-            continue;
-          }
-
-          if (parsedResponse.isJson && payload?.error) {
-            throw new Error(payload.error);
-          }
-
-          throw new Error(buildApiFailureMessage(response.status, parsedResponse.rawText));
-        }
-
-        if (attempt < maxAttempts) {
-          await sleep(500 * attempt);
-          continue;
-        }
-
-        throw new Error(
-          `The AI setup API returned a non-JSON response (status ${response.status}). Please retry the deploy and test again.`,
-        );
+      const sessionId = createPendingDeliverySession(requestPayload);
+      if (!sessionId) {
+        throw new Error('Unable to initialize delivery session. Please refresh and try again.');
       }
-
-      if (!resolvedPayload) {
-        throw new Error('Unable to generate your AI setup right now. Please try again.');
-      }
-
-      let sessionId = '';
-      try {
-        sessionId = createDeliverySession(resolvedPayload);
-      } catch {
-        sessionId = '';
-      }
-      setResult(resolvedPayload);
-      setDeliverySessionId(sessionId || null);
-      setActiveTab('aiInfoPage');
-      setLoadingStepIndex(LOADING_STEPS.length - 1);
-
-      window.setTimeout(() => {
-        resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
-
-      if (sessionId) {
-        window.setTimeout(() => {
-          openDeliveryDashboard(sessionId);
-        }, 300);
-      }
+      setDeliverySessionId(sessionId);
+      openDeliveryDashboard(sessionId);
     } catch (error) {
-      setApiError(error instanceof Error ? error.message : 'Something went wrong while generating your setup.');
-    } finally {
-      window.clearInterval(stepInterval);
+      setApiError(error instanceof Error ? error.message : 'Unable to open delivery dashboard.');
       setIsLoading(false);
     }
   };
@@ -1359,7 +1242,7 @@ export default function AiSetupEnginePage() {
                           {isLoading ? (
                             <>
                               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                              Building setup
+                              Opening delivery dashboard
                             </>
                           ) : (
                             <>
