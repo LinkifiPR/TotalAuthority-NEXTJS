@@ -771,6 +771,55 @@ export default function AiSetupEnginePage() {
           </section>
 
           <section className="relative z-10 px-4 pb-8">
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-3 flex items-center justify-center">
+                <span className="rounded-full border border-orange-300/80 bg-orange-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-orange-700">
+                  Start Here
+                </span>
+              </div>
+              <form
+                onSubmit={handleQuickUrlSubmit}
+                className="rounded-3xl border-2 border-orange-300 bg-white p-4 shadow-2xl shadow-orange-200/60 backdrop-blur-xl"
+              >
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <div className="flex flex-1 items-center gap-3 rounded-2xl border-2 border-orange-300 bg-orange-50/60 px-3 py-1.5 shadow-inner">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100">
+                      <Globe className="h-5 w-5 text-orange-700" />
+                    </div>
+                    <Input
+                      type="text"
+                      value={quickWebsiteUrl}
+                      onChange={(event) => {
+                        setQuickWebsiteUrl(event.target.value);
+                        if (quickInputError) {
+                          setQuickInputError(null);
+                        }
+                      }}
+                      placeholder="Enter your website URL (e.g. yoursite.com)"
+                      className="h-12 border-0 bg-transparent px-0 text-lg font-medium text-slate-900 placeholder:text-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="h-12 rounded-2xl bg-orange-500 px-6 text-base font-semibold text-white shadow-lg shadow-orange-200 transition hover:bg-orange-600"
+                  >
+                    <span className="hidden sm:inline">Start Setup</span>
+                    <ArrowRight className="h-4 w-4 sm:ml-2" />
+                  </Button>
+                </div>
+              </form>
+
+              <p className="mt-3 px-2 text-center text-sm font-medium text-slate-700">
+                Enter your website, hit Enter, and jump straight into your setup flow.
+              </p>
+
+              {quickInputError && (
+                <div className="mt-3 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">{quickInputError}</div>
+              )}
+            </div>
+          </section>
+
+          <section className="relative z-10 px-4 pb-8">
             <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
               <Card className="border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-xl">
                 <div className="flex items-center justify-between gap-3">
@@ -912,50 +961,6 @@ export default function AiSetupEnginePage() {
                   </div>
                 </div>
               </Card>
-            </div>
-          </section>
-
-          <section className="relative z-10 px-4 pb-10">
-            <div className="mx-auto max-w-4xl">
-              <form
-                onSubmit={handleQuickUrlSubmit}
-                className="rounded-3xl border-2 border-orange-300 bg-white p-4 shadow-2xl shadow-orange-200/60 backdrop-blur-xl"
-              >
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <div className="flex flex-1 items-center gap-3 rounded-2xl border-2 border-orange-300 bg-orange-50/60 px-3 py-1.5 shadow-inner">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100">
-                      <Globe className="h-5 w-5 text-orange-700" />
-                    </div>
-                    <Input
-                      type="text"
-                      value={quickWebsiteUrl}
-                      onChange={(event) => {
-                        setQuickWebsiteUrl(event.target.value);
-                        if (quickInputError) {
-                          setQuickInputError(null);
-                        }
-                      }}
-                      placeholder="Enter your website URL (e.g. yoursite.com)"
-                      className="h-12 border-0 bg-transparent px-0 text-lg font-medium text-slate-900 placeholder:text-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="h-12 rounded-2xl bg-orange-500 px-6 text-base font-semibold text-white shadow-lg shadow-orange-200 transition hover:bg-orange-600"
-                  >
-                    <span className="hidden sm:inline">Start Setup</span>
-                    <ArrowRight className="h-4 w-4 sm:ml-2" />
-                  </Button>
-                </div>
-              </form>
-
-              <p className="mt-3 px-2 text-sm font-medium text-slate-700">
-                Enter your website, hit Enter, and jump straight into your setup flow.
-              </p>
-
-              {quickInputError && (
-                <div className="mt-3 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">{quickInputError}</div>
-              )}
             </div>
           </section>
 
