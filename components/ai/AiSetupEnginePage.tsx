@@ -353,6 +353,26 @@ export default function AiSetupEnginePage() {
     [],
   );
 
+  const resultOverview = useMemo(() => {
+    if (!result) {
+      return null;
+    }
+
+    const scannedPages = result.site.scannedPaths.length;
+    const coreCoverage = scannedPages > 0 ? Math.round((result.detected.corePagesFound.length / scannedPages) * 100) : 0;
+
+    return {
+      scannedPages,
+      coreCoverage,
+      existingCount: result.summary.existingAssets.length,
+      missingCount: result.summary.missingAssets.length,
+      recommendationCount: result.summary.recommendations.length,
+      generatedCount: generatedAssetsList.length,
+      schemaCount: result.detected.schemaTypes.length,
+      internalLinkCount: result.assets.internalLinking.length,
+    };
+  }, [result, generatedAssetsList]);
+
   const scrollToInput = () => {
     inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -1044,16 +1064,16 @@ export default function AiSetupEnginePage() {
           {result && (
             <section ref={resultsRef} className="relative z-10 px-4 pb-16">
               <div className="mx-auto max-w-6xl space-y-8">
-                <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <Card className="border border-white/70 bg-gradient-to-br from-white via-slate-50/70 to-orange-50/40 p-6 shadow-xl shadow-slate-200/60 md:p-8">
                   <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Setup Summary</p>
-                      <h3 className="mt-2 text-2xl font-bold text-slate-950 md:text-3xl">{result.summary.headline}</h3>
+                      <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Setup Dashboard</p>
+                      <h3 className="mt-2 text-2xl font-black text-slate-950 md:text-3xl">{result.summary.headline}</h3>
                       <p className="mt-2 text-sm text-slate-600">
                         Scanned: <span className="font-medium text-slate-900">{result.site.normalizedUrl}</span>
                       </p>
                     </div>
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+                    <div className="rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm text-slate-700 shadow-sm backdrop-blur">
                       <p>
                         Generation mode:{' '}
                         {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rule-based fallback'}
@@ -1062,53 +1082,74 @@ export default function AiSetupEnginePage() {
                     </div>
                   </div>
 
-                  <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-500">What already exists</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                        {(result.summary.existingAssets.length > 0
-                          ? result.summary.existingAssets
-                          : ['No major setup assets detected yet.']).map((item) => (
-                          <li key={item} className="flex gap-2">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                  <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Pages Scanned</p>
+                      <p className="mt-2 text-3xl font-black text-slate-900">{resultOverview?.scannedPages ?? result.site.scannedPaths.length}</p>
+                      <p className="mt-1 text-xs text-slate-500">Core + supporting pages</p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Core Coverage</p>
+                      <p className="mt-2 text-3xl font-black text-slate-900">{resultOverview?.coreCoverage ?? 0}%</p>
+                      <p className="mt-1 text-xs text-slate-500">Core page detection completeness</p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Assets Generated</p>
+                      <p className="mt-2 text-3xl font-black text-slate-900">{resultOverview?.generatedCount ?? generatedAssetsList.length}</p>
+                      <p className="mt-1 text-xs text-slate-500">Implementation-ready outputs</p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Priority Actions</p>
+                      <p className="mt-2 text-3xl font-black text-slate-900">{resultOverview?.recommendationCount ?? 0}</p>
+                      <p className="mt-1 text-xs text-slate-500">Suggested next steps</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 grid gap-4 lg:grid-cols-2">
+                    <div className="rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">Detected vs Missing</p>
+                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                        <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-3">
+                          <p className="text-xs uppercase tracking-wider text-emerald-700">Existing Assets</p>
+                          <p className="mt-1 text-2xl font-black text-emerald-700">{resultOverview?.existingCount ?? 0}</p>
+                          <ul className="mt-2 space-y-1.5 text-xs text-slate-700">
+                            {(result.summary.existingAssets.length > 0
+                              ? result.summary.existingAssets.slice(0, 3)
+                              : ['No major setup assets detected yet.']).map((item) => (
+                              <li key={item} className="flex gap-2">
+                                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 text-emerald-600" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="rounded-xl border border-orange-200 bg-orange-50/70 p-3">
+                          <p className="text-xs uppercase tracking-wider text-orange-700">Missing Assets</p>
+                          <p className="mt-1 text-2xl font-black text-orange-700">{resultOverview?.missingCount ?? 0}</p>
+                          <ul className="mt-2 space-y-1.5 text-xs text-slate-700">
+                            {(result.summary.missingAssets.length > 0
+                              ? result.summary.missingAssets.slice(0, 3)
+                              : ['No critical setup gaps found.']).map((item) => (
+                              <li key={item} className="flex gap-2">
+                                <Bot className="mt-0.5 h-3.5 w-3.5 text-orange-600" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-500">What was missing</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                        {(result.summary.missingAssets.length > 0
-                          ? result.summary.missingAssets
-                          : ['No critical setup gaps found.']).map((item) => (
-                          <li key={item} className="flex gap-2">
-                            <Bot className="mt-0.5 h-4 w-4 text-slate-700" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-500">What we generated</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                        {generatedAssetsList.map((item) => (
-                          <li key={item} className="flex gap-2">
-                            <Sparkles className="mt-0.5 h-4 w-4 text-slate-700" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-xs uppercase tracking-wider text-slate-500">What to do next</p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                        {result.summary.recommendations.slice(0, 4).map((item) => (
-                          <li key={item} className="flex gap-2">
-                            <ArrowRight className="mt-0.5 h-4 w-4 text-slate-700" />
+                    <div className="rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">Recommended Next Actions</p>
+                      <ul className="mt-3 space-y-2">
+                        {(result.summary.recommendations.length > 0
+                          ? result.summary.recommendations.slice(0, 4)
+                          : ['No immediate actions required.']).map((item, index) => (
+                          <li key={item} className="flex items-start gap-2 rounded-lg border border-slate-200 bg-slate-50/80 p-2.5 text-sm text-slate-700">
+                            <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-900 text-[11px] font-semibold text-white">
+                              {index + 1}
+                            </span>
                             <span>{item}</span>
                           </li>
                         ))}
@@ -1117,14 +1158,14 @@ export default function AiSetupEnginePage() {
                   </div>
                 </Card>
 
-                <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <Card className="border border-white/70 bg-gradient-to-br from-white via-slate-50/70 to-blue-50/40 p-6 shadow-xl shadow-slate-200/60 md:p-8">
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Output Tabs</p>
-                      <h3 className="mt-2 text-2xl font-bold text-slate-950">Implementation-ready setup assets</h3>
+                      <p className="text-sm uppercase tracking-[0.2em] text-slate-600">Output Studio</p>
+                      <h3 className="mt-2 text-2xl font-black text-slate-950">Implementation-ready setup assets</h3>
                     </div>
                     {!isUnlocked ? (
-                      <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-slate-100 px-4 py-2 text-xs text-slate-700">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs font-medium text-orange-700">
                         <Lock className="h-3.5 w-3.5" />
                         Lead gate active: unlock to export full pack
                       </div>
@@ -1156,8 +1197,25 @@ export default function AiSetupEnginePage() {
                     )}
                   </div>
 
+                  <div className="mt-5 grid gap-3 md:grid-cols-3">
+                    <div className="rounded-xl border border-slate-200 bg-white/85 p-3 shadow-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Schema Types Found</p>
+                      <p className="mt-1 text-2xl font-black text-slate-900">{resultOverview?.schemaCount ?? 0}</p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white/85 p-3 shadow-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Linking Suggestions</p>
+                      <p className="mt-1 text-2xl font-black text-slate-900">{resultOverview?.internalLinkCount ?? 0}</p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white/85 p-3 shadow-sm">
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500">Generation Source</p>
+                      <p className="mt-1 text-base font-bold text-slate-900">
+                        {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rule-based fallback'}
+                      </p>
+                    </div>
+                  </div>
+
                   {!isUnlocked && (
-                    <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                    <div className="mt-6 rounded-2xl border border-orange-200 bg-orange-50/80 p-5">
                       <p className="text-sm font-semibold text-slate-900">Unlock full export</p>
                       <p className="mt-1 text-sm text-slate-600">
                         Enter your details to unlock full copy/export and handoff files.
@@ -1208,206 +1266,212 @@ export default function AiSetupEnginePage() {
                   )}
 
                   <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as OutputTabValue)} className="mt-8">
-                    <TabsList className="grid h-auto w-full grid-cols-2 gap-2 rounded-xl bg-slate-100 p-2 md:grid-cols-3 lg:grid-cols-6">
-                      {OUTPUT_TAB_ORDER.map((tab) => {
-                        const Icon = tab.icon;
-                        return (
-                          <TabsTrigger
-                            key={tab.value}
-                            value={tab.value}
-                            className="flex h-12 items-center justify-center gap-2 rounded-lg border border-transparent bg-white px-2 text-xs font-semibold text-slate-700 data-[state=active]:border-slate-300 data-[state=active]:bg-slate-900 data-[state=active]:text-white"
-                          >
-                            <Icon className="h-3.5 w-3.5" />
-                            <span>{tab.label}</span>
-                          </TabsTrigger>
-                        );
-                      })}
-                    </TabsList>
+                    <div className="grid gap-4 lg:grid-cols-[240px_1fr]">
+                      <TabsList className="grid h-fit w-full grid-cols-2 gap-2 rounded-2xl border border-slate-200 bg-white/85 p-2 backdrop-blur lg:grid-cols-1">
+                        {OUTPUT_TAB_ORDER.map((tab) => {
+                          const Icon = tab.icon;
+                          return (
+                            <TabsTrigger
+                              key={tab.value}
+                              value={tab.value}
+                              className="flex h-auto items-center justify-start gap-2 rounded-xl border border-transparent bg-slate-50/70 px-3 py-3 text-left text-xs font-semibold text-slate-700 data-[state=active]:border-slate-300 data-[state=active]:bg-slate-900 data-[state=active]:text-white"
+                            >
+                              <Icon className="h-3.5 w-3.5" />
+                              <span>{tab.label}</span>
+                            </TabsTrigger>
+                          );
+                        })}
+                      </TabsList>
 
-                    <TabsContent value="aiInfoPage" className="mt-4">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-slate-900">AI Info Page</p>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            disabled={!isUnlocked}
-                            onClick={() => copyTab('aiInfoPage')}
-                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
-                          >
-                            {copiedKey === 'tab-aiInfoPage' ? 'Copied' : 'Copy'}
-                          </Button>
-                        </div>
-                        <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg bg-white p-4 text-sm leading-relaxed text-slate-800">
-                          {maskContent(result.assets.aiInfoPage, isUnlocked)}
-                        </pre>
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="robotsTxt" className="mt-4">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-slate-900">Recommended robots.txt</p>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            disabled={!isUnlocked}
-                            onClick={() => copyTab('robotsTxt')}
-                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
-                          >
-                            {copiedKey === 'tab-robotsTxt' ? 'Copied' : 'Copy'}
-                          </Button>
-                        </div>
-                        <pre className="max-h-[520px] overflow-auto rounded-lg bg-white p-4 font-mono text-sm leading-relaxed text-slate-800">
-                          {maskContent(result.assets.robotsTxt, isUnlocked)}
-                        </pre>
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="schema" className="mt-4">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-slate-900">Schema Suggestions</p>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            disabled={!isUnlocked}
-                            onClick={() => copyTab('schema')}
-                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
-                          >
-                            {copiedKey === 'tab-schema' ? 'Copied' : 'Copy'}
-                          </Button>
-                        </div>
-
-                        <div className="grid gap-4 lg:grid-cols-2">
-                          {[
-                            { title: 'Organization', value: result.assets.schema.organization },
-                            { title: 'WebSite', value: result.assets.schema.website },
-                            { title: 'Service', value: result.assets.schema.service },
-                            ...(result.assets.schema.person
-                              ? [{ title: 'Person', value: result.assets.schema.person }]
-                              : []),
-                          ].map((item) => (
-                            <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-3">
-                              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">{item.title}</p>
-                              <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
-                                {maskContent(item.value, isUnlocked, 850)}
-                              </pre>
+                      <div className="rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
+                        <TabsContent value="aiInfoPage" className="mt-0">
+                          <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-sm font-semibold text-slate-900">AI Info Page</p>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={!isUnlocked}
+                                onClick={() => copyTab('aiInfoPage')}
+                                className="border-slate-300 text-slate-900 hover:bg-slate-100"
+                              >
+                                {copiedKey === 'tab-aiInfoPage' ? 'Copied' : 'Copy'}
+                              </Button>
                             </div>
-                          ))}
-                        </div>
+                            <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-white p-4 text-sm leading-relaxed text-slate-800">
+                              {maskContent(result.assets.aiInfoPage, isUnlocked)}
+                            </pre>
+                          </div>
+                        </TabsContent>
 
-                        {result.assets.schema.notes.length > 0 && (
-                          <div className="mt-4 rounded-lg border border-slate-200 bg-white p-3">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-slate-700">Schema Notes</p>
-                            <ul className="mt-2 space-y-2 text-sm text-slate-700">
-                              {result.assets.schema.notes.map((note) => (
-                                <li key={note} className="flex gap-2">
-                                  <ArrowRight className="mt-0.5 h-4 w-4 text-slate-600" />
-                                  <span>{note}</span>
-                                </li>
+                        <TabsContent value="robotsTxt" className="mt-0">
+                          <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-sm font-semibold text-slate-900">Recommended robots.txt</p>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={!isUnlocked}
+                                onClick={() => copyTab('robotsTxt')}
+                                className="border-slate-300 text-slate-900 hover:bg-slate-100"
+                              >
+                                {copiedKey === 'tab-robotsTxt' ? 'Copied' : 'Copy'}
+                              </Button>
+                            </div>
+                            <pre className="max-h-[520px] overflow-auto rounded-lg border border-slate-200 bg-white p-4 font-mono text-sm leading-relaxed text-slate-800">
+                              {maskContent(result.assets.robotsTxt, isUnlocked)}
+                            </pre>
+                          </div>
+                        </TabsContent>
+
+                        <TabsContent value="schema" className="mt-0">
+                          <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-sm font-semibold text-slate-900">Schema Suggestions</p>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={!isUnlocked}
+                                onClick={() => copyTab('schema')}
+                                className="border-slate-300 text-slate-900 hover:bg-slate-100"
+                              >
+                                {copiedKey === 'tab-schema' ? 'Copied' : 'Copy'}
+                              </Button>
+                            </div>
+
+                            <div className="grid gap-4 lg:grid-cols-2">
+                              {[
+                                { title: 'Organization', value: result.assets.schema.organization },
+                                { title: 'WebSite', value: result.assets.schema.website },
+                                { title: 'Service', value: result.assets.schema.service },
+                                ...(result.assets.schema.person
+                                  ? [{ title: 'Person', value: result.assets.schema.person }]
+                                  : []),
+                              ].map((item) => (
+                                <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-3">
+                                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">{item.title}</p>
+                                  <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
+                                    {maskContent(item.value, isUnlocked, 850)}
+                                  </pre>
+                                </div>
                               ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="internalLinking" className="mt-4">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-slate-900">Internal Linking Plan</p>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            disabled={!isUnlocked}
-                            onClick={() => copyTab('internalLinking')}
-                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
-                          >
-                            {copiedKey === 'tab-internalLinking' ? 'Copied' : 'Copy'}
-                          </Button>
-                        </div>
-
-                        <div className="space-y-3">
-                          {result.assets.internalLinking.map((item, index) => (
-                            <div key={`${item.fromPage}-${index}`} className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
-                              <p className="font-semibold text-slate-900">{index + 1}. {item.fromPage}</p>
-                              <p className="mt-1">
-                                <span className="text-slate-500">Anchor: </span>
-                                <span className="text-slate-900">{item.anchorText}</span>
-                              </p>
-                              <p>
-                                <span className="text-slate-500">Placement: </span>
-                                {item.placement}
-                              </p>
-                              <p>
-                                <span className="text-slate-500">Why: </span>
-                                {item.reason}
-                              </p>
                             </div>
-                          ))}
-                        </div>
 
-                        {!isUnlocked && <p className="mt-3 text-xs text-slate-500">Unlock to copy/export the complete linking plan.</p>}
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="implementationGuide" className="mt-4">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-slate-900">Implementation Guide</p>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            disabled={!isUnlocked}
-                            onClick={() => copyTab('implementationGuide')}
-                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
-                          >
-                            {copiedKey === 'tab-implementationGuide' ? 'Copied' : 'Copy'}
-                          </Button>
-                        </div>
-
-                        {isUnlocked ? (
-                          renderGuideCards(result.assets.implementationGuide)
-                        ) : (
-                          <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg bg-white p-4 text-sm text-slate-700">
-                            {maskContent(implementationGuideToText(result.assets.implementationGuide), false)}
-                          </pre>
-                        )}
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="optionalExtras" className="mt-4">
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="mb-3 flex items-center justify-between">
-                          <p className="text-sm font-semibold text-slate-900">Optional / Future-Facing Extras</p>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            disabled={!isUnlocked}
-                            onClick={() => copyTab('optionalExtras')}
-                            className="border-slate-300 text-slate-900 hover:bg-slate-100"
-                          >
-                            {copiedKey === 'tab-optionalExtras' ? 'Copied' : 'Copy'}
-                          </Button>
-                        </div>
-
-                        <div className="grid gap-4 lg:grid-cols-2">
-                          <div className="rounded-lg border border-slate-200 bg-white p-3">
-                            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">llms.txt</p>
-                            <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
-                              {maskContent(result.assets.optionalExtras.llmsTxt, isUnlocked, 900)}
-                            </pre>
+                            {result.assets.schema.notes.length > 0 && (
+                              <div className="mt-4 rounded-lg border border-slate-200 bg-white p-3">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-slate-700">Schema Notes</p>
+                                <ul className="mt-2 space-y-2 text-sm text-slate-700">
+                                  {result.assets.schema.notes.map((note) => (
+                                    <li key={note} className="flex gap-2">
+                                      <ArrowRight className="mt-0.5 h-4 w-4 text-slate-600" />
+                                      <span>{note}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
                           </div>
-                          <div className="rounded-lg border border-slate-200 bg-white p-3">
-                            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">agents.md</p>
-                            <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
-                              {maskContent(result.assets.optionalExtras.agentsMd, isUnlocked, 900)}
-                            </pre>
+                        </TabsContent>
+
+                        <TabsContent value="internalLinking" className="mt-0">
+                          <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-sm font-semibold text-slate-900">Internal Linking Plan</p>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={!isUnlocked}
+                                onClick={() => copyTab('internalLinking')}
+                                className="border-slate-300 text-slate-900 hover:bg-slate-100"
+                              >
+                                {copiedKey === 'tab-internalLinking' ? 'Copied' : 'Copy'}
+                              </Button>
+                            </div>
+
+                            <div className="space-y-3">
+                              {result.assets.internalLinking.map((item, index) => (
+                                <div key={`${item.fromPage}-${index}`} className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
+                                  <p className="font-semibold text-slate-900">
+                                    {index + 1}. {item.fromPage}
+                                  </p>
+                                  <p className="mt-1">
+                                    <span className="text-slate-500">Anchor: </span>
+                                    <span className="text-slate-900">{item.anchorText}</span>
+                                  </p>
+                                  <p>
+                                    <span className="text-slate-500">Placement: </span>
+                                    {item.placement}
+                                  </p>
+                                  <p>
+                                    <span className="text-slate-500">Why: </span>
+                                    {item.reason}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+
+                            {!isUnlocked && <p className="mt-3 text-xs text-slate-500">Unlock to copy/export the complete linking plan.</p>}
                           </div>
-                        </div>
+                        </TabsContent>
+
+                        <TabsContent value="implementationGuide" className="mt-0">
+                          <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-sm font-semibold text-slate-900">Implementation Guide</p>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={!isUnlocked}
+                                onClick={() => copyTab('implementationGuide')}
+                                className="border-slate-300 text-slate-900 hover:bg-slate-100"
+                              >
+                                {copiedKey === 'tab-implementationGuide' ? 'Copied' : 'Copy'}
+                              </Button>
+                            </div>
+
+                            {isUnlocked ? (
+                              renderGuideCards(result.assets.implementationGuide)
+                            ) : (
+                              <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
+                                {maskContent(implementationGuideToText(result.assets.implementationGuide), false)}
+                              </pre>
+                            )}
+                          </div>
+                        </TabsContent>
+
+                        <TabsContent value="optionalExtras" className="mt-0">
+                          <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-sm font-semibold text-slate-900">Optional / Future-Facing Extras</p>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={!isUnlocked}
+                                onClick={() => copyTab('optionalExtras')}
+                                className="border-slate-300 text-slate-900 hover:bg-slate-100"
+                              >
+                                {copiedKey === 'tab-optionalExtras' ? 'Copied' : 'Copy'}
+                              </Button>
+                            </div>
+
+                            <div className="grid gap-4 lg:grid-cols-2">
+                              <div className="rounded-lg border border-slate-200 bg-white p-3">
+                                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">llms.txt</p>
+                                <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
+                                  {maskContent(result.assets.optionalExtras.llmsTxt, isUnlocked, 900)}
+                                </pre>
+                              </div>
+                              <div className="rounded-lg border border-slate-200 bg-white p-3">
+                                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-700">agents.md</p>
+                                <pre className="max-h-[280px] overflow-auto whitespace-pre-wrap text-xs text-slate-700">
+                                  {maskContent(result.assets.optionalExtras.agentsMd, isUnlocked, 900)}
+                                </pre>
+                              </div>
+                            </div>
+                          </div>
+                        </TabsContent>
                       </div>
-                    </TabsContent>
+                    </div>
                   </Tabs>
                 </Card>
 
