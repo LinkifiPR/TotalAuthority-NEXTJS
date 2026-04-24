@@ -318,6 +318,41 @@ test('generateSetupAssets preserves detailed schema notes when model notes are t
   });
 });
 
+test('generateSetupAssets accepts partial model drafts missing guide and optional extras', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+    const partialModelDraft = {
+      aiInfoPage: __testables.buildAiInfoPage(profile),
+      robotsTxt:
+        '# Recommended merged robots.txt\n# Important: robots.txt is not access control.\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml',
+      schema: __testables.buildSchema(profile),
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async (_request, schema) => schema.parse(partialModelDraft),
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(result.mode, 'openrouter');
+    assert.equal(result.assets.aiInfoPage.includes('Official Information About Linkifi PR'), true);
+    assert.equal(result.assets.implementationGuide.wordpress.length >= 10, true);
+    assert.equal(result.assets.optionalExtras.llmsTxt.toLowerCase().includes('optional'), true);
+    assert.equal(result.warnings.length, 0);
+  });
+});
+
 test('generateSetupAssets returns deterministic fallback when model generation fails', async () => {
   await withOpenRouterEnv(async () => {
     const result = await generateSetupAssets(

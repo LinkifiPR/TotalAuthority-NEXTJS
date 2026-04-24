@@ -1,14 +1,18 @@
 import {
   AiSetupAssets,
-  AiSetupAssetsSchema,
   AiSetupRequest,
   DetectedAssets,
   ExtractedSiteSignals,
   ImplementationGuide,
+  ImplementationGuideSchema,
   InternalLinkSuggestion,
+  InternalLinkSuggestionSchema,
   OptionalExtras,
+  OptionalExtrasSchema,
   SchemaSuggestions,
+  SchemaSuggestionsSchema,
 } from '@/lib/types/ai-setup';
+import { z } from 'zod';
 import { callOpenRouter } from '@/lib/ai/openrouter';
 import { buildRecommendedRobotsTxt } from '@/lib/site/robots-utils';
 import { evaluateSetupQuality, QualityIssue } from '@/lib/site/quality-rubric';
@@ -72,6 +76,35 @@ const REQUIRED_AI_INFO_SECTION_HEADINGS = [
   'Contact / next step',
   'Last updated',
 ];
+
+function hasGeneratedValue(value: unknown): boolean {
+  if (typeof value === 'string') {
+    return value.trim().length > 0;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length > 0 && value.some((item) => hasGeneratedValue(item));
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.values(value).some((item) => hasGeneratedValue(item));
+  }
+
+  return false;
+}
+
+const ModelGeneratedAssetsSchema = z
+  .object({
+    aiInfoPage: z.string().min(1).optional(),
+    robotsTxt: z.string().min(1).optional(),
+    schema: SchemaSuggestionsSchema.partial().optional(),
+    internalLinking: z.array(InternalLinkSuggestionSchema).optional(),
+    implementationGuide: ImplementationGuideSchema.partial().optional(),
+    optionalExtras: OptionalExtrasSchema.partial().optional(),
+  })
+  .refine((draft) => Object.values(draft).some((value) => hasGeneratedValue(value)), {
+    message: 'OpenRouter returned no usable asset fields.',
+  });
 
 function formatDate(date = new Date()): string {
   return date.toISOString().slice(0, 10);
@@ -922,7 +955,7 @@ Quality requirements:
         temperature,
         maxTokens,
       },
-      AiSetupAssetsSchema,
+      ModelGeneratedAssetsSchema,
     );
 
   let modelUsed = runtimeOptions.preferredModel ?? primaryModel ?? backupModel;
@@ -994,7 +1027,7 @@ Rewrite and return a stronger JSON draft that resolves all issues while preservi
             temperature: 0.1,
             maxTokens: 2_800,
           },
-          AiSetupAssetsSchema,
+          ModelGeneratedAssetsSchema,
         );
 
         const refinedMerged = normalizeGeneratedAssets(mergeAssets(fallbackAssets, refined), fallbackAssets);
