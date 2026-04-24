@@ -25,7 +25,7 @@
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 14 (App Router) |
+| Framework | Next.js 16 (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS (custom palette: beige, orange, blue) |
 | UI Components | Shadcn UI + Radix UI |
@@ -65,6 +65,7 @@ app/                  # Next.js App Router pages & routes
   about/
   admin/              # Admin panel (protected)
   api/                # API routes
+  ai-setup/           # AI Setup Engine landing and delivery dashboard
   audit/
   auth/
   blog/
@@ -107,6 +108,11 @@ public/               # Static assets
 | `/llm-visibility-audit` | Audit tool |
 | `/strategy-blueprint` | Full audit form |
 | `/audit/:slug` | Audit report viewer |
+| `/ai-setup` | AI Setup Engine landing/tool page |
+| `/ai-setup/delivery` | AI Setup delivery dashboard with background generation polling |
+| `/api/ai-setup` | Legacy/direct AI setup API route |
+| `/api/ai-setup/start` | Starts async AI setup background job |
+| `/api/ai-setup/status` | Polls async AI setup job status/result |
 
 ---
 
@@ -123,14 +129,20 @@ public/               # Static assets
 Stored in `.env.local` (not in repo). Key vars:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `OPENROUTER_API_KEY`
+- `OPENROUTER_MODEL`
+- `OPENROUTER_RUNTIME_MODEL`
+- `OPENROUTER_FALLBACK_MODEL`
+- `AI_SETUP_JOB_SECRET`
 - Any Google Analytics / tracking IDs
 
 ---
 
 ## Design Rules
 
-- **Light mode only** (no dark mode)
-- **Preserve existing design** — this is a migration, not a redesign
+- **Default site style remains light mode** for existing pages unless Christopher explicitly asks for a redesign
+- **Intentional exception**: `/ai-setup` and `/ai-setup/delivery` now use a dark, technical, BridgeMind-inspired product aesthetic with Total Authority orange as the accent colour
+- **Preserve existing design** on legacy/core site pages unless the task is specifically a redesign
 - Custom Tailwind animations: wobble, float, shimmer, fade-in
 - Custom color palette: beige, orange, blue themed
 - Mobile-first, responsive
@@ -164,6 +176,45 @@ git config user.name "Christopher"
 ---
 
 ## Session Log
+
+### 2026-04-24
+Focus: AI Setup Engine production architecture, output quality, delivery dashboard design, and browser stability.
+
+**AI Setup Engine architecture**
+- Added/solidified async generation flow for `/ai-setup/delivery`: frontend creates a session, starts `/api/ai-setup/start`, polls `/api/ai-setup/status`, and renders the completed delivery pack.
+- Added Netlify background worker path for long-running generation so OpenRouter calls are not constrained by synchronous request limits.
+- Server-side job storage is the source of truth for generated packs. Browser session storage is now intentionally lightweight.
+- Hardened browser storage after a completion-time reload/crash report: `writeDeliverySessionResult` no longer persists full generated output into `sessionStorage`, and storage quota/security failures are caught safely.
+
+**AI Setup Engine generation quality**
+- Strengthened site extraction and generation grounding with richer source profiles, evidence/confidence logic, prompt-injection filtering, robots parsing/merge guidance, quality rubric checks, stricter OpenRouter output validation, backup-model handling, and deterministic repair paths for partial model drafts.
+- Current product rule: the tool should use OpenRouter for real generation; fallback mode is treated as an environment/runtime problem, not the desired user-facing path.
+- Added tests covering partial model drafts, quality repair, robots merge, prompt-injection filtering, publishable AI info page tone, and delivery session storage behavior.
+
+**AI Setup Engine UI**
+- Rebuilt `/ai-setup` as a dark, technical product page heavily influenced by BridgeMind visual direction while preserving the shared Total Authority header/footer and orange brand accent.
+- Rebuilt `/ai-setup/delivery` as a dark SaaS-style dashboard with compact typography, collapsible metric detail panels, output tabs, standalone `llms.txt` and `agents.md` tabs, download/copy actions, and a more polished implementation guide console.
+- Implementation guide now includes a vibe-coded sites prompt/playbook alongside WordPress, Webflow, Shopify, and custom HTML/developer handoff.
+- Bottom CTA now uses one orange button linking to `https://go.totalauthority.com/widget/bookings/free-strategy-call-ta`.
+
+**Verification**
+- `npm run test:ai-setup` currently passes 19 tests.
+- `npx next build` passed after the latest storage hardening.
+
+**Recent commits pushed to `main`**
+- `97b403a` — async AI setup job pipeline with polling and richer LLM output
+- `783a494` — generation quality hardening
+- `77cb9f0` — delivery dashboard redesign
+- `96c3f36` — accept partial AI setup model drafts
+- `042a111` — delivery discovery tabs
+- `7264adc` — dashboard interactions and CTA cleanup
+- `764d976` — BridgeMind-inspired dark AI setup redesign
+- `a3316d7` — delivery session storage hardening
+
+**Next steps**
+- Confirm latest Netlify deploy is green.
+- Run live generation against several real domains and inspect whether OpenRouter logs show current calls.
+- Continue tightening output tone if generated pages still sound too cautious or analyst-like.
 
 ### 2026-04-03
 - Christopher connected this project to Cowork for the first time
