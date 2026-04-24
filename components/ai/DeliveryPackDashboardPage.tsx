@@ -94,6 +94,8 @@ type GuideBuckets = {
   notes: string[];
 };
 
+type GuidePlatformKey = 'wordpress' | 'webflow' | 'shopify' | 'customHtml' | 'vibeCoded';
+
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
@@ -284,7 +286,7 @@ function parseGuideBuckets(steps: string[]): GuideBuckets {
       continue;
     }
 
-    if (/^how to preserve existing settings \/ avoid overwriting:/i.test(step)) {
+    if (/^how to preserve existing (?:settings|setup) \/ avoid overwriting:/i.test(step)) {
       buckets.preserve.push(stripPrefix(step));
       continue;
     }
@@ -323,167 +325,266 @@ function safeItems(values: string[], fallback: string[]): string[] {
   return values.length > 0 ? values : fallback;
 }
 
-function renderImplementationGuideCards(
+function getGuideCards(guide: ImplementationGuide) {
+  return [
+    {
+      key: 'wordpress' as const,
+      title: 'WordPress',
+      badge: 'CMS',
+      icon: FileText,
+      accent: 'from-blue-500 to-cyan-500',
+      steps: guide.wordpress,
+    },
+    {
+      key: 'webflow' as const,
+      title: 'Webflow',
+      badge: 'No-code',
+      icon: Globe,
+      accent: 'from-violet-500 to-indigo-500',
+      steps: guide.webflow,
+    },
+    {
+      key: 'shopify' as const,
+      title: 'Shopify',
+      badge: 'Commerce',
+      icon: Network,
+      accent: 'from-emerald-500 to-teal-500',
+      steps: guide.shopify,
+    },
+    {
+      key: 'customHtml' as const,
+      title: 'Custom HTML / Developer',
+      badge: 'Code',
+      icon: FileCode2,
+      accent: 'from-slate-700 to-slate-950',
+      steps: guide.customHtml,
+    },
+    {
+      key: 'vibeCoded' as const,
+      title: 'Vibe-Coded Sites Prompt',
+      badge: 'Prompt',
+      icon: WandSparkles,
+      accent: 'from-orange-500 to-amber-500',
+      steps: guide.vibeCoded ?? [],
+    },
+  ];
+}
+
+function renderImplementationGuideConsole(
   guide: ImplementationGuide,
+  activeGuide: GuidePlatformKey,
+  onSelectGuide: (key: GuidePlatformKey) => void,
   copiedKey: string | null,
   onCopy: (text: string, key: string) => Promise<void>,
 ) {
   const cards = [
-    {
-      key: 'wordpress',
-      title: 'WordPress',
-      badge: 'CMS',
-      steps: guide.wordpress,
-    },
-    {
-      key: 'webflow',
-      title: 'Webflow',
-      badge: 'No-Code',
-      steps: guide.webflow,
-    },
-    {
-      key: 'shopify',
-      title: 'Shopify',
-      badge: 'Commerce',
-      steps: guide.shopify,
-    },
-    {
-      key: 'customHtml',
-      title: 'Custom HTML / Developer',
-      badge: 'Code',
-      steps: guide.customHtml,
-    },
-    {
-      key: 'vibeCoded',
-      title: 'Vibe-Coded Sites Prompt',
-      badge: 'Prompt',
-      steps: guide.vibeCoded ?? [],
-    },
+    ...getGuideCards(guide),
   ];
+  const activeCard = cards.find((card) => card.key === activeGuide) ?? cards[0];
+
+  if (!activeCard) {
+    return null;
+  }
+
+  const buckets = parseGuideBuckets(activeCard.steps);
+  const promptBody = extractPromptBody(activeCard.steps);
+  const executionSteps = safeItems(buckets.steps, activeCard.steps);
+  const preserveItems = safeItems(buckets.preserve, ['Review existing setup before applying generated changes.']);
+  const verifyItems = safeItems(buckets.verify, ['Confirm live URL status, indexability, schema visibility, and robots accessibility.']);
+  const mistakesItems = safeItems(buckets.mistakes, ['Do not overwrite live files blindly; merge and validate before publish.']);
+  const ActiveIcon = activeCard.icon;
+
+  const renderChecklist = (title: string, items: string[], tone: string) => (
+    <div className={`min-w-0 rounded-2xl border p-4 ${tone}`}>
+      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">{title}</p>
+      <div className="mt-3 space-y-2">
+        {items.map((item, index) => (
+          <div key={`${title}-${index}`} className="flex min-w-0 items-start gap-2">
+            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
+            <p className="min-w-0 text-[13px] leading-5 text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
-    <div className="grid gap-5 xl:grid-cols-2">
-      {cards.map((card) => {
-        const buckets = parseGuideBuckets(card.steps);
-        const promptBody = extractPromptBody(card.steps);
-        const executionSteps = safeItems(buckets.steps, card.steps);
-        const preserveItems = safeItems(buckets.preserve, ['Review existing setup before applying generated changes.']);
-        const verifyItems = safeItems(buckets.verify, ['Confirm live URL status, indexability, schema visibility, and robots accessibility.']);
-        const mistakesItems = safeItems(buckets.mistakes, ['Do not overwrite live files blindly; merge and validate before publish.']);
+    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+      <div className="border-b border-slate-200 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.13),transparent_32%),linear-gradient(135deg,#ffffff,#f8fafc)] px-5 py-5 md:px-6">
+        <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-600">Implementation Console</p>
+            <h3 className="mt-1 text-xl font-black tracking-tight text-slate-950 md:text-2xl">
+              Platform playbooks, cleaned into one focused workflow
+            </h3>
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">
+              Choose the build environment, copy the exact handoff, then work through execution, preservation, validation, and mistakes without giant stacked cards.
+            </p>
+          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            className="w-fit border-slate-300 bg-white text-slate-900 hover:bg-slate-50"
+            onClick={() => void onCopy(implementationGuideToText(guide), 'tab-implementationGuide')}
+          >
+            {copiedKey === 'tab-implementationGuide' ? 'Copied Full Guide' : 'Copy Full Guide'}
+          </Button>
+        </div>
+      </div>
 
-        return (
-          <div key={card.key} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{card.badge}</p>
-                <h3 className="mt-1 text-2xl font-black text-slate-900">{card.title}</h3>
-                <p className="mt-1 text-sm text-slate-600">{card.steps.length} implementation directives</p>
-              </div>
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-slate-300 bg-white text-slate-900 hover:bg-slate-50"
-                onClick={() =>
-                  void onCopy(
-                    card.steps.map((step, index) => `${index + 1}. ${step}`).join('\n'),
-                    `guide-${card.key}`,
-                  )
-                }
-              >
-                {copiedKey === `guide-${card.key}` ? 'Copied' : 'Copy'}
-              </Button>
-            </div>
+      <div className="grid gap-0 lg:grid-cols-[260px_minmax(0,1fr)]">
+        <aside className="border-b border-slate-200 bg-slate-50/80 p-3 lg:border-b-0 lg:border-r">
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+            {cards.map((card) => {
+              const Icon = card.icon;
+              const isActive = card.key === activeCard.key;
 
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
-              <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">What You Are Adding</p>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  {safeItems(buckets.what, ['Core setup assets including /ai page, robots, schema, and linking updates.'])[0]}
-                </p>
-              </div>
-              <div className="rounded-xl border border-violet-200 bg-violet-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-violet-700">Where To Add It</p>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  {safeItems(buckets.where, ['Use platform page settings, SEO config, and template code areas.'])[0]}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">Step-By-Step Execution</p>
-              <div className="mt-3 space-y-2">
-                {executionSteps.map((step, index) => (
-                  <div key={`${card.key}-step-${index}`} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
-                      {index + 1}
+              return (
+                <button
+                  key={card.key}
+                  type="button"
+                  onClick={() => onSelectGuide(card.key)}
+                  className={`group flex min-w-0 items-center gap-3 rounded-2xl border p-3 text-left transition-all ${
+                    isActive
+                      ? 'border-slate-900 bg-slate-950 text-white shadow-lg shadow-slate-900/10'
+                      : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-100'
+                  }`}
+                >
+                  <span className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${card.accent} text-white`}>
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className={`block truncate text-sm font-extrabold ${isActive ? 'text-white' : 'text-slate-950'}`}>
+                      {card.title}
                     </span>
-                    <p className="text-sm leading-relaxed text-slate-700">{step}</p>
+                    <span className={`mt-0.5 block text-[11px] font-semibold uppercase tracking-[0.13em] ${isActive ? 'text-slate-300' : 'text-slate-500'}`}>
+                      {card.badge} · {card.steps.length} steps
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </aside>
+
+        <section className="min-w-0 p-4 md:p-5">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div className="min-w-0">
+              <div className="flex min-w-0 items-center gap-3">
+                <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${activeCard.accent} text-white shadow-sm`}>
+                  <ActiveIcon className="h-4 w-4" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">{activeCard.badge} Playbook</p>
+                  <h4 className="truncate text-xl font-black tracking-tight text-slate-950">{activeCard.title}</h4>
+                </div>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600">
+                  {executionSteps.length} execution steps
+                </span>
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700">
+                  QA included
+                </span>
+                <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-orange-700">
+                  Copy-ready
+                </span>
+              </div>
+            </div>
+            <Button
+              size="sm"
+              variant="outline"
+              className="w-fit border-slate-300 bg-white text-slate-900 hover:bg-slate-50"
+              onClick={() =>
+                void onCopy(
+                  activeCard.steps.map((step, index) => `${index + 1}. ${step}`).join('\n'),
+                  `guide-${activeCard.key}`,
+                )
+              }
+            >
+              {copiedKey === `guide-${activeCard.key}` ? 'Copied' : 'Copy Playbook'}
+            </Button>
+          </div>
+
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="min-w-0 rounded-2xl border border-blue-100 bg-blue-50/70 p-4">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-700">What You Are Adding</p>
+              <p className="mt-2 text-[13px] leading-5 text-slate-700">
+                {safeItems(buckets.what, ['Core setup assets including /ai page, robots, schema, and linking updates.'])[0]}
+              </p>
+            </div>
+            <div className="min-w-0 rounded-2xl border border-violet-100 bg-violet-50/70 p-4">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-violet-700">Where To Add It</p>
+              <p className="mt-2 text-[13px] leading-5 text-slate-700">
+                {safeItems(buckets.where, ['Use platform page settings, SEO config, and template code areas.'])[0]}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+            <div className="flex items-center justify-between gap-3 border-b border-slate-200 bg-white px-4 py-3">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Execution Timeline</p>
+                <p className="text-sm font-semibold text-slate-900">Follow in order, then validate before release.</p>
+              </div>
+              <span className="rounded-full bg-slate-950 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white">
+                {executionSteps.length} steps
+              </span>
+            </div>
+            <div className="divide-y divide-slate-200">
+              {executionSteps.map((step, index) => (
+                <div key={`${activeCard.key}-step-${index}`} className="grid gap-3 bg-white/70 px-4 py-3 md:grid-cols-[42px_minmax(0,1fr)]">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-xs font-black text-slate-900 shadow-sm">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <p className="min-w-0 text-[13px] leading-6 text-slate-700">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-3 xl:grid-cols-3">
+            {renderChecklist('Preserve', preserveItems, 'border-emerald-100 bg-emerald-50/70')}
+            {renderChecklist('Verify', verifyItems, 'border-sky-100 bg-sky-50/70')}
+            {renderChecklist('Avoid', mistakesItems, 'border-amber-100 bg-amber-50/70')}
+          </div>
+
+          {buckets.notes.length > 0 && (
+            <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Additional Notes</p>
+              <div className="mt-3 grid gap-2 md:grid-cols-2">
+                {buckets.notes.map((item, index) => (
+                  <div key={`${activeCard.key}-note-${index}`} className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] leading-5 text-slate-700">
+                    {item}
                   </div>
                 ))}
               </div>
             </div>
+          )}
 
-            <div className="mt-4 grid gap-3 md:grid-cols-2">
-              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">Preserve Existing Setup</p>
-                <ul className="mt-2 space-y-2 text-sm leading-relaxed text-slate-700">
-                  {preserveItems.map((item, index) => (
-                    <li key={`${card.key}-preserve-${index}`}>- {item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">Verify It Worked</p>
-                <ul className="mt-2 space-y-2 text-sm leading-relaxed text-slate-700">
-                  {verifyItems.map((item, index) => (
-                    <li key={`${card.key}-verify-${index}`}>- {item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-amber-700">Common Mistakes To Avoid</p>
-              <ul className="mt-2 space-y-2 text-sm leading-relaxed text-slate-700">
-                {mistakesItems.map((item, index) => (
-                  <li key={`${card.key}-mistake-${index}`}>- {item}</li>
-                ))}
-              </ul>
-            </div>
-
-            {buckets.notes.length > 0 && (
-              <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">Additional Notes</p>
-                <ul className="mt-2 space-y-2 text-sm leading-relaxed text-slate-700">
-                  {buckets.notes.map((item, index) => (
-                    <li key={`${card.key}-note-${index}`}>- {item}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {promptBody && (
-              <div className="mt-4 overflow-hidden rounded-xl border border-slate-300 bg-slate-950">
-                <div className="flex items-center justify-between gap-2 border-b border-slate-700 px-3 py-2">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-200">Prompt Template</p>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-7 border-slate-500 bg-slate-800 px-2.5 text-[11px] text-slate-100 hover:bg-slate-700"
-                    onClick={() => void onCopy(promptBody, `prompt-${card.key}`)}
-                  >
-                    {copiedKey === `prompt-${card.key}` ? 'Copied' : 'Copy Prompt'}
-                  </Button>
+          {promptBody && (
+            <div className="mt-4 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner">
+              <div className="flex flex-col gap-2 border-b border-slate-800 bg-slate-900 px-4 py-3 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-orange-300">Vibe Coding Prompt</p>
+                  <p className="text-xs text-slate-400">Paste into your coding tool with this project open.</p>
                 </div>
-                <pre className="max-h-[260px] overflow-auto whitespace-pre-wrap break-words px-4 py-3 text-xs leading-relaxed text-slate-100">
-                  {promptBody}
-                </pre>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="h-8 w-fit border-slate-600 bg-slate-800 px-3 text-xs text-slate-100 hover:bg-slate-700"
+                  onClick={() => void onCopy(promptBody, `prompt-${activeCard.key}`)}
+                >
+                  {copiedKey === `prompt-${activeCard.key}` ? 'Copied' : 'Copy Prompt'}
+                </Button>
               </div>
-            )}
-          </div>
-        );
-      })}
+              <pre className="max-h-[300px] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-6 text-slate-100">
+                {promptBody}
+              </pre>
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 }
@@ -502,37 +603,40 @@ export default function DeliveryPackDashboardPage() {
   const [loadingStepLabel, setLoadingStepLabel] = useState(LOADING_STEPS[0] ?? 'Scanning your website');
   const [loadError, setLoadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<OutputTabValue>('aiInfoPage');
+  const [activeGuide, setActiveGuide] = useState<GuidePlatformKey>('wordpress');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const renderShell = (body: ReactNode, options?: { includeBottomCta?: boolean }) => (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900">
+      <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.10),transparent_28%),radial-gradient(circle_at_85%_18%,rgba(59,130,246,0.08),transparent_26%),linear-gradient(180deg,#f8fafc_0%,#eef2f7_48%,#ffffff_100%)] text-slate-900">
         <Header onOpenForm={openForm} />
-        <main className="pb-14 pt-6 md:pt-8">{body}</main>
+        <main className="pb-12 pt-5 md:pt-7">{body}</main>
 
         {options?.includeBottomCta && (
           <section className="px-4 pb-10 md:px-8">
-            <div className="mx-auto max-w-[1320px] rounded-2xl border border-slate-200 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-6 text-white shadow-xl md:p-8">
+            <div className="mx-auto max-w-[1180px] overflow-hidden rounded-[28px] border border-slate-800 bg-slate-950 text-white shadow-[0_24px_80px_rgba(15,23,42,0.22)]">
+              <div className="bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.35),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent)] p-6 md:p-8">
               <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange-300">Need Implementation Support?</p>
-                  <h3 className="mt-2 text-3xl font-black">Ship This AI Setup Without Guesswork</h3>
-                  <p className="mt-2 max-w-2xl text-sm text-slate-200">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-300">Need Implementation Support?</p>
+                  <h3 className="mt-2 text-2xl font-black tracking-tight md:text-3xl">Ship this AI setup without guesswork</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
                     Get hands-on help publishing the AI page, robots updates, schema, and internal linking plan correctly on your stack.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <Link href="/strategy-blueprint">
-                    <Button className="bg-orange-500 text-white hover:bg-orange-600">Book Strategy Call</Button>
+                    <Button className="bg-orange-500 text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600">Book Strategy Call</Button>
                   </Link>
                   <Button
                     variant="outline"
-                    className="border-slate-500 bg-slate-800 text-white hover:bg-slate-700"
+                    className="border-white/15 bg-white/10 text-white hover:bg-white/15"
                     onClick={openForm}
                   >
                     Get Implementation Help
                   </Button>
                 </div>
+              </div>
               </div>
             </div>
           </section>
@@ -827,14 +931,18 @@ export default function DeliveryPackDashboardPage() {
 
   if (loading) {
     return renderShell(
-      <div className="min-h-screen bg-slate-100 px-4 py-16 text-slate-900 md:px-8">
-        <div className="mx-auto w-full max-w-4xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Opening Delivery Pack</p>
-          <h1 className="mt-2 text-3xl font-black text-slate-900">Preparing your dashboard</h1>
-          <p className="mt-3 text-sm text-slate-600">Loading session data and restoring your generated assets.</p>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-sm text-slate-700">
-            <Loader2 className="h-4 w-4 animate-spin" />
-            Initializing
+      <div className="px-4 py-14 text-slate-900 md:px-8">
+        <div className="mx-auto w-full max-w-[880px] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.10)]">
+          <div className="border-b border-slate-200 bg-slate-950 px-6 py-5 text-white">
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-300">Opening Delivery Pack</p>
+            <h1 className="mt-2 text-2xl font-black tracking-tight">Preparing your dashboard</h1>
+            <p className="mt-2 text-sm leading-6 text-slate-300">Loading session data and restoring your generated assets.</p>
+          </div>
+          <div className="p-6">
+            <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
+              <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+              Initializing delivery session
+            </div>
           </div>
         </div>
       </div>,
@@ -843,25 +951,43 @@ export default function DeliveryPackDashboardPage() {
 
   if (isGenerating && !result) {
     return renderShell(
-      <div className="min-h-screen bg-slate-100 px-4 py-8 text-slate-900 md:px-8 md:py-10">
-        <div className="mx-auto w-full max-w-[1240px] space-y-6">
-          <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-600">Delivery Pack</p>
-            <h1 className="mt-2 text-3xl font-black text-slate-900">Running AI setup generation</h1>
-            <p className="mt-2 text-base text-slate-600">
-              Target:{' '}
-              <span className="font-semibold text-slate-900">{requestPayload?.url ?? 'Website URL'}</span>
-            </p>
-            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm font-semibold text-orange-700">
-              <Loader2 className="h-4 w-4 animate-spin" />
-              {loadingStepLabel}
-            </p>
+      <div className="px-4 py-8 text-slate-900 md:px-8 md:py-10">
+        <div className="mx-auto w-full max-w-[1180px] space-y-5">
+          <Card className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.10)]">
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_360px]">
+              <div className="min-w-0 p-6 md:p-8">
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-600">Delivery Pack</p>
+                <h1 className="mt-2 text-2xl font-black tracking-tight text-slate-950 md:text-3xl">Running AI setup generation</h1>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                  We are scanning the site, extracting brand signals, calling OpenRouter, and assembling the final implementation pack.
+                </p>
+                <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Target</p>
+                  <p className="mt-1 break-all text-sm font-bold text-slate-950">{requestPayload?.url ?? 'Website URL'}</p>
+                </div>
+              </div>
+              <div className="border-t border-slate-200 bg-slate-950 p-6 text-white lg:border-l lg:border-t-0">
+                <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/30 bg-orange-400/10 px-3 py-1 text-xs font-bold text-orange-200">
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  {loadingStepLabel}
+                </div>
+                <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-orange-400 to-amber-300 transition-all duration-500"
+                    style={{ width: `${Math.max(18, ((loadingStepIndex + 1) / LOADING_STEPS.length) * 100)}%` }}
+                  />
+                </div>
+                <p className="mt-3 text-xs leading-5 text-slate-300">
+                  Background generation can take a little while because the AI pass is producing full copy-ready assets, not a thin report.
+                </p>
+              </div>
+            </div>
           </Card>
 
-          <div className="grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
-            <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Generation Pipeline</p>
-              <div className="mt-4 space-y-3">
+          <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+            <Card className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Generation Pipeline</p>
+              <div className="mt-4 space-y-2.5">
                 {LOADING_STEPS.map((step, index) => {
                   const isComplete = index < loadingStepIndex;
                   const isActive = index === loadingStepIndex;
@@ -869,7 +995,7 @@ export default function DeliveryPackDashboardPage() {
                   return (
                     <div
                       key={step}
-                      className={`rounded-xl border px-4 py-3 ${
+                      className={`rounded-2xl border px-4 py-3 transition-all ${
                         isComplete
                           ? 'border-emerald-200 bg-emerald-50'
                           : isActive
@@ -878,7 +1004,7 @@ export default function DeliveryPackDashboardPage() {
                       }`}
                     >
                       <div className="flex items-center justify-between gap-3">
-                        <p className="text-sm font-semibold text-slate-800">{step}</p>
+                        <p className="text-sm font-bold text-slate-800">{step}</p>
                         {isComplete ? (
                           <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                         ) : isActive ? (
@@ -893,9 +1019,9 @@ export default function DeliveryPackDashboardPage() {
               </div>
             </Card>
 
-            <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Pack Includes</p>
-              <div className="mt-4 space-y-2">
+            <Card className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Pack Includes</p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
                 {[
                   'AI Info Page',
                   'Recommended robots.txt',
@@ -904,8 +1030,9 @@ export default function DeliveryPackDashboardPage() {
                   'Implementation guides',
                   'Downloadable delivery pack',
                 ].map((item) => (
-                  <div key={item} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                    {item}
+                  <div key={item} className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] font-semibold text-slate-700">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
@@ -934,37 +1061,47 @@ export default function DeliveryPackDashboardPage() {
   }
 
   return renderShell(
-    <div className="mx-auto w-full max-w-[1320px] space-y-6 px-4 pt-2 md:px-8">
-        <Card className="border border-slate-200 bg-white p-6 shadow-sm md:p-7">
-          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Delivery Pack</p>
-              <h1 className="mt-2 text-3xl font-black text-slate-900 md:text-4xl">AI Setup Dashboard</h1>
-              <p className="mt-2 text-sm text-slate-600">
-                Domain: <span className="font-semibold text-slate-900">{result.site.normalizedUrl}</span>
-              </p>
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-                <span className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
-                  Generation Source: {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rules-only fallback'}
-                </span>
-                {result.meta.model && (
-                  <span className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
-                    Model: {result.meta.model}
-                  </span>
-                )}
-                <span className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
-                  Scanned at: {new Date(result.site.scannedAt).toLocaleString()}
-                </span>
+    <div className="mx-auto w-full max-w-[1180px] space-y-5 px-4 pt-1 md:px-8">
+        <Card className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.10)]">
+          <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div className="min-w-0 p-5 md:p-7">
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-600">Delivery Pack</p>
+                  <h1 className="mt-1 text-2xl font-black tracking-tight text-slate-950 md:text-3xl">AI Setup Dashboard</h1>
+                  <p className="mt-2 max-w-2xl break-all text-sm leading-6 text-slate-600">
+                    Domain: <span className="font-bold text-slate-950">{result.site.normalizedUrl}</span>
+                  </p>
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px]">
+                    <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 font-bold uppercase tracking-[0.1em] text-emerald-700">
+                      {result.meta.generationMode === 'openrouter' ? 'OpenRouter + Rules' : 'Rules-only fallback'}
+                    </span>
+                    {result.meta.model && (
+                      <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-bold text-slate-600">
+                        {result.meta.model}
+                      </span>
+                    )}
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-bold text-slate-600">
+                      {new Date(result.site.scannedAt).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Link href="/ai-setup">
-                <Button variant="outline" className="border-slate-300 text-slate-900 hover:bg-slate-50">
+
+            <div className="border-t border-slate-200 bg-slate-950 p-5 text-white lg:border-l lg:border-t-0 md:p-6">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-300">Actions</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                Copy the full pack or download a markdown handoff for your developer, CMS owner, or vibe-coding workflow.
+              </p>
+              <div className="mt-4 grid gap-2">
+                <Link href="/ai-setup">
+                  <Button variant="outline" className="w-full justify-start border-white/15 bg-white/10 text-white hover:bg-white/15">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Back
                 </Button>
               </Link>
-              <Button onClick={copyAll} className="bg-orange-500 text-white hover:bg-orange-600">
+              <Button onClick={copyAll} className="w-full justify-start bg-orange-500 text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600">
                 {copiedKey === 'copy-all' ? (
                   <>
                     <ClipboardCheck className="mr-2 h-4 w-4" />
@@ -977,101 +1114,114 @@ export default function DeliveryPackDashboardPage() {
                   </>
                 )}
               </Button>
-              <Button onClick={downloadPack} className="bg-slate-900 text-white hover:bg-slate-800">
+              <Button onClick={downloadPack} className="w-full justify-start bg-white text-slate-950 hover:bg-slate-100">
                 <Download className="mr-2 h-4 w-4" />
                 Download Pack
               </Button>
             </div>
+            </div>
           </div>
 
           {result.meta.generationMode !== 'openrouter' && (
-            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <div className="mx-5 mb-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 md:mx-7">
               OpenRouter was not used for this run. Start a new run and verify deployment environment variables.
             </div>
           )}
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Pages Scanned</p>
-              <p className="mt-2 text-4xl font-black text-slate-900">{summaryMetrics?.pages ?? 0}</p>
+          <div className="grid gap-0 border-t border-slate-200 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="border-b border-slate-200 bg-slate-50/80 p-4 xl:border-b-0 xl:border-r">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Pages Scanned</p>
+              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.pages ?? 0}</p>
             </div>
-            <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">Existing Assets</p>
-              <p className="mt-2 text-4xl font-black text-slate-900">{summaryMetrics?.existing ?? 0}</p>
+            <div className="border-b border-slate-200 bg-emerald-50/80 p-4 xl:border-b-0 xl:border-r">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-700">Existing Assets</p>
+              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.existing ?? 0}</p>
             </div>
-            <div className="rounded-xl border border-orange-200 bg-orange-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange-700">Missing Assets</p>
-              <p className="mt-2 text-4xl font-black text-slate-900">{summaryMetrics?.missing ?? 0}</p>
+            <div className="border-b border-slate-200 bg-orange-50/80 p-4 sm:border-r xl:border-b-0">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-orange-700">Missing Assets</p>
+              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.missing ?? 0}</p>
             </div>
-            <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Link Placements</p>
-              <p className="mt-2 text-4xl font-black text-slate-900">{summaryMetrics?.links ?? 0}</p>
+            <div className="bg-blue-50/80 p-4">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-700">Link Placements</p>
+              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.links ?? 0}</p>
             </div>
           </div>
         </Card>
 
-        <Card className="border border-slate-200 bg-white p-4 shadow-sm md:p-6">
+        <Card className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]">
           <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as OutputTabValue)}>
-            <div className="grid gap-4 lg:grid-cols-[280px_minmax(0,1fr)]">
-              <TabsList className="grid h-fit w-full grid-cols-2 gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2 lg:grid-cols-1 lg:sticky lg:top-6">
+            <div className="grid gap-0 lg:grid-cols-[250px_minmax(0,1fr)]">
+              <TabsList className="grid h-fit w-full grid-cols-2 gap-2 rounded-none border-b border-slate-200 bg-slate-50 p-3 lg:sticky lg:top-6 lg:grid-cols-1 lg:border-b-0 lg:border-r">
                 {OUTPUT_TAB_ORDER.map((tab) => {
                   const Icon = tab.icon;
                   return (
                     <TabsTrigger
                       key={tab.value}
                       value={tab.value}
-                      className="flex items-center justify-start gap-2 rounded-lg border border-transparent bg-white px-3 py-3 text-left text-base font-semibold text-slate-700 data-[state=active]:border-slate-300 data-[state=active]:bg-slate-900 data-[state=active]:text-white"
+                      className="flex min-w-0 items-center justify-start gap-2 rounded-xl border border-transparent bg-white px-3 py-2.5 text-left text-sm font-bold text-slate-700 shadow-sm data-[state=active]:border-slate-900 data-[state=active]:bg-slate-950 data-[state=active]:text-white"
                     >
-                      <Icon className="h-4 w-4" />
-                      {tab.label}
+                      <Icon className="h-3.5 w-3.5 shrink-0" />
+                      <span className="truncate">{tab.label}</span>
                     </TabsTrigger>
                   );
                 })}
               </TabsList>
 
-              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 md:p-5">
+              <div className="min-w-0 bg-slate-50 p-4 md:p-5">
                 <TabsContent value="aiInfoPage" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-3xl font-black text-slate-900">AI Info Page</h2>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Primary Asset</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">AI Info Page</h2>
+                    </div>
                     <Button size="sm" variant="outline" onClick={() => void copyToClipboard(result.assets.aiInfoPage, 'tab-aiInfoPage')}>
                       {copiedKey === 'tab-aiInfoPage' ? 'Copied' : 'Copy'}
                     </Button>
                   </div>
-                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-xl border border-slate-800 bg-slate-950 p-4 text-sm leading-relaxed text-slate-100 md:p-5">
+                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-2xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-slate-100 shadow-inner md:p-5">
                     {maskContent(result.assets.aiInfoPage, 5_400)}
                   </pre>
                 </TabsContent>
 
                 <TabsContent value="robotsTxt" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-3xl font-black text-slate-900">robots.txt</h2>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Crawler Guidance</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">robots.txt</h2>
+                    </div>
                     <Button size="sm" variant="outline" onClick={() => void copyToClipboard(result.assets.robotsTxt, 'tab-robotsTxt')}>
                       {copiedKey === 'tab-robotsTxt' ? 'Copied' : 'Copy'}
                     </Button>
                   </div>
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                  <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-5 text-amber-800">
                     robots.txt is crawler guidance, not security access control.
                   </div>
-                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-xl border border-slate-300 bg-white p-4 text-sm leading-relaxed text-slate-800 md:p-5">
+                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-2xl border border-slate-200 bg-white p-4 text-xs leading-6 text-slate-800 shadow-inner md:p-5">
                     {maskContent(result.assets.robotsTxt, 5_400)}
                   </pre>
                 </TabsContent>
 
                 <TabsContent value="schema" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-3xl font-black text-slate-900">Schema</h2>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Structured Data</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">Schema</h2>
+                    </div>
                     <Button size="sm" variant="outline" onClick={() => void copyToClipboard(schemaToText(result), 'tab-schema')}>
                       {copiedKey === 'tab-schema' ? 'Copied' : 'Copy'}
                     </Button>
                   </div>
-                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-xl border border-slate-800 bg-slate-950 p-4 text-xs leading-relaxed text-slate-100 md:p-5 md:text-sm">
+                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-2xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-slate-100 shadow-inner md:p-5">
                     {maskContent(schemaToText(result), 6_000)}
                   </pre>
                 </TabsContent>
 
                 <TabsContent value="internalLinking" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-3xl font-black text-slate-900">Internal Linking Plan</h2>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Crawl Paths</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">Internal Linking Plan</h2>
+                    </div>
                     <Button
                       size="sm"
                       variant="outline"
@@ -1080,18 +1230,23 @@ export default function DeliveryPackDashboardPage() {
                       {copiedKey === 'tab-internalLinking' ? 'Copied' : 'Copy'}
                     </Button>
                   </div>
-                  <div className="space-y-3">
+                  <div className="grid gap-3 xl:grid-cols-2">
                     {result.assets.internalLinking.map((item, index) => (
-                      <div key={`${item.fromPage}-${index}`} className="rounded-xl border border-slate-200 bg-white p-4">
-                        <p className="text-base font-bold text-slate-900">{index + 1}. {item.fromPage}</p>
-                        <p className="mt-1 text-sm text-slate-700">
-                          <span className="font-semibold text-slate-900">Anchor:</span> {item.anchorText}
+                      <div key={`${item.fromPage}-${index}`} className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                        <div className="flex items-start gap-3">
+                          <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-xs font-black text-white">
+                            {index + 1}
+                          </span>
+                          <div className="min-w-0">
+                            <p className="break-words text-sm font-black text-slate-950">{item.fromPage}</p>
+                            <p className="mt-1 text-[13px] leading-5 text-slate-600">{item.reason}</p>
+                          </div>
+                        </div>
+                        <p className="mt-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[13px] text-slate-700">
+                          <span className="font-bold text-slate-950">Anchor:</span> {item.anchorText}
                         </p>
-                        <p className="mt-1 text-sm text-slate-700">
-                          <span className="font-semibold text-slate-900">Placement:</span> {item.placement}
-                        </p>
-                        <p className="mt-1 text-sm text-slate-700">
-                          <span className="font-semibold text-slate-900">Reason:</span> {item.reason}
+                        <p className="mt-2 rounded-xl border border-blue-100 bg-blue-50 px-3 py-2 text-[13px] text-slate-700">
+                          <span className="font-bold text-slate-950">Placement:</span> {item.placement}
                         </p>
                       </div>
                     ))}
@@ -1100,7 +1255,10 @@ export default function DeliveryPackDashboardPage() {
 
                 <TabsContent value="implementationGuide" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-3xl font-black text-slate-900">Implementation Guide</h2>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Publishing Workflow</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">Implementation Guide</h2>
+                    </div>
                     <Button
                       size="sm"
                       variant="outline"
@@ -1111,45 +1269,54 @@ export default function DeliveryPackDashboardPage() {
                   </div>
 
                   <div className="grid gap-3 md:grid-cols-3">
-                    <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700">Platform Playbooks</p>
-                      <p className="mt-2 text-3xl font-black text-slate-900">{implementationStats?.platforms ?? 0}</p>
-                      <p className="text-sm text-slate-700">WordPress, Webflow, Shopify, custom, and vibe-coded flow.</p>
+                    <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-4">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-700">Platform Playbooks</p>
+                      <p className="mt-1 text-2xl font-black text-slate-950">{implementationStats?.platforms ?? 0}</p>
+                      <p className="mt-1 text-[13px] leading-5 text-slate-600">CMS, no-code, commerce, custom, and vibe-coded flow.</p>
                     </div>
-                    <div className="rounded-xl border border-violet-200 bg-violet-50 p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-700">Total Directives</p>
-                      <p className="mt-2 text-3xl font-black text-slate-900">{implementationStats?.totalDirectives ?? 0}</p>
-                      <p className="text-sm text-slate-700">Actionable implementation steps in this session.</p>
+                    <div className="rounded-2xl border border-violet-100 bg-violet-50/80 p-4">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-violet-700">Total Directives</p>
+                      <p className="mt-1 text-2xl font-black text-slate-950">{implementationStats?.totalDirectives ?? 0}</p>
+                      <p className="mt-1 text-[13px] leading-5 text-slate-600">Actionable implementation instructions.</p>
                     </div>
-                    <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700">Average Guide Depth</p>
-                      <p className="mt-2 text-3xl font-black text-slate-900">{implementationStats?.averageDepth ?? 0}</p>
-                      <p className="text-sm text-slate-700">Average directives per platform guide.</p>
+                    <div className="rounded-2xl border border-emerald-100 bg-emerald-50/80 p-4">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-700">Average Guide Depth</p>
+                      <p className="mt-1 text-2xl font-black text-slate-950">{implementationStats?.averageDepth ?? 0}</p>
+                      <p className="mt-1 text-[13px] leading-5 text-slate-600">Average directives per platform.</p>
                     </div>
                   </div>
 
-                  {renderImplementationGuideCards(result.assets.implementationGuide, copiedKey, copyToClipboard)}
+                  {renderImplementationGuideConsole(
+                    result.assets.implementationGuide,
+                    activeGuide,
+                    setActiveGuide,
+                    copiedKey,
+                    copyToClipboard,
+                  )}
                 </TabsContent>
 
                 <TabsContent value="optionalExtras" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-3xl font-black text-slate-900">Optional Extras</h2>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Future-Facing Files</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">Optional Extras</h2>
+                    </div>
                     <Button size="sm" variant="outline" onClick={() => void copyToClipboard(optionalExtrasToText(result), 'tab-optionalExtras')}>
                       {copiedKey === 'tab-optionalExtras' ? 'Copied' : 'Copy'}
                     </Button>
                   </div>
 
                   <div className="grid gap-4 lg:grid-cols-2">
-                    <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
-                      <div className="border-b border-slate-700 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-200">llms.txt</div>
-                      <pre className="max-h-[62vh] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-relaxed text-slate-100 md:text-sm">
+                    <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner">
+                      <div className="border-b border-slate-800 bg-slate-900 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-200">llms.txt</div>
+                      <pre className="max-h-[62vh] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-6 text-slate-100">
                         {maskContent(result.assets.optionalExtras.llmsTxt, 4_500)}
                       </pre>
                     </div>
 
-                    <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
-                      <div className="border-b border-slate-700 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-200">agents.md</div>
-                      <pre className="max-h-[62vh] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-relaxed text-slate-100 md:text-sm">
+                    <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner">
+                      <div className="border-b border-slate-800 bg-slate-900 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-200">agents.md</div>
+                      <pre className="max-h-[62vh] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-6 text-slate-100">
                         {maskContent(result.assets.optionalExtras.agentsMd, 4_500)}
                       </pre>
                     </div>
@@ -1161,8 +1328,8 @@ export default function DeliveryPackDashboardPage() {
         </Card>
 
         {loadError && (
-          <Card className="border border-amber-200 bg-amber-50 p-4 text-amber-800">
-            <div className="flex items-start gap-2 text-sm">
+          <Card className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-amber-800">
+            <div className="flex items-start gap-2 text-[13px] leading-5">
               <AlertTriangle className="mt-0.5 h-4 w-4" />
               <p>{loadError}</p>
             </div>
@@ -1170,9 +1337,9 @@ export default function DeliveryPackDashboardPage() {
         )}
 
         {result.meta.warnings.length > 0 && (
-          <Card className="border border-amber-200 bg-amber-50 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-amber-700">Runtime Warnings</p>
-            <ul className="mt-2 space-y-1 text-sm text-amber-900">
+          <Card className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-amber-700">Runtime Warnings</p>
+            <ul className="mt-2 space-y-1 text-[13px] leading-5 text-amber-900">
               {result.meta.warnings.slice(0, 5).map((warning) => (
                 <li key={warning}>- {warning}</li>
               ))}
@@ -1180,23 +1347,23 @@ export default function DeliveryPackDashboardPage() {
           </Card>
         )}
 
-        <Card className="border border-slate-200 bg-white p-5 shadow-sm">
+        <Card className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600">
                 <ShieldCheck className="h-4 w-4" />
                 Validation Reminder
               </p>
-              <p className="mt-2 text-sm text-slate-700">
+              <p className="mt-2 text-[13px] leading-5 text-slate-700">
                 Confirm live URL status, indexability, internal links, schema visibility, and robots resolution after publishing.
               </p>
             </div>
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600">
                 <WandSparkles className="h-4 w-4" />
                 Next Step
               </p>
-              <p className="mt-2 text-sm text-slate-700">
+              <p className="mt-2 text-[13px] leading-5 text-slate-700">
                 Use this delivery pack as your implementation handoff, then update your /ai page when services or positioning changes.
               </p>
             </div>
