@@ -236,7 +236,7 @@ test('generateSetupAssets preserves detailed implementation guides when model gu
     assert.equal(result.assets.implementationGuide.webflow.length >= 10, true);
     assert.equal(result.assets.implementationGuide.shopify.length >= 10, true);
     assert.equal(result.assets.implementationGuide.customHtml.length >= 10, true);
-    assert.equal(result.assets.implementationGuide.vibeCoded.length >= 10, true);
+    assert.equal((result.assets.implementationGuide.vibeCoded ?? []).length >= 10, true);
     assert.equal(result.warnings.some((warning) => warning.includes('implementation guide needs')), false);
   });
 });
@@ -350,6 +350,79 @@ test('generateSetupAssets accepts partial model drafts missing guide and optiona
     assert.equal(result.assets.implementationGuide.wordpress.length >= 10, true);
     assert.equal(result.assets.optionalExtras.llmsTxt.toLowerCase().includes('optional'), true);
     assert.equal(result.warnings.length, 0);
+  });
+});
+
+test('generateSetupAssets removes analyst-style caveats from publishable AI info page', async () => {
+  await withOpenRouterEnv(async () => {
+    const profile = buildSiteProfile({ request: baseRequest, extracted: richExtractedSignals });
+    const modelDraftWithCaveats: AiSetupAssets = {
+      aiInfoPage: `# Official Information About Linkifi PR
+
+## What the company is
+Based on public case studies, Linkifi PR appears to be a digital PR agency.
+
+## What the company does
+Linkifi PR appears to provide PR-led link building.
+
+## Who the company serves
+Based on public case studies and blog content, Linkifi PR appears to work with businesses and experts.
+
+## Core services
+- Digital PR campaigns (inferred from scanned page language; verify before publishing)
+
+## Secondary services
+- Expert quote placements
+
+## Key differentiators
+- Editorially relevant media outreach
+
+## Process / methodology
+- Campaign planning and media outreach
+
+## Team / founder / leadership
+- Leadership information is not publicly specified.
+
+## Industries served
+- B2B and expert-led brands
+
+## FAQ
+### What does Linkifi PR do?
+Linkifi PR earns media placements.
+
+## Contact / next step
+Visit the website.
+
+## Last updated
+2026-04-24`,
+      robotsTxt:
+        '# Recommended merged robots.txt\n# Important: robots.txt is not access control.\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml',
+      schema: __testables.buildSchema(profile),
+      internalLinking: __testables.buildInternalLinking(profile, richExtractedSignals),
+      implementationGuide: __testables.buildImplementationGuide(profile),
+      optionalExtras: __testables.buildOptionalExtras(profile),
+    };
+
+    const result = await generateSetupAssets(
+      {
+        request: baseRequest,
+        origin: 'https://example.com',
+        extracted: richExtractedSignals,
+        detected: baseDetectedAssets,
+      },
+      {
+        modelClient: async () => modelDraftWithCaveats,
+      },
+      {
+        allowRefinement: false,
+        requireLlm: true,
+      },
+    );
+
+    assert.equal(/appears to/i.test(result.assets.aiInfoPage), false);
+    assert.equal(/based on public/i.test(result.assets.aiInfoPage), false);
+    assert.equal(/inferred from scanned page language/i.test(result.assets.aiInfoPage), false);
+    assert.equal(/Linkifi PR works with businesses and experts/i.test(result.assets.aiInfoPage), true);
   });
 });
 

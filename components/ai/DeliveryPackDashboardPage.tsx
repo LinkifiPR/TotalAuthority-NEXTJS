@@ -45,8 +45,9 @@ const OUTPUT_TAB_ORDER = [
   { value: 'robotsTxt', label: 'robots.txt', icon: FileCode2 },
   { value: 'schema', label: 'Schema', icon: Network },
   { value: 'internalLinking', label: 'Internal Linking', icon: Globe },
+  { value: 'llmsTxt', label: 'llms.txt', icon: FileText },
+  { value: 'agentsMd', label: 'agents.md', icon: Sparkles },
   { value: 'implementationGuide', label: 'Implementation Guide', icon: Rocket },
-  { value: 'optionalExtras', label: 'Optional Extras', icon: Sparkles },
 ] as const;
 
 const LOADING_STEPS = [
@@ -95,6 +96,20 @@ type GuideBuckets = {
 };
 
 type GuidePlatformKey = 'wordpress' | 'webflow' | 'shopify' | 'customHtml' | 'vibeCoded';
+type InsightKey = 'pages' | 'existing' | 'missing' | 'links';
+
+type InsightItem = {
+  label: string;
+  detail: string;
+  reason?: string;
+};
+
+type InsightPanel = {
+  title: string;
+  eyebrow: string;
+  description: string;
+  items: InsightItem[];
+};
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -203,13 +218,6 @@ function schemaToText(result: AiSetupResponse): string {
   return sections.join('\n\n');
 }
 
-function optionalExtrasToText(result: AiSetupResponse): string {
-  return [
-    `llms.txt (Optional / Future-Facing)\n${result.assets.optionalExtras.llmsTxt}`,
-    `agents.md (Optional / Future-Facing)\n${result.assets.optionalExtras.agentsMd}`,
-  ].join('\n\n');
-}
-
 function buildTabCopyText(result: AiSetupResponse, tab: OutputTabValue): string {
   if (tab === 'aiInfoPage') {
     return result.assets.aiInfoPage;
@@ -227,11 +235,19 @@ function buildTabCopyText(result: AiSetupResponse, tab: OutputTabValue): string 
     return internalLinkingToText(result.assets.internalLinking);
   }
 
+  if (tab === 'llmsTxt') {
+    return result.assets.optionalExtras.llmsTxt;
+  }
+
+  if (tab === 'agentsMd') {
+    return result.assets.optionalExtras.agentsMd;
+  }
+
   if (tab === 'implementationGuide') {
     return implementationGuideToText(result.assets.implementationGuide);
   }
 
-  return optionalExtrasToText(result);
+  return '';
 }
 
 function buildExportPack(result: AiSetupResponse): string {
@@ -604,6 +620,7 @@ export default function DeliveryPackDashboardPage() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<OutputTabValue>('aiInfoPage');
   const [activeGuide, setActiveGuide] = useState<GuidePlatformKey>('wordpress');
+  const [activeInsight, setActiveInsight] = useState<InsightKey>('pages');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const renderShell = (body: ReactNode, options?: { includeBottomCta?: boolean }) => (
@@ -849,6 +866,76 @@ export default function DeliveryPackDashboardPage() {
     };
   }, [result]);
 
+  const insightDetails = useMemo<Record<InsightKey, InsightPanel> | null>(() => {
+    if (!result) {
+      return null;
+    }
+
+    const origin = (() => {
+      try {
+        return new URL(result.site.normalizedUrl).origin;
+      } catch {
+        return result.site.normalizedUrl.replace(/\/$/, '');
+      }
+    })();
+
+    const toAbsoluteUrl = (path: string) => {
+      if (/^https?:\/\//i.test(path)) {
+        return path;
+      }
+
+      if (path === '/') {
+        return `${origin}/`;
+      }
+
+      return `${origin}${path.startsWith('/') ? path : `/${path}`}`;
+    };
+
+    const existingAssets = result.summary.existingAssets.length > 0
+      ? result.summary.existingAssets
+      : result.detected.existingAssets;
+
+    return {
+      pages: {
+        eyebrow: 'Discovery Map',
+        title: 'Pages scanned',
+        description: 'The pages and files checked before the delivery pack was generated.',
+        items: result.site.scannedPaths.map((path) => ({
+          label: path,
+          detail: toAbsoluteUrl(path),
+        })),
+      },
+      existing: {
+        eyebrow: 'Already Found',
+        title: 'Existing assets detected',
+        description: 'Useful discovery foundations already present on the site or visible from live signals.',
+        items: existingAssets.map((asset) => ({
+          label: asset,
+          detail: 'Detected during setup discovery',
+        })),
+      },
+      missing: {
+        eyebrow: 'Generated For You',
+        title: 'Missing assets covered',
+        description: 'Assets this pack generated or gave precise implementation guidance for.',
+        items: result.summary.missingAssets.map((asset) => ({
+          label: asset,
+          detail: 'Included in this delivery pack',
+        })),
+      },
+      links: {
+        eyebrow: 'Placement Plan',
+        title: 'Recommended link placements',
+        description: 'Where the AI Information page should be linked so people and crawlers can discover it.',
+        items: result.assets.internalLinking.map((link) => ({
+          label: link.fromPage,
+          detail: `${link.anchorText} · ${link.placement}`,
+          reason: link.reason,
+        })),
+      },
+    };
+  }, [result]);
+
   const implementationStats = useMemo(() => {
     if (!result) {
       return null;
@@ -1027,6 +1114,8 @@ export default function DeliveryPackDashboardPage() {
                   'Recommended robots.txt',
                   'Schema JSON-LD',
                   'Internal linking plan',
+                  'llms.txt file',
+                  'agents.md file',
                   'Implementation guides',
                   'Downloadable delivery pack',
                 ].map((item) => (
@@ -1059,6 +1148,44 @@ export default function DeliveryPackDashboardPage() {
       </div>,
     );
   }
+
+  const summaryCards = [
+    {
+      key: 'pages' as const,
+      label: 'Pages scanned',
+      value: summaryMetrics?.pages ?? 0,
+      detail: 'View scan map',
+      className: 'border-slate-200 bg-slate-50/90 text-slate-700',
+      activeClassName: 'ring-slate-950/15 border-slate-900 bg-white',
+    },
+    {
+      key: 'existing' as const,
+      label: 'Existing assets',
+      value: summaryMetrics?.existing ?? 0,
+      detail: 'Inspect found signals',
+      className: 'border-emerald-200 bg-emerald-50/90 text-emerald-800',
+      activeClassName: 'ring-emerald-500/20 border-emerald-500 bg-white',
+    },
+    {
+      key: 'missing' as const,
+      label: 'Missing assets',
+      value: summaryMetrics?.missing ?? 0,
+      detail: 'See generated gaps',
+      className: 'border-orange-200 bg-orange-50/90 text-orange-800',
+      activeClassName: 'ring-orange-500/20 border-orange-500 bg-white',
+    },
+    {
+      key: 'links' as const,
+      label: 'Link placements',
+      value: summaryMetrics?.links ?? 0,
+      detail: 'Open placement plan',
+      className: 'border-blue-200 bg-blue-50/90 text-blue-800',
+      activeClassName: 'ring-blue-500/20 border-blue-500 bg-white',
+    },
+  ];
+
+  const activeInsightDetail = insightDetails?.[activeInsight];
+  const leftExistingAssets = insightDetails?.existing.items ?? [];
 
   return renderShell(
     <div className="mx-auto w-full max-w-[1180px] space-y-5 px-4 pt-1 md:px-8">
@@ -1129,43 +1256,111 @@ export default function DeliveryPackDashboardPage() {
           )}
 
           <div className="grid gap-0 border-t border-slate-200 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="border-b border-slate-200 bg-slate-50/80 p-4 xl:border-b-0 xl:border-r">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Pages Scanned</p>
-              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.pages ?? 0}</p>
-            </div>
-            <div className="border-b border-slate-200 bg-emerald-50/80 p-4 xl:border-b-0 xl:border-r">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-700">Existing Assets</p>
-              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.existing ?? 0}</p>
-            </div>
-            <div className="border-b border-slate-200 bg-orange-50/80 p-4 sm:border-r xl:border-b-0">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-orange-700">Missing Assets</p>
-              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.missing ?? 0}</p>
-            </div>
-            <div className="bg-blue-50/80 p-4">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-700">Link Placements</p>
-              <p className="mt-1 text-3xl font-black text-slate-950">{summaryMetrics?.links ?? 0}</p>
-            </div>
+            {summaryCards.map((card) => {
+              const isActive = activeInsight === card.key;
+
+              return (
+                <button
+                  key={card.key}
+                  type="button"
+                  onClick={() => setActiveInsight(card.key)}
+                  className={`group border-b p-4 text-left transition-all hover:bg-white xl:border-b-0 xl:border-r last:xl:border-r-0 ${card.className} ${
+                    isActive ? `${card.activeClassName} ring-2` : ''
+                  }`}
+                >
+                  <span className="block text-[10px] font-black uppercase tracking-[0.16em]">{card.label}</span>
+                  <span className="mt-1 block text-3xl font-black text-slate-950">{card.value}</span>
+                  <span className="mt-1 inline-flex items-center rounded-full bg-white/75 px-2.5 py-1 text-[11px] font-bold text-slate-600 shadow-sm">
+                    {card.detail}
+                  </span>
+                </button>
+              );
+            })}
           </div>
+
+          {activeInsightDetail && (
+            <div className="border-t border-slate-200 bg-white px-4 py-4 md:px-6">
+              <div className="flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{activeInsightDetail.eyebrow}</p>
+                  <h2 className="mt-1 text-lg font-black tracking-tight text-slate-950">{activeInsightDetail.title}</h2>
+                </div>
+                <p className="max-w-xl text-[13px] leading-5 text-slate-600">{activeInsightDetail.description}</p>
+              </div>
+
+              <div className="mt-4 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+                {activeInsightDetail.items.length > 0 ? (
+                  activeInsightDetail.items.slice(0, 12).map((item, index) => (
+                    <div key={`${activeInsight}-${item.label}-${index}`} className="min-w-0 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 shadow-sm">
+                      <p className="truncate text-sm font-black text-slate-950">{item.label}</p>
+                      <p className="mt-1 break-words text-[12px] leading-5 text-slate-600">{item.detail}</p>
+                      {item.reason && <p className="mt-2 text-[12px] leading-5 text-slate-500">{item.reason}</p>}
+                    </div>
+                  ))
+                ) : (
+                  <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-4 text-sm font-semibold text-slate-600">
+                    No items were found in this category for this run.
+                  </div>
+                )}
+              </div>
+
+              {activeInsightDetail.items.length > 12 && (
+                <p className="mt-3 text-xs font-semibold text-slate-500">
+                  Showing the first 12 items. Download the delivery pack for the full handoff.
+                </p>
+              )}
+            </div>
+          )}
         </Card>
 
         <Card className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]">
           <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as OutputTabValue)}>
             <div className="grid gap-0 lg:grid-cols-[250px_minmax(0,1fr)]">
-              <TabsList className="grid h-fit w-full grid-cols-2 gap-2 rounded-none border-b border-slate-200 bg-slate-50 p-3 lg:sticky lg:top-6 lg:grid-cols-1 lg:border-b-0 lg:border-r">
-                {OUTPUT_TAB_ORDER.map((tab) => {
-                  const Icon = tab.icon;
-                  return (
-                    <TabsTrigger
-                      key={tab.value}
-                      value={tab.value}
-                      className="flex min-w-0 items-center justify-start gap-2 rounded-xl border border-transparent bg-white px-3 py-2.5 text-left text-sm font-bold text-slate-700 shadow-sm data-[state=active]:border-slate-900 data-[state=active]:bg-slate-950 data-[state=active]:text-white"
-                    >
-                      <Icon className="h-3.5 w-3.5 shrink-0" />
-                      <span className="truncate">{tab.label}</span>
-                    </TabsTrigger>
-                  );
-                })}
-              </TabsList>
+              <aside className="border-b border-slate-200 bg-slate-50 lg:sticky lg:top-6 lg:h-fit lg:border-b-0 lg:border-r">
+                <TabsList className="grid h-fit w-full grid-cols-2 gap-2 rounded-none border-0 bg-transparent p-3 lg:grid-cols-1">
+                  {OUTPUT_TAB_ORDER.map((tab) => {
+                    const Icon = tab.icon;
+                    return (
+                      <TabsTrigger
+                        key={tab.value}
+                        value={tab.value}
+                        className="flex min-w-0 items-center justify-start gap-2 rounded-xl border border-transparent bg-white px-3 py-2.5 text-left text-sm font-bold text-slate-700 shadow-sm data-[state=active]:border-slate-900 data-[state=active]:bg-slate-950 data-[state=active]:text-white"
+                      >
+                        <Icon className="h-3.5 w-3.5 shrink-0" />
+                        <span className="truncate">{tab.label}</span>
+                      </TabsTrigger>
+                    );
+                  })}
+                </TabsList>
+
+                <div className="mx-3 mb-3 rounded-2xl border border-emerald-200 bg-white p-3 shadow-sm">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">Existing assets</p>
+                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-black text-emerald-700">
+                      {leftExistingAssets.length}
+                    </span>
+                  </div>
+                  <div className="mt-3 space-y-2">
+                    {leftExistingAssets.length > 0 ? (
+                      leftExistingAssets.slice(0, 4).map((item, index) => (
+                        <button
+                          key={`${item.label}-${index}`}
+                          type="button"
+                          onClick={() => setActiveInsight('existing')}
+                          className="flex w-full min-w-0 items-start gap-2 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-2 text-left transition-colors hover:border-emerald-300 hover:bg-emerald-50"
+                        >
+                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
+                          <span className="min-w-0 truncate text-[12px] font-bold text-slate-700">{item.label}</span>
+                        </button>
+                      ))
+                    ) : (
+                      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 px-3 py-3 text-[12px] leading-5 text-slate-600">
+                        No existing setup assets were detected. The generated files below cover the missing foundations.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </aside>
 
               <div className="min-w-0 bg-slate-50 p-4 md:p-5">
                 <TabsContent value="aiInfoPage" className="mt-0 space-y-4">
@@ -1253,6 +1448,42 @@ export default function DeliveryPackDashboardPage() {
                   </div>
                 </TabsContent>
 
+                <TabsContent value="llmsTxt" className="mt-0 space-y-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">AI Reference File</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">llms.txt</h2>
+                    </div>
+                    <Button size="sm" variant="outline" onClick={() => void copyToClipboard(result.assets.optionalExtras.llmsTxt, 'tab-llmsTxt')}>
+                      {copiedKey === 'tab-llmsTxt' ? 'Copied' : 'Copy'}
+                    </Button>
+                  </div>
+                  <div className="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-[13px] leading-5 text-blue-900">
+                    Publish this as a plain text markdown-style file at <span className="font-black">/llms.txt</span> to give AI systems a concise map of the most important site references.
+                  </div>
+                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-2xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-slate-100 shadow-inner md:p-5">
+                    {maskContent(result.assets.optionalExtras.llmsTxt, 5_400)}
+                  </pre>
+                </TabsContent>
+
+                <TabsContent value="agentsMd" className="mt-0 space-y-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Agent Guidance File</p>
+                      <h2 className="text-2xl font-black tracking-tight text-slate-950">agents.md</h2>
+                    </div>
+                    <Button size="sm" variant="outline" onClick={() => void copyToClipboard(result.assets.optionalExtras.agentsMd, 'tab-agentsMd')}>
+                      {copiedKey === 'tab-agentsMd' ? 'Copied' : 'Copy'}
+                    </Button>
+                  </div>
+                  <div className="rounded-2xl border border-violet-100 bg-violet-50 px-4 py-3 text-[13px] leading-5 text-violet-900">
+                    Publish this as <span className="font-black">/agents.md</span> when you want a factual guide for AI agents and coding tools without telling them what opinion to hold.
+                  </div>
+                  <pre className="max-h-[68vh] overflow-auto whitespace-pre-wrap break-words rounded-2xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-slate-100 shadow-inner md:p-5">
+                    {maskContent(result.assets.optionalExtras.agentsMd, 5_400)}
+                  </pre>
+                </TabsContent>
+
                 <TabsContent value="implementationGuide" className="mt-0 space-y-4">
                   <div className="flex items-center justify-between gap-2">
                     <div>
@@ -1293,34 +1524,6 @@ export default function DeliveryPackDashboardPage() {
                     copiedKey,
                     copyToClipboard,
                   )}
-                </TabsContent>
-
-                <TabsContent value="optionalExtras" className="mt-0 space-y-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Future-Facing Files</p>
-                      <h2 className="text-2xl font-black tracking-tight text-slate-950">Optional Extras</h2>
-                    </div>
-                    <Button size="sm" variant="outline" onClick={() => void copyToClipboard(optionalExtrasToText(result), 'tab-optionalExtras')}>
-                      {copiedKey === 'tab-optionalExtras' ? 'Copied' : 'Copy'}
-                    </Button>
-                  </div>
-
-                  <div className="grid gap-4 lg:grid-cols-2">
-                    <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner">
-                      <div className="border-b border-slate-800 bg-slate-900 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-200">llms.txt</div>
-                      <pre className="max-h-[62vh] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-6 text-slate-100">
-                        {maskContent(result.assets.optionalExtras.llmsTxt, 4_500)}
-                      </pre>
-                    </div>
-
-                    <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner">
-                      <div className="border-b border-slate-800 bg-slate-900 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-200">agents.md</div>
-                      <pre className="max-h-[62vh] overflow-auto whitespace-pre-wrap break-words px-4 py-4 text-xs leading-6 text-slate-100">
-                        {maskContent(result.assets.optionalExtras.agentsMd, 4_500)}
-                      </pre>
-                    </div>
-                  </div>
                 </TabsContent>
               </div>
             </div>
