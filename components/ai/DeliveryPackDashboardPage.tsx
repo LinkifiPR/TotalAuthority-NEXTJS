@@ -620,7 +620,7 @@ export default function DeliveryPackDashboardPage() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<OutputTabValue>('aiInfoPage');
   const [activeGuide, setActiveGuide] = useState<GuidePlatformKey>('wordpress');
-  const [activeInsight, setActiveInsight] = useState<InsightKey>('pages');
+  const [activeInsight, setActiveInsight] = useState<InsightKey | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const renderShell = (body: ReactNode, options?: { includeBottomCta?: boolean }) => (
@@ -641,18 +641,11 @@ export default function DeliveryPackDashboardPage() {
                     Get hands-on help publishing the AI page, robots updates, schema, and internal linking plan correctly on your stack.
                   </p>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  <Link href="/strategy-blueprint">
-                    <Button className="bg-orange-500 text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600">Book Strategy Call</Button>
-                  </Link>
-                  <Button
-                    variant="outline"
-                    className="border-white/15 bg-white/10 text-white hover:bg-white/15"
-                    onClick={openForm}
-                  >
-                    Get Implementation Help
+                <a href="https://go.totalauthority.com/widget/bookings/free-strategy-call-ta" target="_blank" rel="noreferrer">
+                  <Button className="bg-orange-500 text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600">
+                    Book a free strategy call
                   </Button>
-                </div>
+                </a>
               </div>
               </div>
             </div>
@@ -1184,8 +1177,7 @@ export default function DeliveryPackDashboardPage() {
     },
   ];
 
-  const activeInsightDetail = insightDetails?.[activeInsight];
-  const leftExistingAssets = insightDetails?.existing.items ?? [];
+  const activeInsightDetail = activeInsight ? insightDetails?.[activeInsight] : null;
 
   return renderShell(
     <div className="mx-auto w-full max-w-[1180px] space-y-5 px-4 pt-1 md:px-8">
@@ -1263,7 +1255,7 @@ export default function DeliveryPackDashboardPage() {
                 <button
                   key={card.key}
                   type="button"
-                  onClick={() => setActiveInsight(card.key)}
+                  onClick={() => setActiveInsight((current) => (current === card.key ? null : card.key))}
                   className={`group border-b p-4 text-left transition-all hover:bg-white xl:border-b-0 xl:border-r last:xl:border-r-0 ${card.className} ${
                     isActive ? `${card.activeClassName} ring-2` : ''
                   }`}
@@ -1271,7 +1263,7 @@ export default function DeliveryPackDashboardPage() {
                   <span className="block text-[10px] font-black uppercase tracking-[0.16em]">{card.label}</span>
                   <span className="mt-1 block text-3xl font-black text-slate-950">{card.value}</span>
                   <span className="mt-1 inline-flex items-center rounded-full bg-white/75 px-2.5 py-1 text-[11px] font-bold text-slate-600 shadow-sm">
-                    {card.detail}
+                    {isActive ? 'Collapse details' : card.detail}
                   </span>
                 </button>
               );
@@ -1333,33 +1325,6 @@ export default function DeliveryPackDashboardPage() {
                   })}
                 </TabsList>
 
-                <div className="mx-3 mb-3 rounded-2xl border border-emerald-200 bg-white p-3 shadow-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">Existing assets</p>
-                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-black text-emerald-700">
-                      {leftExistingAssets.length}
-                    </span>
-                  </div>
-                  <div className="mt-3 space-y-2">
-                    {leftExistingAssets.length > 0 ? (
-                      leftExistingAssets.slice(0, 4).map((item, index) => (
-                        <button
-                          key={`${item.label}-${index}`}
-                          type="button"
-                          onClick={() => setActiveInsight('existing')}
-                          className="flex w-full min-w-0 items-start gap-2 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-2 text-left transition-colors hover:border-emerald-300 hover:bg-emerald-50"
-                        >
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
-                          <span className="min-w-0 truncate text-[12px] font-bold text-slate-700">{item.label}</span>
-                        </button>
-                      ))
-                    ) : (
-                      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 px-3 py-3 text-[12px] leading-5 text-slate-600">
-                        No existing setup assets were detected. The generated files below cover the missing foundations.
-                      </div>
-                    )}
-                  </div>
-                </div>
               </aside>
 
               <div className="min-w-0 bg-slate-50 p-4 md:p-5">
