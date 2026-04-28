@@ -37,16 +37,25 @@ export async function GET(request: Request) {
     }
 
     if (action === 'preview') {
-      // Show what comes AFTER the end of the clean CTA block
-      // The clean block is ~900 chars — show 200 chars before the end and 600 chars after
-      // so we can confirm no orphaned content follows
-      const ctaIdx = fixed.indexOf('cta-block');
-      const afterCTA = fixed.substring(ctaIdx + 900); // skip past the clean block
+      // Find the ACTUAL end of the cta-block div in the fixed content using depth tracking
+      const ctaMarker = fixed.indexOf('data-block-type="floating-particles"');
+      let divStart = ctaMarker;
+      while (divStart > 0 && fixed[divStart] !== '<') divStart--;
+      const ctaBlockEnd = findDivEnd(fixed, divStart);
+
       results.push({
         title: post.title,
         status: 'would update',
-        after_cta: afterCTA.substring(0, 600), // what immediately follows the CTA block
-        has_old_markers: ['24-hour delivery', 'No sales call', 'OPEN_FORM'].some(m => fixed.includes(m)),
+        // Show 600 chars AFTER the actual end of the cta-block
+        after_cta_end: ctaBlockEnd !== -1
+          ? fixed.substring(ctaBlockEnd, ctaBlockEnd + 600)
+          : '(could not find end)',
+        // Check if old markers exist specifically AFTER the cta-block ends
+        old_markers_after_cta: ctaBlockEnd !== -1
+          ? ['24-hour delivery', 'No sales call', 'OPEN_FORM', 'relative z-10 text-center'].filter(
+              m => fixed.substring(ctaBlockEnd).includes(m)
+            )
+          : [],
       });
       continue;
     }
@@ -98,7 +107,7 @@ function fixAllCTAs(content: string): string {
 
     // Step 2: Scan forward from ctaEnd and consume any orphaned old-CTA divs
     // Orphaned content is identified by containing known old-CTA strings
-    const OLD_CTA_MARKERS = ['24-hour delivery', 'No sales call', 'Start Free Audit', 'OPEN_FORM'];
+    const OLD_CTA_MARKERS = ['24-hour delivery', 'No sales call', 'Start Free Audit', 'OPEN_FORM', 'relative z-10 text-center', 'llm-visibility-audit', 'Start Audit Now'];
     let totalEnd = ctaEnd;
 
     // Keep consuming orphaned blocks as long as we find them
