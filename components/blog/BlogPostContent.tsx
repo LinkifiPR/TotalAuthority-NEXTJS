@@ -24,6 +24,64 @@ interface BlogPostContentProps {
   post: BlogPost;
 }
 
+const auditCtaHeadingPattern = /Get Your (?:Free )?LLM Visibility Audit/i;
+
+const findClosingDivIndex = (html: string, startIndex: number) => {
+  const divTagPattern = /<\/?div\b[^>]*>/gi;
+  divTagPattern.lastIndex = startIndex;
+
+  let depth = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = divTagPattern.exec(html)) !== null) {
+    if (match[0].startsWith('</')) {
+      depth -= 1;
+    } else {
+      depth += 1;
+    }
+
+    if (depth === 0) {
+      return divTagPattern.lastIndex;
+    }
+  }
+
+  return -1;
+};
+
+const dedupeLegacyAuditCtas = (html: string) => {
+  const ctaStartPattern = /<div\b(?=[^>]*\bcta-block\b)[^>]*>/gi;
+  let output = '';
+  let cursor = 0;
+  let hasKeptAuditCta = false;
+  let match: RegExpExecArray | null;
+
+  while ((match = ctaStartPattern.exec(html)) !== null) {
+    const startIndex = match.index;
+    const endIndex = findClosingDivIndex(html, startIndex);
+
+    if (endIndex === -1) {
+      break;
+    }
+
+    const ctaBlock = html.slice(startIndex, endIndex);
+    if (!auditCtaHeadingPattern.test(ctaBlock)) {
+      continue;
+    }
+
+    output += html.slice(cursor, startIndex);
+
+    if (!hasKeptAuditCta) {
+      output += ctaBlock;
+      hasKeptAuditCta = true;
+    }
+
+    cursor = endIndex;
+    ctaStartPattern.lastIndex = endIndex;
+  }
+
+  return output + html.slice(cursor);
+};
+
 export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
   const router = useRouter();
   
@@ -39,7 +97,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
     router.push(`/blog?tag=${encodeURIComponent(tag)}`);
   };
 
-  // Content processing - clean up editor elements (SSR-safe, no DOM APIs)
+  // Content processing - clean up editor elements and stale embedded CTAs (SSR-safe, no DOM APIs)
   const processContent = (content: string) => {
     if (!content) return '';
     
@@ -55,6 +113,12 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
     processed = processed.replace(/\s*data-has-buttons="[^"]*"/gi, '');
     processed = processed.replace(/\s*data-editor-active="[^"]*"/gi, '');
     processed = processed.replace(/\s*data-button-overlay="[^"]*"/gi, '');
+
+    processed = dedupeLegacyAuditCtas(processed);
+
+    // Remove stale feature-row fragments that can be left behind after old CTA blocks are edited out.
+    processed = processed.replace(/<div\b[^>]*>\s*<div\b[^>]*>\s*<div\b[^>]*><\/div>\s*<span>\s*24-hour delivery\s*<\/span>\s*<\/div>\s*<div\b[^>]*>\s*<div\b[^>]*><\/div>\s*<span>\s*No sales call\s*<\/span>\s*<\/div>\s*<\/div>/gi, '');
+    processed = processed.replace(/<div\b[^>]*>\s*<span>\s*24-hour delivery\s*<\/span>\s*<\/div>\s*<div\b[^>]*>\s*<span>\s*No sales call\s*<\/span>\s*<\/div>/gi, '');
     
     return processed;
   };
