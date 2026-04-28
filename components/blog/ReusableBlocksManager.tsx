@@ -42,12 +42,12 @@ export const ReusableBlocksManager: React.FC<ReusableBlocksManagerProps> = ({
               <span className="text-orange-200 font-semibold text-xs">Get Your LLM Visibility Audit</span>
             </div>
             
-            <button 
-              onClick={onOpenForm}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 text-xs font-bold rounded-lg shadow-lg"
+            <a
+              href="https://totalauthority.com/llm-visibility-audit"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 text-xs font-bold rounded-lg shadow-lg inline-block"
             >
               Start Audit Now →
-            </button>
+            </a>
 
             <div className="mt-1 text-slate-400 text-xs">+ Over $300 worth of free bonuses</div>
           </div>
@@ -73,20 +73,9 @@ export const ReusableBlocksManager: React.FC<ReusableBlocksManagerProps> = ({
              <p class="text-white/90 text-xs sm:text-sm font-semibold drop-shadow leading-tight" style="color: rgba(255, 255, 255, 0.9) !important;">Discover how visible your brand is across AI platforms</p>
            </div>
           
-          <button onclick="window.parent.postMessage({type: 'OPEN_FORM'}, '*')" class="relative inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105 border border-orange-400/50 cursor-pointer border-none mb-4">
+          <a href="https://totalauthority.com/llm-visibility-audit" class="relative inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105 border border-orange-400/50 cursor-pointer border-none mb-4" style="text-decoration: none;">
             Start Audit Now →
-          </button>
-
-          <div class="flex items-center justify-center gap-4 text-white/80 text-sm font-medium" style="color: rgba(255, 255, 255, 0.8) !important;">
-            <div class="flex items-center gap-1">
-              <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-              <span>24-hour delivery</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <span>No sales call</span>
-            </div>
-          </div>
+          </a>
           <div class="mt-3 text-orange-300 text-xs font-semibold" style="color: rgb(253, 186, 116) !important;">+ Over $300 worth of free bonuses</div>
         </div>
       </div>`
