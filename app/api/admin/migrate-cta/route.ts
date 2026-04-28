@@ -37,13 +37,16 @@ export async function GET(request: Request) {
     }
 
     if (action === 'preview') {
-      // Show a window around where the CTA was
+      // Show what comes AFTER the end of the clean CTA block
+      // The clean block is ~900 chars — show 200 chars before the end and 600 chars after
+      // so we can confirm no orphaned content follows
       const ctaIdx = fixed.indexOf('cta-block');
+      const afterCTA = fixed.substring(ctaIdx + 900); // skip past the clean block
       results.push({
         title: post.title,
         status: 'would update',
-        // Show 200 chars before and 600 after the cta-block to confirm no orphaned content follows
-        preview: fixed.substring(Math.max(0, ctaIdx - 50), ctaIdx + 800),
+        after_cta: afterCTA.substring(0, 600), // what immediately follows the CTA block
+        has_old_markers: ['24-hour delivery', 'No sales call', 'OPEN_FORM'].some(m => fixed.includes(m)),
       });
       continue;
     }
