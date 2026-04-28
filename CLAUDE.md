@@ -216,6 +216,44 @@ Focus: AI Setup Engine production architecture, output quality, delivery dashboa
 - Run live generation against several real domains and inspect whether OpenRouter logs show current calls.
 - Continue tightening output tone if generated pages still sound too cautious or analyst-like.
 
+### 2026-04-28
+Focus: CTA block updates across all blog posts + project setup in Cowork.
+
+**CTA block overhaul (`components/blog/ReusableBlocksManager.tsx`)**
+- Removed "Free" from headline — now reads "Get Your LLM Visibility Audit"
+- Button changed from postMessage call to direct link: `https://totalauthority.com/llm-visibility-audit`
+- Button text updated: "Start Free Audit →" → "Start Audit Now →"
+- Removed "24-hour delivery" and "No sales call" badges (product is now paid)
+- Added "+ Over $300 worth of free bonuses" line below button
+- Block renamed from "Free LLM Visibility Audit CTA" to "LLM Visibility Audit CTA"
+
+**Database migration — all 16 existing blog posts updated in Supabase**
+- CTA content was baked into post HTML in the DB — template changes alone don't update existing posts
+- Used a temporary API route (`/api/admin/migrate-cta`) deployed to Netlify to run the migration server-side (sandbox has no external network access)
+- All 16 posts confirmed updated, migration route then deleted
+- For future CTA changes: same pattern — update template + run a migration route
+
+**Site title update (from session 2026-04-03)**
+- `app/layout.tsx` title updated to "Total Authority - AI Visibility"
+
+**Workflow notes**
+- GitHub PAT needed at start of each session to push: `git remote set-url origin https://chrispanteli:<PAT>@github.com/LinkifiPR/TotalAuthority-NEXTJS.git`
+- Sandbox cannot reach external networks (Supabase, etc.) — use Netlify API routes for DB operations
+- Supabase service role key: stored securely by Christopher (do not commit)
+
+**Commits pushed this session**
+- `53adf53` — site title update
+- `ea6adcf` — CLAUDE.md created
+- `003491d` — CLAUDE.md session notes
+- `c82ecf7` — CTA block updates + migration script
+- `fd1323a` — temporary migration route (deleted next commit)
+- `211c482` — migration route removed
+
+**Next steps**
+- Verify CTA looks correct on live blog posts (check totalauthority.com/what-is-llm-optimization)
+- Clean up legacy Replit files (`replit.md`, `sync-to-github.sh`)
+- Add `.env*` to `.gitignore` and run `git rm --cached .env.local`
+
 ### 2026-04-03
 - Christopher connected this project to Cowork for the first time
 - Repo cloned from GitHub
