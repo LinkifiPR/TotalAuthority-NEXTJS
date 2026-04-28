@@ -25,7 +25,7 @@ export const ReusableBlocksManager: React.FC<ReusableBlocksManagerProps> = ({
 
   const ctaBlocks = [
     {
-      name: 'Free LLM Visibility Audit CTA',
+      name: 'LLM Visibility Audit CTA',
       description: 'Sleek CTA with animated particles',
       preview: (
         <div className="scale-75 origin-top-left transform w-full h-24 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl relative">
@@ -39,17 +39,17 @@ export const ReusableBlocksManager: React.FC<ReusableBlocksManagerProps> = ({
           
           <div className="relative z-10 p-3 text-center">
             <div className="mb-1">
-              <span className="text-orange-200 font-semibold text-xs">Get Your Free LLM Visibility Audit</span>
+              <span className="text-orange-200 font-semibold text-xs">Get Your LLM Visibility Audit</span>
             </div>
             
             <button 
               onClick={onOpenForm}
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 text-xs font-bold rounded-lg shadow-lg"
             >
-              Start Free Audit →
+              Start Audit Now →
             </button>
-            
-            <div className="mt-1 text-slate-400 text-xs">24-hour delivery</div>
+
+            <div className="mt-1 text-slate-400 text-xs">+ Over $300 worth of free bonuses</div>
           </div>
         </div>
       ),
@@ -69,14 +69,14 @@ export const ReusableBlocksManager: React.FC<ReusableBlocksManagerProps> = ({
         
          <div class="relative z-10 text-center">
            <div class="mb-4">
-             <h3 class="text-white font-black text-sm sm:text-xl mb-2 drop-shadow-lg leading-tight" style="color: white !important;">Get Your Free LLM Visibility Audit</h3>
+             <h3 class="text-white font-black text-sm sm:text-xl mb-2 drop-shadow-lg leading-tight" style="color: white !important;">Get Your LLM Visibility Audit</h3>
              <p class="text-white/90 text-xs sm:text-sm font-semibold drop-shadow leading-tight" style="color: rgba(255, 255, 255, 0.9) !important;">Discover how visible your brand is across AI platforms</p>
            </div>
           
           <button onclick="window.parent.postMessage({type: 'OPEN_FORM'}, '*')" class="relative inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105 border border-orange-400/50 cursor-pointer border-none mb-4">
-            Start Free Audit →
+            Start Audit Now →
           </button>
-          
+
           <div class="flex items-center justify-center gap-4 text-white/80 text-sm font-medium" style="color: rgba(255, 255, 255, 0.8) !important;">
             <div class="flex items-center gap-1">
               <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
@@ -87,6 +87,7 @@ export const ReusableBlocksManager: React.FC<ReusableBlocksManagerProps> = ({
               <span>No sales call</span>
             </div>
           </div>
+          <div class="mt-3 text-orange-300 text-xs font-semibold" style="color: rgb(253, 186, 116) !important;">+ Over $300 worth of free bonuses</div>
         </div>
       </div>`
     }
