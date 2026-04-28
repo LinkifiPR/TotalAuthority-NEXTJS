@@ -25,6 +25,7 @@ interface BlogPostContentProps {
 }
 
 const auditCtaHeadingPattern = /Get Your (?:Free )?LLM Visibility Audit/i;
+const auditCtaHeadingSearchPattern = /Get Your (?:Free )?LLM Visibility Audit/gi;
 
 const findClosingDivIndex = (html: string, startIndex: number) => {
   const divTagPattern = /<\/?div\b[^>]*>/gi;
@@ -46,6 +47,25 @@ const findClosingDivIndex = (html: string, startIndex: number) => {
   }
 
   return -1;
+};
+
+const consumeClosingDivs = (html: string, startIndex: number, maxClosingDivs: number) => {
+  let index = startIndex;
+  let consumed = 0;
+
+  while (consumed < maxClosingDivs) {
+    const whitespaceMatch = html.slice(index).match(/^\s*/);
+    index += whitespaceMatch?.[0].length ?? 0;
+
+    if (!html.slice(index).toLowerCase().startsWith('</div>')) {
+      break;
+    }
+
+    index += '</div>'.length;
+    consumed += 1;
+  }
+
+  return index;
 };
 
 const dedupeLegacyAuditCtas = (html: string) => {
@@ -82,6 +102,85 @@ const dedupeLegacyAuditCtas = (html: string) => {
   return output + html.slice(cursor);
 };
 
+const removeOrphanedLegacyAuditCtaTails = (html: string) => {
+  const firstCtaMatch = /<div\b(?=[^>]*\bcta-block\b)[^>]*>/i.exec(html);
+
+  if (!firstCtaMatch) {
+    return html;
+  }
+
+  const firstCtaEnd = findClosingDivIndex(html, firstCtaMatch.index);
+  if (firstCtaEnd === -1) {
+    return html;
+  }
+
+  let processed = html;
+  let searchFrom = firstCtaEnd;
+  let orphanHeadingMatch: RegExpExecArray | null;
+
+  auditCtaHeadingSearchPattern.lastIndex = searchFrom;
+  while ((orphanHeadingMatch = auditCtaHeadingSearchPattern.exec(processed)) !== null) {
+    const headingIndex = orphanHeadingMatch.index;
+    const beforeHeading = processed.slice(searchFrom, headingIndex);
+    const tailStartCandidates = [
+      beforeHeading.search(/<div\b[^>]*\bbg-blue-400\b[^>]*>/i),
+      beforeHeading.search(/<div\b[^>]*\bbg-purple-400\b[^>]*>/i),
+      beforeHeading.search(/<div\b[^>]*\bbg-orange-300\b[^>]*>/i),
+      beforeHeading.search(/<div\b[^>]*\brelative\b[^>]*\bz-10\b[^>]*\btext-center\b[^>]*>/i),
+    ].filter((index) => index !== -1);
+
+    if (tailStartCandidates.length === 0) {
+      searchFrom = headingIndex + orphanHeadingMatch[0].length;
+      auditCtaHeadingSearchPattern.lastIndex = searchFrom;
+      continue;
+    }
+
+    const removeStart = searchFrom + Math.min(...tailStartCandidates);
+    const noSalesPattern = /No sales call\s*<\/span>/gi;
+    noSalesPattern.lastIndex = headingIndex;
+    const noSalesMatch = noSalesPattern.exec(processed);
+
+    if (!noSalesMatch) {
+      searchFrom = headingIndex + orphanHeadingMatch[0].length;
+      auditCtaHeadingSearchPattern.lastIndex = searchFrom;
+      continue;
+    }
+
+    const removeEnd = consumeClosingDivs(processed, noSalesMatch.index + noSalesMatch[0].length, 5);
+    processed = processed.slice(0, removeStart) + processed.slice(removeEnd);
+    searchFrom = removeStart;
+    auditCtaHeadingSearchPattern.lastIndex = searchFrom;
+  }
+
+  return processed;
+};
+
+export const sanitizeBlogContent = (content: string) => {
+  if (!content) return '';
+
+  let processed = content;
+
+  // Remove editor buttons and controls using regex (SSR-safe)
+  processed = processed.replace(/<button[^>]*class="[^"]*editor[^"]*"[^>]*>[\s\S]*?<\/button>/gi, '');
+  processed = processed.replace(/<button[^>]*>[\s\S]*?remove[\s\S]*?<\/button>/gi, '');
+  processed = processed.replace(/<div[^>]*class="[^"]*button-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+  processed = processed.replace(/<div[^>]*class="[^"]*editor-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+
+  // Remove data attributes related to editor functionality
+  processed = processed.replace(/\s*data-has-buttons="[^"]*"/gi, '');
+  processed = processed.replace(/\s*data-editor-active="[^"]*"/gi, '');
+  processed = processed.replace(/\s*data-button-overlay="[^"]*"/gi, '');
+
+  processed = dedupeLegacyAuditCtas(processed);
+  processed = removeOrphanedLegacyAuditCtaTails(processed);
+
+  // Remove stale feature-row fragments that can be left behind after old CTA blocks are edited out.
+  processed = processed.replace(/<div\b[^>]*>\s*<div\b[^>]*>\s*<div\b[^>]*><\/div>\s*<span>\s*24-hour delivery\s*<\/span>\s*<\/div>\s*<div\b[^>]*>\s*<div\b[^>]*><\/div>\s*<span>\s*No sales call\s*<\/span>\s*<\/div>\s*<\/div>/gi, '');
+  processed = processed.replace(/<div\b[^>]*>\s*<span>\s*24-hour delivery\s*<\/span>\s*<\/div>\s*<div\b[^>]*>\s*<span>\s*No sales call\s*<\/span>\s*<\/div>/gi, '');
+
+  return processed;
+};
+
 export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
   const router = useRouter();
   
@@ -95,32 +194,6 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
 
   const handleTagClick = (tag: string) => {
     router.push(`/blog?tag=${encodeURIComponent(tag)}`);
-  };
-
-  // Content processing - clean up editor elements and stale embedded CTAs (SSR-safe, no DOM APIs)
-  const processContent = (content: string) => {
-    if (!content) return '';
-    
-    let processed = content;
-    
-    // Remove editor buttons and controls using regex (SSR-safe)
-    processed = processed.replace(/<button[^>]*class="[^"]*editor[^"]*"[^>]*>[\s\S]*?<\/button>/gi, '');
-    processed = processed.replace(/<button[^>]*>[\s\S]*?remove[\s\S]*?<\/button>/gi, '');
-    processed = processed.replace(/<div[^>]*class="[^"]*button-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
-    processed = processed.replace(/<div[^>]*class="[^"]*editor-overlay[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
-    
-    // Remove data attributes related to editor functionality
-    processed = processed.replace(/\s*data-has-buttons="[^"]*"/gi, '');
-    processed = processed.replace(/\s*data-editor-active="[^"]*"/gi, '');
-    processed = processed.replace(/\s*data-button-overlay="[^"]*"/gi, '');
-
-    processed = dedupeLegacyAuditCtas(processed);
-
-    // Remove stale feature-row fragments that can be left behind after old CTA blocks are edited out.
-    processed = processed.replace(/<div\b[^>]*>\s*<div\b[^>]*>\s*<div\b[^>]*><\/div>\s*<span>\s*24-hour delivery\s*<\/span>\s*<\/div>\s*<div\b[^>]*>\s*<div\b[^>]*><\/div>\s*<span>\s*No sales call\s*<\/span>\s*<\/div>\s*<\/div>/gi, '');
-    processed = processed.replace(/<div\b[^>]*>\s*<span>\s*24-hour delivery\s*<\/span>\s*<\/div>\s*<div\b[^>]*>\s*<span>\s*No sales call\s*<\/span>\s*<\/div>/gi, '');
-    
-    return processed;
   };
 
   // Function to inject MailerLite scripts when form is detected
@@ -360,7 +433,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
       <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-0">
         <div 
           className="blog-content blog-prose w-full"
-          dangerouslySetInnerHTML={{ __html: processContent(post.content) }}
+          dangerouslySetInnerHTML={{ __html: sanitizeBlogContent(post.content) }}
         />
       </div>
       
