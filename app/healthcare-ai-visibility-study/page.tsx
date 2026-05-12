@@ -2,10 +2,6 @@
 
 import React from 'react';
 import Script from 'next/script';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { FormPopup } from '@/components/FormPopup';
-import { useFormPopup } from '@/hooks/useFormPopup';
 import {
   CheckCircle2,
   Lock,
@@ -17,6 +13,7 @@ import {
   MessageSquareText,
   FileText,
   Microscope,
+  EyeOff,
 } from 'lucide-react';
 
 const HEADLINE_STATS = [
@@ -29,55 +26,43 @@ const HEADLINE_STATS = [
 const PLATFORM_FINDINGS = [
   {
     icon: Instagram,
-    title: 'Instagram beats RealSelf',
-    citations: '2,617 citations',
-    insight:
-      '71% point to clinic and physician accounts — not patient testimonials. ChatGPT uses Instagram as proof your business is real and currently operating.',
+    label: 'Social',
+    teaser: 'Why one social platform out-cites every review site combined — and what kind of post ChatGPT is actually pulling.',
     color: 'text-pink-600',
     bg: 'bg-pink-50',
   },
   {
     icon: Globe2,
-    title: 'RealSelf is a directory, not a review site',
-    citations: '2,174 citations',
-    insight:
-      "40% of RealSelf citations go to /find/[procedure]/[city] landing pages. Your individual reviews matter only as the upstream signal that ranks you there.",
+    label: 'Review Aggregators',
+    teaser: "The page-type breakdown that proves the dominant review site isn't being used for reviews at all.",
     color: 'text-orange-600',
     bg: 'bg-orange-50',
   },
   {
     icon: ShieldCheck,
-    title: 'Professional societies are the unsung kingmakers',
-    citations: '6.2% of all citations',
-    insight:
-      'ISHRS, ASPS, SART, AAD directory listings cost $200–$2,000/year and out-cite most paid ad campaigns. Membership without a complete profile is wasted spend.',
+    label: 'Professional Societies',
+    teaser: 'The $200–$2,000/year directory listings that out-cite most paid ad campaigns — and the one mistake that wastes the spend.',
     color: 'text-blue-600',
     bg: 'bg-blue-50',
   },
   {
     icon: MessageSquareText,
-    title: 'Reddit is the quality-evidence layer',
-    citations: '629 citations',
-    insight:
-      '99% of Reddit citations are specific threads. A single positive r/[city] mention is worth more than 10 paid ads for "best of city" prompts.',
+    label: 'Reddit',
+    teaser: 'Which threads ChatGPT pulls from, why subreddit pages almost never appear, and the single mention that beats 10 paid ads.',
     color: 'text-rose-600',
     bg: 'bg-rose-50',
   },
   {
     icon: FileText,
-    title: 'Your blog is the #2 driver — bigger than your homepage',
-    citations: '18% of own-site citations',
-    insight:
-      'Blog + deep content = 12,364 citations vs. 4,955 for homepages. "Blogging is dead" is wrong for AI search.',
+    label: 'Own Site',
+    teaser: 'The page-type that outperforms your homepage by 2.5×. "Blogging is dead" is wrong for AI search — the data shows exactly why.',
     color: 'text-emerald-600',
     bg: 'bg-emerald-50',
   },
   {
     icon: Microscope,
-    title: 'Fertility is ruled by outcomes data',
-    citations: 'SART · 549 citations',
-    insight:
-      "ChatGPT reads your IVF cycle numbers directly from SART's public report. Marketing copy cannot override what your outcomes data says.",
+    label: 'Outcomes Data',
+    teaser: 'The public dataset ChatGPT reads directly when ranking fertility clinics — and the vertical-specific signal you can\'t outspend.',
     color: 'text-violet-600',
     bg: 'bg-violet-50',
   },
@@ -104,8 +89,6 @@ const FORM_EMBED_HTML = `
 `;
 
 const HealthcareAIVisibilityStudy = () => {
-  const { isOpen, openForm, closeForm } = useFormPopup();
-
   return (
     <>
       <Script
@@ -114,8 +97,6 @@ const HealthcareAIVisibilityStudy = () => {
       />
 
       <div className="min-h-screen bg-white">
-        <Header onOpenForm={openForm} />
-
         {/* HERO with FORM */}
         <section className="relative overflow-hidden bg-gradient-to-b from-orange-50/60 via-white to-white pt-16 pb-20 px-4">
           {/* subtle grid */}
@@ -249,42 +230,56 @@ const HealthcareAIVisibilityStudy = () => {
           </div>
         </section>
 
-        {/* KEY FINDINGS GRID */}
+        {/* KEY FINDINGS GRID — teaser */}
         <section className="py-16 px-4 bg-slate-50 border-y border-slate-200">
           <div className="max-w-6xl mx-auto">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-                Six findings that will change how you think about clinic visibility.
+                Six findings inside the report.
               </h2>
               <p className="text-slate-600">
-                Every percentage is derived from classifying real source URLs — not estimates, not impressions.
+                Every answer is derived from classifying real source URLs — not estimates. Download the study to see the data.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {PLATFORM_FINDINGS.map((p) => {
+              {PLATFORM_FINDINGS.map((p, idx) => {
                 const Icon = p.icon;
                 return (
                   <div
-                    key={p.title}
-                    className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                    key={p.label + idx}
+                    className="group relative bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all overflow-hidden"
                   >
-                    <div className={`inline-flex w-11 h-11 rounded-lg ${p.bg} ${p.color} items-center justify-center mb-4`}>
-                      <Icon className="w-5 h-5" />
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`inline-flex w-11 h-11 rounded-lg ${p.bg} ${p.color} items-center justify-center`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase text-slate-400">
+                        <Lock className="w-3 h-3" />
+                        Finding #{String(idx + 1).padStart(2, '0')}
+                      </div>
                     </div>
-                    <div className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-1">
-                      {p.citations}
+                    <div className="text-[10px] font-bold tracking-widest uppercase text-slate-500 mb-2">
+                      {p.label}
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">{p.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{p.insight}</p>
+                    <p className="text-base text-slate-800 leading-relaxed">{p.teaser}</p>
                   </div>
                 );
               })}
             </div>
+
+            <div className="text-center mt-10">
+              <a
+                href="#inline-0Ym4YNqnvepx6j2lYGaM"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-7 py-3.5 text-base font-bold rounded-xl shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-0.5"
+              >
+                Unlock all six findings →
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* VERTICAL TABLE */}
+        {/* VERTICAL PLAYBOOKS — teaser */}
         <section className="py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center max-w-2xl mx-auto mb-10">
@@ -292,45 +287,64 @@ const HealthcareAIVisibilityStudy = () => {
                 Each vertical has a different playbook.
               </h2>
               <p className="text-slate-600">
-                One generic "do social + blog" strategy is wrong for nearly every vertical. Here's the citation mix
-                ChatGPT actually pulls from.
+                One generic "do social + blog" strategy is wrong for nearly every vertical. The full report includes
+                a citation-mix table for each.
               </p>
             </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-slate-900 text-white">
-                    <th className="px-5 py-4 text-left font-semibold">Vertical</th>
-                    <th className="px-5 py-4 text-right font-semibold">Own site</th>
-                    <th className="px-5 py-4 text-right font-semibold">Social</th>
-                    <th className="px-5 py-4 text-right font-semibold">Society</th>
-                    <th className="px-5 py-4 text-right font-semibold">Review agg</th>
-                    <th className="px-5 py-4 text-right font-semibold">Reddit</th>
-                    <th className="px-5 py-4 text-right font-semibold">Gov / Other</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 bg-white">
-                  {[
-                    ['Med Spa', '75.8%', '10.5%', '3.8%', '5.6%', '1.5%', '1.9%'],
-                    ['Plastic Surgery', '76.0%', '9.2%', '5.9%', '7.1%', '0.6%', '0.7%'],
-                    ['Dermatology', '79.9%', '7.2%', '4.9%', '6.8%', '0.5%', '0.1%'],
-                    ['Hair Transplant', '73.7%', '8.3%', '10.0%', '6.1%', '1.5%', '—'],
-                    ['Fertility', '76.1%', '5.0%', '9.5%', '0.2%', '1.2%', '7.7%'],
-                    ['Cosmetic Dentistry', '81.7%', '10.3%', '3.4%', '3.3%', '0.9%', '0.2%'],
-                  ].map(([vertical, own, social, society, review, reddit, gov]) => (
-                    <tr key={vertical} className="hover:bg-orange-50/40 transition-colors">
-                      <td className="px-5 py-4 font-semibold text-slate-900">{vertical}</td>
-                      <td className="px-5 py-4 text-right text-slate-700 font-mono">{own}</td>
-                      <td className="px-5 py-4 text-right text-slate-700 font-mono">{social}</td>
-                      <td className="px-5 py-4 text-right text-slate-700 font-mono">{society}</td>
-                      <td className="px-5 py-4 text-right text-slate-700 font-mono">{review}</td>
-                      <td className="px-5 py-4 text-right text-slate-700 font-mono">{reddit}</td>
-                      <td className="px-5 py-4 text-right text-slate-700 font-mono">{gov}</td>
+            <div className="relative rounded-2xl border border-slate-200 shadow-sm overflow-hidden bg-white">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-slate-900 text-white">
+                      <th className="px-5 py-4 text-left font-semibold">Vertical</th>
+                      <th className="px-5 py-4 text-right font-semibold">Own site</th>
+                      <th className="px-5 py-4 text-right font-semibold">Social</th>
+                      <th className="px-5 py-4 text-right font-semibold">Society</th>
+                      <th className="px-5 py-4 text-right font-semibold">Review agg</th>
+                      <th className="px-5 py-4 text-right font-semibold">Reddit</th>
+                      <th className="px-5 py-4 text-right font-semibold">Gov / Other</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      'Med Spa',
+                      'Plastic Surgery',
+                      'Dermatology',
+                      'Hair Transplant',
+                      'Fertility',
+                      'Cosmetic Dentistry',
+                    ].map((vertical) => (
+                      <tr key={vertical}>
+                        <td className="px-5 py-4 font-semibold text-slate-900">{vertical}</td>
+                        {[...Array(6)].map((_, i) => (
+                          <td key={i} className="px-5 py-4 text-right">
+                            <span className="inline-block w-12 h-3 rounded bg-slate-200" />
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Lock overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-white/40 via-white/85 to-white pointer-events-none">
+                <div className="pointer-events-auto bg-white rounded-2xl shadow-xl border border-slate-200 px-6 py-5 max-w-sm text-center">
+                  <div className="inline-flex w-10 h-10 rounded-full bg-orange-100 text-orange-700 items-center justify-center mb-3">
+                    <EyeOff className="w-5 h-5" />
+                  </div>
+                  <p className="text-sm font-semibold text-slate-900 mb-3">
+                    Vertical-specific citation mix is inside the full report.
+                  </p>
+                  <a
+                    href="#inline-0Ym4YNqnvepx6j2lYGaM"
+                    className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-5 py-2.5 text-sm font-bold rounded-lg transition-colors"
+                  >
+                    Get the data →
+                  </a>
+                </div>
+              </div>
             </div>
             <p className="text-xs text-slate-500 text-center mt-4">
               Source: Total Authority Healthcare AI Visibility Study · 61,531 cited URLs · April–May 2026
@@ -357,8 +371,6 @@ const HealthcareAIVisibilityStudy = () => {
           </div>
         </section>
 
-        <Footer onOpenForm={openForm} />
-        <FormPopup isOpen={isOpen} onClose={closeForm} />
       </div>
     </>
   );
