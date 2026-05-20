@@ -1,0 +1,63 @@
+# TotalAuthority
+> TotalAuthority helps businesses improve AI visibility across ChatGPT, Claude, Perplexity, Gemini, Google AI results, and other AI-assisted discovery surfaces.
+
+Last updated: 2026-05-20
+
+Important notes:
+- TotalAuthority focuses on AI visibility, LLM visibility, generative engine optimization, digital authority, brand mentions, and AI search readiness.
+- The site provides AI visibility audits, competitor gap analysis, strategy blueprints, and educational resources for marketers, founders, and business leaders.
+- This file is a curated guide to the most useful public pages. It does not replace robots.txt, sitemap.xml, structured data, or normal crawlable internal links.
+
+## Primary Pages
+- [Homepage](https://totalauthority.com/): Overview of TotalAuthority and its AI visibility services.
+- [About TotalAuthority](https://totalauthority.com/about): Company background, founders, and authority-building approach.
+- [Blog](https://totalauthority.com/blog): Articles on AI visibility, LLM optimization, ChatGPT visibility, GEO, and AI search strategy.
+- [Insights](https://totalauthority.com/insights): Additional insights and analysis for AI visibility and digital authority.
+
+## Products and Tools
+- [AI Visibility Mini Audit](https://totalauthority.com/llm-visibility-audit): Paid audit for assessing how major AI platforms understand and recommend a brand.
+- [AI Visibility Gap Calculator](https://totalauthority.com/llm-visibility-gap-calculator): Brand-versus-competitor visibility comparison using weighted AI discovery signals.
+- [Full AI Visibility Strategy Blueprint](https://totalauthority.com/strategy-blueprint): Deep-dive AI visibility strategy, authority roadmap, and implementation plan.
+
+## Key Learning Resources
+- [A Definitive Guide to LLM Visibility](https://totalauthority.com/llm-visibility): Guide to LLM visibility, AI-generated answers, and digital authority.
+- [What Is LLM Visibility and Why It Matters for Your Brand](https://totalauthority.com/what-is-llm-visibility-and-why-it-matters-for-your-brand): Introductory explanation of brand visibility in AI-generated responses.
+- [What Is LLM Optimization](https://totalauthority.com/what-is-llm-optimization): Overview of optimizing brand and website signals for large language models.
+- [LLMO vs SEO](https://totalauthority.com/llmo-vs-seo): Comparison of LLM optimization and traditional search engine optimization.
+- [What Is Generative Engine Optimization](https://totalauthority.com/what-is-generative-engine-optimization-geo): Explanation of GEO and how it relates to AI search visibility.
+- [Generative AI Search 101](https://totalauthority.com/generative-ai-search-101): Beginner guide to generative AI search and how users discover brands through AI answers.
+- [What Are Large Language Models](https://totalauthority.com/what-are-large-language-models-llms): Plain-English introduction to LLMs and how they process information.
+- [What Is Conversational Search](https://totalauthority.com/what-is-conversational-search): Overview of conversational search behavior and its impact on brand discovery.
+- [Entities vs Keywords](https://totalauthority.com/entities-vs-keywords): Explanation of entity-based visibility compared with keyword-based SEO.
+- [LLM SEO: Is There Such a Thing as Optimizing for AI Answers](https://totalauthority.com/llm-seo-is-there-such-a-thing-as-optimizing-for-ai-answers): Discussion of AI-answer optimization and the limits of traditional SEO thinking.
+- [Are LLMs Really Intelligent](https://totalauthority.com/are-llms-really-intelligent): Explains how LLMs work and what their limitations mean for marketers.
+- [Glossary: 100 AI Search Terms Every Marketer Should Know](https://totalauthority.com/glossary-100-ai-search-terms-every-marketer-should-know): Definitions for AI search, LLM visibility, GEO, and related terminology.
+
+## Practical AI Visibility Guides
+- [How to Optimize Your Website for LLMs](https://totalauthority.com/how-to-optimize-your-website-for-llms): Website optimization guidance for AI crawlers and AI-assisted discovery.
+- [How to Measure LLM Visibility](https://totalauthority.com/how-to-measure-llm-visibility): Measurement framework for tracking AI search and LLM visibility.
+- [How to Track Your Brand in AI-Generated Answers](https://totalauthority.com/how-to-track-your-brand-in-ai-generated-answers): Methods for monitoring brand presence in AI answers.
+- [How to Influence AI Answers With Your Content](https://totalauthority.com/how-to-influence-ai-answers-with-your-content): Content strategy for shaping AI-generated responses.
+- [LLM Content Optimization for ChatGPT Visibility](https://totalauthority.com/llm-content-optimization-for-chatgpt-visibility): Content optimization tactics for ChatGPT visibility.
+- [How to Track Visibility in ChatGPT](https://totalauthority.com/how-to-track-visibility-in-chatgpt): Practical guidance for measuring brand visibility inside ChatGPT.
+- [How to Rank in ChatGPT Search](https://totalauthority.com/how-to-rank-in-chatgpt-search): Guide to improving visibility in ChatGPT search-style answers.
+- [Essential ChatGPT Ranking Factors That Shape AI Responses](https://totalauthority.com/essential-chatgpt-ranking-factors-that-shape-ai-responses): Ranking and source signals that can influence ChatGPT outputs.
+- [ChatGPT Search Engine Ranking Tools](https://totalauthority.com/chatgpt-search-engine-ranking-tools): Tools and approaches for monitoring AI search ranking signals.
+
+## Brand Mentions and Platform Visibility
+- [ChatGPT Visibility](https://totalauthority.com/chatgpt-visibility): Overview of how brands can appear in ChatGPT responses.
+- [Brand Mentions in ChatGPT](https://totalauthority.com/brand-mentions-in-chatgpt): How brand mentions influence ChatGPT visibility.
+- [Importance of Brand Mentions on ChatGPT](https://totalauthority.com/importance-of-brand-mentions-on-chatgpt): Why brand mentions matter for AI-generated recommendations.
+- [Set Up Alerts for Brand Mentions in Claude](https://totalauthority.com/set-up-alerts-for-brand-mentions-in-claude): Monitoring brand mentions in Claude-related workflows.
+- [Claude AI Visibility Reporting Tool Features](https://totalauthority.com/claude-ai-visibility-reporting-tool-features): Features for reporting on Claude visibility.
+- [Claude SEO Rank Tracking Software](https://totalauthority.com/claude-seo-rank-tracking-software): Tracking and reporting concepts for Claude search and AI visibility.
+- [AI Featured Snippets](https://totalauthority.com/ai-featured-snippets): How AI-generated snippets and answer formats affect visibility.
+
+## Legal and Policy Pages
+- [Privacy Policy](https://totalauthority.com/privacy-policy): Privacy and data handling information.
+- [Terms of Service](https://totalauthority.com/terms-of-service): Terms governing website and service usage.
+- [Cookie Policy](https://totalauthority.com/cookie-policy): Cookie and tracking technology information.
+
+## Machine-Readable Discovery
+- [Sitemap](https://totalauthority.com/sitemap.xml): XML sitemap for public URLs.
+- [Robots.txt](https://totalauthority.com/robots.txt): Crawler access guidance.
