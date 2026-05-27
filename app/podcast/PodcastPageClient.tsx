@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ArrowUpRight, Calendar, Play, Rss, Youtube, Eye, Radio } from 'lucide-react';
+import { ArrowUpRight, Calendar, Play, Youtube, Radio } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FormPopup } from '@/components/FormPopup';
@@ -10,7 +10,8 @@ import { useFormPopup } from '@/hooks/useFormPopup';
 import type { YouTubeVideo } from '@/lib/youtube-feed';
 
 const TOTAL_AUTHORITY_YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@Total-Authority';
-const TOTAL_AUTHORITY_YOUTUBE_FEED_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCVn4DAbIvM0huIvIBPeRVhQ';
+const TOTAL_AUTHORITY_SPOTIFY_URL = 'https://open.spotify.com/show/43D36pmSNRCfvoGUX3WSJz';
+const TOTAL_AUTHORITY_APPLE_PODCASTS_URL = 'https://podcasts.apple.com/us/podcast/total-authority-podcast-be-the-brand-that-ai-recommends/id1895748859';
 
 interface PodcastPageClientProps {
   videos: YouTubeVideo[];
@@ -27,20 +28,23 @@ const formatDate = (date: string) => {
   }).format(new Date(date));
 };
 
-const formatViews = (views: number) => {
-  if (!views) return 'New';
-
-  return new Intl.NumberFormat('en-US', {
-    notation: views >= 10000 ? 'compact' : 'standard',
-    maximumFractionDigits: 1,
-  }).format(views);
-};
-
 const trimDescription = (description: string) => {
   const firstParagraph = description.split('\n').find((line) => line.trim().length > 0)?.trim() || '';
   if (firstParagraph.length <= 170) return firstParagraph;
   return `${firstParagraph.slice(0, 167).trim()}...`;
 };
+
+const SpotifyLogo = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M12 2a10 10 0 1 0 .01 0H12Zm4.59 14.42a.72.72 0 0 1-.99.24c-2.7-1.65-6.1-2.02-10.1-1.11a.72.72 0 1 1-.32-1.4c4.38-1 8.14-.57 11.16 1.28.34.21.45.65.25.99Zm1.22-2.73a.9.9 0 0 1-1.24.3c-3.08-1.9-7.78-2.44-11.42-1.34a.9.9 0 1 1-.52-1.72c4.17-1.26 9.36-.65 12.88 1.51.42.26.56.82.3 1.25Zm.1-2.84C14.22 8.66 8.12 8.46 4.6 9.53a1.08 1.08 0 1 1-.63-2.07c4.04-1.23 10.78-.99 15.05 1.55a1.08 1.08 0 1 1-1.11 1.84Z" />
+  </svg>
+);
+
+const ApplePodcastsLogo = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M12 2.25a7.35 7.35 0 0 0-3.94 13.56.92.92 0 0 0 .99-1.55 5.5 5.5 0 1 1 5.9 0 .92.92 0 1 0 .99 1.55A7.35 7.35 0 0 0 12 2.25Zm0 3.25a4.1 4.1 0 0 0-2.2 7.56.82.82 0 0 0 .88-1.38 2.46 2.46 0 1 1 2.64 0 .82.82 0 0 0 .88 1.38A4.1 4.1 0 0 0 12 5.5Zm0 3.1a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1Zm-2.15 5.84a1.44 1.44 0 0 1 1.43-1.31h1.44a1.44 1.44 0 0 1 1.43 1.31l.45 5.02a1.44 1.44 0 0 1-1.43 1.57h-2.34a1.44 1.44 0 0 1-1.43-1.57l.45-5.02Z" />
+  </svg>
+);
 
 export function PodcastPageClient({ videos, feedError = false }: PodcastPageClientProps) {
   const { isOpen, openForm, closeForm } = useFormPopup();
@@ -74,10 +78,16 @@ export function PodcastPageClient({ videos, feedError = false }: PodcastPageClie
                     YouTube
                   </Button>
                 </a>
-                <a href={TOTAL_AUTHORITY_YOUTUBE_FEED_URL} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="h-11 gap-2 rounded-lg border-slate-300 bg-white px-5 font-bold text-slate-800 hover:bg-slate-50">
-                    <Rss className="h-4 w-4" />
-                    RSS Feed
+                <a href={TOTAL_AUTHORITY_APPLE_PODCASTS_URL} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="h-11 gap-2 rounded-lg border-slate-300 bg-white px-5 font-bold text-slate-800 shadow-sm hover:border-purple-200 hover:bg-purple-50 hover:text-purple-800">
+                    <ApplePodcastsLogo className="h-4 w-4 text-purple-600" />
+                    Apple Podcasts
+                  </Button>
+                </a>
+                <a href={TOTAL_AUTHORITY_SPOTIFY_URL} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="h-11 gap-2 rounded-lg border-slate-300 bg-white px-5 font-bold text-slate-800 shadow-sm hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800">
+                    <SpotifyLogo className="h-4 w-4 text-emerald-600" />
+                    Spotify Podcasts
                   </Button>
                 </a>
               </div>
@@ -163,7 +173,7 @@ export function PodcastPageClient({ videos, feedError = false }: PodcastPageClie
                 href={video.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl hover:shadow-slate-200/80"
+                className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md shadow-slate-200/70 transition duration-300 hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-2xl hover:shadow-orange-100/80"
               >
                 <div className="relative aspect-video overflow-hidden bg-slate-100">
                   <img
@@ -172,19 +182,15 @@ export function PodcastPageClient({ videos, feedError = false }: PodcastPageClie
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-slate-950/0 transition group-hover:bg-slate-950/15" />
-                  <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-orange-600 shadow-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/0 to-slate-950/0 opacity-80 transition group-hover:opacity-95" />
+                  <div className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-slate-800 shadow-sm">
+                    {formatDate(video.publishedAt)}
+                  </div>
+                  <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-orange-600 text-white shadow-lg shadow-orange-900/20 transition group-hover:scale-110 group-hover:bg-orange-500">
                     <Play className="ml-0.5 h-4 w-4 fill-current" />
                   </div>
                 </div>
-                <div className="p-4">
-                  <div className="mb-2 flex items-center justify-between gap-3 text-xs font-semibold text-slate-500">
-                    <span>{formatDate(video.publishedAt)}</span>
-                    <span className="inline-flex items-center gap-1">
-                      <Eye className="h-3.5 w-3.5" />
-                      {formatViews(video.views)}
-                    </span>
-                  </div>
+                <div className="p-5">
                   <h3 className="line-clamp-2 text-base font-black leading-snug text-slate-950">
                     {video.title}
                   </h3>
