@@ -173,24 +173,25 @@ export function PodcastPageClient({ videos, feedError = false }: PodcastPageClie
                 href={video.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md shadow-slate-200/70 transition duration-300 hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-2xl hover:shadow-orange-100/80"
+                className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-[0_24px_60px_rgba(234,88,12,0.16)]"
               >
-                <div className="relative aspect-video overflow-hidden bg-slate-100">
+                <div className="relative m-3 mb-0 aspect-video overflow-hidden rounded-md bg-slate-100">
                   <img
                     src={video.thumbnailUrl}
                     alt={video.title}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/0 to-slate-950/0 opacity-80 transition group-hover:opacity-95" />
-                  <div className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-slate-800 shadow-sm">
-                    {formatDate(video.publishedAt)}
-                  </div>
+                  <div className="absolute inset-0 bg-slate-950/0 transition group-hover:bg-slate-950/10" />
                   <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-orange-600 text-white shadow-lg shadow-orange-900/20 transition group-hover:scale-110 group-hover:bg-orange-500">
                     <Play className="ml-0.5 h-4 w-4 fill-current" />
                   </div>
                 </div>
                 <div className="p-5">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-md border border-orange-100 bg-orange-50 px-2.5 py-1 text-xs font-bold text-orange-700">
+                    <Calendar className="h-3.5 w-3.5" />
+                    {formatDate(video.publishedAt)}
+                  </div>
                   <h3 className="line-clamp-2 text-base font-black leading-snug text-slate-950">
                     {video.title}
                   </h3>
