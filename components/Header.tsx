@@ -109,6 +109,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
           >
             Blog
           </Link>
+          <Link
+            href="/podcast"
+            onClick={scrollToTop}
+            className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
+          >
+            Podcast
+          </Link>
           
           {user ? (
             <div className="flex items-center space-x-4">
@@ -165,7 +172,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
                   AI Visibility Audit
                 </Button>
               </Link>
-              <Link href="/auth" onClick={scrollToTop}>
+              <Link href="/auth" onClick={scrollToTop} className="hidden sm:block">
                 <Button
                   variant="outline"
                   size="sm"

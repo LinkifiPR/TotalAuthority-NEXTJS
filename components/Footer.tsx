@@ -106,6 +106,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/podcast"
+                  onClick={scrollToTop}
+                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                >
+                  Podcast
+                </Link>
+              </li>
+              <li>
                 <Link 
                   href="/llm-visibility-gap-calculator"
                   onClick={scrollToTop}

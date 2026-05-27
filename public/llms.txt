@@ -12,6 +12,7 @@ Important notes:
 - [Homepage](https://totalauthority.com/): Overview of TotalAuthority and its AI visibility services.
 - [About TotalAuthority](https://totalauthority.com/about): Company background, founders, and authority-building approach.
 - [Blog](https://totalauthority.com/blog): Articles on AI visibility, LLM optimization, ChatGPT visibility, GEO, and AI search strategy.
+- [Podcast](https://totalauthority.com/podcast): Latest TotalAuthority YouTube videos on AI visibility, LLM search, digital PR, and brand authority.
 - [Insights](https://totalauthority.com/insights): Additional insights and analysis for AI visibility and digital authority.
 
 ## Products and Tools
