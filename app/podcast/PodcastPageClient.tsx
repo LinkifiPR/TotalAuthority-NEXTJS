@@ -144,9 +144,9 @@ export function PodcastPageClient({ videos, feedError = false }: PodcastPageClie
               Latest Episodes
               <span className="h-px w-10 bg-orange-300" />
             </div>
-            <h2 className="text-3xl font-black text-slate-950 md:text-4xl">What we are testing right now</h2>
+            <h2 className="text-3xl font-black text-slate-950 md:text-4xl">Deep in the weeds with AI</h2>
             <p className="mt-3 text-slate-600">
-              Fresh videos from the TotalAuthority channel, updated from YouTube automatically.
+              We are testing what actually moves the needle in AI search, LLM visibility, and digital PR, then sharing the useful bits as soon as we find them.
             </p>
           </div>
 
@@ -198,6 +198,16 @@ export function PodcastPageClient({ videos, feedError = false }: PodcastPageClie
                 </div>
               </a>
             ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <a href={TOTAL_AUTHORITY_YOUTUBE_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+              <Button className="h-12 gap-2 rounded-lg bg-slate-950 px-6 font-bold text-white hover:bg-slate-800">
+                <Youtube className="h-4 w-4" />
+                Watch more videos
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </a>
           </div>
         </section>
       </main>

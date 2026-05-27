@@ -15,6 +15,27 @@ export interface YouTubeVideo {
   views: number;
 }
 
+export interface PodcastVideoSelection {
+  featuredVideo?: YouTubeVideo;
+  episodeVideos: YouTubeVideo[];
+}
+
+export function isYouTubeShort(video: YouTubeVideo): boolean {
+  return video.url.includes('/shorts/');
+}
+
+export function getPodcastVideoSelection(videos: YouTubeVideo[], maxGridVideos = 12): PodcastVideoSelection {
+  const longFormVideos = videos.filter((video) => !isYouTubeShort(video));
+  const [featuredVideo, ...remainingVideos] = longFormVideos;
+  const cappedVideos = remainingVideos.slice(0, maxGridVideos);
+  const evenGridCount = cappedVideos.length >= 3 ? Math.floor(cappedVideos.length / 3) * 3 : cappedVideos.length;
+
+  return {
+    featuredVideo,
+    episodeVideos: cappedVideos.slice(0, evenGridCount),
+  };
+}
+
 export function parseYouTubeFeed(feedXml: string): YouTubeVideo[] {
   const $ = cheerio.load(feedXml, { xmlMode: true });
 

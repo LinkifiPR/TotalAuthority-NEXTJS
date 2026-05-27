@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseYouTubeFeed } from '../lib/youtube-feed';
+import { getPodcastVideoSelection, parseYouTubeFeed } from '../lib/youtube-feed';
 
 const sampleFeed = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
@@ -35,4 +35,43 @@ test('parseYouTubeFeed extracts video metadata from YouTube RSS', () => {
     description: 'How AI answers reshape brand discovery.',
     views: 42,
   });
+});
+
+test('getPodcastVideoSelection excludes shorts and keeps the grid even', () => {
+  const videos = [
+    {
+      id: 'short-1',
+      title: 'Short vertical clip',
+      url: 'https://www.youtube.com/shorts/short-1',
+      embedUrl: 'https://www.youtube.com/embed/short-1',
+      thumbnailUrl: 'https://i.ytimg.com/vi/short-1/hqdefault.jpg',
+      publishedAt: '2026-05-27T12:09:20+00:00',
+      description: '',
+      views: 10,
+    },
+    ...Array.from({ length: 8 }, (_, index) => ({
+      id: `video-${index}`,
+      title: `Long video ${index}`,
+      url: `https://www.youtube.com/watch?v=video-${index}`,
+      embedUrl: `https://www.youtube.com/embed/video-${index}`,
+      thumbnailUrl: `https://i.ytimg.com/vi/video-${index}/hqdefault.jpg`,
+      publishedAt: '2026-05-27T12:09:20+00:00',
+      description: '',
+      views: 100 + index,
+    })),
+  ];
+
+  const selection = getPodcastVideoSelection(videos, 12);
+
+  assert.equal(selection.featuredVideo?.id, 'video-0');
+  assert.equal(selection.episodeVideos.length, 6);
+  assert.equal(selection.episodeVideos.every((video) => !video.url.includes('/shorts/')), true);
+  assert.deepEqual(selection.episodeVideos.map((video) => video.id), [
+    'video-1',
+    'video-2',
+    'video-3',
+    'video-4',
+    'video-5',
+    'video-6',
+  ]);
 });
