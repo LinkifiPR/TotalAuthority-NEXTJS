@@ -16,27 +16,12 @@ const DashboardHeader = ({ user, onSignOut }: DashboardHeaderProps) => {
   return (
     <header className="bg-white/95 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2 md:space-x-3">
-          <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full border-2 border-orange-200 opacity-30"></div>
-            <div className="absolute inset-1 rounded-full border border-orange-300 opacity-50"></div>
-            <div className="relative w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
-              <div className="absolute top-1 md:top-1.5 left-0.5 md:left-1 w-0.5 md:w-1 h-0.5 md:h-1 bg-white rounded-full"></div>
-              <div className="absolute top-1 md:top-1.5 right-0.5 md:right-1 w-0.5 md:w-1 h-0.5 md:h-1 bg-white rounded-full"></div>
-              <div className="absolute bottom-1 md:bottom-1.5 left-1/2 transform -translate-x-1/2 w-1 md:w-1.5 h-0.5 bg-white rounded-full"></div>
-              <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2 w-0.5 h-0.5 bg-orange-400 rounded-full"></div>
-            </div>
-            <div className="absolute top-0.5 right-0.5 w-0.5 md:w-1 h-0.5 md:h-1 bg-blue-500 rounded-full"></div>
-            <div className="absolute bottom-0.5 left-0.5 w-0.5 h-0.5 bg-purple-500 rounded-full"></div>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-lg md:text-xl font-black text-slate-900 tracking-tight leading-none">
-              Total<span className="text-orange-500">Authority</span>
-            </span>
-            <span className="text-xs text-slate-500 font-medium tracking-wider uppercase leading-none mt-0.5 hidden sm:block">
-              AI Visibility
-            </span>
-          </div>
+        <Link href="/" className="flex items-center">
+          <img
+            src="/total-authority-logo.png"
+            alt="TotalAuthority AI Visibility"
+            className="h-9 w-auto sm:h-11 md:h-12"
+          />
         </Link>
         
         <div className="flex items-center space-x-2 md:space-x-4">

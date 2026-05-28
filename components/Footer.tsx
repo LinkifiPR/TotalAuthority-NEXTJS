@@ -19,28 +19,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              {/* Robot Face Logo */}
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                {/* Outer decorative circle */}
-                <div className="absolute inset-0 rounded-full border-2 border-orange-400/30"></div>
-                
-                {/* Inner circle background */}
-                <div className="relative w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
-                  {/* Robot eyes */}
-                  <div className="flex space-x-1">
-                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                  </div>
-                  
-                  {/* Robot mouth - small line */}
-                  <div className="absolute bottom-1.5 w-2 h-0.5 bg-white/80 rounded-full"></div>
-                </div>
-                
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 rounded-full bg-orange-400/20 blur-sm"></div>
-              </div>
-              <span className="text-xl font-bold text-white">TotalAuthority</span>
+            <div className="mb-4 inline-flex rounded-lg bg-white px-3 py-2 shadow-lg shadow-black/20">
+              <img
+                src="/total-authority-logo.png"
+                alt="TotalAuthority AI Visibility"
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-slate-300 mb-6 max-w-md">
               Get a comprehensive AI visibility audit to boost your online presence and outrank competitors with data-driven insights.

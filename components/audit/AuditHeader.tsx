@@ -138,9 +138,13 @@ export const AuditHeader: React.FC<AuditHeaderProps> = ({
             className="group cursor-pointer block hover:scale-105 transition-transform duration-300"
             title="Visit TotalAuthority Homepage"
           >
-            <div className={`font-bold text-orange-500 mb-1 group-hover:text-orange-600 transition-colors duration-200 flex items-center space-x-2 ${isMobile ? 'text-xl justify-center' : 'text-2xl sm:text-3xl justify-end'}`}>
-              <span>TotalAuthority</span>
-              <Home className={`${isMobile ? 'w-5 h-5' : 'w-6 h-6'}`} />
+            <div className={`mb-1 flex items-center gap-2 ${isMobile ? 'justify-center' : 'justify-end'}`}>
+              <img
+                src="/total-authority-logo.png"
+                alt="TotalAuthority AI Visibility"
+                className={isMobile ? 'h-12 w-auto' : 'h-14 w-auto'}
+              />
+              <Home className={`${isMobile ? 'w-5 h-5' : 'w-6 h-6'} text-orange-500 group-hover:text-orange-600 transition-colors duration-200`} />
             </div>
             <div className={`text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-200 ${isMobile ? 'text-center' : 'text-right'}`}>
               LLM Visibility Team
