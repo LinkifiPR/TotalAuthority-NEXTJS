@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
               <img
                 src="/total-authority-logo.png"
                 alt="TotalAuthority AI Visibility"
-                className="h-12 w-auto"
+                className="h-14 w-auto"
               />
             </div>
             <p className="text-slate-300 mb-6 max-w-md">

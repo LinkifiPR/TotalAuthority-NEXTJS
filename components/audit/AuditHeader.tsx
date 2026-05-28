@@ -142,7 +142,7 @@ export const AuditHeader: React.FC<AuditHeaderProps> = ({
               <img
                 src="/total-authority-logo.png"
                 alt="TotalAuthority AI Visibility"
-                className={isMobile ? 'h-12 w-auto' : 'h-14 w-auto'}
+                className={isMobile ? 'h-14 w-auto' : 'h-16 w-auto'}
               />
               <Home className={`${isMobile ? 'w-5 h-5' : 'w-6 h-6'} text-orange-500 group-hover:text-orange-600 transition-colors duration-200`} />
             </div>

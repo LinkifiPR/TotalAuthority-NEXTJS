@@ -20,7 +20,7 @@ const DashboardHeader = ({ user, onSignOut }: DashboardHeaderProps) => {
           <img
             src="/total-authority-logo.png"
             alt="TotalAuthority AI Visibility"
-            className="h-9 w-auto sm:h-11 md:h-12"
+            className="h-10 w-auto sm:h-12 md:h-14"
           />
         </Link>
         

@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenForm }) => {
             <img
               src="/total-authority-logo.png"
               alt="TotalAuthority AI Visibility"
-              className="h-10 w-auto sm:h-12 md:h-14"
+              className="h-11 w-auto sm:h-14 md:h-16"
             />
           </Link>
         </div>
