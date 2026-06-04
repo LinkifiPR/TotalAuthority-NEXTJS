@@ -14,7 +14,6 @@ import { Progress } from '@/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/lib/integrations/supabase/client';
 import { z } from 'zod';
 import { ComparisonCharts } from '@/components/audit/ComparisonCharts';
 import { DetailedFactorAnalysis } from '@/components/audit/DetailedFactorAnalysis';
@@ -139,16 +138,23 @@ const LLMVisibilityGapCalculator = () => {
       };
 
       const startTime = Date.now();
-      const { data, error } = await supabase.functions.invoke('llm-visibility-run-analysis', {
-        body: payload
+      const response = await fetch('/api/visibility-gap', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
+      const data = await response.json();
 
       clearInterval(progressInterval);
       setProgress(100);
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error(data?.error || `Visibility gap API failed with status ${response.status}`);
+      }
 
-      console.log('Raw response from edge function:', data);
+      console.log('Raw response from visibility gap API:', data);
 
       // Provider or parsing error passthrough from edge function
       if (data?.ok === false) {
@@ -174,8 +180,8 @@ const LLMVisibilityGapCalculator = () => {
       setWebSearchPerformed(wsFlag);
       setCitationsFromWeb(cites);
       setExecutionTrace({
-        model: 'perplexity/sonar-pro',
-        pluginActive: true, // Sonar Pro inherently performs live search
+        model: data?.meta?.model || 'OpenRouter',
+        pluginActive: wsFlag,
         annotationCount: cites.length,
         timing
       });
