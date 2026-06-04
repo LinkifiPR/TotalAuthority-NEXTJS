@@ -45,19 +45,29 @@ export async function GET() {
   }
 
   try {
-    const { data, error } = await supabase.functions.invoke('admin-stats');
+    const [usersResult, publishedPostsResult, draftPostsResult] = await Promise.all([
+      supabase.from('profiles').select('id', { count: 'exact', head: true }),
+      supabase.from('blog_posts').select('id', { count: 'exact', head: true }).eq('status', 'published'),
+      supabase.from('blog_posts').select('id', { count: 'exact', head: true }).eq('status', 'draft'),
+    ]);
 
-    if (error) {
-      console.error('Error fetching admin stats:', error);
+    const errors = [usersResult.error, publishedPostsResult.error, draftPostsResult.error].filter(Boolean);
+
+    if (errors.length > 0) {
+      console.error('Error fetching admin stats:', errors);
       return NextResponse.json(
         { error: 'Failed to fetch admin stats' },
         { status: 500 }
       );
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json({
+      totalUsers: usersResult.count || 0,
+      publishedPosts: publishedPostsResult.count || 0,
+      draftPosts: draftPostsResult.count || 0,
+    });
   } catch (error) {
-    console.error('Error invoking admin-stats function:', error);
+    console.error('Error fetching admin stats:', error);
     return NextResponse.json(
       { error: 'Failed to fetch admin stats' },
       { status: 500 }

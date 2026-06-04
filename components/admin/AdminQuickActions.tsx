@@ -1,11 +1,10 @@
 "use client";
 
-
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { TrendingUp, BarChart3, Users, Activity } from 'lucide-react';
+import { TrendingUp, Users, FileText, Activity } from 'lucide-react';
 
 export const AdminQuickActions: React.FC = () => {
   const router = useRouter();
@@ -23,11 +22,11 @@ export const AdminQuickActions: React.FC = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <Button 
-          onClick={() => router.push('/admin/audits')} 
+          onClick={() => router.push('/admin/posts/new')}
           className="w-full justify-start bg-blue-600 hover:bg-blue-700"
         >
-          <BarChart3 className="h-4 w-4 mr-2" />
-          Create New Audit Report
+          <FileText className="h-4 w-4 mr-2" />
+          Create Blog Post
         </Button>
         <Button 
           variant="outline" 

@@ -16,7 +16,6 @@ import { Settings, Shield, Mail, Database, Palette } from 'lucide-react';
 
 const AdminSettings = () => {
   const [emailNotifications, setEmailNotifications] = useState(true);
-  const [autoArchiveAudits, setAutoArchiveAudits] = useState(false);
   const [maintenanceMode, setMaintenanceMode] = useState(false);
   const { toast } = useToast();
 
@@ -64,20 +63,6 @@ const AdminSettings = () => {
                   />
                 </div>
                 
-                <Separator />
-                
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label className="text-base">Auto-Archive Completed Audits</Label>
-                    <p className="text-sm text-muted-foreground">
-                      Automatically archive audits after 90 days
-                    </p>
-                  </div>
-                  <Switch
-                    checked={autoArchiveAudits}
-                    onCheckedChange={setAutoArchiveAudits}
-                  />
-                </div>
               </CardContent>
             </Card>
 
@@ -97,7 +82,7 @@ const AdminSettings = () => {
                   <div className="space-y-0.5">
                     <Label className="text-base">Email Notifications</Label>
                     <p className="text-sm text-muted-foreground">
-                      Receive emails for new audit submissions
+                      Receive emails for important admin updates
                     </p>
                   </div>
                   <Switch
@@ -172,7 +157,7 @@ const AdminSettings = () => {
                   <span>Branding</span>
                 </CardTitle>
                 <CardDescription>
-                  Customize the appearance of audit reports
+                  Customize the admin-facing site identity
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -181,7 +166,7 @@ const AdminSettings = () => {
                   <Input
                     id="company-name"
                     placeholder="Your Company Name"
-                    defaultValue="Local SEO Audit Pro"
+                    defaultValue="TotalAuthority"
                   />
                 </div>
                 

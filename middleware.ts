@@ -28,7 +28,6 @@ export async function middleware(request: NextRequest) {
   );
 
   const { data: { session } } = await supabase.auth.getSession();
-
   const pathname = request.nextUrl.pathname;
 
   if (pathname.startsWith('/admin')) {
@@ -50,17 +49,9 @@ export async function middleware(request: NextRequest) {
 
       if (profile?.role !== 'admin') {
         const url = request.nextUrl.clone();
-        url.pathname = '/dashboard';
+        url.pathname = '/';
         return NextResponse.redirect(url);
       }
-    }
-  }
-
-  if (pathname === '/dashboard') {
-    if (!session) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/auth';
-      return NextResponse.redirect(url);
     }
   }
 
@@ -68,5 +59,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/dashboard'],
+  matcher: ['/admin/:path*'],
 };

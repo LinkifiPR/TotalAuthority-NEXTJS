@@ -24,7 +24,7 @@ const AdminPostEditor = () => {
   // Redirect to auth if not authenticated
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push('/auth');
+      router.push('/auth?admin=true');
     }
   }, [user, authLoading, router]);
 

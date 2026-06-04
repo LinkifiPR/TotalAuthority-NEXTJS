@@ -1,12 +1,10 @@
 "use client";
 
-
 import {
   Home,
   FileText,
   Settings,
   Users,
-  BarChart3,
 } from "lucide-react"
 
 import {
@@ -22,17 +20,11 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 
-// Menu items.
 const items = [
   {
     title: "Dashboard",
     url: "/admin",
     icon: Home,
-  },
-  {
-    title: "Audit Reports",
-    url: "/admin/audits",
-    icon: BarChart3,
   },
   {
     title: "Users",

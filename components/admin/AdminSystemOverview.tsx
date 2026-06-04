@@ -1,9 +1,8 @@
 "use client";
 
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart3, Users, FileText } from 'lucide-react';
+import { Users, FileText, Settings } from 'lucide-react';
 
 export const AdminSystemOverview: React.FC = () => {
   return (
@@ -11,18 +10,11 @@ export const AdminSystemOverview: React.FC = () => {
       <CardHeader>
         <CardTitle className="text-gray-800">System Overview</CardTitle>
         <CardDescription>
-          Navigate to different sections of the admin panel
+          Navigate to the active admin sections
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
-          <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/60 border border-gray-100">
-            <BarChart3 className="h-5 w-5 text-blue-600" />
-            <div>
-              <p className="font-medium text-gray-800">Audit Reports</p>
-              <p className="text-sm text-gray-600">Create and manage client audit reports</p>
-            </div>
-          </div>
           <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/60 border border-gray-100">
             <Users className="h-5 w-5 text-indigo-600" />
             <div>
@@ -35,6 +27,13 @@ export const AdminSystemOverview: React.FC = () => {
             <div>
               <p className="font-medium text-gray-800">Content Management</p>
               <p className="text-sm text-gray-600">Create and manage blog content</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/60 border border-gray-100">
+            <Settings className="h-5 w-5 text-blue-600" />
+            <div>
+              <p className="font-medium text-gray-800">Site Settings</p>
+              <p className="text-sm text-gray-600">Manage admin configuration</p>
             </div>
           </div>
         </div>
