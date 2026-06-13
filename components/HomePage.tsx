@@ -2,25 +2,19 @@
 
 import React, { useEffect } from 'react';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import AISearchChanged from '@/components/sections/AISearchChanged';
-import FeaturedSection from '@/components/FeaturedSection';
-import AnimatedFeatureCards from '@/components/AnimatedFeatureCards';
-import { TrustVideoSection } from '@/components/TrustVideoSection';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useFormPopup } from '@/hooks/useFormPopup';
-import { FormPopup } from '@/components/FormPopup';
 import { useScheduleCallPopup } from '@/hooks/useScheduleCallPopup';
-import { ScheduleCallPopup } from '@/components/ScheduleCallPopup';
-import { 
-  MessageSquare, 
-  Search, 
-  TrendingUp, 
-  Brain, 
-  Calculator, 
-  FileText, 
+import {
+  MessageSquare,
+  Search,
+  TrendingUp,
+  Brain,
+  Calculator,
+  FileText,
   Zap,
   CheckCircle,
   ArrowRight,
@@ -29,6 +23,24 @@ import {
   Network,
   Cpu
 } from 'lucide-react';
+
+// Below-the-fold sections are code-split so they don't bloat the initial
+// JS bundle / hydration. ssr:true keeps their content server-rendered for SEO.
+const FeaturedSection = dynamic(() => import('@/components/FeaturedSection'));
+const AISearchChanged = dynamic(() => import('@/components/sections/AISearchChanged'));
+const AnimatedFeatureCards = dynamic(() => import('@/components/AnimatedFeatureCards'));
+const TrustVideoSection = dynamic(() =>
+  import('@/components/TrustVideoSection').then((m) => m.TrustVideoSection)
+);
+const Footer = dynamic(() => import('@/components/Footer').then((m) => m.Footer));
+
+// Modals are hidden until opened — load them only on the client, on demand.
+const FormPopup = dynamic(() =>
+  import('@/components/FormPopup').then((m) => m.FormPopup), { ssr: false }
+);
+const ScheduleCallPopup = dynamic(() =>
+  import('@/components/ScheduleCallPopup').then((m) => m.ScheduleCallPopup), { ssr: false }
+);
 
 const HomePage = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
@@ -75,7 +87,8 @@ const HomePage = () => {
         }}
       />
       <Header onOpenForm={openForm} />
-      
+
+      <main>
       {/* Hero Section - Ultra Focused */}
       <section className="relative pt-14 md:pt-20 pb-10 md:pb-16 overflow-hidden">
         {/* Simple soft background */}
@@ -106,6 +119,10 @@ const HomePage = () => {
                 <img
                   src={logo.url}
                   alt={`${logo.name} logo`}
+                  width={120}
+                  height={40}
+                  decoding="async"
+                  fetchPriority="low"
                   className="h-8 md:h-10 w-auto object-contain opacity-90"
                 />
               </div>
@@ -591,6 +608,7 @@ const HomePage = () => {
       </section>
 
       <TrustVideoSection onOpenScheduleCall={openScheduleCall} />
+      </main>
 
       <Footer onOpenForm={openForm} />
       <FormPopup isOpen={isOpen} onClose={closeForm} />

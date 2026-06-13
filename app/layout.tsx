@@ -29,7 +29,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        {/* Establish early connections to third-party origins used on the page */}
+        <link rel="preconnect" href="https://cdn.brandfetch.io" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdn.brandfetch.io" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://player.vimeo.com" />
+        <link rel="dns-prefetch" href="https://f.vimeocdn.com" />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
         <Script
           id="meta-pixel-base"

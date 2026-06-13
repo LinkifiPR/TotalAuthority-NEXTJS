@@ -80,12 +80,12 @@ export default function GlobalError({
             <button
               onClick={handleRetry}
               style={{
-                background: '#f97316',
+                background: '#c2410c',
                 color: '#fff',
                 border: 'none',
                 padding: '0.625rem 1.25rem',
                 borderRadius: '0.5rem',
-                fontWeight: 500,
+                fontWeight: 600,
                 cursor: 'pointer',
               }}
             >

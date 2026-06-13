@@ -15,6 +15,9 @@ export const EnhancedVideoPlayer: React.FC<EnhancedVideoPlayerProps> = ({
   className = ""
 }) => {
   const [isInView, setIsInView] = useState(false);
+  // The heavy Vimeo player JS/CSS only loads once the video has scrolled
+  // near the viewport. Keeps ~380 KiB of third-party JS off the initial load.
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -28,8 +31,13 @@ export const EnhancedVideoPlayer: React.FC<EnhancedVideoPlayerProps> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setHasLoaded(true);
+        }
       },
-      { threshold: 0.5 }
+      // rootMargin pre-mounts the player just before it reaches the viewport
+      // so playback still feels instant when the user scrolls to it.
+      { threshold: 0.01, rootMargin: '300px 0px' }
     );
 
     if (videoRef.current) {
@@ -99,18 +107,43 @@ export const EnhancedVideoPlayer: React.FC<EnhancedVideoPlayerProps> = ({
       onMouseLeave={() => setIsHovering(false)}
     >
       <div className="relative" style={{padding:'56.25% 0 0 0'}}>
-        <iframe 
+        {!hasLoaded && (
+          /* Lightweight facade shown until the player scrolls into view */
+          <div
+            style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
+            className="w-full h-full rounded-lg bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center"
+            aria-label={title}
+          >
+            <div className="absolute top-4 left-4 flex items-center space-x-2">
+              <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center">
+                <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
+                LIVE
+              </div>
+            </div>
+            <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
+              SEO Estonia Conference
+            </div>
+            <div className="bg-black/50 text-white rounded-full p-4 backdrop-blur-sm">
+              <Play className="w-8 h-8 ml-1" />
+            </div>
+          </div>
+        )}
+
+        {hasLoaded && (
+        <iframe
           ref={iframeRef}
           src={vimeoUrl}
-          frameBorder="0" 
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-          referrerPolicy="strict-origin-when-cross-origin" 
-          style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
           title={title}
           className="w-full h-full rounded-lg"
         />
-        
+        )}
+
         {/* Enhanced Controls Overlay */}
+        {hasLoaded && (
         <div className={`absolute inset-0 transition-all duration-300 ${isHovering ? 'bg-black/20' : 'bg-transparent'}`}>
           
           {/* Top Controls */}
@@ -185,7 +218,6 @@ export const EnhancedVideoPlayer: React.FC<EnhancedVideoPlayerProps> = ({
               </div>
             </div>
           </div>
-        </div>
 
         {/* Hover Instructions */}
         <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/80 text-white px-4 py-2 rounded-lg text-sm backdrop-blur-sm transition-all duration-300 pointer-events-none ${
@@ -193,6 +225,8 @@ export const EnhancedVideoPlayer: React.FC<EnhancedVideoPlayerProps> = ({
         }`}>
           Hover to scrub through video
         </div>
+        </div>
+        )}
       </div>
     </div>
   );

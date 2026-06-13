@@ -19,6 +19,9 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // Tree-shake large icon/util barrels so only used exports are bundled.
+    // Cuts a significant slice of the first-party client JS.
+    optimizePackageImports: ['lucide-react', 'date-fns', 'recharts'],
   },
 };
 

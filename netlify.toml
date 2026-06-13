@@ -11,3 +11,19 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Long-lived caching for static image assets (filenames are content-stable).
+[[headers]]
+  for = "/lovable-uploads/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
