@@ -41,7 +41,7 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         <Script
           id="meta-pixel-base"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -68,11 +68,11 @@ export default function RootLayout({
         </noscript>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-LY3H85MR9C"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

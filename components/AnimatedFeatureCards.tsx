@@ -9,41 +9,53 @@ const AnimatedFeatureCards = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Set mobile status on client side
     setIsMobile(window.innerWidth < 768);
 
-    const handleScroll = () => {
-      if (!containerRef.current) return;
+    // rAF-throttled scroll handler + IntersectionObserver gate.
+    // Previously this ran the math on every scroll event of the whole page
+    // (heavy main-thread cost). Now we only compute when the cards are near
+    // the viewport, and at most once per animation frame.
+    let ticking = false;
+    let isNear = false;
 
+    const compute = () => {
+      ticking = false;
+      if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
-      // Calculate scroll progress - trigger much earlier and complete sooner
-      const elementTop = rect.top;
-      const startTrigger = windowHeight * 0.9;  // Start when element is 90% down the screen (earlier)
-      const endTrigger = windowHeight * 0.4;    // Complete when element is 40% down the screen (sooner)
-      
+      const startTrigger = windowHeight * 0.9;
+      const endTrigger = windowHeight * 0.4;
       let progress = 0;
-      if (elementTop <= startTrigger) {
-        progress = Math.min(1, (startTrigger - elementTop) / (startTrigger - endTrigger));
+      if (rect.top <= startTrigger) {
+        progress = Math.min(1, (startTrigger - rect.top) / (startTrigger - endTrigger));
       }
-      
-      progress = Math.max(0, Math.min(1, progress));
-      
-      setScrollProgress(progress);
+      setScrollProgress(Math.max(0, Math.min(1, progress)));
     };
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const onScroll = () => {
+      if (!isNear || ticking) return;
+      ticking = true;
+      requestAnimationFrame(compute);
     };
+    const onResize = () => setIsMobile(window.innerWidth < 768);
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-    handleScroll(); // Initial call
-    
+    const io = new IntersectionObserver(
+      (entries) => {
+        isNear = entries[0].isIntersecting;
+        if (isNear) compute();
+      },
+      { rootMargin: '50% 0px' }
+    );
+    if (containerRef.current) io.observe(containerRef.current);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    compute();
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      io.disconnect();
     };
   }, []);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import { Header } from '@/components/Header';
@@ -46,11 +46,32 @@ const HomePage = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
   const { isOpen: isScheduleCallOpen, openScheduleCall, closeScheduleCall } = useScheduleCallPopup();
 
+  // Twitter widgets.js is heavy (~9 embeds = lots of main-thread work).
+  // We only load it once the tweets section is about to enter the viewport.
+  const tweetsRef = useRef<HTMLDivElement>(null);
+  const [tweetsNear, setTweetsNear] = useState(false);
+
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).twttr?.widgets) {
+    if (!tweetsRef.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setTweetsNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' }
+    );
+    io.observe(tweetsRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  // Whenever the user has the Twitter SDK and we're in view, force a re-parse.
+  useEffect(() => {
+    if (tweetsNear && typeof window !== 'undefined' && (window as any).twttr?.widgets) {
       (window as any).twttr.widgets.load();
     }
-  }, []);
+  }, [tweetsNear]);
 
   const aiLogos = [
     {
@@ -77,15 +98,20 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-orange-50 to-blue-50">
-      <Script
-        src="https://platform.twitter.com/widgets.js"
-        strategy="lazyOnload"
-        onLoad={() => {
-          if ((window as any).twttr?.widgets) {
-            (window as any).twttr.widgets.load();
-          }
-        }}
-      />
+      {/* Twitter widgets.js is gated on the tweets section scrolling into view
+          (see tweetsRef / IntersectionObserver). This keeps a heavy 3rd-party
+          script + 9 embed evaluations off the initial main thread. */}
+      {tweetsNear && (
+        <Script
+          src="https://platform.twitter.com/widgets.js"
+          strategy="lazyOnload"
+          onLoad={() => {
+            if ((window as any).twttr?.widgets) {
+              (window as any).twttr.widgets.load();
+            }
+          }}
+        />
+      )}
       <Header onOpenForm={openForm} />
 
       <main>
@@ -167,7 +193,7 @@ const HomePage = () => {
             {/* Tweet Masonry Layout */}
             <div className="relative max-w-6xl mx-auto mb-16">
               {/* Masonry Grid Container */}
-              <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+              <div ref={tweetsRef} className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                 {/* Tweet 1 - Vercel */}
                 <div className="break-inside-avoid transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 mb-6">
                   <div className="bg-white rounded-2xl p-4 shadow-lg border border-slate-100 hover:border-orange-200">
