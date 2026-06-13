@@ -2,8 +2,10 @@ import { Metadata } from 'next';
 import { createServerSupabaseClient, isServerSupabaseConfigured } from '@/lib/integrations/supabase/server';
 import { BlogListClient } from '@/components/blog/BlogListClient';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// ISR: serve a pre-rendered page instantly from cache and refresh it from the
+// DB in the background every 5 minutes. The blog list has no per-request /
+// cookie state, so it no longer needs to block on Supabase on every request.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Insights | Total Authority',
@@ -37,21 +39,27 @@ async function getBlogPosts(): Promise<BlogPost[]> {
     return [];
   }
 
-  const supabase = createServerSupabaseClient();
-  
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('id, title, slug, excerpt, published_at, featured_image_url, featured_image_alt, view_count, reading_time, tags')
-    .eq('status', 'published')
-    .eq('is_indexed', true)
-    .order('published_at', { ascending: false });
+  try {
+    const supabase = createServerSupabaseClient();
 
-  if (error) {
-    console.error('Error fetching blog posts:', error);
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('id, title, slug, excerpt, published_at, featured_image_url, featured_image_alt, view_count, reading_time, tags')
+      .eq('status', 'published')
+      .eq('is_indexed', true)
+      .order('published_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching blog posts:', error);
+      return [];
+    }
+
+    return (data || []) as BlogPost[];
+  } catch (err) {
+    // Never let a transient DB/network error fail the build or the page render.
+    console.error('Error fetching blog posts:', err);
     return [];
   }
-
-  return (data || []) as BlogPost[];
 }
 
 export default async function InsightsPage() {
