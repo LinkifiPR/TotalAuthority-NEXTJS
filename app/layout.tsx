@@ -6,12 +6,16 @@ import { Providers } from '@/components/providers';
 import { FacebookPixel } from '@/components/FacebookPixel';
 import { siteUrl } from '@/lib/siteConfig';
 
-// `display: 'swap'` paints the text immediately in the fallback font and
-// swaps when Inter is ready — keeps text out of LCP's critical path.
-// `preload: true` pushes the font early in the network queue.
+// `display: 'optional'` paints the hero text immediately in a metric-matched
+// fallback and does NOT swap to Inter if it isn't ready almost instantly. This
+// keeps the late web-font swap from pushing LCP out to 3-4s on slow networks
+// (the swap was repainting the largest text element and dragging LCP). Inter
+// still renders on normal connections and on repeat (cached) visits.
+// `adjustFontFallback` keeps the fallback metrics close so there's no layout
+// shift (CLS stays 0).
 const inter = Inter({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   preload: true,
   adjustFontFallback: true,
 });

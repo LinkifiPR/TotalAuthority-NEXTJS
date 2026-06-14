@@ -476,9 +476,13 @@ const HomePage = () => {
                   {/* iPad Background */}
                   <div className="bg-slate-800 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <div className="bg-black rounded-2xl p-1">
-                      <img 
-                        src="/lovable-uploads/a9912b20-f5d9-44c6-90c2-480a2ea8e855.png" 
+                      <img
+                        src="/lovable-uploads/a9912b20-f5d9-44c6-90c2-480a2ea8e855.png"
                         alt="AI Visibility Gap Calculator Interface"
+                        width={900}
+                        height={467}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full rounded-xl"
                       />
                     </div>
@@ -530,9 +534,13 @@ const HomePage = () => {
                   {/* iPad Background */}
                   <div className="bg-slate-800 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <div className="bg-white rounded-2xl p-1">
-                      <img 
-                        src="/lovable-uploads/80f1b6fc-f49f-4974-8643-ff37086c0afd.png" 
+                      <img
+                        src="/lovable-uploads/80f1b6fc-f49f-4974-8643-ff37086c0afd.png"
                         alt="AI Visibility Audit Report"
+                        width={807}
+                        height={1047}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full rounded-xl"
                       />
                     </div>
@@ -584,9 +592,13 @@ const HomePage = () => {
                   {/* iPad Background */}
                   <div className="bg-slate-800 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <div className="bg-white rounded-2xl p-1">
-                      <img 
-                        src="/lovable-uploads/4ff37a30-04f9-4ce9-a0f7-6900ce26af0a.png" 
+                      <img
+                        src="/lovable-uploads/4ff37a30-04f9-4ce9-a0f7-6900ce26af0a.png"
                         alt="Full AI Visibility Strategy Blueprint Document"
+                        width={900}
+                        height={541}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full rounded-xl"
                       />
                     </div>

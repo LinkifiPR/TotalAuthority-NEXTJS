@@ -44,6 +44,8 @@ export const Header: React.FC<HeaderProps> = () => {
             <img
               src="/total-authority-logo.png"
               alt="TotalAuthority AI Visibility"
+              width={601}
+              height={200}
               className="h-11 w-auto sm:h-14 md:h-16"
             />
           </Link>
