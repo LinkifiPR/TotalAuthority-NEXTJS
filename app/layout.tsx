@@ -6,7 +6,15 @@ import { Providers } from '@/components/providers';
 import { FacebookPixel } from '@/components/FacebookPixel';
 import { siteUrl } from '@/lib/siteConfig';
 
-const inter = Inter({ subsets: ['latin'] });
+// `display: 'swap'` paints the text immediately in the fallback font and
+// swaps when Inter is ready — keeps text out of LCP's critical path.
+// `preload: true` pushes the font early in the network queue.
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

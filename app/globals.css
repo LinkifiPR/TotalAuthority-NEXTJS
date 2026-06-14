@@ -106,3 +106,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* content-visibility: auto tells the browser to skip layout/paint of
+   off-screen sections until they scroll near the viewport. Huge win for
+   Speed Index and main-thread work, no visual change. We hint a
+   contain-intrinsic-size so the scrollbar still represents the full page. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1200px;
+}

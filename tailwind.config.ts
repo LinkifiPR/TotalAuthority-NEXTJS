@@ -109,6 +109,16 @@ export default {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.95' },
           '50%': { transform: 'scale(1.04)', opacity: '1' }
         },
+        /* Combined keyframe used by the hero AI-logo cards. Running the
+           wobble + pulse animations separately on the same element makes
+           neither composable (each fights the other on `transform`); a
+           single keyframe runs entirely on the compositor thread. */
+        'wobble-pulse-combined': {
+          '0%, 100%': { transform: 'rotate(0deg) translateY(0px) scale(1)', opacity: '0.95' },
+          '25%':      { transform: 'rotate(2deg) translateY(-3px) scale(1.02)', opacity: '0.98' },
+          '50%':      { transform: 'rotate(0deg) translateY(-5px) scale(1.04)', opacity: '1' },
+          '75%':      { transform: 'rotate(-2deg) translateY(-3px) scale(1.02)', opacity: '0.98' }
+        },
         'float-tech': {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg) scale(1)' },
           '25%': { transform: 'translateY(-10px) rotate(2deg) scale(1.02)' },
@@ -135,7 +145,9 @@ export default {
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
         'gentle-wobble': 'gentle-wobble 4s ease-in-out infinite',
         'logo-pulse': 'logo-pulse 3s ease-in-out infinite',
-        'wobble-pulse': 'gentle-wobble 4s ease-in-out infinite, logo-pulse 3s ease-in-out infinite',
+        /* Single composited animation — replaces the previous two-animation
+           combo that the browser couldn't composite. */
+        'wobble-pulse': 'wobble-pulse-combined 4s ease-in-out infinite',
         'float-tech': 'float-tech 20s ease-in-out infinite',
         'shake': 'shake 0.3s ease-in-out'
       }

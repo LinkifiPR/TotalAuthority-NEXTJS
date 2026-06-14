@@ -137,8 +137,8 @@ const HomePage = () => {
                 key={logo.name}
                 className="shrink-0 rounded-xl p-3 bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm hover:shadow-lg transition-shadow duration-300 animate-wobble-pulse transform-gpu"
                 style={{
-                  animationDelay: `${index * 0.2}s, ${index * 0.2}s`,
-                  animationDuration: `${3.6 + index * 0.4}s, ${2.6 + index * 0.2}s`,
+                  animationDelay: `${index * 0.2}s`,
+                  animationDuration: `${3.6 + index * 0.4}s`,
                   willChange: 'transform, opacity'
                 }}
               >
@@ -162,7 +162,7 @@ const HomePage = () => {
       <AISearchChanged />
 
       {/* What Is LLM Visibility Section - Redesigned Clean */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-orange-50/30 via-slate-50 to-orange-50/50 relative overflow-hidden">
+      <section className="cv-auto py-20 md:py-32 bg-gradient-to-br from-orange-50/30 via-slate-50 to-orange-50/50 relative overflow-hidden">
         {/* Geometric background elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 transform rotate-45 rounded-lg"></div>
         <div className="absolute bottom-20 right-10 w-24 h-24 bg-slate-200/50 transform rotate-12 rounded-lg"></div>
@@ -301,7 +301,7 @@ const HomePage = () => {
       </section>
 
       {/* Why It Matters Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
+      <section className="cv-auto py-20 md:py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-purple-500/10 rounded-full blur-3xl animate-float-tech"></div>
@@ -456,7 +456,7 @@ const HomePage = () => {
       </section>
 
       {/* Start Wherever You Are Section */}
-      <section className="py-20 md:py-32 px-4 bg-white relative overflow-hidden">
+      <section className="cv-auto py-20 md:py-32 px-4 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black mb-6 text-slate-900">
