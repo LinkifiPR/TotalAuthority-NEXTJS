@@ -19,7 +19,7 @@ const pressArticles = [
 
 export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenScheduleCall }) => {
   return (
-    <section className="cv-auto py-20 md:py-28 bg-white">
+    <section className="cv-auto pt-20 md:pt-28 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-14 max-w-3xl mx-auto">
@@ -124,34 +124,69 @@ export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenSche
           </div>
         </div>
 
-        {/* Schedule call */}
-        <div className="mt-24">
-          <div className="max-w-3xl mx-auto bg-orange-50/60 rounded-xl border border-orange-200 p-10 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-4">
-              Want to talk to one of our team?
-            </h3>
-            <p className="text-base md:text-lg text-slate-700 mb-8 leading-relaxed">
-              Let's discuss your AI visibility strategy and how we can help you dominate search results.
-            </p>
-            <button
-              onClick={onOpenScheduleCall}
-              className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
-              Schedule a Call
-            </button>
-            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-slate-600">
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-orange-600" />
-                Free 30-min Strategy Call
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-orange-600" />
-                No Obligation
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-orange-600" />
-                Expert AI Insights
-              </span>
+      </div>
+
+      {/* Schedule call — full-bleed dark closer */}
+      <div className="mt-20 md:mt-24 relative bg-slate-900 text-white overflow-hidden">
+        {/* Subtle orange glow accent — pure CSS, no asset */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.18),transparent_55%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.08),transparent_50%)]"
+        />
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center">
+            <div>
+              <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-400 mb-4">
+                Ready to start?
+              </p>
+              <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-white leading-tight text-balance">
+                Talk to one of our team.
+              </h3>
+              <div className="h-px w-12 bg-orange-500 mt-6 mb-6" />
+              <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl">
+                Let's discuss your AI visibility strategy and how we can help you get named where it matters.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-start lg:items-end gap-6">
+              <button
+                onClick={onOpenScheduleCall}
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-medium text-base shadow-lg shadow-orange-900/30 transition-colors"
+              >
+                Schedule a Call
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="w-4 h-4 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="M13 5l7 7-7 7" />
+                </svg>
+              </button>
+              <ul className="space-y-2 text-sm text-slate-300 lg:text-right">
+                <li className="flex items-center gap-2 lg:justify-end">
+                  <CheckCircle className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                  Free 30-min Strategy Call
+                </li>
+                <li className="flex items-center gap-2 lg:justify-end">
+                  <CheckCircle className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                  No Obligation
+                </li>
+                <li className="flex items-center gap-2 lg:justify-end">
+                  <CheckCircle className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                  Expert AI Insights
+                </li>
+              </ul>
             </div>
           </div>
         </div>

@@ -39,11 +39,10 @@ const aiLogos = [
   { name: 'Gemini', url: 'https://cdn.brandfetch.io/gemini.google.com/w/512/h/512/logo' },
 ];
 
-const stats = [
+const supportingStats = [
   { value: '60%', label: 'of product discovery now starts in AI chats' },
-  { value: '467%', label: 'growth in LLM traffic since 2023' },
   { value: '90%', label: 'of ChatGPT citations come from page 2+ of Google' },
-  { value: '0-click', label: "search is exploding—your site might never get visited unless you're named directly" },
+  { value: '0-click', label: "search is exploding—your site might never get visited unless you're named" },
 ];
 
 const HomePage = () => {
@@ -267,41 +266,85 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* LLMs are your new homepage */}
+        {/* LLMs are your new homepage — editorial hero-stat layout */}
         <section className="cv-auto py-20 md:py-28 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-14">
-                <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-600 mb-4">
-                  Why It Matters
+            <div className="text-center mb-14 md:mb-20">
+              <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-600 mb-4">
+                Why It Matters
+              </p>
+              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">
+                LLMs are your new homepage
+              </h2>
+            </div>
+
+            {/* Featured hero stat */}
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 md:mb-20">
+              <div className="lg:col-span-5">
+                <div className="flex items-start gap-3">
+                  <div className="text-[5.5rem] md:text-[8rem] leading-none font-semibold text-orange-600 tabular-nums tracking-tight">
+                    467%
+                  </div>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="w-7 h-7 md:w-10 md:h-10 mt-3 md:mt-5 text-orange-600 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7 17L17 7" />
+                    <path d="M9 7h8v8" />
+                  </svg>
+                </div>
+                <p className="mt-3 text-sm text-slate-500 tracking-wide">
+                  LLM search usage · 2023 &rarr; 2026
                 </p>
-                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">
-                  LLMs are your new homepage
-                </h2>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 mb-16">
-                {stats.map((s) => (
-                  <div
-                    key={s.value}
-                    className="bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
-                  >
-                    <div className="text-5xl md:text-6xl font-semibold tracking-tight text-orange-600 mb-3">
+              <div className="lg:col-span-7">
+                <h3 className="text-2xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-tight text-balance">
+                  Search is being rewritten in front of you.
+                </h3>
+                <p className="mt-5 text-base md:text-lg text-slate-600 leading-relaxed">
+                  More product discovery now happens inside ChatGPT, Gemini, Claude and Perplexity than through any other channel.
+                  The brands that get named in those answers are the ones that win the customer — everyone else is invisible.
+                </p>
+              </div>
+            </div>
+
+            {/* By the numbers — horizontal strip */}
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+              <div className="px-6 md:px-8 py-4 border-b border-slate-200 flex items-center justify-between">
+                <span className="text-xs font-medium tracking-[0.18em] uppercase text-slate-500">
+                  By the numbers
+                </span>
+                <span className="text-xs text-slate-400 tracking-wide hidden sm:block">
+                  AI search · 2026
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+                {supportingStats.map((s) => (
+                  <div key={s.value} className="p-7 md:p-8">
+                    <div className="text-4xl md:text-5xl font-semibold tracking-tight text-orange-600 tabular-nums leading-none mb-3">
                       {s.value}
                     </div>
-                    <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+                    <p className="text-sm md:text-base text-slate-600 leading-relaxed">
                       {s.label}
                     </p>
                   </div>
                 ))}
               </div>
-
-              <blockquote className="border-l-4 border-orange-600 pl-6 max-w-3xl mx-auto">
-                <p className="text-xl md:text-2xl text-slate-700 italic leading-relaxed">
-                  If your brand isn't being pulled into the answer, it's not even part of the conversation.
-                </p>
-              </blockquote>
             </div>
+
+            {/* Closing quote */}
+            <blockquote className="border-l-4 border-orange-600 pl-6 max-w-3xl mx-auto mt-16 md:mt-20">
+              <p className="text-xl md:text-2xl text-slate-700 italic leading-relaxed">
+                If your brand isn't being pulled into the answer, it's not even part of the conversation.
+              </p>
+            </blockquote>
           </div>
         </section>
 
