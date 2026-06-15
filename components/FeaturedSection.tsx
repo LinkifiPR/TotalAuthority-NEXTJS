@@ -38,37 +38,21 @@ const FeaturedSection = () => {
   ];
 
   return (
-    <section className="py-14 md:py-16 bg-gradient-to-br from-slate-50 via-orange-50/30 to-blue-50/30">
+    <section className="py-12 md:py-14 bg-white border-y border-slate-200/70">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Handwriting style title */}
-        <div className="text-center mb-8 md:mb-10 animate-fade-in">
-          <h2
-            className="text-3xl md:text-4xl text-slate-700"
-            style={{
-              fontFamily: '"Caveat", "Kalam", "Dancing Script", cursive',
-              fontWeight: 600,
-              transform: 'rotate(-1deg)',
-              letterSpacing: '0.5px',
-            }}
-          >
-            Where we've been featured
-          </h2>
-        </div>
+        <p className="text-xs font-medium tracking-[0.18em] uppercase text-slate-500 mb-8 text-center">
+          As featured in
+        </p>
 
-        {/* Logos row */}
-        <div className="flex items-center justify-center gap-x-6 md:gap-x-10 overflow-x-auto pb-2">
+        <div className="flex items-center justify-center gap-x-8 md:gap-x-14 overflow-x-auto pb-2">
           {mediaLogos.map((logo) => (
-            <div
-              key={logo.name}
-              className="hover-scale animate-fade-in"
-              aria-label={logo.name}
-            >
+            <div key={logo.name} aria-label={logo.name}>
               <div className="h-10 md:h-12 flex items-center">
                 <MonochromeLogo
                   src={logo.src}
                   alt={logo.alt}
                   removeWhiteBackground={logo.removeBg}
-                  className="h-10 md:h-12 w-auto object-contain opacity-80"
+                  className="h-10 md:h-12 w-auto object-contain opacity-70"
                 />
               </div>
             </div>

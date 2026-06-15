@@ -64,85 +64,72 @@ const AnimatedFeatureCards = () => {
   const spreadX = maxSpread * scrollProgress;
   const rotationAngle = (isMobile ? 8 : 18) * scrollProgress; // Increased rotation
 
+  const cards = [
+    {
+      icon: Brain,
+      title: 'Different Sources',
+      body: 'LLMs pull from earned media, Wikipedia, structured data, and high-trust sources',
+      tone: 'orange' as const,
+    },
+    {
+      icon: CheckCircle,
+      title: 'Authority Focused',
+      body: 'They favor authority, credibility, and real-world citations—not just keyword rankings',
+      tone: 'slate' as const,
+    },
+    {
+      icon: TrendingUp,
+      title: 'Recommendation Based',
+      body: "They recommend based on who's consistently mentioned and clearly described",
+      tone: 'orange' as const,
+    },
+  ];
+
+  const Card = ({ card }: { card: typeof cards[number] }) => {
+    const Icon = card.icon;
+    const iconTone =
+      card.tone === 'orange'
+        ? 'bg-orange-50 text-orange-600'
+        : 'bg-slate-100 text-slate-700';
+    return (
+      <div className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
+        <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-5 ${iconTone}`}>
+          <Icon className="w-6 h-6" />
+        </div>
+        <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 mb-3">
+          {card.title}
+        </h3>
+        <p className="text-slate-600 leading-relaxed">{card.body}</p>
+      </div>
+    );
+  };
+
   return (
-    <div ref={containerRef} className="relative py-20 overflow-visible">
+    <div ref={containerRef} className="relative py-16 overflow-visible">
       {/* Mobile: Vertical Stack */}
-      <div className="md:hidden flex flex-col space-y-8 px-4">
-        {/* Card 1 - Different Sources */}
-        <div className="w-full max-w-sm mx-auto">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 transform rotate-45 -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-500/5 transform rotate-12 translate-y-12 -translate-x-12"></div>
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Brain className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4">Different Sources</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">LLMs pull from earned media, Wikipedia, structured data, and high-trust sources</p>
-            </div>
+      <div className="md:hidden flex flex-col space-y-6 px-4">
+        {cards.map((card) => (
+          <div key={card.title} className="w-full max-w-sm mx-auto">
+            <Card card={card} />
           </div>
-        </div>
-
-        {/* Card 2 - Authority Focused */}
-        <div className="w-full max-w-sm mx-auto">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-28 h-28 bg-slate-200/20 transform -rotate-12 -translate-y-14 -translate-x-14"></div>
-            <div className="absolute bottom-0 right-0 w-20 h-20 bg-slate-200/10 transform rotate-45 translate-y-10 translate-x-10"></div>
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4">Authority Focused</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">They favor authority, credibility, and real-world citations—not just keyword rankings</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 3 - Recommendation Based */}
-        <div className="w-full max-w-sm mx-auto">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-orange-500/10 transform -rotate-45 -translate-y-16 -translate-x-16"></div>
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-orange-500/5 transform -rotate-12 translate-y-12 translate-x-12"></div>
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4">Recommendation Based</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">They recommend based on who's consistently mentioned and clearly described</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
 
-      {/* Desktop: Fan-out Animation */}
-      <div className="hidden md:block relative w-full max-w-5xl mx-auto px-8 flex items-center justify-center min-h-[400px]">
-        {/* Card 1 - Different Sources (Left) */}
-        <div 
+      {/* Desktop: Fan-out animation (rAF-throttled scroll, IO-gated) */}
+      <div className="hidden md:block relative w-full max-w-5xl mx-auto px-8 flex items-center justify-center min-h-[360px]">
+        {/* Left */}
+        <div
           className="absolute w-80 transition-all duration-700 ease-out"
           style={{
             left: '50%',
             transform: `translateX(-50%) translateX(${-spreadX}px) rotate(${-rotationAngle}deg)`,
           }}
         >
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 transform rotate-45 -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-500/5 transform rotate-12 translate-y-12 -translate-x-12"></div>
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Brain className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4">Different Sources</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">LLMs pull from earned media, Wikipedia, structured data, and high-trust sources</p>
-            </div>
-          </div>
+          <Card card={cards[0]} />
         </div>
 
-        {/* Card 2 - Authority Focused (Center) */}
-        <div 
+        {/* Center */}
+        <div
           className="absolute w-80 transition-all duration-700 ease-out"
           style={{
             left: '50%',
@@ -150,40 +137,18 @@ const AnimatedFeatureCards = () => {
             zIndex: 10,
           }}
         >
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-28 h-28 bg-slate-200/20 transform -rotate-12 -translate-y-14 -translate-x-14"></div>
-            <div className="absolute bottom-0 right-0 w-20 h-20 bg-slate-200/10 transform rotate-45 translate-y-10 translate-x-10"></div>
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4">Authority Focused</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">They favor authority, credibility, and real-world citations—not just keyword rankings</p>
-            </div>
-          </div>
+          <Card card={cards[1]} />
         </div>
 
-        {/* Card 3 - Recommendation Based (Right) */}
-        <div 
+        {/* Right */}
+        <div
           className="absolute w-80 transition-all duration-700 ease-out"
           style={{
             left: '50%',
             transform: `translateX(-50%) translateX(${spreadX}px) rotate(${rotationAngle}deg)`,
           }}
         >
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-orange-500/10 transform -rotate-45 -translate-y-16 -translate-x-16"></div>
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-orange-500/5 transform -rotate-12 translate-y-12 translate-x-12"></div>
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4">Recommendation Based</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">They recommend based on who's consistently mentioned and clearly described</p>
-            </div>
-          </div>
+          <Card card={cards[2]} />
         </div>
       </div>
     </div>
