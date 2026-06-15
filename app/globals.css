@@ -115,3 +115,39 @@
   content-visibility: auto;
   contain-intrinsic-size: 1px 1200px;
 }
+
+/* Premium dark texture used on every dark `bg-slate-900` block:
+   a faint grid + a single radial orange glow. Pure CSS, no asset. */
+.dark-canvas {
+  background-color: rgb(15 23 42);
+  background-image:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 55%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
+}
+
+/* Inverted version for the light hero — a very faint slate grid + soft
+   orange glow at top-right. Hint of depth, no noise. */
+.light-canvas {
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.07), transparent 55%),
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: auto, 32px 32px, 32px 32px;
+}
+
+/* One-frame blinking cursor for the hero "Live AI Answer" mockup.
+   Composited (opacity-only), no JS, ~negligible main-thread cost. */
+@keyframes ta-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+.ta-cursor {
+  display: inline-block;
+  width: 0.5ch;
+  margin-left: 1px;
+  animation: ta-blink 1.2s step-end infinite;
+  will-change: opacity;
+}
