@@ -290,17 +290,10 @@ const AISearchChanged: React.FC = () => {
     >
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <header className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
-          <div className="inline-flex items-center gap-2.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-            <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange-500">
-              Ch. 01 / 06
-            </span>
-            <span className="h-px w-8 bg-slate-300" />
-            <span className="text-xs font-medium tracking-[0.18em] uppercase text-slate-500">
-              The Shift
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 text-balance">
+          <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-600 mb-4">
+            The Shift
+          </p>
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">
             The way people search has changed.
           </h2>
           <p className="mt-5 text-base md:text-lg text-slate-600 leading-relaxed">
@@ -312,7 +305,7 @@ const AISearchChanged: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start mb-16">
           <div className="relative" ref={monitorRef}>
-            <div className="dark-canvas rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-slate-900">
               <div className="flex items-center gap-3 px-5 py-3 border-b border-slate-800">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
@@ -349,20 +342,15 @@ const AISearchChanged: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-4">
-              {realityCards.map((card, idx) => {
+              {realityCards.map((card) => {
                 const Icon = card.icon;
                 return (
                   <article
                     key={card.title}
                     className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 flex items-start gap-4 hover:shadow-md transition-shadow"
                   >
-                    <div className="flex flex-col items-center gap-2 flex-shrink-0">
-                      <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-orange-600">
-                        {String(idx + 1).padStart(2, '0')}
-                      </span>
-                      <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
-                        <Icon className="w-5 h-5" />
-                      </div>
+                    <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5" />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-slate-900 mb-1">
@@ -381,7 +369,7 @@ const AISearchChanged: React.FC = () => {
         </div>
 
         {/* Final statement */}
-        <div className="dark-canvas rounded-xl p-10 md:p-14 text-center max-w-4xl mx-auto">
+        <div className="rounded-xl bg-slate-900 p-10 md:p-14 text-center max-w-4xl mx-auto">
           <div className="inline-flex w-12 h-12 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 items-center justify-center mb-6">
             <AlertTriangle className="w-6 h-6" />
           </div>

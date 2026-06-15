@@ -9,12 +9,12 @@ interface TrustVideoSectionProps {
 }
 
 const pressArticles = [
-  { src: '/lovable-uploads/389badc7-1f14-44dc-8e85-469f50464cca.png', alt: 'Press Gazette - Google AI Overviews', publication: 'Press Gazette' },
-  { src: '/lovable-uploads/c6bfa99c-4268-4369-9ce2-50a754736d14.png', alt: 'Startups - AI search pushing brands out', publication: 'Startups' },
-  { src: '/lovable-uploads/d2638782-3923-4a94-bc23-6b0d382614f9.png', alt: 'BBC Future - Is Google destroying the web', publication: 'BBC Future' },
-  { src: '/lovable-uploads/785ba351-c48f-458e-8ad6-3ec5a0ca1716.png', alt: 'Business Wire - Semrush AI Visibility Index', publication: 'Business Wire' },
-  { src: '/lovable-uploads/d6257f0e-9786-4840-86ab-95aaa10a8738.png', alt: 'BBC News - AI challenges Google dominance', publication: 'BBC News' },
-  { src: '/lovable-uploads/3ff5095e-02f5-4711-8cee-245cb237e7f8.png', alt: 'The Drum - Brand AI-ready', publication: 'The Drum' },
+  { src: '/lovable-uploads/389badc7-1f14-44dc-8e85-469f50464cca.png', alt: 'Press Gazette - Google AI Overviews' },
+  { src: '/lovable-uploads/c6bfa99c-4268-4369-9ce2-50a754736d14.png', alt: 'Startups - AI search pushing brands out' },
+  { src: '/lovable-uploads/d2638782-3923-4a94-bc23-6b0d382614f9.png', alt: 'BBC Future - Is Google destroying the web' },
+  { src: '/lovable-uploads/785ba351-c48f-458e-8ad6-3ec5a0ca1716.png', alt: 'Business Wire - Semrush AI Visibility Index' },
+  { src: '/lovable-uploads/d6257f0e-9786-4840-86ab-95aaa10a8738.png', alt: 'BBC News - AI challenges Google dominance' },
+  { src: '/lovable-uploads/3ff5095e-02f5-4711-8cee-245cb237e7f8.png', alt: 'The Drum - Brand AI-ready' },
 ];
 
 export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenScheduleCall }) => {
@@ -23,17 +23,10 @@ export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenSche
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-14 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-            <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange-500">
-              Ch. 05 / 06
-            </span>
-            <span className="h-px w-8 bg-slate-300" />
-            <span className="text-xs font-medium tracking-[0.18em] uppercase text-slate-500">
-              Why Trust Us
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6 text-balance">
+          <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-600 mb-4">
+            Why us
+          </p>
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6">
             Why should you trust us?
           </h2>
           <p className="text-base md:text-lg text-slate-600 leading-relaxed">
@@ -55,25 +48,36 @@ export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenSche
             </div>
 
             <div className="bg-white p-6 md:p-8 border-t border-slate-200">
-              <div className="flex items-center gap-3 mb-3">
-                <Award className="w-5 h-5 text-orange-600" />
-                <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-slate-900">
-                  Building Authority Through Digital PR
-                </h3>
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Award className="w-5 h-5 text-orange-600" />
+                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-slate-900">
+                      Building Authority Through Digital PR
+                    </h3>
+                  </div>
+                  <p className="text-slate-600 leading-relaxed mb-5">
+                    Watch <span className="font-medium text-slate-900">Chris Panteli</span> share cutting-edge insights on building digital authority at <span className="font-medium text-slate-900">SEO Estonia</span>, one of Europe's most prestigious search marketing conferences.
+                  </p>
+                  <ul className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm">
+                    <li className="flex items-center gap-2 text-slate-700">
+                      <CheckCircle className="w-4 h-4 text-orange-600" />
+                      Internationally Recognized Speaker
+                    </li>
+                    <li className="flex items-center gap-2 text-slate-700">
+                      <Star className="w-4 h-4 text-orange-600" />
+                      Digital PR Expert
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="md:ml-6 w-full md:w-auto md:min-w-[140px]">
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 px-5 py-4 text-center">
+                    <div className="text-2xl font-semibold text-orange-600 mb-1">500+</div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-wider">Businesses Helped</div>
+                  </div>
+                </div>
               </div>
-              <p className="text-slate-600 leading-relaxed mb-5 max-w-3xl">
-                Watch <span className="font-medium text-slate-900">Chris Panteli</span> share cutting-edge insights on building digital authority at <span className="font-medium text-slate-900">SEO Estonia</span>, one of Europe's most prestigious search marketing conferences. He's helped 500+ businesses get found by AI search.
-              </p>
-              <ul className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm">
-                <li className="flex items-center gap-2 text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-orange-600" />
-                  Internationally Recognized Speaker
-                </li>
-                <li className="flex items-center gap-2 text-slate-700">
-                  <Star className="w-4 h-4 text-orange-600" />
-                  Digital PR Expert
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -84,11 +88,11 @@ export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenSche
             <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-600 mb-4">
               In The Press
             </p>
-            <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-5 text-balance">
+            <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-5">
               The AI hype is real
             </h3>
             <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-              Understanding the change in search and how you can be discovered is one of the most significant factors determining your business success in 2026.
+              Understanding the change in search and how you can be discovered is one of the most significant factors determining your business success in 2024.
             </p>
           </div>
 
@@ -96,22 +100,15 @@ export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenSche
             {pressArticles.map((article) => (
               <article
                 key={article.src}
-                className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col"
+                className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
               >
-                <div className="aspect-[4/5] bg-slate-50 overflow-hidden">
-                  <img
-                    src={article.src}
-                    alt={article.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-                <div className="px-4 py-3 border-t border-slate-100 bg-white">
-                  <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-slate-500">
-                    {article.publication}
-                  </p>
-                </div>
+                <img
+                  src={article.src}
+                  alt={article.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto"
+                />
               </article>
             ))}
           </div>
@@ -129,21 +126,24 @@ export const TrustVideoSection: React.FC<TrustVideoSectionProps> = ({ onOpenSche
 
       </div>
 
-      {/* Schedule call — full-bleed dark closer (CH. 06) */}
-      <div className="dark-canvas mt-20 md:mt-24 relative text-white overflow-hidden">
+      {/* Schedule call — full-bleed dark closer */}
+      <div className="mt-20 md:mt-24 relative bg-slate-900 text-white overflow-hidden">
+        {/* Subtle orange glow accent — pure CSS, no asset */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.18),transparent_55%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.08),transparent_50%)]"
+        />
+
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2.5 mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange-400">
-                  Ch. 06 / 06
-                </span>
-                <span className="h-px w-8 bg-slate-600" />
-                <span className="text-xs font-medium tracking-[0.18em] uppercase text-slate-400">
-                  Ready To Start
-                </span>
-              </div>
+              <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-400 mb-4">
+                Ready to start?
+              </p>
               <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-white leading-tight text-balance">
                 Talk to one of our team.
               </h3>
