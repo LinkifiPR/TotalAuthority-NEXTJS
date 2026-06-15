@@ -19,48 +19,54 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
-            <div className="mb-4 inline-flex rounded-lg bg-white px-3 py-2 shadow-lg shadow-black/20">
-              <img
-                src="/total-authority-logo.png"
-                alt="TotalAuthority AI Visibility"
-                className="h-14 w-auto"
-              />
-            </div>
-            <p className="text-slate-300 mb-6 max-w-md">
+            <img
+              src="/total-authority-logo.png"
+              alt="TotalAuthority AI Visibility"
+              width={601}
+              height={200}
+              loading="lazy"
+              decoding="async"
+              className="h-12 md:h-14 w-auto mb-5 brightness-0 invert"
+            />
+            <p className="text-slate-200 mb-6 max-w-md leading-relaxed">
               Get a comprehensive AI visibility audit to boost your online presence and outrank competitors with data-driven insights.
             </p>
-            
+
             {/* Social Icons */}
-            <div className="flex space-x-4">
-              <a 
-                href="https://www.facebook.com/totalauthority" 
-                target="_blank" 
+            <div className="flex space-x-1">
+              <a
+                href="https://www.facebook.com/totalauthority"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-orange-400 transition-colors"
+                aria-label="Facebook"
+                className="text-slate-300 hover:text-orange-300 transition-colors p-2 -m-2"
               >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a 
-                href="https://x.com/totalauthority_" 
-                target="_blank" 
+              <a
+                href="https://x.com/totalauthority_"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-orange-400 transition-colors"
+                aria-label="Twitter / X"
+                className="text-slate-300 hover:text-orange-300 transition-colors p-2 -m-2"
               >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a 
-                href="https://www.linkedin.com/company/total-authority/" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/company/total-authority/"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-orange-400 transition-colors"
+                aria-label="LinkedIn"
+                className="text-slate-300 hover:text-orange-300 transition-colors p-2 -m-2"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a 
-                href="https://www.youtube.com/@Total-Authority" 
-                target="_blank" 
+              <a
+                href="https://www.youtube.com/@Total-Authority"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-orange-400 transition-colors"
+                aria-label="YouTube"
+                className="text-slate-300 hover:text-orange-300 transition-colors p-2 -m-2"
               >
                 <Youtube className="w-5 h-5" />
               </a>
@@ -69,22 +75,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-sm font-semibold tracking-wide text-white mb-4 uppercase">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <Link 
+                <Link
                   href="/about"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   About
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="/blog"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Blog
                 </Link>
@@ -93,34 +99,34 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/podcast"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Podcast
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="/llm-visibility-gap-calculator"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Visibility Gap Calculator
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="/llm-visibility-audit"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Visibility Mini Audit
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="/strategy-blueprint"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Strategy Blueprint
                 </Link>
@@ -130,31 +136,31 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
 
           {/* Legal */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-sm font-semibold tracking-wide text-white mb-4 uppercase">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <Link 
-                  href="/privacy-policy" 
+                <Link
+                  href="/privacy-policy"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/terms-of-service" 
+                <Link
+                  href="/terms-of-service"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/cookie-policy" 
+                <Link
+                  href="/cookie-policy"
                   onClick={scrollToTop}
-                  className="text-slate-300 hover:text-orange-400 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors"
                 >
                   Cookie Policy
                 </Link>
@@ -164,13 +170,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-slate-400 text-sm mb-4 md:mb-0">
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-300 text-sm">
             © {new Date().getFullYear()} TotalAuthority. All rights reserved.
           </p>
           <button
             onClick={onOpenForm}
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2.5 rounded-lg font-medium text-sm transition-colors"
           >
             Get Your Free AI Audit
           </button>
