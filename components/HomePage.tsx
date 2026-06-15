@@ -13,6 +13,11 @@ import {
   FileText,
   Search,
 } from 'lucide-react';
+import {
+  GapCalculatorVisual,
+  MiniAuditVisual,
+  BlueprintVisual,
+} from '@/components/GetStartedVisuals';
 
 // Below-the-fold sections are code-split so they don't bloat the initial
 // JS bundle / hydration. ssr:true keeps their content server-rendered for SEO.
@@ -367,19 +372,9 @@ const HomePage = () => {
               {/* AI Visibility Gap Calculator */}
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="lg:order-2">
-                  <div className="relative mx-auto max-w-md">
-                    <div className="rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-white">
-                      <img
-                        src="/lovable-uploads/a9912b20-f5d9-44c6-90c2-480a2ea8e855.png"
-                        alt="AI Visibility Gap Calculator Interface"
-                        width={900}
-                        height={467}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full"
-                      />
-                    </div>
-                    <span className="absolute -top-3 -right-3 bg-orange-50 text-orange-700 text-xs font-medium tracking-wide rounded-full px-2.5 py-1 border border-orange-200">
+                  <div className="relative mx-auto max-w-lg">
+                    <GapCalculatorVisual />
+                    <span className="absolute -top-3 -right-3 z-10 bg-white text-orange-700 text-xs font-medium tracking-wide rounded-full px-2.5 py-1 border border-orange-200 shadow-sm">
                       FREE
                     </span>
                   </div>
@@ -420,19 +415,9 @@ const HomePage = () => {
               {/* AI Visibility Mini Audit */}
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <div className="relative mx-auto max-w-md">
-                    <div className="rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-white">
-                      <img
-                        src="/lovable-uploads/80f1b6fc-f49f-4974-8643-ff37086c0afd.png"
-                        alt="AI Visibility Audit Report"
-                        width={807}
-                        height={1047}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full"
-                      />
-                    </div>
-                    <span className="absolute -top-3 -right-3 bg-orange-50 text-orange-700 text-xs font-medium tracking-wide rounded-full px-2.5 py-1 border border-orange-200">
+                  <div className="relative mx-auto max-w-lg">
+                    <MiniAuditVisual />
+                    <span className="absolute -top-3 -right-3 z-10 bg-orange-600 text-white text-xs font-medium tracking-wide rounded-full px-2.5 py-1 border border-orange-600 shadow-sm">
                       POPULAR
                     </span>
                   </div>
@@ -473,19 +458,9 @@ const HomePage = () => {
               {/* Full AI Visibility Strategy Blueprint */}
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="lg:order-2">
-                  <div className="relative mx-auto max-w-md">
-                    <div className="rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-white">
-                      <img
-                        src="/lovable-uploads/4ff37a30-04f9-4ce9-a0f7-6900ce26af0a.png"
-                        alt="Full AI Visibility Strategy Blueprint Document"
-                        width={900}
-                        height={541}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full"
-                      />
-                    </div>
-                    <span className="absolute -top-3 -right-3 bg-orange-50 text-orange-700 text-xs font-medium tracking-wide rounded-full px-2.5 py-1 border border-orange-200">
+                  <div className="relative mx-auto max-w-lg">
+                    <BlueprintVisual />
+                    <span className="absolute -top-3 -right-3 z-10 bg-white text-orange-700 text-xs font-medium tracking-wide rounded-full px-2.5 py-1 border border-orange-200 shadow-sm">
                       PREMIUM
                     </span>
                   </div>
