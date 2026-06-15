@@ -99,9 +99,9 @@ const HomePage = () => {
         {/* Hero */}
         <section className="relative pt-16 md:pt-24 pb-14 md:pb-20 bg-white">
           <div className="max-w-6xl mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.02] text-balance">
-              <span className="block">If AI Doesn't Recommend You,</span>
-              <span className="block text-orange-600">You Don't Exist</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.05] md:leading-[1.02] text-balance">
+              <span className="block">{`If AI Doesn't Recommend You,`}</span>
+              <span className="block text-orange-600">{`You Don't Exist`}</span>
             </h1>
 
             <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
