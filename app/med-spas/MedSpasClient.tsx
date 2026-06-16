@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { useScheduleCallPopup } from '@/hooks/useScheduleCallPopup';
 import { getRelatedIndustries } from '@/lib/industries';
+import { MED_SPA_FAQS } from './faqData';
 import {
   ArrowRight,
   CheckCircle2,
@@ -189,32 +190,38 @@ const AuditHeroVisual = () => (
 );
 
 // ---------------------------------------------------------------------------
-// Sticky in-page sub-nav (the spec asks for 7 anchors)
+// Reading progress bar — a slim orange indicator that fills as the visitor
+// scrolls the page. Replaces the old in-page anchor sub-nav for a cleaner,
+// more streamlined top of page.
 // ---------------------------------------------------------------------------
-const SubNav = () => {
-  const items = [
-    { href: '#ai-visibility', label: 'AI Visibility' },
-    { href: '#what-we-analyse', label: 'What We Analyse' },
-    { href: '#what-we-do', label: 'What We Do' },
-    { href: '#process', label: 'Our Process' },
-    { href: '#results', label: 'Results' },
-    { href: '#faqs', label: 'FAQs' },
-    { href: '#audit', label: 'Get Your Audit' },
-  ];
+const ScrollProgressBar = () => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const update = () => {
+      const el = document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      setProgress(max > 0 ? Math.min(100, (el.scrollTop / max) * 100) : 0);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   return (
-    <nav className="hidden lg:block border-b border-slate-200 bg-white shadow-sm sticky top-24 z-40">
-      <div className="max-w-6xl mx-auto px-4 flex items-center gap-1 overflow-x-auto">
-        {items.map((it) => (
-          <a
-            key={it.href}
-            href={it.href}
-            className="text-xs font-medium text-slate-600 hover:text-orange-600 px-3 py-3 whitespace-nowrap transition-colors"
-          >
-            {it.label}
-          </a>
-        ))}
-      </div>
-    </nav>
+    <div
+      className="fixed top-0 inset-x-0 z-[60] h-1 pointer-events-none"
+      aria-hidden="true"
+    >
+      <div
+        className="h-full bg-gradient-to-r from-orange-500 to-orange-400 shadow-sm shadow-orange-500/30 transition-[width] duration-150 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
   );
 };
 
@@ -236,7 +243,7 @@ const MedSpasClient = () => {
     <div className="min-h-screen bg-white">
       <Header onOpenForm={openForm} />
 
-      <SubNav />
+      <ScrollProgressBar />
 
       <main>
         {/* ============================================================== */}
@@ -370,10 +377,16 @@ const MedSpasClient = () => {
                 Find out exactly where your med spa stands
               </h2>
               <p className="text-lg text-slate-700 leading-relaxed">
-                Our Multi-Model AI Visibility Audit tests the commercially valuable questions
-                your patients are likely to ask. We don't simply search for your brand name. We
-                test the treatment, service and local discovery prompts that could lead to a new
-                consultation.
+                Our{' '}
+                <Link
+                  href="/llm-visibility-audit"
+                  className="text-orange-600 hover:text-orange-700 font-medium underline underline-offset-2 decoration-orange-300"
+                >
+                  Multi-Model AI Visibility Audit
+                </Link>{' '}
+                tests the commercially valuable questions your patients are likely to ask. We
+                don't simply search for your brand name. We test the treatment, service and local
+                discovery prompts that could lead to a new consultation.
               </p>
             </div>
 
@@ -835,9 +848,15 @@ const MedSpasClient = () => {
               </h2>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
                 TotalAuthority is an AI visibility and authority-building agency. We identify
-                the external signals influencing recommendations, create the strategy needed to
-                strengthen them, and execute the work required to build a more visible and
-                defensible brand.
+                the external signals influencing recommendations, create the{' '}
+                <Link
+                  href="/strategy-blueprint"
+                  className="text-orange-600 hover:text-orange-700 font-medium underline underline-offset-2 decoration-orange-300"
+                >
+                  strategy
+                </Link>{' '}
+                needed to strengthen them, and execute the work required to build a more visible
+                and defensible brand.
               </p>
               <p className="text-lg text-slate-700 leading-relaxed">
                 This combines AI visibility analysis with digital PR, earned media, content,
@@ -943,7 +962,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         {/* 8. EARNED MEDIA DIFFERENTIATOR                                   */}
         {/* ============================================================== */}
-        <section className="cv-auto py-20 md:py-28 px-4 bg-white border-t border-slate-200/70">
+        <section className="cv-auto pt-20 md:pt-28 pb-14 md:pb-16 px-4 bg-white border-t border-slate-200/70">
           <div className="max-w-5xl mx-auto">
             <SectionEyebrow>Earned Media</SectionEyebrow>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6 text-balance">
@@ -1018,7 +1037,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         {/* 9. PRACTITIONER AUTHORITY                                        */}
         {/* ============================================================== */}
-        <section className="cv-auto py-20 md:py-28 px-4 bg-slate-50/40">
+        <section className="cv-auto py-14 md:py-16 px-4 bg-slate-50/40">
           <div className="max-w-5xl mx-auto">
             <SectionEyebrow>Practitioner Authority</SectionEyebrow>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6 text-balance">
@@ -1069,7 +1088,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         {/* 10. TREATMENT VISIBILITY                                         */}
         {/* ============================================================== */}
-        <section className="cv-auto py-20 md:py-28 px-4 bg-white">
+        <section className="cv-auto pt-14 md:pt-16 pb-20 md:pb-28 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-12">
               <SectionEyebrow>Treatment Visibility</SectionEyebrow>
@@ -1829,56 +1848,7 @@ const MedSpasClient = () => {
               </p>
             </div>
             <div className="space-y-3">
-              {[
-                {
-                  q: 'What is AI visibility for a med spa?',
-                  a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about treatments in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your practitioners are recognised for relevant expertise.',
-                },
-                {
-                  q: 'How do you measure our visibility?',
-                  a: "We create a defined set of high-intent prompts based on your treatments, location and commercial priorities. We then audit the answers across ChatGPT, Gemini and Perplexity, recording brand mentions, website citations, direct recommendations, competitors and source usage.",
-                },
-                {
-                  q: 'Can you guarantee that AI will recommend us?',
-                  a: 'No. The platforms operate independently and their answers can change. We strengthen the authority, relevance, consistency and third-party evidence connected with your brand. These are the areas most likely to improve how your clinic is understood and considered.',
-                },
-                {
-                  q: 'Is AI visibility the same as SEO?',
-                  a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, practitioner entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
-                },
-                {
-                  q: 'Does our med spa still need local SEO?',
-                  a: 'Yes. Patients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, practitioner, media and third-party authority.',
-                },
-                {
-                  q: 'Why is earned media part of the strategy?',
-                  a: 'Editorial coverage gives your clinic independent recognition. It can connect your practitioners with relevant expertise, create authoritative mentions, earn backlinks and give both patients and AI systems additional sources through which to validate the brand.',
-                },
-                {
-                  q: 'Do you work on our website?',
-                  a: 'Website alignment can form part of the implementation plan. This may include positioning, treatment associations, practitioner information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
-                },
-                {
-                  q: 'Do you create content?',
-                  a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, treatment guides, comparison pages, reports and other assets that may support citations, media outreach and patient education.',
-                },
-                {
-                  q: 'Can you promote individual injectors and practitioners?',
-                  a: 'Yes, provided their experience and credentials support the positioning. Practitioner authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
-                },
-                {
-                  q: 'Can you help a multi-location med spa group?',
-                  a: 'Yes. Multi-location clinics need clear connections between the parent brand, each location, practitioners, treatment offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider group.',
-                },
-                {
-                  q: 'How quickly will visibility improve?',
-                  a: 'There is no universal timeframe. Some improvements can occur after clearer information or stronger source coverage is discovered. Building a defensible authority footprint requires sustained execution across several areas. Progress should be judged across multiple prompts and models rather than one isolated result.',
-                },
-                {
-                  q: 'What happens after the audit?',
-                  a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
-                },
-              ].map((f, i) => {
+              {MED_SPA_FAQS.map((f, i) => {
                 const open = openFaq === i;
                 return (
                   <div
