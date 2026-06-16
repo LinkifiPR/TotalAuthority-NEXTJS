@@ -197,7 +197,7 @@ const SubNav = () => {
     { href: '#audit', label: 'Get Your Audit' },
   ];
   return (
-    <nav className="hidden lg:block border-b border-slate-200 bg-white/95 backdrop-blur-sm sticky top-[5rem] z-40">
+    <nav className="hidden lg:block border-b border-slate-200 bg-white shadow-sm sticky top-24 z-40">
       <div className="max-w-6xl mx-auto px-4 flex items-center gap-1 overflow-x-auto">
         {items.map((it) => (
           <a
@@ -231,16 +231,6 @@ const MedSpasClient = () => {
     <div className="min-h-screen bg-white">
       <Header onOpenForm={openForm} />
 
-      {/* Sticky audit CTA bar */}
-      <div className="hidden md:flex sticky top-[5.5rem] z-40 justify-end px-6 py-2 bg-transparent pointer-events-none">
-        <button
-          onClick={openForm}
-          className="pointer-events-auto bg-orange-600 hover:bg-orange-700 text-white text-xs font-semibold rounded-full px-4 py-2 shadow-lg shadow-orange-900/20"
-        >
-          Get Your AI Visibility Audit →
-        </button>
-      </div>
-
       <SubNav />
 
       <main>
@@ -249,7 +239,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         <section
           id="ai-visibility"
-          className="relative pt-14 md:pt-20 pb-20 md:pb-28 px-4 bg-gradient-to-b from-orange-50/40 to-white"
+          className="scroll-mt-36 relative pt-14 md:pt-20 pb-20 md:pb-28 px-4 bg-gradient-to-b from-orange-50/40 to-white"
         >
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -274,13 +264,13 @@ const MedSpasClient = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <button
-                    onClick={openForm}
+                  <Link
+                    href="/llm-visibility-audit"
                     className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-7 py-4 rounded-lg font-semibold shadow-lg shadow-orange-900/20 transition-colors"
                   >
                     Get Your AI Visibility Audit
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                   <button
                     onClick={openScheduleCall}
                     className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-semibold text-slate-900 border border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-colors"
@@ -311,7 +301,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         <section
           id="what-we-analyse"
-          className="cv-auto py-20 md:py-28 px-4 bg-white border-y border-slate-200/70"
+          className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-white border-y border-slate-200/70"
         >
           <div className="max-w-4xl mx-auto">
             <SectionEyebrow>The Shift</SectionEyebrow>
@@ -448,13 +438,13 @@ const MedSpasClient = () => {
             </div>
 
             <div className="text-center mt-12">
-              <button
-                onClick={openForm}
+              <Link
+                href="/llm-visibility-audit"
                 className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-7 py-4 rounded-lg font-semibold shadow-lg shadow-orange-900/20"
               >
                 Audit My Med Spa
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -707,7 +697,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         <section
           id="what-we-do"
-          className="cv-auto py-20 md:py-28 px-4 bg-gradient-to-b from-slate-50/40 to-white"
+          className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-gradient-to-b from-slate-50/40 to-white"
         >
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-14">
@@ -979,7 +969,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         <section
           id="process"
-          className="cv-auto py-20 md:py-28 px-4 bg-slate-900 text-white"
+          className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-slate-900 text-white"
         >
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-14">
@@ -1042,7 +1032,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         <section
           id="results"
-          className="cv-auto py-20 md:py-28 px-4 bg-white"
+          className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-white"
         >
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-12">
@@ -1309,7 +1299,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         <section
           id="audit"
-          className="cv-auto py-20 md:py-28 px-4 bg-gradient-to-b from-orange-50/40 to-white"
+          className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-gradient-to-b from-orange-50/40 to-white"
         >
           <div className="max-w-5xl mx-auto">
             <SectionEyebrow>Get Started</SectionEyebrow>
@@ -1368,13 +1358,13 @@ const MedSpasClient = () => {
                   <li>• Treatments you want to grow</li>
                 </ul>
                 <div className="mt-auto space-y-3">
-                  <button
-                    onClick={openForm}
+                  <Link
+                    href="/llm-visibility-audit"
                     className="w-full inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-4 rounded-lg font-semibold shadow-lg shadow-orange-900/20 transition-colors"
                   >
                     Get My Med Spa Audit
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                   <button
                     onClick={openScheduleCall}
                     className="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium text-slate-900 border border-slate-300 hover:bg-slate-50 transition-colors"
@@ -1539,7 +1529,7 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         {/* 20. FAQ                                                          */}
         {/* ============================================================== */}
-        <section id="faqs" className="cv-auto py-20 md:py-28 px-4 bg-white">
+        <section id="faqs" className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <SectionEyebrow>FAQs</SectionEyebrow>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-10 text-balance">
@@ -1743,13 +1733,13 @@ const MedSpasClient = () => {
               required to compete.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <button
-                onClick={openForm}
+              <Link
+                href="/llm-visibility-audit"
                 className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-7 py-4 rounded-lg font-semibold shadow-lg shadow-orange-900/30"
               >
                 Get Your Med Spa AI Visibility Audit
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
               <button
                 onClick={openScheduleCall}
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-semibold text-white border border-white/30 hover:bg-white/5"
@@ -1767,13 +1757,13 @@ const MedSpasClient = () => {
 
       {/* Mobile sticky CTA */}
       <div className="md:hidden fixed bottom-3 left-3 right-3 z-50">
-        <button
-          onClick={openForm}
+        <Link
+          href="/llm-visibility-audit"
           className="w-full bg-orange-600 hover:bg-orange-700 text-white px-5 py-3.5 rounded-xl font-semibold shadow-2xl shadow-orange-900/30 flex items-center justify-center gap-2"
         >
           Audit My Med Spa
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
 
       <Footer onOpenForm={openForm} />
