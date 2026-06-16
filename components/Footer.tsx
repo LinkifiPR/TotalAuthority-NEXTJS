@@ -138,21 +138,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
           {/* Industries */}
           <div className="md:col-span-2">
             <h3 className="text-sm font-semibold tracking-wide text-white mb-4 uppercase">Industries</h3>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            <ul className="columns-2 gap-x-6 [&>li]:mb-2.5 [&>li]:break-inside-avoid">
               {INDUSTRIES.map((ind) =>
                 ind.status === 'live' ? (
                   <li key={ind.slug}>
                     <Link
                       href={`/${ind.slug}`}
                       onClick={scrollToTop}
-                      className="text-slate-200 hover:text-orange-300 transition-colors text-sm"
+                      className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                     >
                       {ind.name}
                     </Link>
                   </li>
                 ) : (
                   <li key={ind.slug}>
-                    <span className="text-slate-400 text-sm cursor-default">{ind.name}</span>
+                    <span className="text-slate-400 text-sm leading-snug cursor-default">{ind.name}</span>
                   </li>
                 )
               )}
