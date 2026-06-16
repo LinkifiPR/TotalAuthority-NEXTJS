@@ -10,18 +10,11 @@
  * When a new industry page ships, flip status: "coming-soon" → "live"
  * and the nav/footer links activate automatically — no other edits needed.
  *
- * Internal linking strategy (applied by every industry page template):
- *   - Header dropdown lists every "live" industry
- *   - Footer lists every industry (live ones link, coming-soon ones show pill)
- *   - Each industry page renders a "Related industries" section linking to
- *     its three nearest siblings (defined by `related`), naturally distributing
- *     PageRank-style link equity through clinical / professional / trades clusters
- *   - Each page also cross-links into the product flow:
- *       /llm-visibility-audit
- *       /llm-visibility-gap-calculator
- *       /strategy-blueprint
- *       /about
- *       /blog
+ * Cluster logic for the `related` field:
+ *   - clinical: med spas, health, dental, eye, therapy, rehab, cosmetic surgery, private medical
+ *   - financial: accountancy, tax, financial advisory, wealth, mortgage, insurance, investment, estate planning, business brokers, insolvency
+ *   - legal: law firms (links to accountancy and other professional services)
+ *   - property/build: real estate, chartered surveyors, architectural, engineering, business consultancies
  */
 
 export type IndustryStatus = 'live' | 'coming-soon';
@@ -37,131 +30,182 @@ export interface Industry {
 }
 
 export const INDUSTRIES: Industry[] = [
-  // Medical / clinical cluster
+  // ───── Clinical cluster ─────
   {
     slug: 'med-spas',
     name: 'Med Spas',
     status: 'live',
-    related: ['dental-clinics', 'eye-clinics', 'health-clinics'],
+    related: ['cosmetic-surgery-clinics', 'dental-clinics', 'health-clinics'],
     shortDescription: 'AI visibility and authority for medical aesthetics clinics.',
   },
   {
     slug: 'health-clinics',
     name: 'Health Clinics',
     status: 'coming-soon',
-    related: ['med-spas', 'dental-clinics', 'therapy-clinics'],
+    related: ['private-medical-practices', 'med-spas', 'therapy-clinics'],
     shortDescription: 'Build authority for general and specialist health practices.',
   },
   {
     slug: 'dental-clinics',
     name: 'Dental Clinics',
     status: 'coming-soon',
-    related: ['med-spas', 'eye-clinics', 'health-clinics'],
+    related: ['med-spas', 'eye-clinics', 'cosmetic-surgery-clinics'],
     shortDescription: 'Get your dental practice recommended in AI search.',
   },
   {
     slug: 'eye-clinics',
     name: 'Eye Clinics',
     status: 'coming-soon',
-    related: ['med-spas', 'dental-clinics', 'health-clinics'],
+    related: ['dental-clinics', 'cosmetic-surgery-clinics', 'health-clinics'],
     shortDescription: 'AI visibility for ophthalmology and optometry clinics.',
   },
   {
     slug: 'therapy-clinics',
     name: 'Therapy Clinics',
     status: 'coming-soon',
-    related: ['rehab-centers', 'health-clinics', 'med-spas'],
-    shortDescription: 'Authority building for therapy and mental health practices.',
+    related: ['rehab-centres', 'health-clinics', 'private-medical-practices'],
+    shortDescription: 'Authority building for therapy and mental-health practices.',
   },
   {
-    slug: 'rehab-centers',
-    name: 'Rehab Centers',
+    slug: 'rehab-centres',
+    name: 'Rehab Centres',
     status: 'coming-soon',
-    related: ['therapy-clinics', 'health-clinics', 'med-spas'],
-    shortDescription: 'AI visibility for addiction and recovery centers.',
+    related: ['therapy-clinics', 'private-medical-practices', 'health-clinics'],
+    shortDescription: 'AI visibility for addiction, recovery and rehabilitation centres.',
+  },
+  {
+    slug: 'cosmetic-surgery-clinics',
+    name: 'Cosmetic Surgery Clinics',
+    status: 'coming-soon',
+    related: ['med-spas', 'dental-clinics', 'private-medical-practices'],
+    shortDescription: 'AI authority for plastic and cosmetic surgery practices.',
+  },
+  {
+    slug: 'private-medical-practices',
+    name: 'Private Medical Practices',
+    status: 'coming-soon',
+    related: ['health-clinics', 'cosmetic-surgery-clinics', 'therapy-clinics'],
+    shortDescription: 'Authority building for private consultants and specialists.',
   },
 
-  // Professional services cluster
+  // ───── Legal ─────
   {
     slug: 'law-firms',
     name: 'Law Firms',
     status: 'coming-soon',
-    related: ['finance-firms', 'real-estate', 'therapy-clinics'],
+    related: ['accountancy-firms', 'estate-planning-firms', 'tax-advisory-firms'],
     shortDescription: 'Get your firm cited as the trusted authority in your practice area.',
   },
+
+  // ───── Accountancy / tax / advisory ─────
   {
-    slug: 'finance-firms',
-    name: 'Finance Firms',
+    slug: 'accountancy-firms',
+    name: 'Accountancy Firms',
     status: 'coming-soon',
-    related: ['law-firms', 'real-estate', 'interior-design'],
-    shortDescription: 'Build AI authority for advisors, accountants and wealth managers.',
+    related: ['tax-advisory-firms', 'financial-advisory-firms', 'business-consultancies'],
+    shortDescription: 'Build AI authority for accountancy partnerships and firms.',
   },
   {
-    slug: 'real-estate',
-    name: 'Real Estate',
+    slug: 'tax-advisory-firms',
+    name: 'Tax Advisory Firms',
     status: 'coming-soon',
-    related: ['interior-design', 'construction', 'finance-firms'],
+    related: ['accountancy-firms', 'financial-advisory-firms', 'estate-planning-firms'],
+    shortDescription: 'AI visibility for tax advisers and consultants.',
+  },
+  {
+    slug: 'financial-advisory-firms',
+    name: 'Financial Advisory Firms',
+    status: 'coming-soon',
+    related: ['wealth-management-firms', 'accountancy-firms', 'investment-firms'],
+    shortDescription: 'Authority for financial advisers and IFAs.',
+  },
+  {
+    slug: 'wealth-management-firms',
+    name: 'Wealth Management Firms',
+    status: 'coming-soon',
+    related: ['financial-advisory-firms', 'investment-firms', 'estate-planning-firms'],
+    shortDescription: 'AI visibility for wealth managers and private client teams.',
+  },
+  {
+    slug: 'mortgage-brokers',
+    name: 'Mortgage Brokers',
+    status: 'coming-soon',
+    related: ['insurance-brokers', 'financial-advisory-firms', 'real-estate-firms'],
+    shortDescription: 'Build authority for mortgage brokers in competitive local markets.',
+  },
+  {
+    slug: 'insurance-brokers',
+    name: 'Insurance Brokers',
+    status: 'coming-soon',
+    related: ['mortgage-brokers', 'financial-advisory-firms', 'business-brokers'],
+    shortDescription: 'AI visibility for commercial and personal insurance brokers.',
+  },
+  {
+    slug: 'investment-firms',
+    name: 'Investment Firms',
+    status: 'coming-soon',
+    related: ['wealth-management-firms', 'financial-advisory-firms', 'business-brokers'],
+    shortDescription: 'AI authority for investment houses and asset managers.',
+  },
+
+  // ───── Property / build / professional services ─────
+  {
+    slug: 'real-estate-firms',
+    name: 'Real Estate Firms',
+    status: 'coming-soon',
+    related: ['chartered-surveyors', 'architectural-firms', 'mortgage-brokers'],
     shortDescription: 'AI visibility for agencies, brokerages and developers.',
   },
-
-  // Design / build / trades cluster
   {
-    slug: 'interior-design',
-    name: 'Interior Design',
+    slug: 'chartered-surveyors',
+    name: 'Chartered Surveyors',
     status: 'coming-soon',
-    related: ['construction', 'real-estate', 'landscaping'],
-    shortDescription: 'AI authority for interior designers and studios.',
+    related: ['real-estate-firms', 'architectural-firms', 'engineering-consultancies'],
+    shortDescription: 'Authority building for surveying and valuation practices.',
   },
   {
-    slug: 'construction',
-    name: 'Construction',
+    slug: 'architectural-firms',
+    name: 'Architectural Firms',
     status: 'coming-soon',
-    related: ['interior-design', 'landscaping', 'fencing-companies'],
-    shortDescription: 'Build visibility for builders, contractors and developers.',
+    related: ['engineering-consultancies', 'real-estate-firms', 'chartered-surveyors'],
+    shortDescription: 'AI authority for architects and design studios.',
   },
   {
-    slug: 'landscaping',
-    name: 'Landscaping',
+    slug: 'engineering-consultancies',
+    name: 'Engineering Consultancies',
     status: 'coming-soon',
-    related: ['fencing-companies', 'construction', 'interior-design'],
-    shortDescription: 'AI visibility for landscapers and outdoor specialists.',
-  },
-  {
-    slug: 'fencing-companies',
-    name: 'Fencing Companies',
-    status: 'coming-soon',
-    related: ['landscaping', 'construction', 'hvac'],
-    shortDescription: 'Get your fencing company recommended over local competitors.',
-  },
-  {
-    slug: 'hvac',
-    name: 'HVAC',
-    status: 'coming-soon',
-    related: ['plumbing', 'pest-control', 'construction'],
-    shortDescription: 'AI visibility for heating, ventilation and air-conditioning companies.',
-  },
-  {
-    slug: 'plumbing',
-    name: 'Plumbing',
-    status: 'coming-soon',
-    related: ['hvac', 'pest-control', 'construction'],
-    shortDescription: 'Build authority for plumbing companies in competitive local markets.',
-  },
-  {
-    slug: 'pest-control',
-    name: 'Pest Control',
-    status: 'coming-soon',
-    related: ['plumbing', 'hvac', 'landscaping'],
-    shortDescription: 'AI visibility and lead generation for pest control firms.',
+    related: ['architectural-firms', 'chartered-surveyors', 'business-consultancies'],
+    shortDescription: 'AI visibility for engineering consultancies and specialists.',
   },
 
-  // Travel
+  // ───── Business advisory ─────
   {
-    slug: 'travel',
-    name: 'Travel',
+    slug: 'business-consultancies',
+    name: 'Business Consultancies',
     status: 'coming-soon',
-    related: ['real-estate', 'finance-firms', 'interior-design'],
-    shortDescription: 'AI visibility for travel agencies, tour operators and hospitality.',
+    related: ['accountancy-firms', 'business-brokers', 'insolvency-practitioners'],
+    shortDescription: 'AI authority for management and strategy consultancies.',
+  },
+  {
+    slug: 'business-brokers',
+    name: 'Business Brokers',
+    status: 'coming-soon',
+    related: ['business-consultancies', 'accountancy-firms', 'insolvency-practitioners'],
+    shortDescription: 'AI visibility for business brokers and M&A advisers.',
+  },
+  {
+    slug: 'insolvency-practitioners',
+    name: 'Insolvency Practitioners',
+    status: 'coming-soon',
+    related: ['accountancy-firms', 'business-consultancies', 'law-firms'],
+    shortDescription: 'Authority building for insolvency and restructuring firms.',
+  },
+  {
+    slug: 'estate-planning-firms',
+    name: 'Estate Planning Firms',
+    status: 'coming-soon',
+    related: ['law-firms', 'wealth-management-firms', 'tax-advisory-firms'],
+    shortDescription: 'AI visibility for wills, trusts and estate planning practices.',
   },
 ];
 

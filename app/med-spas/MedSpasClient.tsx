@@ -23,6 +23,8 @@ import {
   AlertTriangle,
   TrendingUp,
   ChevronDown,
+  X as XIcon,
+  Plus as PlusIcon,
 } from 'lucide-react';
 
 const Footer = dynamic(() =>
@@ -308,12 +310,12 @@ const MedSpasClient = () => {
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6 text-balance">
               Your next patient may ask AI before they search Google
             </h2>
-            <p className="text-lg text-slate-700 leading-relaxed mb-5">
+            <p className="text-lg text-slate-700 leading-relaxed mb-8">
               People are increasingly using AI platforms to shortlist providers, compare
               treatments and decide which clinics appear credible. They are asking questions
               such as:
             </p>
-            <ul className="space-y-2.5 mb-8">
+            <div className="grid sm:grid-cols-2 gap-3 mb-10">
               {[
                 'Who offers the best Hydrafacial near me?',
                 'Which med spa is best for natural-looking Botox?',
@@ -322,12 +324,22 @@ const MedSpasClient = () => {
                 'Who is a trusted provider for laser skin rejuvenation?',
                 'Which med spa specialises in acne scarring or sun damage?',
               ].map((q) => (
-                <li key={q} className="flex items-start gap-3 text-slate-700">
-                  <span className="text-orange-500 mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" />
-                  <span className="italic">"{q}"</span>
-                </li>
+                <div
+                  key={q}
+                  className="group relative bg-white border border-slate-200 rounded-xl px-5 py-4 hover:border-orange-300 hover:shadow-md transition-all"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute -top-2.5 left-4 inline-flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-br from-orange-500 to-orange-600 text-white text-xs font-bold shadow-sm"
+                  >
+                    “
+                  </span>
+                  <p className="text-sm md:text-base text-slate-700 italic leading-snug pt-1">
+                    {q}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
             <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4">
               AI can answer those questions without sending the user through a traditional list
               of search results. Your clinic may have an excellent reputation, experienced
@@ -369,10 +381,16 @@ const MedSpasClient = () => {
 
             {/* Prompt categories */}
             <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 mb-12">
-              <h3 className="text-sm font-semibold tracking-[0.16em] uppercase text-slate-500 mb-5">
-                Example prompt categories we test
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-sm font-semibold tracking-[0.16em] uppercase text-slate-500">
+                  Example prompt categories we test
+                </h3>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  12 categories
+                </span>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {[
                   'Best med spa in your city',
                   'Best Botox or Dysport provider',
@@ -384,13 +402,23 @@ const MedSpasClient = () => {
                   'Best chemical peel clinic',
                   'Best acne treatment med spa',
                   'Best skin rejuvenation clinic',
-                ].map((p) => (
+                  'Best clinic for natural-looking results',
+                  'Top-rated med spa near me',
+                ].map((p, i) => (
                   <div
                     key={p}
-                    className="flex items-start gap-2.5 text-sm text-slate-700 bg-orange-50/30 border border-orange-100 rounded-lg px-3 py-2.5"
+                    className={`group relative flex items-start gap-2.5 text-sm text-slate-700 bg-gradient-to-br ${
+                      i % 3 === 0
+                        ? 'from-orange-50/60 to-white border-orange-100'
+                        : i % 3 === 1
+                        ? 'from-slate-50 to-white border-slate-200'
+                        : 'from-emerald-50/40 to-white border-emerald-100'
+                    } border rounded-lg px-3 py-2.5 hover:shadow-md transition-shadow`}
                   >
-                    <Search className="w-3.5 h-3.5 text-orange-500 mt-0.5 flex-shrink-0" />
-                    <span>"{p}"</span>
+                    <Search className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${
+                      i % 3 === 2 ? 'text-emerald-600' : 'text-orange-500'
+                    }`} />
+                    <span className="leading-snug">"{p}"</span>
                   </div>
                 ))}
               </div>
@@ -565,13 +593,19 @@ const MedSpasClient = () => {
               </p>
             </div>
 
-            <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-10 mb-10">
-              <p className="text-xl md:text-2xl leading-relaxed">
-                Your website tells AI what you say about yourself.{' '}
-                <span className="text-orange-300 font-semibold">
+            {/* Centered editorial pull-quote */}
+            <div className="relative max-w-4xl mx-auto mb-12">
+              <div className="absolute -inset-3 bg-gradient-to-br from-orange-200/30 via-transparent to-emerald-200/30 rounded-3xl blur-2xl -z-10" />
+              <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 text-center shadow-2xl shadow-slate-900/20 ring-1 ring-orange-500/20">
+                <Sparkles className="w-7 h-7 text-orange-400 mx-auto mb-5" />
+                <p className="text-xl md:text-2xl leading-relaxed">
+                  Your website tells AI what you say about yourself.
+                </p>
+                <p className="text-xl md:text-2xl leading-relaxed mt-3 text-orange-300 font-semibold">
                   Third-party sources help validate whether that claim should be trusted.
-                </span>
-              </p>
+                </p>
+                <div className="h-px w-12 bg-orange-500/60 mx-auto mt-7" />
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -580,22 +614,48 @@ const MedSpasClient = () => {
                   title: 'Top Recurring Sources',
                   body: 'The websites appearing most frequently across audited answers.',
                   items: ['RealSelf', 'Allure', 'Healthline', 'Local press'],
+                  icon: TrendingUp,
+                  tone: 'orange' as const,
                 },
                 {
                   title: 'Used Across Multiple AI Models',
                   body: 'Sources relied upon by more than one platform.',
                   items: ['Reddit', 'NYT Wellness', 'NPR Health'],
+                  icon: Layers,
+                  tone: 'emerald' as const,
                 },
                 {
                   title: 'Owned vs Third-Party Signals',
                   body: 'A comparison between citations from your own website and appearances from external sources.',
                   items: ['Your domain: 23%', 'Third-party: 77%'],
+                  icon: BarChart3,
+                  tone: 'slate' as const,
                 },
               ].map((card) => (
                 <article
                   key={card.title}
-                  className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+                  className="group relative rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-orange-200 hover:-translate-y-0.5 transition-all overflow-hidden"
                 >
+                  <div
+                    className={`absolute inset-x-0 -top-px h-1 ${
+                      card.tone === 'orange'
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-400'
+                        : card.tone === 'emerald'
+                        ? 'bg-gradient-to-r from-emerald-500 to-emerald-400'
+                        : 'bg-gradient-to-r from-slate-700 to-slate-500'
+                    } scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500`}
+                  />
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-sm ${
+                      card.tone === 'orange'
+                        ? 'bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-orange-500/30'
+                        : card.tone === 'emerald'
+                        ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-emerald-500/30'
+                        : 'bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-slate-500/30'
+                    }`}
+                  >
+                    <card.icon className="w-5 h-5" />
+                  </div>
                   <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-2">
                     {card.title}
                   </h3>
@@ -604,7 +664,13 @@ const MedSpasClient = () => {
                     {card.items.map((i) => (
                       <span
                         key={i}
-                        className="inline-flex text-[11px] font-medium text-slate-700 bg-orange-50 border border-orange-100 rounded-full px-2.5 py-1"
+                        className={`inline-flex text-[11px] font-medium rounded-full px-2.5 py-1 ${
+                          card.tone === 'orange'
+                            ? 'text-orange-700 bg-orange-50 border border-orange-200'
+                            : card.tone === 'emerald'
+                            ? 'text-emerald-700 bg-emerald-50 border border-emerald-200'
+                            : 'text-slate-700 bg-slate-50 border border-slate-200'
+                        }`}
                       >
                         {i}
                       </span>
@@ -683,11 +749,19 @@ const MedSpasClient = () => {
               </div>
             </div>
 
-            <div className="mt-10 bg-orange-50 border border-orange-200 rounded-xl p-6 md:p-7">
-              <p className="text-lg md:text-xl font-semibold text-slate-900 leading-snug">
-                Your brand needs to be consistently understood before it can be consistently
-                recommended.
-              </p>
+            {/* Centered editorial highlight */}
+            <div className="mt-14 relative max-w-3xl mx-auto text-center">
+              <div className="absolute -inset-4 bg-gradient-to-br from-orange-200/30 via-transparent to-emerald-200/30 rounded-3xl blur-2xl -z-10" />
+              <div className="bg-white border border-orange-200 rounded-2xl p-8 md:p-10 shadow-lg shadow-orange-500/5">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white mb-5 shadow-md shadow-orange-500/30">
+                  <Award className="w-5 h-5" />
+                </div>
+                <p className="text-xl md:text-2xl font-semibold text-slate-900 leading-snug text-balance">
+                  Your brand needs to be{' '}
+                  <span className="text-orange-600">consistently understood</span> before it can
+                  be consistently recommended.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -762,16 +836,26 @@ const MedSpasClient = () => {
                   body: 'We continue testing the prompts most valuable to your clinic: recommendation frequency, brand mentions, treatment-level visibility, competitor share of voice, citation sources and positioning accuracy.',
                   icon: BarChart3,
                 },
+                {
+                  num: '08',
+                  title: 'Local and Multi-Location Authority',
+                  body: 'For clinics operating across one or more locations, we strengthen the local signals AI relies on: location-specific profiles, regional press, neighbourhood references, structured local data and location-level practitioner recognition.',
+                  icon: Building2,
+                },
               ].map((p) => (
                 <article
                   key={p.num}
-                  className="group rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-md hover:border-orange-200 transition-all flex flex-col"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-orange-200 hover:-translate-y-0.5 transition-all flex flex-col"
                 >
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-orange-500 to-orange-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                  />
                   <div className="flex items-center justify-between mb-5">
                     <span className="text-xs font-semibold tracking-[0.16em] uppercase text-orange-600">
                       {p.num}
                     </span>
-                    <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-500/30 group-hover:shadow-lg group-hover:shadow-orange-500/40 transition-shadow">
                       <p.icon className="w-5 h-5" />
                     </div>
                   </div>
@@ -834,21 +918,36 @@ const MedSpasClient = () => {
             </p>
 
             <div className="border-t border-slate-200 pt-10">
-              <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-6">
+              <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-8">
                 Publications featuring our clients and their experts
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 items-center">
-                {['BBC', 'Bloomberg', 'Business Insider', 'Forbes', 'Mashable', 'The New York Times', 'Yahoo', 'MSN'].map(
-                  (name) => (
-                    <div
-                      key={name}
-                      className="text-center text-base md:text-lg font-semibold text-slate-400 hover:text-slate-700 transition-colors"
-                    >
-                      {name}
-                    </div>
-                  )
-                )}
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-x-8 gap-y-6 items-center">
+                {[
+                  { name: 'The New York Times', src: '/lovable-uploads/33e2dca2-51b9-4f9b-9992-91bf2b695ddb.png' },
+                  { name: 'Business Insider', src: '/lovable-uploads/096af39c-a9c6-4705-83ae-21dcbc3cf363.png' },
+                  { name: 'CMSWire', src: '/lovable-uploads/b106b599-d413-4fd2-aaec-597d49c0a043.png' },
+                  { name: 'BuzzStream', src: '/lovable-uploads/5b0237c8-edf2-4e8d-8261-ee493ba5d214.png' },
+                  { name: 'Link Building Mastery', src: '/lovable-uploads/6f7e1d22-43c1-41ec-bf8e-3456e529ef50.png' },
+                ].map((p) => (
+                  <div
+                    key={p.name}
+                    className="flex items-center justify-center h-10 md:h-12"
+                    aria-label={p.name}
+                  >
+                    <img
+                      src={p.src}
+                      alt={`${p.name} logo`}
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-full w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                      style={{ filter: 'grayscale(1) brightness(0) saturate(100%)' }}
+                    />
+                  </div>
+                ))}
               </div>
+              <p className="text-xs text-slate-400 mt-6 text-center">
+                Plus BBC, Bloomberg, Forbes, Mashable, Yahoo, MSN and more.
+              </p>
             </div>
           </div>
         </section>
@@ -870,7 +969,7 @@ const MedSpasClient = () => {
             <p className="text-base text-slate-700 leading-relaxed mb-8">
               We help develop that expertise into visible authority through:
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-12">
               {[
                 'Practitioner positioning',
                 'Expert biographies',
@@ -883,20 +982,26 @@ const MedSpasClient = () => {
                 'Broadcast opportunities',
                 'Expert-led content',
                 'Professional citations',
-              ].map((i) => (
+                'Conference speaking',
+              ].map((i, idx) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-2 text-sm text-slate-700 bg-white border border-slate-200 rounded-lg px-3 py-2.5"
+                  className="inline-flex items-center gap-2 text-sm text-slate-700 bg-white border border-slate-200 rounded-lg px-3 py-2.5 hover:border-orange-200 hover:shadow-sm transition-all"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0" />
+                  <UserCheck className={`w-3.5 h-3.5 flex-shrink-0 ${
+                    idx % 2 ? 'text-emerald-600' : 'text-orange-500'
+                  }`} />
                   {i}
                 </span>
               ))}
             </div>
-            <p className="text-base text-slate-700 leading-relaxed italic">
-              A practitioner with genuine expertise can become a recognised source for both
-              patients and journalists. That authority then supports the clinic they represent.
-            </p>
+            <div className="max-w-2xl mx-auto text-center">
+              <div className="h-px w-12 bg-orange-500/60 mx-auto mb-5" />
+              <p className="text-lg md:text-xl text-slate-700 italic leading-relaxed">
+                A practitioner with genuine expertise can become a recognised source for both
+                patients and journalists. That authority then supports the clinic they represent.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -917,50 +1022,90 @@ const MedSpasClient = () => {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 mb-8">
-              <h3 className="text-sm font-semibold tracking-[0.16em] uppercase text-slate-500 mb-5">
-                A med spa strategy may focus on
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
-                {[
-                  'Botox',
-                  'Dysport',
-                  'Dermal fillers',
-                  'Lip augmentation',
-                  'Facial balancing',
-                  'Hydrafacial',
-                  'RF microneedling',
-                  'Traditional microneedling',
-                  'IPL photorejuvenation',
-                  'Laser skin resurfacing',
-                  'Chemical peels',
-                  'Laser hair removal',
-                  'Acne treatments',
-                  'Skin tightening',
-                  'Body contouring',
-                  'Medical-grade skincare',
-                  'Hair restoration',
-                  'Medical weight loss',
-                  'Permanent makeup',
-                  'Nano brows',
-                  'Microblading',
-                ].map((t) => (
-                  <span
-                    key={t}
-                    className="text-sm font-medium text-slate-700 bg-orange-50/50 border border-orange-100 rounded-lg px-3 py-2 text-center"
-                  >
-                    {t}
+            <div className="relative rounded-2xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 mb-10 overflow-hidden">
+              {/* Decorative glow background */}
+              <div
+                aria-hidden="true"
+                className="absolute -top-24 -right-24 w-72 h-72 bg-orange-200/30 rounded-full blur-3xl"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-24 -left-24 w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl"
+              />
+              <div className="relative">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-sm font-semibold tracking-[0.16em] uppercase text-slate-500">
+                    A med spa strategy may focus on
+                  </h3>
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-orange-700 bg-orange-50 border border-orange-200 rounded-full px-2.5 py-1">
+                    <Sparkles className="w-3 h-3" />
+                    24 treatments
                   </span>
-                ))}
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {[
+                    'Botox',
+                    'Dysport',
+                    'Dermal fillers',
+                    'Lip augmentation',
+                    'Facial balancing',
+                    'Hydrafacial',
+                    'RF microneedling',
+                    'Traditional microneedling',
+                    'IPL photorejuvenation',
+                    'Laser skin resurfacing',
+                    'Chemical peels',
+                    'Laser hair removal',
+                    'Acne treatments',
+                    'Skin tightening',
+                    'Body contouring',
+                    'Medical-grade skincare',
+                    'Hair restoration',
+                    'Medical weight loss',
+                    'Permanent makeup',
+                    'Nano brows',
+                    'Microblading',
+                    'Sculptra',
+                    'PRP / PRF therapy',
+                    'Cosmetic injectables consults',
+                  ].map((t, i) => (
+                    <span
+                      key={t}
+                      className={`group relative overflow-hidden text-sm font-medium rounded-lg px-3 py-2.5 text-center cursor-default transition-all hover:shadow-md hover:-translate-y-0.5 ${
+                        i % 3 === 0
+                          ? 'text-orange-700 bg-gradient-to-br from-orange-50 to-white border border-orange-200 hover:shadow-orange-500/20'
+                          : i % 3 === 1
+                          ? 'text-emerald-700 bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 hover:shadow-emerald-500/20'
+                          : 'text-slate-700 bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:shadow-slate-500/20'
+                      }`}
+                    >
+                      <span className="relative z-10">{t}</span>
+                      <span
+                        aria-hidden="true"
+                        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br ${
+                          i % 3 === 0
+                            ? 'from-orange-100/40 to-transparent'
+                            : i % 3 === 1
+                            ? 'from-emerald-100/40 to-transparent'
+                            : 'from-slate-100/40 to-transparent'
+                        }`}
+                      />
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <p className="text-lg text-slate-700 leading-relaxed italic max-w-3xl">
-              A clinic may be highly visible for one treatment and completely absent for
-              another. Our process exposes those differences. Every treatment area is reviewed
-              separately because the competitors, sources and authority signals can differ
-              considerably.
-            </p>
+            {/* Centered italic with framing rule */}
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="h-px w-12 bg-orange-500/60 mx-auto mb-5" />
+              <p className="text-lg md:text-xl text-slate-700 italic leading-relaxed">
+                A clinic may be highly visible for one treatment and completely absent for
+                another. Our process exposes those differences. Every treatment area is reviewed
+                separately because the competitors, sources and authority signals can differ
+                considerably.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -981,7 +1126,7 @@ const MedSpasClient = () => {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
                   n: '01',
@@ -1013,12 +1158,36 @@ const MedSpasClient = () => {
                   t: 'Track and Refine',
                   b: 'We monitor how visibility changes across the target prompts and compare progress with the competitors identified in the original audit.',
                 },
-              ].map((s) => (
+              ].map((s, i) => (
                 <div
                   key={s.n}
-                  className="bg-white/[0.04] border border-white/10 rounded-2xl p-6 md:p-7 hover:bg-white/[0.07] transition-colors"
+                  className="relative group bg-white/[0.04] border border-white/10 rounded-2xl p-6 md:p-7 hover:bg-white/[0.07] hover:border-orange-500/30 transition-all"
                 >
-                  <div className="text-3xl font-bold text-orange-400 tabular-nums mb-3">{s.n}</div>
+                  {/* Connector arrow to next card (desktop only). Tail at the
+                      right edge of all but the last in each row of 3. */}
+                  {i !== 5 && (i + 1) % 3 !== 0 && (
+                    <div
+                      aria-hidden="true"
+                      className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-slate-900 border border-orange-500/40 text-orange-400 group-hover:text-orange-300 group-hover:border-orange-500/70 transition-all"
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  )}
+                  {/* For the wrap-around at end of row, draw a down arrow on mobile/tablet */}
+                  {i !== 5 && (
+                    <div
+                      aria-hidden="true"
+                      className="md:hidden flex absolute -bottom-5 left-1/2 -translate-x-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-slate-900 border border-orange-500/40 text-orange-400"
+                    >
+                      <ArrowRight className="w-4 h-4 rotate-90" />
+                    </div>
+                  )}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-3xl font-bold text-orange-400 tabular-nums">{s.n}</div>
+                    <div className="text-[10px] font-semibold uppercase tracking-widest text-orange-400/70">
+                      Step
+                    </div>
+                  </div>
                   <h3 className="text-lg font-semibold mb-2.5">{s.t}</h3>
                   <p className="text-sm text-slate-300 leading-relaxed">{s.b}</p>
                 </div>
@@ -1046,15 +1215,28 @@ const MedSpasClient = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-slate-200 text-slate-600 flex items-center justify-center">
-                    <AlertTriangle className="w-5 h-5" />
+            <div className="relative grid md:grid-cols-2 gap-6 mb-12">
+              {/* Connector arrow Before -> After (desktop) */}
+              <div
+                aria-hidden="true"
+                className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white border-2 border-slate-200 shadow-lg text-slate-400"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-slate-200 text-slate-600 flex items-center justify-center">
+                      <AlertTriangle className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-slate-900">Before</h3>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">Before</h3>
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+                    Today's gaps
+                  </span>
                 </div>
-                <ul className="space-y-2.5">
+                <ul className="space-y-3">
                   {[
                     'The clinic appears inconsistently',
                     'Important treatment prompts produce no mention',
@@ -1067,50 +1249,78 @@ const MedSpasClient = () => {
                   ].map((it) => (
                     <li
                       key={it}
-                      className="flex items-start gap-2.5 text-sm text-slate-700"
+                      className="flex items-start gap-2.5 text-sm text-slate-600"
                     >
-                      <span className="w-1.5 h-1.5 mt-2 rounded-full bg-slate-400 flex-shrink-0" />
+                      <span className="mt-0.5 inline-flex items-center justify-center w-4 h-4 rounded-full bg-white border border-slate-300 flex-shrink-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                      </span>
                       {it}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
-                    <TrendingUp className="w-5 h-5" />
+              <div className="relative rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-white p-6 md:p-8 shadow-md shadow-emerald-500/10">
+                <div
+                  aria-hidden="true"
+                  className="absolute -top-20 -right-20 w-56 h-56 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none"
+                />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/30">
+                        <TrendingUp className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-slate-900">After</h3>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Outcomes
+                    </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">After</h3>
+                  <ul className="space-y-3">
+                    {[
+                      'The clinic appears across more valuable prompts',
+                      'Priority treatments have stronger brand association',
+                      'Brand descriptions become more accurate',
+                      'Practitioner expertise is clearer',
+                      'More trusted sources mention the clinic',
+                      'The website earns relevant citations',
+                      'Competitive gaps begin to reduce',
+                      'Progress is monitored across multiple AI platforms',
+                    ].map((it) => (
+                      <li
+                        key={it}
+                        className="flex items-start gap-2.5 text-sm text-slate-800 font-medium"
+                      >
+                        <span className="mt-0.5 inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-white flex-shrink-0 shadow-sm shadow-emerald-500/40">
+                          <CheckCircle2 className="w-3 h-3" strokeWidth={3} />
+                        </span>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2.5">
-                  {[
-                    'The clinic appears across more valuable prompts',
-                    'Priority treatments have stronger brand association',
-                    'Brand descriptions become more accurate',
-                    'Practitioner expertise is clearer',
-                    'More trusted sources mention the clinic',
-                    'The website earns relevant citations',
-                    'Competitive gaps begin to reduce',
-                    'Progress is monitored across multiple AI platforms',
-                  ].map((it) => (
-                    <li
-                      key={it}
-                      className="flex items-start gap-2.5 text-sm text-slate-800 font-medium"
-                    >
-                      <CheckCircle2 className="w-4 h-4 mt-0.5 text-orange-500 flex-shrink-0" />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 
-            <div className="border-l-4 border-slate-300 pl-5 py-2 text-sm text-slate-600 leading-relaxed max-w-3xl">
-              <strong className="text-slate-800">Important qualification:</strong> No agency
-              controls the answers generated by ChatGPT, Gemini, Perplexity or any other
-              independent platform. Our role is to improve the quality, clarity and authority
-              of the sources and signals those systems may rely upon.
+            {/* Centered, properly designed disclaimer */}
+            <div className="max-w-3xl mx-auto">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 md:p-6 flex items-start gap-4">
+                <div className="w-9 h-9 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-1.5">
+                    Important qualification
+                  </p>
+                  <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+                    No agency controls the answers generated by ChatGPT, Gemini, Perplexity or
+                    any other independent platform. Our role is to improve the quality, clarity
+                    and authority of the sources and signals those systems may rely upon.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1469,59 +1679,81 @@ const MedSpasClient = () => {
               </h2>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-slate-900 text-white text-[10px] uppercase tracking-wider">
-                    <th className="px-5 py-3 text-left font-semibold">Traditional marketing</th>
-                    <th className="px-5 py-3 text-left font-semibold">TotalAuthority approach</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <div className="grid lg:grid-cols-2 gap-5 lg:gap-6">
+              {/* Traditional column */}
+              <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col">
+                <div className="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-slate-200 text-slate-600 flex items-center justify-center">
+                    <XIcon className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-slate-500">
+                      Traditional
+                    </p>
+                    <p className="text-base font-semibold text-slate-900">Old marketing playbook</p>
+                  </div>
+                </div>
+                <ul className="divide-y divide-slate-100 flex-1">
                   {[
-                    [
-                      'Run paid ads for immediate leads',
-                      'Build an authority footprint that supports discovery across multiple channels',
-                    ],
-                    [
-                      'Publish generic treatment blogs',
-                      'Create content and assets designed around specific citation and authority opportunities',
-                    ],
-                    [
-                      'Track Google rankings alone',
-                      'Track mentions, citations and recommendations across multiple AI platforms',
-                    ],
-                    [
-                      'Promote claims made by the clinic',
-                      'Earn independent support from trusted third parties',
-                    ],
-                    [
-                      'Focus on the clinic brand only',
-                      'Build the authority of the clinic and its practitioners',
-                    ],
-                    [
-                      'Build backlinks as isolated SEO assets',
-                      'Build connected media, brand, entity and citation signals',
-                    ],
-                    [
-                      'Measure social engagement',
-                      'Measure treatment visibility, competitor share and source influence',
-                    ],
-                    [
-                      'Optimise only the website',
-                      'Strengthen the wider source environment surrounding the clinic',
-                    ],
-                  ].map(([a, b], i) => (
-                    <tr
-                      key={a}
-                      className={`${i % 2 ? 'bg-slate-50/60' : 'bg-white'} border-t border-slate-200`}
-                    >
-                      <td className="px-5 py-4 text-slate-600">{a}</td>
-                      <td className="px-5 py-4 text-slate-900 font-medium">{b}</td>
-                    </tr>
+                    'Run paid ads for immediate leads',
+                    'Publish generic treatment blogs',
+                    'Track Google rankings alone',
+                    'Promote claims made by the clinic',
+                    'Focus on the clinic brand only',
+                    'Build backlinks as isolated SEO assets',
+                    'Measure social engagement',
+                    'Optimise only the website',
+                  ].map((it) => (
+                    <li key={it} className="flex items-start gap-3 px-6 py-3.5 text-sm text-slate-600">
+                      <span className="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 flex-shrink-0">
+                        <XIcon className="w-3 h-3" strokeWidth={3} />
+                      </span>
+                      <span>{it}</span>
+                    </li>
                   ))}
-                </tbody>
-              </table>
+                </ul>
+              </div>
+
+              {/* TotalAuthority column (highlighted) */}
+              <div className="relative rounded-2xl border-2 border-orange-500 bg-white shadow-lg shadow-orange-500/10 overflow-hidden flex flex-col">
+                <div
+                  aria-hidden="true"
+                  className="absolute -top-24 -right-24 w-56 h-56 bg-orange-200/30 rounded-full blur-3xl pointer-events-none"
+                />
+                <div className="relative px-6 py-4 border-b border-orange-200 bg-gradient-to-r from-orange-50 to-white flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-500/30">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-orange-600">
+                      TotalAuthority
+                    </p>
+                    <p className="text-base font-semibold text-slate-900">Authority-led approach</p>
+                  </div>
+                </div>
+                <ul className="relative divide-y divide-orange-100 flex-1">
+                  {[
+                    'Build an authority footprint that supports discovery across multiple channels',
+                    'Create content and assets designed around specific citation and authority opportunities',
+                    'Track mentions, citations and recommendations across multiple AI platforms',
+                    'Earn independent support from trusted third parties',
+                    'Build the authority of the clinic and its practitioners',
+                    'Build connected media, brand, entity and citation signals',
+                    'Measure treatment visibility, competitor share and source influence',
+                    'Strengthen the wider source environment surrounding the clinic',
+                  ].map((it) => (
+                    <li
+                      key={it}
+                      className="flex items-start gap-3 px-6 py-3.5 text-sm text-slate-800 font-medium"
+                    >
+                      <span className="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white flex-shrink-0 shadow-sm shadow-emerald-500/40">
+                        <CheckCircle2 className="w-3 h-3" strokeWidth={3} />
+                      </span>
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -1529,12 +1761,18 @@ const MedSpasClient = () => {
         {/* ============================================================== */}
         {/* 20. FAQ                                                          */}
         {/* ============================================================== */}
-        <section id="faqs" className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-white">
+        <section id="faqs" className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-gradient-to-b from-slate-50/40 to-white">
           <div className="max-w-4xl mx-auto">
-            <SectionEyebrow>FAQs</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-10 text-balance">
-              Frequently asked questions
-            </h2>
+            <div className="text-center mb-10">
+              <SectionEyebrow>FAQs</SectionEyebrow>
+              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 text-balance">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base text-slate-600 max-w-2xl mx-auto">
+                Twelve of the questions we hear most often from med spas considering an AI
+                visibility programme.
+              </p>
+            </div>
             <div className="space-y-3">
               {[
                 {
@@ -1590,30 +1828,66 @@ const MedSpasClient = () => {
                 return (
                   <div
                     key={f.q}
-                    className="rounded-xl border border-slate-200 bg-white overflow-hidden"
+                    className={`relative rounded-xl border bg-white overflow-hidden transition-all ${
+                      open
+                        ? 'border-orange-300 shadow-lg shadow-orange-500/10'
+                        : 'border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md'
+                    }`}
                   >
                     <button
                       onClick={() => setOpenFaq(open ? null : i)}
-                      className="w-full text-left px-5 md:px-6 py-4 flex items-center justify-between gap-4 hover:bg-slate-50"
+                      className="w-full text-left px-5 md:px-6 py-4 flex items-center justify-between gap-4"
                       aria-expanded={open}
                     >
-                      <span className="font-semibold text-slate-900 text-sm md:text-base">
-                        {f.q}
-                      </span>
-                      <ChevronDown
-                        className={`w-4 h-4 text-slate-500 transition-transform ${
-                          open ? 'rotate-180' : ''
+                      <div className="flex items-center gap-4 min-w-0">
+                        <span
+                          className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-xs font-bold tabular-nums transition-colors ${
+                            open
+                              ? 'bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-sm shadow-orange-500/30'
+                              : 'bg-slate-100 text-slate-600'
+                          }`}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span className={`font-semibold text-sm md:text-base ${
+                          open ? 'text-slate-900' : 'text-slate-800'
+                        }`}>
+                          {f.q}
+                        </span>
+                      </div>
+                      <span
+                        className={`flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
+                          open
+                            ? 'bg-orange-50 text-orange-600'
+                            : 'bg-slate-50 text-slate-500'
                         }`}
-                      />
+                      >
+                        {open ? (
+                          <XIcon className="w-3.5 h-3.5" strokeWidth={3} />
+                        ) : (
+                          <PlusIcon className="w-3.5 h-3.5" strokeWidth={3} />
+                        )}
+                      </span>
                     </button>
                     {open && (
-                      <div className="px-5 md:px-6 pb-5 text-sm md:text-base text-slate-700 leading-relaxed">
+                      <div className="px-5 md:px-6 pb-5 pl-[4.25rem] text-sm md:text-base text-slate-700 leading-relaxed">
                         {f.a}
                       </div>
                     )}
                   </div>
                 );
               })}
+            </div>
+
+            {/* Friendly post-FAQ CTA */}
+            <div className="mt-10 text-center text-sm text-slate-600">
+              Still have questions?{' '}
+              <button
+                onClick={openScheduleCall}
+                className="text-orange-600 hover:text-orange-700 font-medium underline underline-offset-4"
+              >
+                Book a strategy call →
+              </button>
             </div>
           </div>
         </section>
