@@ -23,6 +23,9 @@ import {
   AlertTriangle,
   TrendingUp,
   ChevronDown,
+  Star,
+  Quote,
+  ShieldCheck,
   X as XIcon,
   Plus as PlusIcon,
 } from 'lucide-react';
@@ -326,17 +329,12 @@ const MedSpasClient = () => {
               ].map((q) => (
                 <div
                   key={q}
-                  className="group relative bg-white border border-slate-200 rounded-xl px-5 py-4 hover:border-orange-300 hover:shadow-md transition-all"
+                  className="group flex items-center gap-3 bg-slate-50/80 border border-slate-200 rounded-xl px-3.5 py-3 hover:bg-white hover:border-orange-300 hover:shadow-sm transition-all"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="absolute -top-2.5 left-4 inline-flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-br from-orange-500 to-orange-600 text-white text-xs font-bold shadow-sm"
-                  >
-                    “
+                  <span className="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white text-orange-500 border border-slate-200 group-hover:text-orange-600 group-hover:border-orange-200 transition-colors">
+                    <Search className="w-4 h-4" strokeWidth={2.25} />
                   </span>
-                  <p className="text-sm md:text-base text-slate-700 italic leading-snug pt-1">
-                    {q}
-                  </p>
+                  <span className="text-sm md:text-[15px] text-slate-700 leading-snug">{q}</span>
                 </div>
               ))}
             </div>
@@ -404,20 +402,12 @@ const MedSpasClient = () => {
                   'Best skin rejuvenation clinic',
                   'Best clinic for natural-looking results',
                   'Top-rated med spa near me',
-                ].map((p, i) => (
+                ].map((p) => (
                   <div
                     key={p}
-                    className={`group relative flex items-start gap-2.5 text-sm text-slate-700 bg-gradient-to-br ${
-                      i % 3 === 0
-                        ? 'from-orange-50/60 to-white border-orange-100'
-                        : i % 3 === 1
-                        ? 'from-slate-50 to-white border-slate-200'
-                        : 'from-emerald-50/40 to-white border-emerald-100'
-                    } border rounded-lg px-3 py-2.5 hover:shadow-md transition-shadow`}
+                    className="group flex items-start gap-2.5 text-sm text-emerald-900/80 bg-emerald-50/70 border border-emerald-100 rounded-lg px-3 py-2.5 hover:bg-emerald-50 hover:border-emerald-200 transition-colors"
                   >
-                    <Search className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${
-                      i % 3 === 2 ? 'text-emerald-600' : 'text-orange-500'
-                    }`} />
+                    <Search className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-emerald-600" />
                     <span className="leading-snug">"{p}"</span>
                   </div>
                 ))}
@@ -593,91 +583,139 @@ const MedSpasClient = () => {
               </p>
             </div>
 
-            {/* Centered editorial pull-quote */}
-            <div className="relative max-w-4xl mx-auto mb-12">
-              <div className="absolute -inset-3 bg-gradient-to-br from-orange-200/30 via-transparent to-emerald-200/30 rounded-3xl blur-2xl -z-10" />
-              <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 text-center shadow-2xl shadow-slate-900/20 ring-1 ring-orange-500/20">
-                <Sparkles className="w-7 h-7 text-orange-400 mx-auto mb-5" />
-                <p className="text-xl md:text-2xl leading-relaxed">
+            {/* Editorial pull-quote */}
+            <div className="relative max-w-4xl mx-auto mb-14">
+              <div className="relative overflow-hidden bg-slate-900 text-white rounded-2xl px-8 py-10 md:px-14 md:py-12 shadow-xl shadow-slate-900/25">
+                <div
+                  aria-hidden="true"
+                  className="absolute -top-10 -right-8 w-52 h-52 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"
+                />
+                <Quote className="w-8 h-8 text-orange-400/80 mb-5" />
+                <p className="relative text-xl md:text-[26px] leading-snug text-slate-300">
                   Your website tells AI what you say about yourself.
                 </p>
-                <p className="text-xl md:text-2xl leading-relaxed mt-3 text-orange-300 font-semibold">
-                  Third-party sources help validate whether that claim should be trusted.
+                <p className="relative text-xl md:text-[26px] font-semibold leading-snug text-white mt-2">
+                  Third-party sources help validate{' '}
+                  <span className="text-orange-400">whether that claim should be trusted.</span>
                 </p>
-                <div className="h-px w-12 bg-orange-500/60 mx-auto mt-7" />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: 'Top Recurring Sources',
-                  body: 'The websites appearing most frequently across audited answers.',
-                  items: ['RealSelf', 'Allure', 'Healthline', 'Local press'],
-                  icon: TrendingUp,
-                  tone: 'orange' as const,
-                },
-                {
-                  title: 'Used Across Multiple AI Models',
-                  body: 'Sources relied upon by more than one platform.',
-                  items: ['Reddit', 'NYT Wellness', 'NPR Health'],
-                  icon: Layers,
-                  tone: 'emerald' as const,
-                },
-                {
-                  title: 'Owned vs Third-Party Signals',
-                  body: 'A comparison between citations from your own website and appearances from external sources.',
-                  items: ['Your domain: 23%', 'Third-party: 77%'],
-                  icon: BarChart3,
-                  tone: 'slate' as const,
-                },
-              ].map((card) => (
-                <article
-                  key={card.title}
-                  className="group relative rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-orange-200 hover:-translate-y-0.5 transition-all overflow-hidden"
-                >
-                  <div
-                    className={`absolute inset-x-0 -top-px h-1 ${
-                      card.tone === 'orange'
-                        ? 'bg-gradient-to-r from-orange-500 to-orange-400'
-                        : card.tone === 'emerald'
-                        ? 'bg-gradient-to-r from-emerald-500 to-emerald-400'
-                        : 'bg-gradient-to-r from-slate-700 to-slate-500'
-                    } scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500`}
-                  />
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-sm ${
-                      card.tone === 'orange'
-                        ? 'bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-orange-500/30'
-                        : card.tone === 'emerald'
-                        ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-emerald-500/30'
-                        : 'bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-slate-500/30'
-                    }`}
-                  >
-                    <card.icon className="w-5 h-5" />
+            <div className="grid md:grid-cols-3 gap-6 items-stretch">
+              {/* Card 1 — Top recurring sources (ranked) */}
+              <article className="group rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-orange-200 hover:-translate-y-0.5 transition-all flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-2">
-                    {card.title}
+                  <h3 className="text-base font-semibold text-slate-900 leading-tight">
+                    Top recurring sources
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4">{card.body}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {card.items.map((i) => (
-                      <span
-                        key={i}
-                        className={`inline-flex text-[11px] font-medium rounded-full px-2.5 py-1 ${
-                          card.tone === 'orange'
-                            ? 'text-orange-700 bg-orange-50 border border-orange-200'
-                            : card.tone === 'emerald'
-                            ? 'text-emerald-700 bg-emerald-50 border border-emerald-200'
-                            : 'text-slate-700 bg-slate-50 border border-slate-200'
-                        }`}
-                      >
-                        {i}
-                      </span>
-                    ))}
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  The websites appearing most frequently across audited answers.
+                </p>
+                <ul className="mt-auto space-y-3">
+                  {[
+                    { name: 'RealSelf', pct: 92 },
+                    { name: 'Allure', pct: 74 },
+                    { name: 'Healthline', pct: 61 },
+                    { name: 'Local press', pct: 38 },
+                  ].map((s) => (
+                    <li key={s.name}>
+                      <div className="flex items-center justify-between text-xs mb-1.5">
+                        <span className="font-medium text-slate-700">{s.name}</span>
+                        <span className="tabular-nums text-slate-400">{s.pct}%</span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-orange-500 to-orange-400"
+                          style={{ width: `${s.pct}%` }}
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              {/* Card 2 — Used across multiple AI models */}
+              <article className="group rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-orange-200 hover:-translate-y-0.5 transition-all flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                    <Layers className="w-5 h-5" />
                   </div>
-                </article>
-              ))}
+                  <h3 className="text-base font-semibold text-slate-900 leading-tight">
+                    Used across multiple AI models
+                  </h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  Sources relied upon by more than one platform.
+                </p>
+                <ul className="mt-auto space-y-2.5">
+                  {[
+                    { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
+                    { name: 'NYT Wellness', models: ['ChatGPT', 'Perplexity'] },
+                    { name: 'NPR Health', models: ['Gemini', 'Perplexity'] },
+                  ].map((s) => (
+                    <li
+                      key={s.name}
+                      className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 border border-slate-100 px-3 py-2.5"
+                    >
+                      <span className="text-sm font-medium text-slate-700">{s.name}</span>
+                      <span className="flex items-center gap-1.5">
+                        {['ChatGPT', 'Gemini', 'Perplexity'].map((m) => (
+                          <span
+                            key={m}
+                            title={m}
+                            className={`w-2 h-2 rounded-full ${
+                              s.models.includes(m) ? 'bg-orange-500' : 'bg-slate-200'
+                            }`}
+                          />
+                        ))}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-[11px] text-slate-400 mt-3.5">
+                  Dots indicate ChatGPT · Gemini · Perplexity
+                </p>
+              </article>
+
+              {/* Card 3 — Owned vs third-party signals */}
+              <article className="group rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-orange-200 hover:-translate-y-0.5 transition-all flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-semibold text-slate-900 leading-tight">
+                    Owned vs third-party signals
+                  </h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  A comparison between citations from your own website and appearances from
+                  external sources.
+                </p>
+                <div className="mt-auto">
+                  <div className="flex h-3 rounded-full overflow-hidden mb-4 ring-1 ring-slate-100">
+                    <div className="bg-slate-300" style={{ width: '23%' }} />
+                    <div className="bg-gradient-to-r from-orange-500 to-orange-400" style={{ width: '77%' }} />
+                  </div>
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <div className="text-2xl font-bold text-slate-700 tabular-nums leading-none">
+                        23%
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1.5">Your domain</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-orange-600 tabular-nums leading-none">
+                        77%
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1.5">Third-party</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -749,18 +787,34 @@ const MedSpasClient = () => {
               </div>
             </div>
 
-            {/* Centered editorial highlight */}
-            <div className="mt-14 relative max-w-3xl mx-auto text-center">
-              <div className="absolute -inset-4 bg-gradient-to-br from-orange-200/30 via-transparent to-emerald-200/30 rounded-3xl blur-2xl -z-10" />
-              <div className="bg-white border border-orange-200 rounded-2xl p-8 md:p-10 shadow-lg shadow-orange-500/5">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white mb-5 shadow-md shadow-orange-500/30">
-                  <Award className="w-5 h-5" />
+            {/* Brand statement — premium callout */}
+            <div className="mt-16 relative max-w-4xl mx-auto">
+              <div className="relative overflow-hidden rounded-3xl bg-slate-900 text-white px-8 py-12 md:px-14 md:py-14 text-center shadow-xl shadow-slate-900/25">
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_50%_0%,#ffffff,transparent_60%)]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-80 h-40 bg-orange-500/15 blur-3xl rounded-full pointer-events-none"
+                />
+                <div className="relative">
+                  <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-7">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2 text-sm font-medium text-slate-200">
+                      <ShieldCheck className="w-4 h-4 text-orange-400" />
+                      Consistently understood
+                    </span>
+                    <ArrowRight className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-orange-500/30">
+                      <Star className="w-4 h-4" />
+                      Consistently recommended
+                    </span>
+                  </div>
+                  <p className="text-2xl md:text-3xl font-semibold leading-snug text-balance">
+                    Your brand needs to be consistently understood
+                    <br className="hidden md:block" /> before it can be consistently recommended.
+                  </p>
                 </div>
-                <p className="text-xl md:text-2xl font-semibold text-slate-900 leading-snug text-balance">
-                  Your brand needs to be{' '}
-                  <span className="text-orange-600">consistently understood</span> before it can
-                  be consistently recommended.
-                </p>
               </div>
             </div>
           </div>
@@ -842,31 +896,40 @@ const MedSpasClient = () => {
                   body: 'For clinics operating across one or more locations, we strengthen the local signals AI relies on: location-specific profiles, regional press, neighbourhood references, structured local data and location-level practitioner recognition.',
                   icon: Building2,
                 },
+                {
+                  num: '09',
+                  title: 'Reputation and Review Authority',
+                  body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, RealSelf, Trustpilot and aesthetic-specific listings — so sentiment, volume and recency reinforce recommendations.',
+                  icon: Star,
+                },
               ].map((p) => (
                 <article
                   key={p.num}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-orange-200 hover:-translate-y-0.5 transition-all flex flex-col"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-orange-200 hover:-translate-y-1 transition-all flex flex-col"
                 >
+                  {/* Large ghost numeral as a graphic element */}
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-orange-500 to-orange-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                    className="absolute -top-3 right-3 text-7xl font-bold tabular-nums leading-none select-none text-slate-100 group-hover:text-orange-100 transition-colors"
+                  >
+                    {p.num}
+                  </span>
+                  {/* Persistent corner accent */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-0 top-7 h-9 w-1 rounded-r-full bg-gradient-to-b from-orange-500 to-orange-400"
                   />
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-semibold tracking-[0.16em] uppercase text-orange-600">
-                      {p.num}
-                    </span>
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-500/30 group-hover:shadow-lg group-hover:shadow-orange-500/40 transition-shadow">
-                      <p.icon className="w-5 h-5" />
-                    </div>
+                  <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-500/30 mb-5 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-orange-500/40 transition-all">
+                    <p.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2.5 leading-tight">
+                  <h3 className="relative text-lg font-semibold text-slate-900 mb-2.5 leading-tight">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed flex-1">{p.body}</p>
+                  <p className="relative text-sm text-slate-600 leading-relaxed flex-1">{p.body}</p>
                   {p.href && (
                     <Link
                       href={p.href}
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600 hover:text-orange-700"
+                      className="relative mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600 hover:text-orange-700"
                     >
                       Learn more <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
@@ -918,16 +981,19 @@ const MedSpasClient = () => {
             </p>
 
             <div className="border-t border-slate-200 pt-10">
-              <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-8">
+              <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-10 text-center">
                 Publications featuring our clients and their experts
               </p>
-              <div className="grid grid-cols-3 sm:grid-cols-5 gap-x-8 gap-y-6 items-center">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-10 gap-y-10 items-center">
                 {[
-                  { name: 'The New York Times', src: '/lovable-uploads/33e2dca2-51b9-4f9b-9992-91bf2b695ddb.png' },
-                  { name: 'Business Insider', src: '/lovable-uploads/096af39c-a9c6-4705-83ae-21dcbc3cf363.png' },
-                  { name: 'CMSWire', src: '/lovable-uploads/b106b599-d413-4fd2-aaec-597d49c0a043.png' },
-                  { name: 'BuzzStream', src: '/lovable-uploads/5b0237c8-edf2-4e8d-8261-ee493ba5d214.png' },
-                  { name: 'Link Building Mastery', src: '/lovable-uploads/6f7e1d22-43c1-41ec-bf8e-3456e529ef50.png' },
+                  { name: 'The New York Times', src: '/med-spas-logos/nyt.webp' },
+                  { name: 'BBC', src: '/med-spas-logos/bbc.svg' },
+                  { name: 'The Guardian', src: '/med-spas-logos/guardian.webp' },
+                  { name: 'Forbes', src: '/med-spas-logos/forbes.webp' },
+                  { name: 'ELLE', src: '/med-spas-logos/elle.svg' },
+                  { name: "Men's Health", src: '/med-spas-logos/menshealth.webp' },
+                  { name: 'Healthline', src: '/med-spas-logos/healthline.webp' },
+                  { name: 'HubSpot', src: '/med-spas-logos/hubspot.webp' },
                 ].map((p) => (
                   <div
                     key={p.name}
@@ -939,15 +1005,12 @@ const MedSpasClient = () => {
                       alt={`${p.name} logo`}
                       loading="lazy"
                       decoding="async"
-                      className="max-h-full w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                      className="h-5 md:h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
                       style={{ filter: 'grayscale(1) brightness(0) saturate(100%)' }}
                     />
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-slate-400 mt-6 text-center">
-                Plus BBC, Bloomberg, Forbes, Mashable, Yahoo, MSN and more.
-              </p>
             </div>
           </div>
         </section>
@@ -983,14 +1046,12 @@ const MedSpasClient = () => {
                 'Expert-led content',
                 'Professional citations',
                 'Conference speaking',
-              ].map((i, idx) => (
+              ].map((i) => (
                 <span
                   key={i}
                   className="inline-flex items-center gap-2 text-sm text-slate-700 bg-white border border-slate-200 rounded-lg px-3 py-2.5 hover:border-orange-200 hover:shadow-sm transition-all"
                 >
-                  <UserCheck className={`w-3.5 h-3.5 flex-shrink-0 ${
-                    idx % 2 ? 'text-emerald-600' : 'text-orange-500'
-                  }`} />
+                  <UserCheck className="w-3.5 h-3.5 flex-shrink-0 text-orange-500" />
                   {i}
                 </span>
               ))}
@@ -1030,7 +1091,7 @@ const MedSpasClient = () => {
               />
               <div
                 aria-hidden="true"
-                className="absolute -bottom-24 -left-24 w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl"
+                className="absolute -bottom-24 -left-24 w-72 h-72 bg-orange-100/25 rounded-full blur-3xl"
               />
               <div className="relative">
                 <div className="flex items-center justify-between mb-6">
@@ -1068,28 +1129,16 @@ const MedSpasClient = () => {
                     'Sculptra',
                     'PRP / PRF therapy',
                     'Cosmetic injectables consults',
-                  ].map((t, i) => (
+                  ].map((t) => (
                     <span
                       key={t}
-                      className={`group relative overflow-hidden text-sm font-medium rounded-lg px-3 py-2.5 text-center cursor-default transition-all hover:shadow-md hover:-translate-y-0.5 ${
-                        i % 3 === 0
-                          ? 'text-orange-700 bg-gradient-to-br from-orange-50 to-white border border-orange-200 hover:shadow-orange-500/20'
-                          : i % 3 === 1
-                          ? 'text-emerald-700 bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 hover:shadow-emerald-500/20'
-                          : 'text-slate-700 bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:shadow-slate-500/20'
-                      }`}
+                      className="group flex items-center gap-2.5 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-lg px-3.5 py-2.5 cursor-default transition-all hover:border-orange-300 hover:bg-orange-50/50 hover:shadow-sm"
                     >
-                      <span className="relative z-10">{t}</span>
                       <span
                         aria-hidden="true"
-                        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br ${
-                          i % 3 === 0
-                            ? 'from-orange-100/40 to-transparent'
-                            : i % 3 === 1
-                            ? 'from-emerald-100/40 to-transparent'
-                            : 'from-slate-100/40 to-transparent'
-                        }`}
+                        className="w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0 group-hover:bg-orange-500 transition-colors"
                       />
+                      <span className="leading-snug">{t}</span>
                     </span>
                   ))}
                 </div>
@@ -1304,22 +1353,20 @@ const MedSpasClient = () => {
               </div>
             </div>
 
-            {/* Centered, properly designed disclaimer */}
-            <div className="max-w-3xl mx-auto">
-              <div className="rounded-xl border border-slate-200 bg-white p-5 md:p-6 flex items-start gap-4">
-                <div className="w-9 h-9 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-1.5">
-                    Important qualification
-                  </p>
-                  <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                    No agency controls the answers generated by ChatGPT, Gemini, Perplexity or
-                    any other independent platform. Our role is to improve the quality, clarity
-                    and authority of the sources and signals those systems may rely upon.
-                  </p>
-                </div>
+            {/* Important qualification — full-width band */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-6 py-6 md:px-9 md:py-7 flex items-start gap-5">
+              <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0">
+                <AlertTriangle className="w-5 h-5" />
+              </div>
+              <div className="md:border-l md:border-slate-200 md:pl-5">
+                <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-2">
+                  Important qualification
+                </p>
+                <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+                  No agency controls the answers generated by ChatGPT, Gemini, Perplexity or any
+                  other independent platform. Our role is to improve the quality, clarity and
+                  authority of the sources and signals those systems may rely upon.
+                </p>
               </div>
             </div>
           </div>
@@ -1489,15 +1536,23 @@ const MedSpasClient = () => {
               ].map((d) => (
                 <article
                   key={d.t}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-orange-200 hover:-translate-y-0.5 transition-all"
                 >
-                  <div className="w-11 h-11 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center mb-4">
-                    <d.icon className="w-5 h-5" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-orange-500 to-orange-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                  />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-500/30 flex-shrink-0 group-hover:scale-105 transition-transform">
+                      <d.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-2 leading-tight">
+                        {d.t}
+                      </h3>
+                      <p className="text-sm md:text-base text-slate-600 leading-relaxed">{d.b}</p>
+                    </div>
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
-                    {d.t}
-                  </h3>
-                  <p className="text-sm md:text-base text-slate-600 leading-relaxed">{d.b}</p>
                 </article>
               ))}
             </div>
