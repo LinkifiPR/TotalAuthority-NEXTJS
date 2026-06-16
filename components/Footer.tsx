@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { INDUSTRIES } from '@/lib/industries';
 
 interface FooterProps {
   onOpenForm: () => void;
@@ -16,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
   return (
     <footer className="bg-slate-900 text-white py-16">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <img
@@ -131,6 +132,30 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                   Strategy Blueprint
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Industries */}
+          <div className="md:col-span-2">
+            <h3 className="text-sm font-semibold tracking-wide text-white mb-4 uppercase">Industries</h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+              {INDUSTRIES.map((ind) =>
+                ind.status === 'live' ? (
+                  <li key={ind.slug}>
+                    <Link
+                      href={`/${ind.slug}`}
+                      onClick={scrollToTop}
+                      className="text-slate-200 hover:text-orange-300 transition-colors text-sm"
+                    >
+                      {ind.name}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={ind.slug}>
+                    <span className="text-slate-400 text-sm cursor-default">{ind.name}</span>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
