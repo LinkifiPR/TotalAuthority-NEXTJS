@@ -142,8 +142,30 @@
 .ta-pulse-soft {
   animation: ta-pulse-soft 1.8s ease-in-out infinite;
 }
+
+/* Entrance rise (opacity + translate, composited) and SVG line-draw.
+   Used on the "Why It Matters" stat spread and the principle cards.
+   Play on scroll-into-view for free via the parent section's .cv-auto. */
+@keyframes ta-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ta-draw {
+  to { stroke-dashoffset: 0; }
+}
+.ta-rise {
+  animation: ta-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ta-draw {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: ta-draw 1.5s ease-out 0.25s both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ta-bar-fill { animation: none; transform: scaleX(1); }
   .ta-sweep { animation: none; opacity: 0; }
   .ta-pulse-soft { animation: none; }
+  .ta-rise { animation: none; opacity: 1; transform: none; }
+  .ta-draw { animation: none; stroke-dashoffset: 0; }
 }

@@ -270,69 +270,110 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* LLMs are your new homepage — editorial hero-stat layout */}
-        <section className="cv-auto py-20 md:py-28 bg-white">
+        {/* LLMs are your new homepage — editorial research-report spread */}
+        <section className="cv-auto py-20 md:py-28 bg-gradient-to-b from-white to-orange-50/30">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-14 md:mb-20">
+            <div className="text-center mb-12 md:mb-16 ta-rise">
               <p className="text-xs font-medium tracking-[0.18em] uppercase text-orange-600 mb-4">
                 Why It Matters
               </p>
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">
+              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 text-balance">
                 LLMs are your new homepage
               </h2>
             </div>
 
-            {/* Featured hero stat */}
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 md:mb-20">
-              <div className="lg:col-span-5">
-                <div className="flex items-start gap-3">
-                  <div className="text-[5.5rem] md:text-[8rem] leading-none font-semibold text-orange-600 tabular-nums tracking-tight">
+            {/* Featured stat: gradient panel + text panel, equal height */}
+            <div className="grid lg:grid-cols-12 gap-5 lg:gap-6 items-stretch mb-6">
+              {/* 467% panel */}
+              <div className="lg:col-span-5 relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 via-white to-white p-7 md:p-9 shadow-sm ta-rise">
+                <div aria-hidden="true" className="absolute -top-16 -right-16 w-48 h-48 bg-orange-200/40 rounded-full blur-3xl" />
+                <div className="relative">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-orange-700 bg-white/70 border border-orange-200 rounded-full px-2.5 py-1 mb-5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 ta-pulse-soft" />
+                    Trending up
+                  </span>
+                  <div className="text-[5rem] md:text-[7rem] leading-[0.9] font-bold text-orange-600 tabular-nums tracking-tight">
                     467%
                   </div>
+
+                  {/* Sparkline (draws in) */}
                   <svg
                     aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="w-7 h-7 md:w-10 md:h-10 mt-3 md:mt-5 text-orange-600 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    viewBox="0 0 240 60"
+                    className="mt-4 w-full max-w-[280px] h-14 md:h-16"
                   >
-                    <path d="M7 17L17 7" />
-                    <path d="M9 7h8v8" />
+                    <defs>
+                      <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="rgb(249 115 22)" stopOpacity="0.25" />
+                        <stop offset="100%" stopColor="rgb(249 115 22)" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <line x1="0" y1="54" x2="240" y2="54" stroke="rgb(254 215 170)" strokeWidth="1" />
+                    <path
+                      d="M0,52 C34,50 52,46 84,40 C112,34 132,26 172,16 L240,4 L240,60 L0,60 Z"
+                      fill="url(#spark-fill)"
+                    />
+                    <path
+                      className="ta-draw"
+                      d="M0,52 C34,50 52,46 84,40 C112,34 132,26 172,16 L240,4"
+                      fill="none"
+                      stroke="rgb(234 88 12)"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="240" cy="4" r="3.5" fill="rgb(234 88 12)" />
+                    <circle cx="240" cy="4" r="7" fill="rgb(234 88 12)" fillOpacity="0.18" />
                   </svg>
+
+                  <p className="mt-3 text-sm text-slate-500 tracking-wide">
+                    LLM search usage &middot; 2023 &rarr; 2026
+                  </p>
                 </div>
-                <p className="mt-3 text-sm text-slate-500 tracking-wide">
-                  LLM search usage · 2023 &rarr; 2026
-                </p>
               </div>
 
-              <div className="lg:col-span-7">
+              {/* Text panel */}
+              <div className="lg:col-span-7 flex flex-col justify-center rounded-2xl border border-slate-200 bg-white p-7 md:p-9 shadow-sm ta-rise" style={{ animationDelay: '0.1s' }}>
                 <h3 className="text-2xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-tight text-balance">
                   Search is being rewritten in front of you.
                 </h3>
-                <p className="mt-5 text-base md:text-lg text-slate-600 leading-relaxed">
+                <div className="h-px w-12 bg-orange-500 my-5" />
+                <p className="text-base md:text-lg text-slate-600 leading-relaxed">
                   More product discovery now happens inside ChatGPT, Gemini, Claude and Perplexity than through any other channel.
                   The brands that get named in those answers are the ones that win the customer — everyone else is invisible.
                 </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {['ChatGPT', 'Gemini', 'Claude', 'Perplexity'].map((n) => (
+                    <span
+                      key={n}
+                      className="text-xs font-medium text-slate-600 bg-slate-50 border border-slate-200 rounded-full px-3 py-1"
+                    >
+                      {n}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* By the numbers — horizontal strip */}
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden ta-rise" style={{ animationDelay: '0.15s' }}>
+              <div aria-hidden="true" className="h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 ta-bar-fill" />
               <div className="px-6 md:px-8 py-4 border-b border-slate-200 flex items-center justify-between">
-                <span className="text-xs font-medium tracking-[0.18em] uppercase text-slate-500">
+                <span className="inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.18em] uppercase text-slate-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 ta-pulse-soft" />
                   By the numbers
                 </span>
                 <span className="text-xs text-slate-400 tracking-wide hidden sm:block">
-                  AI search · 2026
+                  AI search &middot; 2026
                 </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
-                {supportingStats.map((s) => (
-                  <div key={s.value} className="p-7 md:p-8">
-                    <div className="text-4xl md:text-5xl font-semibold tracking-tight text-orange-600 tabular-nums leading-none mb-3">
+                {supportingStats.map((s, i) => (
+                  <div
+                    key={s.value}
+                    className="group p-7 md:p-8 transition-colors hover:bg-orange-50/40 ta-rise"
+                    style={{ animationDelay: `${0.2 + i * 0.08}s` }}
+                  >
+                    <div className="text-4xl md:text-5xl font-semibold tracking-tight text-orange-600 tabular-nums leading-none mb-3 group-hover:underline decoration-orange-300 decoration-2 underline-offset-4">
                       {s.value}
                     </div>
                     <p className="text-sm md:text-base text-slate-600 leading-relaxed">
@@ -344,7 +385,7 @@ const HomePage = () => {
             </div>
 
             {/* Closing quote */}
-            <blockquote className="border-l-4 border-orange-600 pl-6 max-w-3xl mx-auto mt-16 md:mt-20">
+            <blockquote className="border-l-4 border-orange-600 pl-6 max-w-3xl mx-auto mt-14 md:mt-16 ta-rise">
               <p className="text-xl md:text-2xl text-slate-700 italic leading-relaxed">
                 If your brand isn't being pulled into the answer, it's not even part of the conversation.
               </p>
