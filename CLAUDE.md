@@ -108,11 +108,29 @@ public/               # Static assets
 | `/llm-visibility-audit` | Audit tool |
 | `/strategy-blueprint` | Full audit form |
 | `/audit/:slug` | Audit report viewer |
+| `/med-spas`, `/law-firms`, `/accountancy-firms`, … (24 total) | Industry landing pages — all rendered from the shared `IndustryLandingPage` template (see Industries System below) |
 | `/ai-setup` | AI Setup Engine landing/tool page |
 | `/ai-setup/delivery` | AI Setup delivery dashboard with background generation polling |
 | `/api/ai-setup` | Legacy/direct AI setup API route |
 | `/api/ai-setup/start` | Starts async AI setup background job |
 | `/api/ai-setup/status` | Polls async AI setup job status/result |
+
+---
+
+## Industries System (data-driven landing pages)
+
+All 24 industry landing pages render from **one shared template** so structure is identical and only the copy changes. To add or edit an industry:
+
+- **Registry**: `lib/industries.ts` — slug, display name, status (`live`/`coming-soon`), related slugs, short description. The Header dropdown and Footer column are data-driven off this file. All 24 are currently `live`.
+- **Template**: `components/industry/IndustryLandingPage.tsx` — the generic page (all ~21 sections, scroll progress bar, dynamic icon map). Takes `content: IndustryContent`. **Do not hardcode industry copy here.**
+- **Contract**: `lib/industry/types.ts` — the `IndustryContent` interface with **fixed array lengths** (6 prompts, 12 prompt categories, 9 pillars, 24 services, 12 FAQs, etc.). New industries must match these lengths or the layout drifts.
+- **Content configs**: `lib/industry/content/<camelCaseSlug>.ts` — one per industry (e.g. `lawFirms.ts`), each `export const <name>: IndustryContent = {...}`.
+- **SEO helper**: `lib/industry/seo.ts` — `buildIndustryMetadata()` + `buildIndustryJsonLd()` (Service + BreadcrumbList + FAQPage JSON-LD) generated per industry.
+- **Routes**: `app/<slug>/page.tsx` — ~11-line file that imports the config + helpers and renders `<IndustryLandingPage>`. (Static segment beats the `[slug]` blog route.)
+
+**To add a new industry**: add the entry to `lib/industries.ts` (status `live`), create `lib/industry/content/<name>.ts` (copy an existing config, retain array lengths), and create `app/<slug>/page.tsx` (copy an existing route). Logos live in `public/med-spas-logos/` and are reused across every industry.
+
+**Language**: all industry copy is **US English** (spelling + US institutions/examples/resources). Keep new content US (optimize/specialize/center, attorney not solicitor, IRS not HMRC, Zillow not Rightmove, Chapter 7/11/13 not CVL/MVL, etc.).
 
 ---
 
@@ -143,6 +161,7 @@ Stored in `.env.local` (not in repo). Key vars:
 - **Default site style remains light mode** for existing pages unless Christopher explicitly asks for a redesign
 - **Intentional exception**: `/ai-setup` and `/ai-setup/delivery` now use a dark, technical, BridgeMind-inspired product aesthetic with Total Authority orange as the accent colour
 - **Preserve existing design** on legacy/core site pages unless the task is specifically a redesign
+- **Industry pages** use the light template aesthetic with **orange** as the primary accent and **emerald** as a complementary accent (e.g. prompt-category chips, the before/after "After" card). Single-accent-orange-on-slate/white is the house style; avoid the multi-colour "rainbow" look.
 - Custom Tailwind animations: wobble, float, shimmer, fade-in
 - Custom color palette: beige, orange, blue themed
 - Mobile-first, responsive
@@ -176,6 +195,40 @@ git config user.name "Christopher"
 ---
 
 ## Session Log
+
+### 2026-06-16
+Focus: Footer fix → Med Spas polish/SEO → **industries landing-page system** → roll out all 24 industries → convert everything to **US English**.
+
+**Footer**
+- Industries column switched from a 2-col grid to CSS multi-column flow (`columns-2` + `break-inside-avoid`) so wrapping names no longer create ragged rows.
+
+**Med Spas page polish + SEO (`/med-spas`)**
+- Section redesigns: "ask AI" search-bar prompts (no quote boxes), all-faint-green prompt categories, data-driven Source Landscape cards (frequency bars, per-model dots, owned-vs-third-party split), premium dark Brand callout, 9-pillar (3×3) services grid with ghost numerals, full-width "Important qualification" band, upgraded "Why TotalAuthority" cards, cohesive treatment chips.
+- Replaced the messy logo strip with 8 real publication logos in `public/med-spas-logos/` (NYT, BBC, Guardian, Forbes, ELLE, Men's Health, Healthline, HubSpot), forced to uniform black via `filter: grayscale(1) brightness(0)` (they're white-on-transparent assets — `mix-blend-multiply` made them invisible).
+- Replaced the in-page sub-nav with a slim **orange scroll progress bar**.
+- SEO: Service + Breadcrumb + **FAQPage** JSON-LD, richer metadata, FAQ extracted to a shared module, in-prose internal links.
+
+**Industries system (see "Industries System" section above)**
+- Built the shared `IndustryLandingPage` template + `IndustryContent` contract + `seo.ts` helper. Proved it on **Law Firms** first (sign-off gate), then rolled out the remaining 22 + migrated Med Spas onto the template (retired `MedSpasClient.tsx`/`faqData.ts`). All 24 flipped to `live`.
+- Content authored in parallel via sub-agents to a strict schema (fixed array lengths); each type-checked clean.
+
+**US English conversion**
+- Owner asked for US English including examples + sector resources. Did a deterministic spelling sweep (optimize/specialize/center/program/analyze/counseling/specialty/anonymized/advisor) across all configs + template, then sub-agents swapped UK→US institutions/examples/resources per sector (attorneys/Chambers USA/ABA, IRS/AICPA/Form 1040, 401(k)/IRA, the "Big I", Healthgrades/Joint Commission/CDC, Zillow/NAR/AIA/ASCE, BizBuySell/IBBA, insolvency → Chapter 7/11/13/ABI). `seo.ts` → `en_US` / `areaServed: United States`; "Rehab Centres" → "Rehab Centers".
+
+**Verification**
+- `npx next build` green for all 24 industry routes after each phase. Structure preserved (12 FAQs each, fixed array lengths). Spot-checked pages across clusters via headless-Chromium screenshots.
+
+**Build/deploy note (sandbox)**
+- Google Fonts is blocked locally → before `npx next build`, stub Inter in `app/layout.tsx` (comment the import, `const inter = { className: '' }`), build, then `git checkout -- app/layout.tsx`. `.next` is tracked → `git restore --staged .next && git checkout -- .next` before staging.
+
+**Git / push**
+- Pushed to both `main` and `claude/hopeful-fermat-cia7hk`. Write-enabled fine-grained PAT ("TA-2", Contents: Read & Write) is required — the read-only token fails with 403 on both `git push` and the GitHub API. Owner provides the PAT; set it on the remote before pushing.
+
+**Key commits this session**
+- footer columns fix · med-spas redesign + logos · progress bar + SEO + FAQ extract · `IndustryLandingPage` template + Law Firms · full 24-industry rollout (`59b46f8`) · US English conversion (`6fa06b9`)
+
+**Next steps**
+- Confirm Netlify deploy is green and skim a few industry pages live. Optionally fine-tune any sector term for US positioning. Adding a new industry is now: registry entry + one content config + one route file.
 
 ### 2026-04-24
 Focus: AI Setup Engine production architecture, output quality, delivery dashboard design, and browser stability.
