@@ -92,7 +92,7 @@ export const INDUSTRIES: Industry[] = [
   {
     slug: 'law-firms',
     name: 'Law Firms',
-    status: 'coming-soon',
+    status: 'live',
     related: ['accountancy-firms', 'estate-planning-firms', 'tax-advisory-firms'],
     shortDescription: 'Get your firm cited as the trusted authority in your practice area.',
   },
