@@ -13,10 +13,17 @@ import { siteUrl } from '@/lib/siteConfig';
 // still renders on normal connections and on repeat (cached) visits.
 // `adjustFontFallback` keeps the fallback metrics close so there's no layout
 // shift (CLS stays 0).
+// `display: 'optional'` paints the hero text immediately in a metric-matched
+// fallback and never does a late web-font swap (which was dragging LCP).
+// `preload: false` is deliberate: on a constrained connection the preloaded
+// woff2 competes for bandwidth with the render-blocking CSS *and* optional
+// discards the font anyway — so preloading it only slows first paint. The
+// font still loads (lower priority) and shows on fast/repeat visits.
+// `adjustFontFallback` keeps the fallback metrics close so CLS stays 0.
 const inter = Inter({
   subsets: ['latin'],
   display: 'optional',
-  preload: true,
+  preload: false,
   adjustFontFallback: true,
 });
 
