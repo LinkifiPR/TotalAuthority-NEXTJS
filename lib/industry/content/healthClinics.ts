@@ -13,9 +13,9 @@ export const healthClinics: IndustryContent = {
       'medical clinic SEO',
       'health clinic authority building',
       'ChatGPT clinic recommendations',
-      'AI search for private GPs',
+      'AI search for primary care physicians',
       'digital PR for health clinics',
-      'Doctify clinic visibility',
+      'Healthgrades clinic visibility',
       'private clinic reputation',
       'AI visibility audit',
     ],
@@ -38,7 +38,7 @@ export const healthClinics: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective patients are asking ChatGPT, Gemini and Perplexity where to go for private GP appointments, health screening, blood tests, dermatology, physiotherapy, menopause care and chronic disease management.',
+      'Your prospective patients are asking ChatGPT, Gemini and Perplexity where to go for primary care appointments, health screening, blood tests, dermatology, physical therapy, menopause care and chronic disease management.',
       'TotalAuthority shows you whether your clinic appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,13 +65,13 @@ export const healthClinics: IndustryContent = {
       { name: 'Kingsworth Medical', count: 4 },
     ],
     sources: [
-      'NHS',
-      'Doctify',
-      'Patient.info',
-      'Top Doctors',
-      'Trustpilot',
+      'Healthgrades',
+      'Zocdoc',
+      'WebMD',
+      'Castle Connolly',
+      'Vitals',
       'Google reviews',
-      'BUPA',
+      'Aetna',
     ],
   },
 
@@ -80,12 +80,12 @@ export const healthClinics: IndustryContent = {
     intro:
       'People are increasingly using AI platforms to shortlist clinics, compare services and decide which providers appear credible. They are asking questions such as:',
     questions: [
-      'Where is the best private GP near me?',
-      'Which clinic should I use for a full health screening in London?',
-      'Where can I get a same-week blood test privately?',
+      'Where is the best primary care physician near me?',
+      'Which clinic should I use for a full health screening in Chicago?',
+      'Where can I get a same-week blood test near me?',
       'Which clinic has the strongest reviews for dermatology?',
       'Where can I find a trusted menopause specialist?',
-      'Which clinic offers private physiotherapy near me?',
+      'Which clinic offers physical therapy near me?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the patient through a traditional list of search results. Your clinic may have excellent clinicians, modern facilities and years of patient care behind it. That does not guarantee you will be included.',
@@ -120,13 +120,13 @@ export const healthClinics: IndustryContent = {
     ],
     promptCategories: [
       'Best health clinic in your city',
-      'Best private GP service',
+      'Best primary care physician (PCP) service',
       'Best health screening clinic',
-      'Best private blood test provider',
+      'Best blood test provider',
       'Best dermatology clinic',
-      'Best physiotherapy clinic',
+      'Best physical therapy clinic',
       'Best menopause clinic',
-      'Best private mental health support',
+      'Best mental health support',
       'Best chronic disease management clinic',
       'Best travel health clinic',
       'Best clinic for natural-language health queries',
@@ -153,7 +153,7 @@ export const healthClinics: IndustryContent = {
       { name: 'Riverbank Private Clinic', m: 2, p: 5, f: '14×' },
       { name: 'Kingsworth Medical', m: 3, p: 4, f: '11×' },
       { name: 'Ashfield Wellbeing', m: 1, p: 3, f: '6×' },
-      { name: 'Northgate Health Centre', m: 2, p: 2, f: '5×' },
+      { name: 'Northgate Health Center', m: 2, p: 2, f: '5×' },
     ],
     note:
       'This gives you a practical competitive view based on AI-generated recommendations, rather than assumptions about who your online competitors are.',
@@ -162,7 +162,7 @@ export const healthClinics: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on health directories, the NHS website, patient information resources, insurer networks, local recommendation pages, review platforms, listicles, Reddit discussions, clinician profiles, treatment comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on health directories, the CDC website, patient information resources, insurer networks, local recommendation pages, review platforms, listicles, Reddit discussions, clinician profiles, treatment comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const healthClinics: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'NHS', pct: 88 },
-      { name: 'Doctify', pct: 74 },
-      { name: 'Top Doctors', pct: 60 },
+      { name: 'Healthgrades', pct: 88 },
+      { name: 'Zocdoc', pct: 74 },
+      { name: 'Castle Connolly', pct: 60 },
       { name: 'Local press', pct: 35 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Patient.info', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['Gemini', 'Perplexity'] },
+      { name: 'WebMD', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Vitals', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -199,16 +199,16 @@ export const healthClinics: IndustryContent = {
       'Leading clinic for private health screening',
       "Trusted practice for women's and menopause care",
       'Specialist clinic for dermatology and skin conditions',
-      'Local authority for same-day GP appointments',
+      'Local authority for same-day primary care appointments',
       'Premier provider of diagnostic imaging and testing',
-      'Independently recognised physiotherapy and rehabilitation team',
+      'Independently recognized physical therapy and rehabilitation team',
       'Multi-site clinic with experienced clinicians',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your clinic serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
       'Who your clinicians are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const healthClinics: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,14 +241,14 @@ export const healthClinics: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified clinicians as expert sources for journalists covering health, wellbeing, lifestyle and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified clinicians as expert sources for journalists covering health, well-being, lifestyle and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
@@ -284,7 +284,7 @@ export const healthClinics: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, Doctify, Top Doctors and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, Healthgrades, Zocdoc and Vitals — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const healthClinics: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every clinic can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a clinician is quoted in a recognised publication, several things happen:',
+      'When a clinician is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a clinician is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a clinician is quoted in a recognized publication, several things happen:',
     effects: [
       'The clinician becomes associated with a relevant area of expertise',
       'The clinic earns an independent brand mention',
@@ -311,10 +311,10 @@ export const healthClinics: IndustryContent = {
   },
 
   practitioner: {
-    sectionLabel: 'Clinician Authority',
+    sectionLabel: 'Physician Authority',
     heading: 'Patients trust clinicians, not faceless clinic pages',
     paragraphs: [
-      'In private healthcare, the person delivering the care can be as important as the clinic itself. Your medical director, lead consultants, specialists and senior clinicians hold expertise that can strengthen the authority of the entire brand.',
+      'In private healthcare, the person delivering the care can be as important as the clinic itself. Your medical director, lead physicians, specialist physicians and senior clinicians hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
@@ -324,7 +324,7 @@ export const healthClinics: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const healthClinics: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A clinician with genuine expertise can become a recognised source for both patients and journalists. That authority then supports the clinic they represent.',
+      'A clinician with genuine expertise can become a recognized source for both patients and journalists. That authority then supports the clinic they represent.',
   },
 
   services: {
@@ -344,7 +344,7 @@ export const healthClinics: IndustryContent = {
     focusHeading: 'A health clinic strategy may focus on',
     badge: '24 services',
     items: [
-      'GP appointments',
+      'Primary care appointments',
       'Health screening',
       'Blood tests',
       'Vaccinations',
@@ -352,7 +352,7 @@ export const healthClinics: IndustryContent = {
       'Sexual health checks',
       'Allergy testing',
       'Dermatology',
-      'Physiotherapy',
+      'Physical therapy',
       'Minor surgery',
       "Women's health",
       "Men's health",
@@ -362,9 +362,9 @@ export const healthClinics: IndustryContent = {
       'Menopause care',
       'Mental health support',
       'Chronic disease management',
-      'Private prescriptions',
-      'Health MOTs',
-      'Paediatric care',
+      'Prescriptions',
+      'Wellness checks',
+      'Pediatric care',
       'Vitamin and IV therapy',
       'Occupational health',
       'Second opinions',
@@ -390,7 +390,7 @@ export const healthClinics: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -442,15 +442,15 @@ export const healthClinics: IndustryContent = {
       'TotalAuthority is best suited to established clinics that have credible clinicians, strong patient care and the capacity to convert increased visibility into bookings.',
     typesHeading: 'Best-fit clinic types',
     types: [
-      'Private GP practices',
+      'Primary care practices',
       'Multi-service health clinics',
       'Health screening providers',
       'Multi-site clinic groups',
       'Specialist dermatology clinics',
-      'Physiotherapy and rehabilitation clinics',
+      'Physical therapy and rehabilitation clinics',
       "Women's health clinics",
       'Menopause and hormone clinics',
-      'Diagnostic and imaging centres',
+      'Diagnostic and imaging centers',
       'Travel health clinics',
       'Weight management clinics',
       'Clinics entering new regions',
@@ -468,11 +468,11 @@ export const healthClinics: IndustryContent = {
       },
       {
         t: 'Clinician expertise is hidden',
-        b: 'Highly qualified consultants are presented through short team biographies with little external recognition.',
+        b: 'Highly qualified physicians are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the clinic but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the clinic but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const healthClinics: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The clinic measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The clinic measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const healthClinics: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const healthClinics: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const healthClinics: IndustryContent = {
     heading: 'What makes this different from traditional clinic marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic health blogs',
       'Track Google rankings alone',
       'Promote claims made by the clinic',
       'Focus on the clinic brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const healthClinics: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from health clinics considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from health clinics considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a health clinic?',
-        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about private healthcare in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your clinicians are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about private healthcare in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your clinicians are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -655,8 +655,8 @@ export const healthClinics: IndustryContent = {
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, service guides, comparison pages, reports and other assets that may support citations, media outreach and patient education.',
       },
       {
-        q: 'Can you promote individual clinicians and consultants?',
-        a: 'Yes, provided their experience and credentials support the positioning. Clinician authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual clinicians and specialist physicians?',
+        a: 'Yes, provided their experience and credentials support the positioning. Clinician authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-site clinic group?',
@@ -668,7 +668,7 @@ export const healthClinics: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

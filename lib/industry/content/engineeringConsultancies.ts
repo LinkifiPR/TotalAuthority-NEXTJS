@@ -15,7 +15,7 @@ export const engineeringConsultancies: IndustryContent = {
       'ChatGPT engineering recommendations',
       'AI search for engineers',
       'digital PR for engineering firms',
-      'ICE directory rankings',
+      'ASCE directory rankings',
       'structural engineering visibility',
       'AI visibility audit',
     ],
@@ -65,10 +65,10 @@ export const engineeringConsultancies: IndustryContent = {
       { name: 'Stanmore Civil Partners', count: 4 },
     ],
     sources: [
-      'New Civil Engineer',
-      'ICE',
-      'The Engineer',
-      'Building magazine',
+      'Engineering News-Record (ENR)',
+      'ASCE',
+      'NSPE',
+      'ENR',
       'Google reviews',
       'Local press',
       'Engineering directory',
@@ -81,14 +81,14 @@ export const engineeringConsultancies: IndustryContent = {
       'People are increasingly using AI platforms to shortlist engineering consultancies, compare disciplines and decide which firms appear credible. They are asking questions such as:',
     questions: [
       'Who is the best structural engineer near me?',
-      'Which consultancy should I appoint for a civil engineering scheme in Glasgow?',
+      'Which consultancy should I appoint for a civil engineering project in Denver?',
       'Where can I find an engineer for a flood risk assessment?',
       'Which firm has the strongest track record for building services design?',
       'Who is a trusted consultancy for geotechnical investigations?',
-      'Which firm specialises in fire engineering and facade engineering?',
+      'Which firm specializes in fire engineering and facade engineering?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your consultancy may have a strong project record, chartered engineers and decades of delivered schemes behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your consultancy may have a strong project record, licensed PE engineers and decades of delivered projects behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -126,7 +126,7 @@ export const engineeringConsultancies: IndustryContent = {
       'Best engineer for flood risk assessment',
       'Best geotechnical engineering firm',
       'Best consultancy for fire engineering',
-      'Best engineer for transport and highways',
+      'Best engineer for transportation and DOT projects',
       'Best consultancy for sustainability and net zero',
       'Best engineer for expert witness work',
       'Best consultancy for natural-language engineering queries',
@@ -162,7 +162,7 @@ export const engineeringConsultancies: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on professional institutions, trade press, review platforms, local recommendation pages, listicles, Reddit discussions, engineer profiles, discipline comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on professional societies, trade press, review platforms, local recommendation pages, listicles, Reddit discussions, engineer profiles, discipline comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const engineeringConsultancies: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'New Civil Engineer', pct: 88 },
-      { name: 'Institution of Civil Engineers (ICE)', pct: 73 },
-      { name: 'The Engineer', pct: 57 },
+      { name: 'Engineering News-Record (ENR)', pct: 88 },
+      { name: 'American Society of Civil Engineers (ASCE)', pct: 73 },
+      { name: 'NSPE', pct: 57 },
       { name: 'Local press', pct: 34 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Building magazine', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'The Engineer', models: ['Gemini', 'Perplexity'] },
+      { name: 'ENR', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'NSPE', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -200,15 +200,15 @@ export const engineeringConsultancies: IndustryContent = {
       'Trusted firm for civil engineering and infrastructure',
       'Specialist consultancy for geotechnical and ground engineering',
       'Local authority for building services and MEP design',
-      'Premier adviser on sustainability and net zero',
-      'Independently recognised fire engineering team',
-      'Multi-discipline consultancy with chartered engineers',
+      'Premier advisor on sustainability and net zero',
+      'Independently recognized fire engineering team',
+      'Multi-discipline consultancy with licensed PE engineers',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your consultancy serves',
       'Where you operate',
-      'Which disciplines you specialise in',
+      'Which disciplines you specialize in',
       'What differentiates your approach',
       'Who your engineers are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const engineeringConsultancies: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,20 +241,20 @@ export const engineeringConsultancies: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your chartered engineers as expert sources for journalists covering construction, infrastructure, the built environment, sustainability and engineering — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your licensed PE engineers as expert sources for journalists covering construction, infrastructure, the built environment, sustainability and engineering — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across professional institutions, trade publications, review platforms, engineer profiles, local business resources, discipline comparison pages and industry associations.',
+        body: 'We strengthen your presence across professional societies, trade publications, review platforms, engineer profiles, local business resources, discipline comparison pages and industry associations.',
         icon: 'Layers',
       },
       {
@@ -284,7 +284,7 @@ export const engineeringConsultancies: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for consultancies — Google, the professional institutions and the major engineering publications — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for consultancies — Google, ASCE, NSPE and the major engineering publications such as ENR — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const engineeringConsultancies: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every consultancy can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When an engineer is quoted in a recognised publication, several things happen:',
+      'When an engineer is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an engineer is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an engineer is quoted in a recognized publication, several things happen:',
     effects: [
       'The engineer becomes associated with a relevant area of expertise',
       'The consultancy earns an independent brand mention',
@@ -324,7 +324,7 @@ export const engineeringConsultancies: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Discipline specialisation',
+      'Discipline specialization',
       'Speaking engagements',
       'Professional citations',
       'Technical papers',
@@ -333,7 +333,7 @@ export const engineeringConsultancies: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'An engineer with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the consultancy they represent.',
+      'An engineer with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the consultancy they represent.',
   },
 
   services: {
@@ -350,7 +350,7 @@ export const engineeringConsultancies: IndustryContent = {
       'Geotechnical engineering',
       'Environmental engineering',
       'Fire engineering',
-      'Transport and highways',
+      'Transportation and DOT',
       'Flood risk assessment',
       'Building services design',
       'Sustainability and net zero',
@@ -390,7 +390,7 @@ export const engineeringConsultancies: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -449,14 +449,14 @@ export const engineeringConsultancies: IndustryContent = {
       'Geotechnical specialists',
       'Building services and MEP firms',
       'Fire engineering specialists',
-      'Transport and highways consultancies',
+      'Transportation and DOT consultancies',
       'Sustainability and net zero specialists',
       'Flood risk and drainage firms',
       'Expert witness practices',
       'Consultancies entering new regions',
     ],
     qualification:
-      'We build authority around real expertise. The consultancy must be able to support its positioning through appropriate chartered credentials, credible projects and responsible client communication.',
+      'We build authority around real expertise. The consultancy must be able to support its positioning through appropriate PE licensure, credible projects and responsible client communication.',
   },
 
   gaps: {
@@ -472,7 +472,7 @@ export const engineeringConsultancies: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong disciplines',
-        b: 'AI may recognise the consultancy but connect it more strongly with secondary disciplines than its commercial priorities.',
+        b: 'AI may recognize the consultancy but connect it more strongly with secondary disciplines than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -487,12 +487,12 @@ export const engineeringConsultancies: IndustryContent = {
         b: 'Consultancy, engineer and office details are inconsistent across profiles and third-party sources.',
       },
       {
-        t: 'Marketing is focused entirely on tenders',
-        b: 'The consultancy wins work through framework bids and referrals but has little searchable, independent authority elsewhere.',
+        t: 'Marketing is focused entirely on bids',
+        b: 'The consultancy wins work through RFP responses and referrals but has little searchable, independent authority elsewhere.',
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The consultancy measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The consultancy measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const engineeringConsultancies: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const engineeringConsultancies: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const engineeringConsultancies: IndustryContent = {
     heading: 'What makes this different from traditional engineering consultancy marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic discipline blogs',
       'Track Google rankings alone',
       'Promote claims made by the consultancy',
       'Focus on the consultancy brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const engineeringConsultancies: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from engineering consultancies considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from engineering consultancies considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an engineering consultancy?',
-        a: 'AI visibility refers to whether your consultancy appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about engineering services in your area. It also includes whether your website is cited, whether your consultancy is accurately described, and whether your engineers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your consultancy appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about engineering services in your area. It also includes whether your website is cited, whether your consultancy is accurately described, and whether your engineers are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const engineeringConsultancies: IndustryContent = {
       },
       {
         q: 'Can you promote individual engineers and directors?',
-        a: 'Yes, provided their experience and credentials support the positioning. Engineer authority can include media commentary, expert biographies, discipline specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Engineer authority can include media commentary, expert biographies, discipline specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office consultancy?',
@@ -668,7 +668,7 @@ export const engineeringConsultancies: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

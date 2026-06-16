@@ -10,13 +10,13 @@ export const mortgageBrokers: IndustryContent = {
     keywords: [
       'AI visibility for mortgage brokers',
       'mortgage broker marketing',
-      'mortgage adviser SEO',
+      'loan officer SEO',
       'mortgage authority building',
       'ChatGPT mortgage broker recommendations',
-      'AI search for mortgage advisers',
+      'AI search for loan officers',
       'digital PR for mortgage brokers',
       'mortgage directory rankings',
-      'VouchedFor visibility',
+      'Zillow visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Mortgage Brokers',
@@ -38,7 +38,7 @@ export const mortgageBrokers: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to use for a first-time buyer mortgage, a remortgage, a buy-to-let purchase, self-employed lending, adverse credit cases and complex high-net-worth borrowing.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to use for a first-time buyer mortgage, a refinance, an investment property purchase, self-employed lending, non-QM / bad-credit cases and complex high-net-worth borrowing.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -62,14 +62,14 @@ export const mortgageBrokers: IndustryContent = {
     competitors: [
       { name: 'Oakfield Mortgage Partners', count: 7 },
       { name: 'Bridgewell Financial', count: 5 },
-      { name: 'Halewood Mortgage Advisers', count: 4 },
+      { name: 'Halewood Mortgage Advisors', count: 4 },
     ],
     sources: [
-      'VouchedFor',
-      'Unbiased',
-      'Trustpilot',
-      'Mortgage Strategy',
-      'MoneySavingExpert',
+      'Zillow',
+      'Bankrate',
+      'LendingTree',
+      'National Mortgage News',
+      'NerdWallet',
       'Google reviews',
       'Reddit',
     ],
@@ -78,17 +78,17 @@ export const mortgageBrokers: IndustryContent = {
   shift: {
     heading: 'Your next client may ask AI before they search Google',
     intro:
-      'People are increasingly using AI platforms to shortlist brokers, compare mortgage options and decide which advisers appear credible. They are asking questions such as:',
+      'People are increasingly using AI platforms to shortlist brokers, compare mortgage options and decide which advisors appear credible. They are asking questions such as:',
     questions: [
       'Who is the best mortgage broker near me?',
-      'Which broker should I use as a first-time buyer in Leeds?',
+      'Which broker should I use as a first-time buyer in Austin?',
       'Where can I find a broker who handles self-employed mortgages?',
-      'Which mortgage adviser has the strongest reviews for buy-to-let?',
-      'Who is a trusted broker for adverse credit cases?',
-      'Which firm specialises in high-net-worth and large loan mortgages?',
+      'Which loan officer has the strongest reviews for investment property?',
+      'Who is a trusted broker for non-QM / bad-credit cases?',
+      'Which firm specializes in high-net-worth and jumbo loan mortgages?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisers and years of lender relationships behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisors and years of lender relationships behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -99,7 +99,7 @@ export const mortgageBrokers: IndustryContent = {
     heading: 'Find out exactly where your firm stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the product, service and local discovery prompts that could lead to a new mortgage enquiry.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the product, service and local discovery prompts that could lead to a new mortgage inquiry.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -120,15 +120,15 @@ export const mortgageBrokers: IndustryContent = {
     ],
     promptCategories: [
       'Best mortgage broker in your city',
-      'Best first-time buyer mortgage adviser',
+      'Best first-time buyer loan officer',
       'Best broker for self-employed mortgages',
-      'Best buy-to-let mortgage broker',
-      'Best adverse credit mortgage adviser',
-      'Best remortgage specialist',
+      'Best investment property mortgage broker',
+      'Best non-QM / bad-credit loan officer',
+      'Best refinance specialist',
       'Best broker for high-net-worth lending',
-      'Best whole-of-market mortgage adviser',
-      'Best broker for contractors',
-      'Best equity release adviser',
+      'Best independent mortgage broker',
+      'Best broker for self-employed borrowers',
+      'Best reverse mortgage (HECM) advisor',
       'Best firm for natural-language mortgage queries',
       'Top-rated mortgage brokers near me',
     ],
@@ -151,7 +151,7 @@ export const mortgageBrokers: IndustryContent = {
     tableRows: [
       { name: 'Oakfield Mortgage Partners', m: 3, p: 7, f: '22×' },
       { name: 'Bridgewell Financial', m: 2, p: 5, f: '13×' },
-      { name: 'Halewood Mortgage Advisers', m: 3, p: 4, f: '10×' },
+      { name: 'Halewood Mortgage Advisors', m: 3, p: 4, f: '10×' },
       { name: 'Crownmark Mortgages', m: 1, p: 3, f: '6×' },
       { name: 'Sterling & Vance', m: 2, p: 2, f: '5×' },
     ],
@@ -162,7 +162,7 @@ export const mortgageBrokers: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on adviser directories, trade press, comparison sites, personal finance forums, review platforms, listicles, Reddit discussions, adviser profiles, product comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on advisor directories, trade press, comparison sites, personal finance forums, review platforms, listicles, Reddit discussions, advisor profiles, product comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,16 +171,16 @@ export const mortgageBrokers: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'VouchedFor', pct: 88 },
-      { name: 'Unbiased', pct: 74 },
-      { name: 'MoneySavingExpert', pct: 60 },
-      { name: 'Trustpilot', pct: 39 },
+      { name: 'Zillow', pct: 88 },
+      { name: 'Bankrate', pct: 74 },
+      { name: 'NerdWallet', pct: 60 },
+      { name: 'Google reviews', pct: 39 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
-      { name: 'Reddit (UKPersonalFinance)', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Mortgage Strategy', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Reddit (r/personalfinance)', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
+      { name: 'National Mortgage News', models: ['ChatGPT', 'Perplexity'] },
       { name: 'Google reviews', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
@@ -197,20 +197,20 @@ export const mortgageBrokers: IndustryContent = {
     positioningHeading: 'Positioning examples',
     positioning: [
       'Leading broker for first-time buyer mortgages',
-      'Trusted adviser for complex self-employed cases',
-      'Specialist firm for buy-to-let and portfolio landlords',
-      'Local authority for whole-of-market remortgaging',
-      'Premier adviser on high-net-worth and large loans',
-      'Independently recognised adverse credit specialist',
-      'Multi-adviser firm with strong lender relationships',
+      'Trusted advisor for complex self-employed cases',
+      'Specialist firm for investment property and portfolio landlords',
+      'Local authority for refinancing',
+      'Premier advisor on high-net-worth and jumbo loans',
+      'Independently recognized non-QM / bad-credit specialist',
+      'Multi-advisor firm with strong lender relationships',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which mortgage products you specialise in',
+      'Which mortgage products you specialize in',
       'What differentiates your approach',
-      'Who your advisers are',
+      'Who your advisors are',
       'Which credentials support your expertise',
       'Which cases you are best placed to handle',
       'How your firm compares with local competitors',
@@ -230,7 +230,7 @@ export const mortgageBrokers: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,32 +241,32 @@ export const mortgageBrokers: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified advisers as expert sources for journalists covering mortgages, property, personal finance and the housing market — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified advisors as expert sources for journalists covering mortgages, property, personal finance and the housing market — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across adviser directories, review platforms, broker profiles, local business resources, mortgage comparison pages and professional associations.',
+        body: 'We strengthen your presence across advisor directories, review platforms, broker profiles, local business resources, mortgage comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, adviser biographies, credentials, product categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
+        body: 'We align firm names, locations, advisor biographies, credentials, product categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, product guides, adviser-led explainers, market updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, product guides, advisor-led explainers, market updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
@@ -278,13 +278,13 @@ export const mortgageBrokers: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level adviser recognition.',
+        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level advisor recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for brokers — Google, VouchedFor, Unbiased and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for brokers — Google reviews, Zillow, Bankrate and LendingTree — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const mortgageBrokers: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When an adviser is quoted in a recognised publication, several things happen:',
+      'When an advisor is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an adviser is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an advisor is quoted in a recognized publication, several things happen:',
     effects: [
-      'The adviser becomes associated with a relevant area of expertise',
+      'The advisor becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const mortgageBrokers: IndustryContent = {
       'Clients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, adviser authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, advisor authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Adviser Authority',
-    heading: 'Clients trust advisers, not faceless firm pages',
+    sectionLabel: 'Advisor Authority',
+    heading: 'Clients trust advisors, not faceless firm pages',
     paragraphs: [
-      'In mortgage advice, the person handling the case can be as important as the firm itself. Your principal, senior advisers, protection specialists and case managers hold expertise that can strengthen the authority of the entire brand.',
+      'In mortgage advice, the person handling the case can be as important as the firm itself. Your principal, senior advisors, protection specialists and case managers hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Adviser positioning',
+      'Advisor positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Product specialisation',
+      'Product specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,40 +333,40 @@ export const mortgageBrokers: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'An adviser with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'An advisor with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
     sectionLabel: 'Product Visibility',
     heading: 'Build visibility around the products that generate revenue',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisers and the services you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisors and the services you want to grow.',
     focusHeading: 'A mortgage broker strategy may focus on',
     badge: '24 mortgage services',
     items: [
       'Residential mortgages',
       'First-time buyer mortgages',
-      'Remortgaging',
-      'Buy-to-let mortgages',
+      'Refinancing',
+      'Investment property mortgages',
       'Self-employed mortgages',
-      'Adverse credit mortgages',
-      'Equity release',
-      'Help to Buy',
-      'Shared ownership',
-      'Large loans and high-net-worth',
-      'New build mortgages',
+      'Non-QM / bad-credit mortgages',
+      'Reverse mortgages (HECM)',
+      'FHA loans',
+      'VA loans',
+      'Jumbo loans and high-net-worth',
+      'New construction mortgages',
       'Mortgage protection',
-      'Bridging finance',
+      'Bridge loans',
       'Commercial mortgages',
-      'Limited company BTL',
-      'Porting and product transfers',
-      'Offset mortgages',
-      'Joint borrower sole proprietor',
-      'Later-life lending',
-      'Right to Buy',
+      'LLC investment property',
+      'Loan assumptions / refinancing',
+      'Down payment assistance',
+      'Co-borrower mortgages',
+      'HELOCs and home equity',
+      'USDA loans',
       'Foreign national mortgages',
-      'Contractor mortgages',
-      'Holiday let mortgages',
+      'Contractor and gig-worker mortgages',
+      'Vacation home mortgages',
       'Mortgage reviews',
     ],
     closing:
@@ -390,12 +390,12 @@ export const mortgageBrokers: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, adviser entities, product associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, advisor entities, product associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -420,7 +420,7 @@ export const mortgageBrokers: IndustryContent = {
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Advisers have little external authority',
+      'Advisors have little external authority',
       'Third-party source coverage is limited',
       'The firm does not know which sources influence results',
     ],
@@ -428,7 +428,7 @@ export const mortgageBrokers: IndustryContent = {
       'The firm appears across more valuable prompts',
       'Priority products have stronger brand association',
       'Brand descriptions become more accurate',
-      'Adviser expertise is clearer',
+      'Advisor expertise is clearer',
       'More trusted sources mention the firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,19 +439,19 @@ export const mortgageBrokers: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible advisers, strong client service and the capacity to convert increased visibility into mortgage enquiries.',
+      'TotalAuthority is best suited to established firms that have credible advisors, strong client service and the capacity to convert increased visibility into mortgage inquiries.',
     typesHeading: 'Best-fit firm types',
     types: [
-      'Established whole-of-market brokerages',
-      'Regional multi-adviser firms',
+      'Established independent brokerages',
+      'Regional multi-advisor firms',
       'Boutique high-net-worth brokers',
       'Multi-office practices',
-      'Specialist buy-to-let firms',
-      'Self-employed and contractor specialists',
-      'Adverse credit specialists',
+      'Specialist investment property firms',
+      'Self-employed and gig-worker specialists',
+      'Non-QM / bad-credit specialists',
       'Protection-led advisory firms',
-      'New build and developer-aligned brokers',
-      'Equity release and later-life specialists',
+      'New construction and developer-aligned brokers',
+      'Reverse mortgage (HECM) specialists',
       'First-time buyer focused firms',
       'Firms entering new regions',
     ],
@@ -467,12 +467,12 @@ export const mortgageBrokers: IndustryContent = {
         b: 'The firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Adviser expertise is hidden',
-        b: 'Highly qualified advisers are presented through short team biographies with little external recognition.',
+        t: 'Advisor expertise is hidden',
+        b: 'Highly qualified advisors are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong products',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,15 +484,15 @@ export const mortgageBrokers: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Firm, adviser and office details are inconsistent across profiles and third-party sources.',
+        b: 'Firm, advisor and office details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
-        b: 'The firm wins work through estate agents and word of mouth but has little searchable, independent authority elsewhere.',
+        b: 'The firm wins work through real estate agents and word of mouth but has little searchable, independent authority elsewhere.',
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const mortgageBrokers: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const mortgageBrokers: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, adviser quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, advisor quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,7 +586,7 @@ export const mortgageBrokers: IndustryContent = {
       },
       {
         t: 'Client Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and adviser positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and advisor positioning.',
         icon: 'Award',
       },
     ],
@@ -596,14 +596,14 @@ export const mortgageBrokers: IndustryContent = {
     heading: 'What makes this different from traditional mortgage broker marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic mortgage product blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,7 +611,7 @@ export const mortgageBrokers: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the firm and its advisers',
+      'Build the authority of the firm and its advisors',
       'Build connected media, brand, entity and citation signals',
       'Measure product visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the firm',
@@ -620,11 +620,11 @@ export const mortgageBrokers: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from mortgage brokers considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from mortgage brokers considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a mortgage broker?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about mortgage advice in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about mortgage advice in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisors are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -636,31 +636,31 @@ export const mortgageBrokers: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, adviser entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, advisor entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our firm still need local SEO?',
-        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, adviser, media and third-party authority.',
+        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, advisor, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisers with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisors with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, product associations, adviser information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, product associations, advisor information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, product guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
       },
       {
-        q: 'Can you promote individual advisers and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Adviser authority can include media commentary, expert biographies, product specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual advisors and partners?',
+        a: 'Yes, provided their experience and credentials support the positioning. Advisor authority can include media commentary, expert biographies, product specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
-        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisers, product offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisors, product offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const mortgageBrokers: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

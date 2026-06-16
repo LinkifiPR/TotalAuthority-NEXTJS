@@ -4,52 +4,52 @@ export const businessConsultancies: IndustryContent = {
   slug: 'business-consultancies',
 
   meta: {
-    title: 'AI Visibility & Authority Building for Business Consultancies | TotalAuthority',
+    title: 'AI Visibility & Authority Building for Business Consulting Firms | TotalAuthority',
     description:
-      'See whether ChatGPT, Gemini and Perplexity recommend your consultancy when prospective clients ask who can help them grow, transform or turn around their business. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
+      'See whether ChatGPT, Gemini and Perplexity recommend your consulting firm when prospective clients ask who can help them grow, transform or turn around their business. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
     keywords: [
-      'AI visibility for business consultancies',
-      'management consultancy marketing',
+      'AI visibility for business consulting firms',
+      'management consulting firm marketing',
       'consulting firm SEO',
-      'consultancy authority building',
-      'ChatGPT consultancy recommendations',
+      'consulting firm authority building',
+      'ChatGPT consulting firm recommendations',
       'AI search for consultants',
       'digital PR for consulting firms',
-      'consultancy directory rankings',
-      'Consultancy.uk visibility',
+      'consulting firm directory rankings',
+      'Consulting Magazine visibility',
       'AI visibility audit',
     ],
-    ogTitle: 'AI Visibility & Authority Building for Business Consultancies',
+    ogTitle: 'AI Visibility & Authority Building for Business Consulting Firms',
     ogDescription:
-      'Find out whether AI platforms recommend your consultancy or your competitors, and build the authority needed to appear in the answers prospective clients now trust.',
+      'Find out whether AI platforms recommend your consulting firm or your competitors, and build the authority needed to appear in the answers prospective clients now trust.',
   },
 
   cta: {
     heroPrimary: 'Get Your AI Visibility Audit',
-    auditSection: 'Audit My Consultancy',
-    auditOffer: 'Get My Consultancy Audit',
-    final: 'Get Your Consultancy AI Visibility Audit',
-    mobile: 'Audit My Consultancy',
+    auditSection: 'Audit My Consulting Firm',
+    auditOffer: 'Get My Consulting Firm Audit',
+    final: 'Get Your Consulting Firm AI Visibility Audit',
+    mobile: 'Audit My Firm',
   },
 
   hero: {
-    eyebrow: 'AI Visibility and Authority Building for Business Consultancies',
-    headlinePre: 'Make Your Consultancy the One',
+    eyebrow: 'AI Visibility and Authority Building for Business Consulting Firms',
+    headlinePre: 'Make Your Consulting Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to appoint for growth strategy, digital transformation, operational improvement, change management, cost reduction and business turnaround.',
-      'TotalAuthority shows you whether your consultancy appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for growth strategy, digital transformation, operational improvement, change management, cost reduction and business turnaround.',
+      'TotalAuthority shows you whether your consulting firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
-      'See how your consultancy is mentioned, cited and compared across leading AI platforms.',
+      'See how your consulting firm is mentioned, cited and compared across leading AI platforms.',
     footnote: 'Measured across ChatGPT, Gemini and Perplexity',
-    dashboardTitle: 'Consultancy AI Visibility Audit',
+    dashboardTitle: 'Consulting Firm AI Visibility Audit',
   },
 
   dashboard: {
     score: 49,
-    scoreCaption: '15/30 audited answers mentioned the consultancy',
+    scoreCaption: '15/30 audited answers mentioned the firm',
     citedLine: '8 answers',
     citedSub: 'cited the website',
     models: [
@@ -60,16 +60,16 @@ export const businessConsultancies: IndustryContent = {
     competitorsHeading: 'Top competitors recommended instead',
     competitorsCaption: '4 of 10 prompts',
     competitors: [
-      { name: 'Brackenmoor Advisory', count: 7 },
+      { name: 'Brightwater Advisory', count: 7 },
       { name: 'Vantage Strategy Partners', count: 5 },
-      { name: 'Kestrel Transformation Group', count: 4 },
+      { name: 'Summit Transformation Group', count: 4 },
     ],
     sources: [
-      'Consultancy.uk',
-      'Financial Times',
-      'Management Today',
-      'Trustpilot',
+      'Consulting Magazine',
+      'Harvard Business Review',
       'Forbes',
+      'Inc.',
+      'Glassdoor',
       'Google reviews',
       'Local press',
     ],
@@ -78,32 +78,32 @@ export const businessConsultancies: IndustryContent = {
   shift: {
     heading: 'Your next client may ask AI before they search Google',
     intro:
-      'Decision-makers are increasingly using AI platforms to shortlist consultancies, compare specialisms and decide which advisers appear credible. They are asking questions such as:',
+      'Decision-makers are increasingly using AI platforms to shortlist consulting firms, compare specialties and decide which advisors appear credible. They are asking questions such as:',
     questions: [
-      'Who is the best business consultancy for a growth strategy?',
-      'Which firm should I appoint for a digital transformation programme?',
-      'Where can I find a specialist change management consultancy?',
-      'Which consultancy has the strongest reviews for operational improvement?',
-      'Who is a trusted adviser for a business turnaround?',
-      'Which consultancy specialises in cost reduction and performance improvement?',
+      'Who is the best business consulting firm for a growth strategy?',
+      'Which firm should I hire for a digital transformation program?',
+      'Where can I find a specialist change management consulting firm?',
+      'Which consulting firm has the strongest reviews for operational improvement?',
+      'Who is a trusted advisor for a business turnaround?',
+      'Which consulting firm specializes in cost reduction and performance improvement?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your consultancy may have an excellent track record, experienced partners and years of successful engagements behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your consulting firm may have an excellent track record, experienced partners and years of successful engagements behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
-      'The consultancy being recommended is not necessarily the best consultancy. It is often the firm with the clearest and strongest visible authority.',
+      'The consulting firm being recommended is not necessarily the best consulting firm. It is often the firm with the clearest and strongest visible authority.',
   },
 
   audit: {
-    heading: 'Find out exactly where your consultancy stands',
+    heading: 'Find out exactly where your consulting firm stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your consultancy name. We test the specialism, service and sector discovery prompts that could lead to a new engagement.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the specialty, service and sector discovery prompts that could lead to a new engagement.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
-        b: 'A clear baseline showing how consistently your consultancy appears across the audited answers.',
+        b: 'A clear baseline showing how consistently your consulting firm appears across the audited answers.',
       },
       {
         t: 'Model-by-Model Results',
@@ -111,25 +111,25 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         t: 'Mention and Citation Tracking',
-        b: 'We identify whether your consultancy appeared, whether your website was cited, whether you were actively recommended, and whether your positioning was accurately understood.',
+        b: 'We identify whether your consulting firm appeared, whether your website was cited, whether you were actively recommended, and whether your positioning was accurately understood.',
       },
       {
         t: 'Prompt Visibility Map',
-        b: 'A simple view showing the specialisms and searches where your consultancy is mentioned, not mentioned, recommended or cited.',
+        b: 'A simple view showing the specialties and searches where your consulting firm is mentioned, not mentioned, recommended or cited.',
       },
     ],
     promptCategories: [
-      'Best business consultancy in your city',
-      'Best growth strategy consultancy',
-      'Best digital transformation consultancy',
-      'Best change management consultancy',
-      'Best operational improvement consultancy',
+      'Best business consulting firm in your city',
+      'Best growth strategy consulting firm',
+      'Best digital transformation consulting firm',
+      'Best change management consulting firm',
+      'Best operational improvement consulting firm',
       'Best cost reduction advisory',
-      'Best business turnaround consultancy',
+      'Best business turnaround consulting firm',
       'Best market entry advisory',
-      'Best organisational design consultancy',
-      'Best performance improvement consultancy',
-      'Best consultancy for natural-language strategy queries',
+      'Best organizational design consulting firm',
+      'Best performance improvement consulting firm',
+      'Best consulting firm for natural-language strategy queries',
       'Top-rated management consultants near me',
     ],
   },
@@ -137,23 +137,23 @@ export const businessConsultancies: IndustryContent = {
   competitorIntel: {
     heading: 'See who AI recommends instead',
     intro:
-      'A missing recommendation is only part of the picture. The more useful question is which competitors appear instead, how frequently they are recommended, and why AI associates them more strongly with a specialism or sector.',
+      'A missing recommendation is only part of the picture. The more useful question is which competitors appear instead, how frequently they are recommended, and why AI associates them more strongly with a specialty or sector.',
     identifiesHeading: 'Our audit identifies',
     identifies: [
       'Competitors appearing across multiple AI models',
-      'Firms repeatedly recommended for priority specialisms',
+      'Firms repeatedly recommended for priority specialties',
       'Competitors associated with particular services',
-      'The prompts where your consultancy is absent',
+      'The prompts where your consulting firm is absent',
       'The websites supporting competitor recommendations',
       'The firms gaining visibility despite having a weaker real-world track record',
     ],
     tableHeading: 'Recurring competitors',
     tableRows: [
-      { name: 'Brackenmoor Advisory', m: 3, p: 7, f: '23×' },
+      { name: 'Brightwater Advisory', m: 3, p: 7, f: '23×' },
       { name: 'Vantage Strategy Partners', m: 2, p: 5, f: '14×' },
-      { name: 'Kestrel Transformation Group', m: 3, p: 4, f: '11×' },
+      { name: 'Summit Transformation Group', m: 3, p: 4, f: '11×' },
       { name: 'Northgate Consulting', m: 1, p: 3, f: '6×' },
-      { name: 'Aldermont & Co', m: 2, p: 2, f: '5×' },
+      { name: 'Alderman & Co', m: 2, p: 2, f: '5×' },
     ],
     note:
       'This gives you a practical competitive view based on AI-generated recommendations, rather than assumptions about who your online competitors are.',
@@ -162,7 +162,7 @@ export const businessConsultancies: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on consultancy directories, trade press, business publications, professional bodies, local recommendation pages, review platforms, listicles, Reddit discussions, consultant profiles, service comparison pages, competitor websites, social profiles and your own service and sector pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on consulting firm directories, trade press, business publications, professional associations, local recommendation pages, review platforms, listicles, Reddit discussions, consultant profiles, service comparison pages, competitor websites, social profiles and your own service and sector pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,16 +171,16 @@ export const businessConsultancies: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Consultancy.uk', pct: 88 },
-      { name: 'Financial Times', pct: 74 },
-      { name: 'Management Today', pct: 61 },
-      { name: 'Forbes', pct: 39 },
+      { name: 'Consulting Magazine', pct: 88 },
+      { name: 'Harvard Business Review', pct: 74 },
+      { name: 'Forbes', pct: 61 },
+      { name: 'Inc.', pct: 39 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Glassdoor', models: ['ChatGPT', 'Perplexity'] },
       { name: 'Forbes', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
@@ -193,27 +193,27 @@ export const businessConsultancies: IndustryContent = {
   brand: {
     heading: 'Does AI understand what you want to be known for?',
     intro:
-      'Being mentioned is not enough if your consultancy is associated with the wrong specialisms or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
+      'Being mentioned is not enough if your consulting firm is associated with the wrong specialties or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading consultancy for growth and market expansion',
-      'Trusted adviser on digital transformation programmes',
+      'Leading consulting firm for growth and market expansion',
+      'Trusted advisor on digital transformation programs',
       'Specialist firm for operational improvement and efficiency',
-      'Recognised authority on change management',
-      'Premier adviser on business turnaround and recovery',
-      'Independently respected organisational design practice',
-      'Sector-focused consultancy with experienced partners',
+      'Recognized authority on change management',
+      'Premier advisor on business turnaround and recovery',
+      'Independently respected organizational design practice',
+      'Sector-focused consulting firm with experienced partners',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
-      'Who your consultancy serves',
+      'Who your consulting firm serves',
       'Where you operate',
-      'Which specialisms you focus on',
+      'Which specialties you focus on',
       'What differentiates your approach',
       'Who your consultants are',
       'Which credentials support your expertise',
       'Which engagements you are best placed to handle',
-      'How your consultancy compares with rival firms',
+      'How your consulting firm compares with rival firms',
     ],
     calloutPillA: 'Consistently understood',
     calloutPillB: 'Consistently recommended',
@@ -230,18 +230,18 @@ export const businessConsultancies: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
         title: 'Multi-Model AI Visibility Auditing',
-        body: 'High-intent prompts tested across ChatGPT, Gemini and Perplexity. We measure mentions, citations, recommendations, positioning, specialism visibility, sector visibility, competitors and sources.',
+        body: 'High-intent prompts tested across ChatGPT, Gemini and Perplexity. We measure mentions, citations, recommendations, positioning, specialty visibility, sector visibility, competitors and sources.',
         icon: 'Search',
       },
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -254,13 +254,13 @@ export const businessConsultancies: IndustryContent = {
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across consultancy directories, review platforms, consultant profiles, business resources, service comparison pages and professional associations.',
+        body: 'We strengthen your presence across consulting firm directories, review platforms, consultant profiles, business resources, service comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, consultant biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the consultancy.',
+        body: 'We align firm names, locations, consultant biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
@@ -272,19 +272,19 @@ export const businessConsultancies: IndustryContent = {
       {
         num: '07',
         title: 'Ongoing AI Visibility Tracking',
-        body: 'We continue testing the prompts most valuable to your consultancy: recommendation frequency, brand mentions, specialism visibility, competitor share of voice, citation sources and positioning accuracy.',
+        body: 'We continue testing the prompts most valuable to your consulting firm: recommendation frequency, brand mentions, specialty visibility, competitor share of voice, citation sources and positioning accuracy.',
         icon: 'BarChart3',
       },
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For consultancies operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level consultant recognition.',
+        body: 'For consulting firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level consultant recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for consultancies — Google, Trustpilot, Consultancy.uk and Clutch — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for consulting firms — Google, Glassdoor, Clutch and Consulting Magazine — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -293,13 +293,13 @@ export const businessConsultancies: IndustryContent = {
   earnedMedia: {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
-      'Every consultancy can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a consultant is quoted in a recognised publication, several things happen:',
+      'Every consulting firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
+      'When a consultant is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a consultant is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a consultant is quoted in a recognized publication, several things happen:',
     effects: [
       'The consultant becomes associated with a relevant area of expertise',
-      'The consultancy earns an independent brand mention',
+      'The consulting firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
       'AI systems gain external information about the brand',
@@ -324,7 +324,7 @@ export const businessConsultancies: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,15 +333,15 @@ export const businessConsultancies: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A consultant with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'A consultant with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
     sectionLabel: 'Service Visibility',
     heading: 'Build visibility around the services that generate fees',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your consultancy, location, consultants and the services you want to grow.',
-    focusHeading: 'A consultancy strategy may focus on',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your consulting firm, location, consultants and the services you want to grow.',
+    focusHeading: 'A consulting firm strategy may focus on',
     badge: '24 services',
     items: [
       'Business strategy',
@@ -350,19 +350,19 @@ export const businessConsultancies: IndustryContent = {
       'Change management',
       'Growth strategy',
       'Market entry',
-      'Organisational design',
-      'Process optimisation',
+      'Organizational design',
+      'Process optimization',
       'Performance improvement',
       'Mergers and integration',
       'Cost reduction',
       'Customer experience strategy',
       'Data and analytics',
-      'Programme management',
+      'Program management',
       'Leadership development',
       'Culture transformation',
       'Sustainability strategy',
       'Pricing strategy',
-      'Supply chain optimisation',
+      'Supply chain optimization',
       'Business turnaround',
       'Innovation consulting',
       'Workforce planning',
@@ -370,7 +370,7 @@ export const businessConsultancies: IndustryContent = {
       'Post-merger integration',
     ],
     closing:
-      'A consultancy may be highly visible for one service and completely absent for another. Our process exposes those differences. Every service is reviewed separately because the competitors, sources and authority signals can differ considerably.',
+      'A consulting firm may be highly visible for one service and completely absent for another. Our process exposes those differences. Every service is reviewed separately because the competitors, sources and authority signals can differ considerably.',
   },
 
   process: {
@@ -380,7 +380,7 @@ export const businessConsultancies: IndustryContent = {
       {
         n: '01',
         t: 'Define the Commercial Priorities',
-        b: 'We identify the services, sectors and client searches most valuable to your consultancy. This prevents the campaign from becoming a broad exercise with no commercial focus.',
+        b: 'We identify the services, sectors and client searches most valuable to your consulting firm. This prevents the campaign from becoming a broad exercise with no commercial focus.',
       },
       {
         n: '02',
@@ -390,7 +390,7 @@ export const businessConsultancies: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -415,7 +415,7 @@ export const businessConsultancies: IndustryContent = {
     intro:
       'AI visibility improvement should be measured through several indicators rather than one isolated answer.',
     before: [
-      'The consultancy appears inconsistently',
+      'The consulting firm appears inconsistently',
       'Important service prompts produce no mention',
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
@@ -425,11 +425,11 @@ export const businessConsultancies: IndustryContent = {
       'The firm does not know which sources influence results',
     ],
     after: [
-      'The consultancy appears across more valuable prompts',
+      'The consulting firm appears across more valuable prompts',
       'Priority services have stronger brand association',
       'Brand descriptions become more accurate',
       'Consultant expertise is clearer',
-      'More trusted sources mention the consultancy',
+      'More trusted sources mention the consulting firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
       'Progress is monitored across multiple AI platforms',
@@ -437,34 +437,34 @@ export const businessConsultancies: IndustryContent = {
   },
 
   whoFor: {
-    heading: 'Built for consultancies with genuine expertise to promote',
+    heading: 'Built for consulting firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established consultancies that have credible consultants, strong client delivery and the capacity to convert increased visibility into engagements.',
-    typesHeading: 'Best-fit consultancy types',
+      'TotalAuthority is best suited to established consulting firms that have credible consultants, strong client delivery and the capacity to convert increased visibility into engagements.',
+    typesHeading: 'Best-fit consulting firm types',
     types: [
-      'Established management consultancies',
+      'Established management consulting firms',
       'Boutique strategy firms',
       'Digital transformation specialists',
       'Operational improvement practices',
-      'Change management consultancies',
+      'Change management consulting firms',
       'Sector-focused advisory firms',
-      'Multi-office consultancies',
+      'Multi-office consulting firms',
       'Performance improvement firms',
       'Turnaround and recovery specialists',
-      'Organisational design practices',
+      'Organizational design practices',
       'Independent consulting partnerships',
       'Firms entering new sectors',
     ],
     qualification:
-      'We build authority around real expertise. The consultancy must be able to support its positioning through appropriate credentials, credible engagements and responsible client communication.',
+      'We build authority around real expertise. The consulting firm must be able to support its positioning through appropriate credentials, credible engagements and responsible client communication.',
   },
 
   gaps: {
-    heading: 'Why business consultancies lose AI visibility',
+    heading: 'Why business consulting firms lose AI visibility',
     items: [
       {
         t: 'Strong reputation, weak external evidence',
-        b: 'The consultancy may have loyal clients but very few independent sources confirming its expertise.',
+        b: 'The consulting firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
         t: 'Consultant expertise is hidden',
@@ -472,7 +472,7 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -480,7 +480,7 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         t: 'Website content is too generic',
-        b: 'Service pages repeat the same information found on hundreds of other consultancy websites.',
+        b: 'Service pages repeat the same information found on hundreds of other consulting firm websites.',
       },
       {
         t: 'Local and brand information conflicts',
@@ -488,11 +488,11 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         t: 'Marketing is focused entirely on referrals',
-        b: 'The consultancy wins work through word of mouth but has little searchable, independent authority elsewhere.',
+        b: 'The consulting firm wins work through word of mouth but has little searchable, independent authority elsewhere.',
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -528,9 +528,9 @@ export const businessConsultancies: IndustryContent = {
   },
 
   auditOffer: {
-    heading: 'Get your Consultancy AI Visibility Audit',
+    heading: 'Get your Consulting Firm AI Visibility Audit',
     intro:
-      'See how your consultancy currently appears across ChatGPT, Gemini and Perplexity. Your audit will examine high-intent prompts linked to your location, services and desired positioning.',
+      'See how your consulting firm currently appears across ChatGPT, Gemini and Perplexity. Your audit will examine high-intent prompts linked to your location, services and desired positioning.',
     includesHeading: 'What the audit includes',
     includes: [
       'Overall AI visibility score',
@@ -553,7 +553,7 @@ export const businessConsultancies: IndustryContent = {
     formFields: [
       'First name and last name',
       'Business email and phone',
-      'Consultancy name and website',
+      'Consulting firm name and website',
       'Primary location and number of offices',
       'Most important services',
       'Services you want to grow',
@@ -561,7 +561,7 @@ export const businessConsultancies: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const businessConsultancies: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -593,17 +593,17 @@ export const businessConsultancies: IndustryContent = {
   },
 
   comparison: {
-    heading: 'What makes this different from traditional consultancy marketing?',
+    heading: 'What makes this different from traditional consulting firm marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic management blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,20 +611,20 @@ export const businessConsultancies: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the consultancy and its consultants',
+      'Build the authority of the consulting firm and its consultants',
       'Build connected media, brand, entity and citation signals',
       'Measure service visibility, competitor share and source influence',
-      'Strengthen the wider source environment surrounding the consultancy',
+      'Strengthen the wider source environment surrounding the consulting firm',
     ],
   },
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from business consultancies considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from business consulting firms considering an AI visibility program.',
     items: [
       {
-        q: 'What is AI visibility for a business consultancy?',
-        a: 'AI visibility refers to whether your consultancy appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about consulting services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your consultants are recognised for relevant expertise.',
+        q: 'What is AI visibility for a business consulting firm?',
+        a: 'AI visibility refers to whether your consulting firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about consulting services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your consultants are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -632,19 +632,19 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         q: 'Can you guarantee that AI will recommend us?',
-        a: 'No. The platforms operate independently and their answers can change. We strengthen the authority, relevance, consistency and third-party evidence connected with your brand. These are the areas most likely to improve how your consultancy is understood and considered.',
+        a: 'No. The platforms operate independently and their answers can change. We strengthen the authority, relevance, consistency and third-party evidence connected with your brand. These are the areas most likely to improve how your consulting firm is understood and considered.',
       },
       {
         q: 'Is AI visibility the same as SEO?',
         a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, consultant entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
-        q: 'Does our consultancy still need local SEO?',
+        q: 'Does our consulting firm still need local SEO?',
         a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, consultant, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your consultancy independent recognition. It can connect your consultants with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your consulting firm independent recognition. It can connect your consultants with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
@@ -656,11 +656,11 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         q: 'Can you promote individual consultants and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Consultant authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Consultant authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
-        q: 'Can you help a multi-office consultancy?',
-        a: 'Yes. Multi-office consultancies need clear connections between the parent brand, each office, consultants, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        q: 'Can you help a multi-office consulting firm?',
+        a: 'Yes. Multi-office consulting firms need clear connections between the parent brand, each office, consultants, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const businessConsultancies: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },
@@ -681,10 +681,10 @@ export const businessConsultancies: IndustryContent = {
 
   finalCta: {
     eyebrow: 'Find out where you stand',
-    heading: 'Is AI recommending your consultancy, or your competitors?',
+    heading: 'Is AI recommending your consulting firm, or your competitors?',
     paragraph:
-      'Your consultancy may already be visible for some services and absent for others. The only way to know is to test the questions your prospective clients are asking, examine the competitors appearing instead, and identify the sources influencing those answers. Start with a clear visibility baseline. Then build the authority required to compete.',
+      'Your consulting firm may already be visible for some services and absent for others. The only way to know is to test the questions your prospective clients are asking, examine the competitors appearing instead, and identify the sources influencing those answers. Start with a clear visibility baseline. Then build the authority required to compete.',
     footnote:
-      'Measured across ChatGPT, Gemini and Perplexity using prompts tailored to your consultancy, services and location.',
+      'Measured across ChatGPT, Gemini and Perplexity using prompts tailored to your consulting firm, services and location.',
   },
 };

@@ -10,13 +10,13 @@ export const lawFirms: IndustryContent = {
     keywords: [
       'AI visibility for law firms',
       'law firm marketing',
-      'solicitor SEO',
+      'attorney SEO',
       'legal authority building',
       'ChatGPT law firm recommendations',
-      'AI search for solicitors',
+      'AI search for attorneys',
       'digital PR for law firms',
       'legal directory rankings',
-      'Chambers and Partners visibility',
+      'Chambers USA visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Law Firms',
@@ -38,7 +38,7 @@ export const lawFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to instruct for commercial disputes, employment matters, family law, conveyancing, probate and corporate transactions.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for commercial disputes, employment matters, family law, real estate closings, probate and corporate transactions.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -60,16 +60,16 @@ export const lawFirms: IndustryContent = {
     competitorsHeading: 'Top competitors recommended instead',
     competitorsCaption: '4 of 10 prompts',
     competitors: [
-      { name: 'Hartwell & Co', count: 7 },
+      { name: 'Hartwell & Stone', count: 7 },
       { name: 'Brightcourt Legal', count: 5 },
       { name: 'Marlow Reeves LLP', count: 4 },
     ],
     sources: [
-      'Chambers and Partners',
-      'The Legal 500',
-      'The Law Society',
+      'Chambers USA',
+      'The Legal 500 United States',
+      'American Bar Association',
       'Reddit',
-      'ReviewSolicitors',
+      'Avvo',
       'Local press',
       'Legal directory',
     ],
@@ -78,14 +78,14 @@ export const lawFirms: IndustryContent = {
   shift: {
     heading: 'Your next client may ask AI before they search Google',
     intro:
-      'People are increasingly using AI platforms to shortlist firms, compare practice areas and decide which solicitors appear credible. They are asking questions such as:',
+      'People are increasingly using AI platforms to shortlist firms, compare practice areas and decide which attorneys appear credible. They are asking questions such as:',
     questions: [
-      'Who is the best employment solicitor near me?',
-      'Which firm should I use for a commercial dispute in Manchester?',
-      'Where can I find a specialist family law solicitor?',
-      'Which firm has the strongest reviews for residential conveyancing?',
-      'Who is a trusted solicitor for wills and probate?',
-      'Which law firm specialises in clinical negligence claims?',
+      'Who is the best employment attorney near me?',
+      'Which firm should I use for a commercial dispute in Chicago?',
+      'Where can I find a specialist family law attorney?',
+      'Which firm has the strongest reviews for residential real estate closings?',
+      'Who is a trusted attorney for wills and probate?',
+      'Which law firm specializes in medical malpractice claims?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced partners and decades of casework behind it. That does not guarantee you will be included.',
@@ -99,7 +99,7 @@ export const lawFirms: IndustryContent = {
     heading: 'Find out exactly where your firm stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the practice area, service and local discovery prompts that could lead to a new instruction.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the practice area, service and local discovery prompts that could lead to a new engagement.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -120,17 +120,17 @@ export const lawFirms: IndustryContent = {
     ],
     promptCategories: [
       'Best law firm in your city',
-      'Best commercial litigation solicitor',
+      'Best commercial litigation attorney',
       'Best employment law firm',
-      'Best family law solicitor',
-      'Best conveyancing solicitor',
-      'Best probate and estate solicitor',
+      'Best family law attorney',
+      'Best real estate closing attorney',
+      'Best probate and estate attorney',
       'Best personal injury firm',
       'Best corporate and M&A firm',
-      'Best immigration solicitor',
+      'Best immigration attorney',
       'Best dispute resolution firm',
       'Best firm for natural-language legal queries',
-      'Top-rated solicitors near me',
+      'Top-rated attorneys near me',
     ],
   },
 
@@ -149,11 +149,11 @@ export const lawFirms: IndustryContent = {
     ],
     tableHeading: 'Recurring competitors',
     tableRows: [
-      { name: 'Hartwell & Co', m: 3, p: 7, f: '23×' },
+      { name: 'Hartwell & Stone', m: 3, p: 7, f: '23×' },
       { name: 'Brightcourt Legal', m: 2, p: 5, f: '14×' },
       { name: 'Marlow Reeves LLP', m: 3, p: 4, f: '11×' },
       { name: 'Pennington Clarke', m: 1, p: 3, f: '6×' },
-      { name: 'Vale & Whitmore', m: 2, p: 2, f: '5×' },
+      { name: 'Vance & Whitmore', m: 2, p: 2, f: '5×' },
     ],
     note:
       'This gives you a practical competitive view based on AI-generated recommendations, rather than assumptions about who your online competitors are.',
@@ -162,7 +162,7 @@ export const lawFirms: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on legal directories, trade press, professional bodies, local recommendation pages, review platforms, listicles, Reddit discussions, solicitor profiles, practice area comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on legal directories, trade press, bar associations, local recommendation pages, review platforms, listicles, Reddit discussions, attorney profiles, practice area comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const lawFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Chambers and Partners', pct: 90 },
-      { name: 'The Legal 500', pct: 76 },
-      { name: 'The Law Society', pct: 62 },
+      { name: 'Chambers USA', pct: 90 },
+      { name: 'The Legal 500 United States', pct: 76 },
+      { name: 'Super Lawyers', pct: 62 },
       { name: 'Local press', pct: 37 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Law Society Gazette', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Legal Futures', models: ['Gemini', 'Perplexity'] },
+      { name: 'ABA Journal', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Law.com', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -199,18 +199,18 @@ export const lawFirms: IndustryContent = {
       'Leading firm for complex commercial litigation',
       'Trusted practice for employment and HR matters',
       'Specialist firm for family law and children matters',
-      'Local authority for residential conveyancing',
-      'Premier adviser on corporate transactions and M&A',
-      'Independently recognised private client and probate team',
+      'Local authority for residential real estate closings',
+      'Premier advisor on corporate transactions and M&A',
+      'Independently recognized private client and probate team',
       'Multi-office practice with experienced partners',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which practice areas you specialise in',
+      'Which practice areas you specialize in',
       'What differentiates your approach',
-      'Who your solicitors are',
+      'Who your attorneys are',
       'Which credentials support your expertise',
       'Which matters you are best placed to handle',
       'How your firm compares with local competitors',
@@ -230,7 +230,7 @@ export const lawFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,32 +241,32 @@ export const lawFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified solicitors as expert sources for journalists covering legal affairs, business, employment, property and personal finance — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified attorneys as expert sources for journalists covering legal affairs, business, employment, real estate and personal finance — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across legal directories, review platforms, solicitor profiles, local business resources, practice area comparison pages and professional associations.',
+        body: 'We strengthen your presence across legal directories, review platforms, attorney profiles, local business resources, practice area comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, solicitor biographies, credentials, practice area categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
+        body: 'We align firm names, locations, attorney biographies, credentials, practice area categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, practice area guides, solicitor-led explainers, legal updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, practice area guides, attorney-led explainers, legal updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
@@ -278,13 +278,13 @@ export const lawFirms: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level solicitor recognition.',
+        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level attorney recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, ReviewSolicitors, Chambers and Partners and The Legal 500 — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google reviews, Avvo, Martindale-Hubbell and Super Lawyers — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const lawFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a solicitor is quoted in a recognised publication, several things happen:',
+      'When an attorney is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a solicitor is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an attorney is quoted in a recognized publication, several things happen:',
     effects: [
-      'The solicitor becomes associated with a relevant area of expertise',
+      'The attorney becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const lawFirms: IndustryContent = {
       'Clients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, solicitor authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, attorney authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Solicitor Authority',
-    heading: 'Clients trust solicitors, not faceless firm pages',
+    sectionLabel: 'Attorney Authority',
+    heading: 'Clients trust attorneys, not faceless firm pages',
     paragraphs: [
-      'In legal services, the person handling the matter can be as important as the firm itself. Your managing partner, heads of department, fee-earners and specialist solicitors hold expertise that can strengthen the authority of the entire brand.',
+      'In legal services, the person handling the matter can be as important as the firm itself. Your managing partner, practice group leaders, associates and specialist attorneys hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Solicitor positioning',
+      'Attorney positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,14 +333,14 @@ export const lawFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A solicitor with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'An attorney with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
     sectionLabel: 'Practice Area Visibility',
     heading: 'Build visibility around the practice areas that generate fees',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, solicitors and the services you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, attorneys and the services you want to grow.',
     focusHeading: 'A law firm strategy may focus on',
     badge: '24 practice areas',
     items: [
@@ -348,23 +348,23 @@ export const lawFirms: IndustryContent = {
       'Corporate and M&A',
       'Employment law',
       'Family law',
-      'Residential conveyancing',
-      'Commercial property',
+      'Residential real estate closings',
+      'Commercial real estate',
       'Wills and probate',
       'Trusts and estate planning',
       'Personal injury',
-      'Clinical negligence',
+      'Medical malpractice',
       'Immigration',
       'Intellectual property',
       'Dispute resolution',
-      'Insolvency',
+      'Bankruptcy',
       'Construction law',
-      'Data protection and GDPR',
-      'Criminal defence',
-      'Landlord and tenant',
-      'Debt recovery',
-      'Wills disputes',
-      'Professional negligence',
+      'Data privacy and compliance',
+      'Criminal defense',
+      'Landlord-tenant',
+      'Debt collection',
+      'Will contests',
+      'Professional malpractice',
       'Tax law',
       'Shareholder disputes',
       'Regulatory and compliance',
@@ -390,12 +390,12 @@ export const lawFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, solicitor entities, practice area associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, attorney entities, practice area associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -420,7 +420,7 @@ export const lawFirms: IndustryContent = {
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Solicitors have little external authority',
+      'Attorneys have little external authority',
       'Third-party source coverage is limited',
       'The firm does not know which sources influence results',
     ],
@@ -428,7 +428,7 @@ export const lawFirms: IndustryContent = {
       'The firm appears across more valuable prompts',
       'Priority practice areas have stronger brand association',
       'Brand descriptions become more accurate',
-      'Solicitor expertise is clearer',
+      'Attorney expertise is clearer',
       'More trusted sources mention the firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,17 +439,17 @@ export const lawFirms: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible solicitors, strong client service and the capacity to convert increased visibility into instructions.',
+      'TotalAuthority is best suited to established firms that have credible attorneys, strong client service and the capacity to convert increased visibility into new engagements.',
     typesHeading: 'Best-fit firm types',
     types: [
-      'Established high-street firms',
+      'Established main street firms',
       'Regional full-service firms',
       'Boutique commercial firms',
       'Multi-office practices',
       'Specialist litigation firms',
-      'Legal aid and private practice firms',
-      "Barristers' chambers",
-      'Conveyancing-led firms',
+      'Solo and small private practice firms',
+      'Litigation and trial firms',
+      'Real estate-led firms',
       'Personal injury practices',
       'Immigration practices',
       'Family law specialists',
@@ -467,12 +467,12 @@ export const lawFirms: IndustryContent = {
         b: 'The firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Solicitor expertise is hidden',
+        t: 'Attorney expertise is hidden',
         b: 'Highly qualified partners are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong practice areas',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,7 +484,7 @@ export const lawFirms: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Firm, solicitor and office details are inconsistent across profiles and third-party sources.',
+        b: 'Firm, attorney and office details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
@@ -492,7 +492,7 @@ export const lawFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const lawFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const lawFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, solicitor quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, attorney quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,7 +586,7 @@ export const lawFirms: IndustryContent = {
       },
       {
         t: 'Client Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and solicitor positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and attorney positioning.',
         icon: 'Award',
       },
     ],
@@ -596,14 +596,14 @@ export const lawFirms: IndustryContent = {
     heading: 'What makes this different from traditional law firm marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic practice area blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,7 +611,7 @@ export const lawFirms: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the firm and its solicitors',
+      'Build the authority of the firm and its attorneys',
       'Build connected media, brand, entity and citation signals',
       'Measure practice area visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the firm',
@@ -620,11 +620,11 @@ export const lawFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from law firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from law firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a law firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about legal services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your solicitors are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about legal services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your attorneys are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -636,31 +636,31 @@ export const lawFirms: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, solicitor entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, attorney entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our firm still need local SEO?',
-        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, solicitor, media and third-party authority.',
+        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, attorney, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your firm independent recognition. It can connect your solicitors with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your firm independent recognition. It can connect your attorneys with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, practice area associations, solicitor information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, practice area associations, attorney information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, practice area guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
       },
       {
-        q: 'Can you promote individual solicitors and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Solicitor authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual attorneys and partners?',
+        a: 'Yes, provided their experience and credentials support the positioning. Attorney authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
-        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, solicitors, practice area offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, attorneys, practice area offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const lawFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

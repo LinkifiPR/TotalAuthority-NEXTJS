@@ -11,12 +11,12 @@ export const privateMedicalPractices: IndustryContent = {
       'AI visibility for private medical practices',
       'private practice marketing',
       'private healthcare SEO',
-      'consultant authority building',
+      'physician authority building',
       'ChatGPT private doctor recommendations',
-      'AI search for private consultants',
+      'AI search for specialist physicians',
       'digital PR for private medical practices',
       'private healthcare directory rankings',
-      'Top Doctors profile visibility',
+      'Castle Connolly profile visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Private Medical Practices',
@@ -38,7 +38,7 @@ export const privateMedicalPractices: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective patients are asking ChatGPT, Gemini and Perplexity who to see for cardiology, dermatology, gynaecology, orthopaedics and private GP care.',
+      'Your prospective patients are asking ChatGPT, Gemini and Perplexity who to see for cardiology, dermatology, gynecology, orthopedics and primary care.',
       'TotalAuthority shows you whether your practice appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -60,35 +60,35 @@ export const privateMedicalPractices: IndustryContent = {
     competitorsHeading: 'Top competitors recommended instead',
     competitorsCaption: '4 of 10 prompts',
     competitors: [
-      { name: 'Wimpole Health Partners', count: 7 },
-      { name: 'Cavendish Private Clinic', count: 5 },
-      { name: 'Northgate Consultants', count: 4 },
+      { name: 'Madison Health Partners', count: 7 },
+      { name: 'Parkview Private Clinic', count: 5 },
+      { name: 'Northgate Physicians', count: 4 },
     ],
     sources: [
-      'Doctify',
-      'Top Doctors',
-      'BUPA',
-      'Spire Healthcare',
-      'Tatler',
-      'The Times Health',
-      'Trustpilot',
+      'Healthgrades',
+      'Castle Connolly',
+      'Aetna',
+      'HCA Healthcare',
+      'WebMD',
+      'NYT Health',
+      'Vitals',
     ],
   },
 
   shift: {
     heading: 'Your next patient may ask AI before they search Google',
     intro:
-      'People are increasingly using AI platforms to shortlist practices, compare specialties and decide which consultants appear credible. They are asking questions such as:',
+      'People are increasingly using AI platforms to shortlist practices, compare specialties and decide which physicians appear credible. They are asking questions such as:',
     questions: [
-      'Who is the best private GP near me?',
-      'Which practice should I use for a private cardiology consultation in London?',
-      'Where can I find a specialist private dermatologist?',
-      'Which practice has the strongest reviews for gynaecology?',
-      'Who is a trusted consultant for orthopaedic care?',
-      'Which practice specialises in executive health assessments?',
+      'Who is the best primary care physician near me?',
+      'Which practice should I use for a cardiology consultation in New York?',
+      'Where can I find a specialist dermatologist?',
+      'Which practice has the strongest reviews for gynecology?',
+      'Who is a trusted specialist physician for orthopedic care?',
+      'Which practice specializes in executive physicals?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your practice may have an excellent reputation, distinguished consultants and decades of clinical experience behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your practice may have an excellent reputation, distinguished physicians and decades of clinical experience behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -99,7 +99,7 @@ export const privateMedicalPractices: IndustryContent = {
     heading: 'Find out exactly where your practice stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your patients are likely to ask. We don't simply search for your practice name. We test the specialty, consultant and local discovery prompts that could lead to a new appointment.",
+      " tests the commercially valuable questions your patients are likely to ask. We don't simply search for your practice name. We test the specialty, physician and local discovery prompts that could lead to a new appointment.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -120,17 +120,17 @@ export const privateMedicalPractices: IndustryContent = {
     ],
     promptCategories: [
       'Best private medical practice in your city',
-      'Best private GP service',
-      'Best private cardiologist',
-      'Best private dermatologist',
-      'Best private gynaecologist',
-      'Best practice for orthopaedic care',
-      'Best practice for executive health assessments',
-      'Best private gastroenterologist',
+      'Best primary care physician (PCP) service',
+      'Best cardiologist',
+      'Best dermatologist',
+      'Best gynecologist',
+      'Best practice for orthopedic care',
+      'Best practice for executive physicals',
+      'Best gastroenterologist',
       'Best practice for diagnostic imaging',
-      'Best private neurologist',
+      'Best neurologist',
       'Best practice for natural-language private healthcare queries',
-      'Top-rated private consultants near me',
+      'Top-rated specialist physicians near me',
     ],
   },
 
@@ -142,16 +142,16 @@ export const privateMedicalPractices: IndustryContent = {
     identifies: [
       'Competitors appearing across multiple AI models',
       'Practices repeatedly recommended for priority specialties',
-      'Competitors associated with particular consultants',
+      'Competitors associated with particular specialist physicians',
       'The prompts where your practice is absent',
       'The websites supporting competitor recommendations',
       'The practices gaining visibility despite having weaker real-world credentials',
     ],
     tableHeading: 'Recurring competitors',
     tableRows: [
-      { name: 'Wimpole Health Partners', m: 3, p: 7, f: '23×' },
-      { name: 'Cavendish Private Clinic', m: 2, p: 5, f: '14×' },
-      { name: 'Northgate Consultants', m: 3, p: 4, f: '11×' },
+      { name: 'Madison Health Partners', m: 3, p: 7, f: '23×' },
+      { name: 'Parkview Private Clinic', m: 2, p: 5, f: '14×' },
+      { name: 'Northgate Physicians', m: 3, p: 4, f: '11×' },
       { name: 'Albany Medical Group', m: 1, p: 3, f: '6×' },
       { name: 'Sterling Health Clinic', m: 2, p: 2, f: '5×' },
     ],
@@ -162,7 +162,7 @@ export const privateMedicalPractices: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on healthcare directories, private hospital groups, health press, local recommendation pages, review platforms, listicles, Reddit discussions, consultant profiles, specialty comparison pages, competitor websites, social profiles and your own specialty and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on healthcare directories, hospital systems, health press, local recommendation pages, review platforms, listicles, Reddit discussions, physician profiles, specialty comparison pages, competitor websites, social profiles and your own specialty and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const privateMedicalPractices: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Doctify', pct: 88 },
-      { name: 'Top Doctors', pct: 76 },
-      { name: 'BUPA', pct: 61 },
-      { name: 'Spire Healthcare', pct: 38 },
+      { name: 'Healthgrades', pct: 88 },
+      { name: 'Castle Connolly', pct: 76 },
+      { name: 'Aetna', pct: 61 },
+      { name: 'HCA Healthcare', pct: 38 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'The Times Health', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['Gemini', 'Perplexity'] },
+      { name: 'NYT Health', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Vitals', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -196,13 +196,13 @@ export const privateMedicalPractices: IndustryContent = {
       'Being mentioned is not enough if your practice is associated with the wrong specialties or described too generically. We compare what you want AI to understand with what the platforms currently say about your practice.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading practice for consultant cardiology',
-      'Trusted provider of private GP services',
+      'Leading practice for specialist cardiology',
+      'Trusted provider of primary care services',
       'Specialist practice for dermatology and skin health',
-      'Local authority for orthopaedic and sports medicine',
-      'Premier provider of executive health assessments',
-      'Independently recognised diagnostic and imaging team',
-      'Multi-specialty practice with experienced consultants',
+      'Local authority for orthopedic and sports medicine',
+      'Premier provider of executive physicals',
+      'Independently recognized diagnostic and imaging team',
+      'Multi-specialty practice with experienced physicians',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
@@ -210,7 +210,7 @@ export const privateMedicalPractices: IndustryContent = {
       'Where you operate',
       'Which specialties you provide',
       'What differentiates your care',
-      'Who your consultants are',
+      'Who your physicians are',
       'Which credentials support your expertise',
       'Which conditions you are best placed to treat',
       'How your practice compares with local competitors',
@@ -230,7 +230,7 @@ export const privateMedicalPractices: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,32 +241,32 @@ export const privateMedicalPractices: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your consultants as expert sources for journalists covering health, medicine, wellbeing, lifestyle and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your physicians as expert sources for journalists covering health, medicine, well-being, lifestyle and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across healthcare directories, review platforms, consultant profiles, local health resources, specialty comparison pages and professional associations.',
+        body: 'We strengthen your presence across healthcare directories, review platforms, physician profiles, local health resources, specialty comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align practice names, locations, consultant biographies, credentials, specialty categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the practice.',
+        body: 'We align practice names, locations, physician biographies, credentials, specialty categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the practice.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, condition guides, consultant-led explainers, health updates, comparison pages, patient decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, condition guides, physician-led explainers, health updates, comparison pages, patient decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
@@ -278,13 +278,13 @@ export const privateMedicalPractices: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Site Authority',
-        body: 'For practices operating across one or more sites, we strengthen the local signals AI relies on: site-specific profiles, regional press, community references, structured local data and site-level consultant recognition.',
+        body: 'For practices operating across one or more sites, we strengthen the local signals AI relies on: site-specific profiles, regional press, community references, structured local data and site-level physician recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for practices — Google, Doctify, Top Doctors and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for practices — Google, Healthgrades, Castle Connolly and Vitals — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const privateMedicalPractices: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every practice can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a consultant is quoted in a recognised publication, several things happen:',
+      'When a physician is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a consultant is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a physician is quoted in a recognized publication, several things happen:',
     effects: [
-      'The consultant becomes associated with a relevant area of expertise',
+      'The physician becomes associated with a relevant area of expertise',
       'The practice earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const privateMedicalPractices: IndustryContent = {
       'Patients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, consultant authority, patient confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, physician authority, patient confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Consultant Authority',
-    heading: 'Patients trust consultants, not faceless practice pages',
+    sectionLabel: 'Physician Authority',
+    heading: 'Patients trust physicians, not faceless practice pages',
     paragraphs: [
-      'In private healthcare, the person providing the care can be as important as the practice itself. Your lead consultants, specialist physicians, private GPs and clinical team hold expertise that can strengthen the authority of the entire brand.',
+      'In private healthcare, the person providing the care can be as important as the practice itself. Your lead physicians, specialist physicians, primary care physicians and clinical team hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Consultant positioning',
+      'Physician positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Specialty specialisation',
+      'Specialty specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,34 +333,34 @@ export const privateMedicalPractices: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A consultant with genuine expertise can become a recognised source for both patients and journalists. That authority then supports the practice they represent.',
+      'A physician with genuine expertise can become a recognized source for both patients and journalists. That authority then supports the practice they represent.',
   },
 
   services: {
     sectionLabel: 'Specialty Visibility',
     heading: 'Build visibility around the specialties that generate appointments',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your practice, location, consultants and the specialties you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your practice, location, physicians and the specialties you want to grow.',
     focusHeading: 'A private practice strategy may focus on',
     badge: '24 specialties',
     items: [
-      'Private GP services',
-      'Consultant cardiology',
+      'Primary care services',
+      'Specialist cardiology',
       'Dermatology',
-      'Gynaecology',
+      'Gynecology',
       'Gastroenterology',
-      'Orthopaedics',
+      'Orthopedics',
       'Endocrinology',
       'Neurology',
-      'Respiratory medicine',
+      'Pulmonology',
       'Urology',
       'ENT',
       'Rheumatology',
-      'Executive health assessments',
+      'Executive physicals',
       'Diagnostic imaging',
       'Blood tests and pathology',
       'Allergy and immunology',
-      'Paediatrics',
+      'Pediatrics',
       'Sports medicine',
       'Menopause clinics',
       'Travel medicine',
@@ -390,12 +390,12 @@ export const privateMedicalPractices: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, consultant entities, specialty associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, physician entities, specialty associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -420,7 +420,7 @@ export const privateMedicalPractices: IndustryContent = {
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Consultants have little external authority',
+      'Physicians have little external authority',
       'Third-party source coverage is limited',
       'The practice does not know which sources influence results',
     ],
@@ -428,7 +428,7 @@ export const privateMedicalPractices: IndustryContent = {
       'The practice appears across more valuable prompts',
       'Priority specialties have stronger brand association',
       'Brand descriptions become more accurate',
-      'Consultant expertise is clearer',
+      'Physician expertise is clearer',
       'More trusted sources mention the practice',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,19 +439,19 @@ export const privateMedicalPractices: IndustryContent = {
   whoFor: {
     heading: 'Built for practices with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established practices that have distinguished consultants, strong patient care and the capacity to convert increased visibility into appointments.',
+      'TotalAuthority is best suited to established practices that have distinguished physicians, strong patient care and the capacity to convert increased visibility into appointments.',
     typesHeading: 'Best-fit practice types',
     types: [
       'Established private medical practices',
-      'Consultant-led specialist clinics',
-      'Boutique private GP services',
+      'Physician-led specialist clinics',
+      'Boutique primary care practices',
       'Multi-site practice groups',
       'Single-specialty clinics',
       'Multi-specialty private clinics',
-      'Diagnostic and imaging centres',
+      'Diagnostic and imaging centers',
       'Executive health providers',
       "Women's health practices",
-      'Hospital-affiliated consultants',
+      'Hospital-affiliated physicians',
       'Health screening providers',
       'Practices entering new regions',
     ],
@@ -467,12 +467,12 @@ export const privateMedicalPractices: IndustryContent = {
         b: 'The practice may have loyal patients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Consultant expertise is hidden',
-        b: 'Highly qualified consultants are presented through short team biographies with little external recognition.',
+        t: 'Physician expertise is hidden',
+        b: 'Highly qualified physicians are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong specialties',
-        b: 'AI may recognise the practice but connect it more strongly with secondary specialties than its commercial priorities.',
+        b: 'AI may recognize the practice but connect it more strongly with secondary specialties than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,7 +484,7 @@ export const privateMedicalPractices: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Practice, consultant and site details are inconsistent across profiles and third-party sources.',
+        b: 'Practice, physician and site details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
@@ -492,7 +492,7 @@ export const privateMedicalPractices: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The practice measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The practice measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const privateMedicalPractices: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const privateMedicalPractices: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, consultant quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, physician quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,7 +586,7 @@ export const privateMedicalPractices: IndustryContent = {
       },
       {
         t: 'Patient Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and consultant positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and physician positioning.',
         icon: 'Award',
       },
     ],
@@ -596,14 +596,14 @@ export const privateMedicalPractices: IndustryContent = {
     heading: 'What makes this different from traditional private practice marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic health blogs',
       'Track Google rankings alone',
       'Promote claims made by the practice',
       'Focus on the practice brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,7 +611,7 @@ export const privateMedicalPractices: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the practice and its consultants',
+      'Build the authority of the practice and its physicians',
       'Build connected media, brand, entity and citation signals',
       'Measure specialty visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the practice',
@@ -620,11 +620,11 @@ export const privateMedicalPractices: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from private medical practices considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from private medical practices considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a private medical practice?',
-        a: 'AI visibility refers to whether your practice appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about private healthcare in your area. It also includes whether your website is cited, whether your practice is accurately described, and whether your consultants are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your practice appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about private healthcare in your area. It also includes whether your website is cited, whether your practice is accurately described, and whether your physicians are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -636,31 +636,31 @@ export const privateMedicalPractices: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, consultant entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, physician entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our practice still need local SEO?',
-        a: 'Yes. Patients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, consultant, media and third-party authority.',
+        a: 'Yes. Patients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, physician, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your practice independent recognition. It can connect your consultants with relevant expertise, create authoritative mentions, earn backlinks and give both patients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your practice independent recognition. It can connect your physicians with relevant expertise, create authoritative mentions, earn backlinks and give both patients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, specialty associations, consultant information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, specialty associations, physician information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, condition guides, comparison pages, reports and other assets that may support citations, media outreach and patient education.',
       },
       {
-        q: 'Can you promote individual consultants and physicians?',
-        a: 'Yes, provided their experience and credentials support the positioning. Consultant authority can include media commentary, expert biographies, specialty specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual physicians and specialist physicians?',
+        a: 'Yes, provided their experience and credentials support the positioning. Physician authority can include media commentary, expert biographies, specialty specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-site practice?',
-        a: 'Yes. Multi-site practices need clear connections between the parent brand, each site, consultants, specialty offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider practice.',
+        a: 'Yes. Multi-site practices need clear connections between the parent brand, each site, physicians, specialty offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider practice.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const privateMedicalPractices: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

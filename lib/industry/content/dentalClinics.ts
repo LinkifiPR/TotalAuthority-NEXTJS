@@ -15,7 +15,7 @@ export const dentalClinics: IndustryContent = {
       'ChatGPT dentist recommendations',
       'AI search for dentists',
       'digital PR for dental practices',
-      'Doctify dental visibility',
+      'Healthgrades dental visibility',
       'cosmetic dentistry marketing',
       'AI visibility audit',
     ],
@@ -65,12 +65,12 @@ export const dentalClinics: IndustryContent = {
       { name: 'Oakmere Dental Care', count: 4 },
     ],
     sources: [
-      'Doctify',
-      'WhatClinic',
+      'Healthgrades',
+      'Zocdoc',
       'Google reviews',
-      'NHS',
-      'British Dental Association',
-      'Trustpilot',
+      'Yelp',
+      'American Dental Association',
+      'WebMD',
       'Reddit',
     ],
   },
@@ -81,14 +81,14 @@ export const dentalClinics: IndustryContent = {
       'People are increasingly using AI platforms to shortlist practices, compare treatments and decide which dentists appear credible. They are asking questions such as:',
     questions: [
       'Where is the best dentist for implants near me?',
-      'Which practice should I use for Invisalign in Leeds?',
+      'Which practice should I use for Invisalign in Dallas?',
       'Where can I get veneers from an experienced cosmetic dentist?',
       'Which practice has the strongest reviews for nervous patients?',
       'Where can I find an emergency dentist this weekend?',
       'Which clinic offers same-day crowns near me?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the patient through a traditional list of search results. Your practice may have skilled dentists, modern surgeries and years of patient care behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the patient through a traditional list of search results. Your practice may have skilled dentists, modern offices and years of patient care behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -162,7 +162,7 @@ export const dentalClinics: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on dental directories, the NHS website, professional bodies, clinic comparison sites, local recommendation pages, review platforms, listicles, Reddit discussions, dentist profiles, treatment comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on dental directories, the American Dental Association website, professional bodies, clinic comparison sites, local recommendation pages, review platforms, listicles, Reddit discussions, dentist profiles, treatment comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,8 +171,8 @@ export const dentalClinics: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Doctify', pct: 86 },
-      { name: 'WhatClinic', pct: 72 },
+      { name: 'Healthgrades', pct: 86 },
+      { name: 'Zocdoc', pct: 72 },
       { name: 'Google reviews', pct: 64 },
       { name: 'Local press', pct: 33 },
     ],
@@ -180,8 +180,8 @@ export const dentalClinics: IndustryContent = {
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'British Dental Association', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['Gemini', 'Perplexity'] },
+      { name: 'American Dental Association', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Yelp', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -201,14 +201,14 @@ export const dentalClinics: IndustryContent = {
       'Specialist clinic for cosmetic dentistry and veneers',
       'Local authority for emergency and same-day dentistry',
       'Premier provider of full mouth rehabilitation',
-      "Independently recognised children's dentistry team",
-      'Multi-surgery practice with experienced dentists',
+      "Independently recognized children's dentistry team",
+      'Multi-location practice with experienced dentists',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your practice serves',
       'Where you operate',
-      'Which treatments you specialise in',
+      'Which treatments you specialize in',
       'What differentiates your approach',
       'Who your dentists are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const dentalClinics: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,14 +241,14 @@ export const dentalClinics: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified dentists as expert sources for journalists covering health, cosmetic treatments, wellbeing and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified dentists as expert sources for journalists covering health, cosmetic treatments, well-being and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
@@ -284,7 +284,7 @@ export const dentalClinics: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for practices — Google, Doctify, WhatClinic and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for practices — Google, Healthgrades, Zocdoc and Yelp — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const dentalClinics: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every practice can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a dentist is quoted in a recognised publication, several things happen:',
+      'When a dentist is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a dentist is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a dentist is quoted in a recognized publication, several things happen:',
     effects: [
       'The dentist becomes associated with a relevant area of expertise',
       'The practice earns an independent brand mention',
@@ -324,7 +324,7 @@ export const dentalClinics: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const dentalClinics: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A dentist with genuine expertise can become a recognised source for both patients and journalists. That authority then supports the practice they represent.',
+      'A dentist with genuine expertise can become a recognized source for both patients and journalists. That authority then supports the practice they represent.',
   },
 
   services: {
@@ -390,7 +390,7 @@ export const dentalClinics: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -447,7 +447,7 @@ export const dentalClinics: IndustryContent = {
       'Implant-focused practices',
       'Multi-site dental groups',
       'Specialist orthodontic clinics',
-      'Mixed NHS and private practices',
+      'Insurance and fee-for-service practices',
       "Children's dental practices",
       'Sedation and nervous patient practices',
       'Smile design and aesthetic clinics',
@@ -472,7 +472,7 @@ export const dentalClinics: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong treatments',
-        b: 'AI may recognise the practice but connect it more strongly with secondary treatments than its commercial priorities.',
+        b: 'AI may recognize the practice but connect it more strongly with secondary treatments than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const dentalClinics: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The practice measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The practice measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const dentalClinics: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const dentalClinics: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const dentalClinics: IndustryContent = {
     heading: 'What makes this different from traditional dental marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic oral health blogs',
       'Track Google rankings alone',
       'Promote claims made by the practice',
       'Focus on the practice brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const dentalClinics: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from dental practices considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from dental practices considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a dental practice?',
-        a: 'AI visibility refers to whether your practice appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about dental treatments in your area. It also includes whether your website is cited, whether your practice is accurately described, and whether your dentists are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your practice appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about dental treatments in your area. It also includes whether your website is cited, whether your practice is accurately described, and whether your dentists are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const dentalClinics: IndustryContent = {
       },
       {
         q: 'Can you promote individual dentists and specialists?',
-        a: 'Yes, provided their experience and credentials support the positioning. Dentist authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Dentist authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-site dental group?',
@@ -668,7 +668,7 @@ export const dentalClinics: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

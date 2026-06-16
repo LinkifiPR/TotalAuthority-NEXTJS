@@ -6,17 +6,17 @@ export const estatePlanningFirms: IndustryContent = {
   meta: {
     title: 'AI Visibility & Authority Building for Estate Planning Firms | TotalAuthority',
     description:
-      'See whether ChatGPT, Gemini and Perplexity recommend your firm when prospective clients ask who can help with wills, trusts, probate and inheritance tax planning. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
+      'See whether ChatGPT, Gemini and Perplexity recommend your firm when prospective clients ask who can help with wills, trusts, probate and estate tax planning. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
     keywords: [
       'AI visibility for estate planning firms',
       'estate planning marketing',
-      'will writing firm SEO',
+      'estate planning firm SEO',
       'estate planning authority building',
       'ChatGPT estate planning recommendations',
       'AI search for estate planners',
       'digital PR for estate planning firms',
       'estate planning directory rankings',
-      'STEP visibility',
+      'NAEPC visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Estate Planning Firms',
@@ -38,7 +38,7 @@ export const estatePlanningFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to appoint for will writing, trusts, lasting powers of attorney, probate, estate administration and inheritance tax planning.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for wills, trusts, powers of attorney, probate, estate administration and estate tax planning.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -66,10 +66,10 @@ export const estatePlanningFirms: IndustryContent = {
     ],
     sources: [
       'STEP',
-      'The Society of Will Writers',
-      'VouchedFor',
-      'Trustpilot',
-      'Unbiased',
+      'NAEPC',
+      'Avvo',
+      'SmartAsset',
+      'Nolo',
       'Google reviews',
       'Local press',
     ],
@@ -78,17 +78,17 @@ export const estatePlanningFirms: IndustryContent = {
   shift: {
     heading: 'Your next client may ask AI before they search Google',
     intro:
-      'People are increasingly using AI platforms to shortlist firms, compare services and decide which advisers appear credible. They are asking questions such as:',
+      'People are increasingly using AI platforms to shortlist firms, compare services and decide which advisors appear credible. They are asking questions such as:',
     questions: [
       'Who is the best estate planner near me?',
       'Which firm should I use to write my will?',
-      'Where can I find a specialist trusts adviser?',
+      'Where can I find a specialist trusts advisor?',
       'Which firm has the strongest reviews for probate services?',
-      'Who is a trusted adviser for inheritance tax planning?',
-      'Which firm specialises in lasting powers of attorney?',
+      'Who is a trusted advisor for estate tax planning?',
+      'Which firm specializes in powers of attorney?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisers and years of careful planning behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisors and years of careful planning behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -99,7 +99,7 @@ export const estatePlanningFirms: IndustryContent = {
     heading: 'Find out exactly where your firm stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the service and local discovery prompts that could lead to a new instruction.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the service and local discovery prompts that could lead to a new engagement.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -120,15 +120,15 @@ export const estatePlanningFirms: IndustryContent = {
     ],
     promptCategories: [
       'Best estate planning firm in your city',
-      'Best will writing service',
-      'Best trusts adviser',
+      'Best will preparation service',
+      'Best trusts advisor',
       'Best probate service',
-      'Best inheritance tax planning adviser',
-      'Best lasting power of attorney adviser',
+      'Best estate tax planning advisor',
+      'Best power of attorney advisor',
       'Best estate administration specialist',
-      'Best asset protection adviser',
-      'Best adviser for business succession planning',
-      'Best care fee planning adviser',
+      'Best asset protection advisor',
+      'Best advisor for business succession planning',
+      'Best long-term care planning advisor',
       'Best firm for natural-language estate queries',
       'Top-rated estate planners near me',
     ],
@@ -162,7 +162,7 @@ export const estatePlanningFirms: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on estate planning directories, trade press, professional bodies, local recommendation pages, review platforms, listicles, Reddit discussions, adviser profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on estate planning directories, trade press, professional associations, local recommendation pages, review platforms, listicles, Reddit discussions, advisor profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -172,16 +172,16 @@ export const estatePlanningFirms: IndustryContent = {
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
       { name: 'STEP', pct: 88 },
-      { name: 'The Society of Will Writers', pct: 73 },
-      { name: 'VouchedFor', pct: 59 },
-      { name: 'Unbiased', pct: 36 },
+      { name: 'NAEPC', pct: 73 },
+      { name: 'SmartAsset', pct: 59 },
+      { name: 'Nolo', pct: 36 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Unbiased', models: ['Gemini', 'Perplexity'] },
+      { name: 'Kiplinger', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'AARP', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -197,20 +197,20 @@ export const estatePlanningFirms: IndustryContent = {
     positioningHeading: 'Positioning examples',
     positioning: [
       'Leading firm for wills and lifetime planning',
-      'Trusted adviser on trusts and asset protection',
+      'Trusted advisor on trusts and asset protection',
       'Specialist practice for probate and estate administration',
-      'Recognised authority on inheritance tax planning',
-      'Premier adviser on lasting powers of attorney',
+      'Recognized authority on estate tax planning',
+      'Premier advisor on powers of attorney',
       'Independently respected private client team',
-      'Multi-office practice with experienced advisers',
+      'Multi-office practice with experienced advisors',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
-      'Who your advisers are',
+      'Who your advisors are',
       'Which credentials support your expertise',
       'Which matters you are best placed to handle',
       'How your firm compares with local competitors',
@@ -230,7 +230,7 @@ export const estatePlanningFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,32 +241,32 @@ export const estatePlanningFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified advisers as expert sources for journalists covering personal finance, inheritance, later life, family wealth and tax — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified advisors as expert sources for journalists covering personal finance, inheritance, retirement, family wealth and tax — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across estate planning directories, review platforms, adviser profiles, local business resources, service comparison pages and professional associations.',
+        body: 'We strengthen your presence across estate planning directories, review platforms, advisor profiles, local business resources, service comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, adviser biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
+        body: 'We align firm names, locations, advisor biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, planning guides, adviser-led explainers, tax and legacy updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, planning guides, advisor-led explainers, tax and legacy updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
@@ -278,13 +278,13 @@ export const estatePlanningFirms: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level adviser recognition.',
+        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level advisor recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, Trustpilot, VouchedFor and Unbiased — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google reviews, Avvo, SmartAsset and NAEPC — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const estatePlanningFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When an adviser is quoted in a recognised publication, several things happen:',
+      'When an advisor is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an adviser is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an advisor is quoted in a recognized publication, several things happen:',
     effects: [
-      'The adviser becomes associated with a relevant area of expertise',
+      'The advisor becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const estatePlanningFirms: IndustryContent = {
       'Clients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, adviser authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, advisor authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Adviser Authority',
-    heading: 'Clients trust advisers, not faceless firm pages',
+    sectionLabel: 'Advisor Authority',
+    heading: 'Clients trust advisors, not faceless firm pages',
     paragraphs: [
-      'In estate planning, the person handling the matter can be as important as the firm itself. Your principals, senior planners, trust specialists and probate advisers hold expertise that can strengthen the authority of the entire brand.',
+      'In estate planning, the person handling the matter can be as important as the firm itself. Your principals, senior planners, trust specialists and probate advisors hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Adviser positioning',
+      'Advisor positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,37 +333,37 @@ export const estatePlanningFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'An adviser with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'An advisor with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
     sectionLabel: 'Service Visibility',
     heading: 'Build visibility around the services that generate fees',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisers and the services you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisors and the services you want to grow.',
     focusHeading: 'An estate planning strategy may focus on',
     badge: '24 services',
     items: [
-      'Will writing',
+      'Will preparation',
       'Trusts',
-      'Lasting powers of attorney',
+      'Powers of attorney',
       'Probate services',
       'Estate administration',
-      'Inheritance tax planning',
+      'Estate tax planning',
       'Asset protection',
       'Lifetime gifting advice',
       'Business succession planning',
-      'Family investment companies',
-      'Care fee planning',
-      'Deeds of variation',
-      'Will storage',
+      'Family limited partnerships',
+      'Long-term care planning',
+      'Disclaimers and trust amendments',
+      'Document storage',
       'Executor services',
       'Trust administration',
-      'Vulnerable beneficiary planning',
-      'Intestacy advice',
+      'Special needs planning',
+      'Intestate succession advice',
       'Cross-border estates',
       'Charitable legacy planning',
-      'Funeral planning',
+      'Funeral and final wishes planning',
       'Probate disputes support',
       'Living wills',
       'Guardianship planning',
@@ -390,12 +390,12 @@ export const estatePlanningFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, adviser entities, service associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, advisor entities, service associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -420,7 +420,7 @@ export const estatePlanningFirms: IndustryContent = {
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Advisers have little external authority',
+      'Advisors have little external authority',
       'Third-party source coverage is limited',
       'The firm does not know which sources influence results',
     ],
@@ -428,7 +428,7 @@ export const estatePlanningFirms: IndustryContent = {
       'The firm appears across more valuable prompts',
       'Priority services have stronger brand association',
       'Brand descriptions become more accurate',
-      'Adviser expertise is clearer',
+      'Advisor expertise is clearer',
       'More trusted sources mention the firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,17 +439,17 @@ export const estatePlanningFirms: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible advisers, strong client service and the capacity to convert increased visibility into instructions.',
+      'TotalAuthority is best suited to established firms that have credible advisors, strong client service and the capacity to convert increased visibility into new engagements.',
     typesHeading: 'Best-fit firm types',
     types: [
       'Established estate planning firms',
-      'Will writing practices',
+      'Will and trust practices',
       'Private client teams',
       'Trust and probate specialists',
-      'Inheritance tax planning firms',
+      'Estate tax planning firms',
       'Wealth-linked planning practices',
       'Multi-office practices',
-      'Later-life advisory firms',
+      'Elder law advisory firms',
       'Asset protection specialists',
       'Business succession planners',
       'Independent estate planners',
@@ -467,12 +467,12 @@ export const estatePlanningFirms: IndustryContent = {
         b: 'The firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Adviser expertise is hidden',
+        t: 'Advisor expertise is hidden',
         b: 'Highly qualified planners are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,7 +484,7 @@ export const estatePlanningFirms: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Firm, adviser and office details are inconsistent across profiles and third-party sources.',
+        b: 'Firm, advisor and office details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
@@ -492,7 +492,7 @@ export const estatePlanningFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const estatePlanningFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const estatePlanningFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, adviser quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, advisor quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,7 +586,7 @@ export const estatePlanningFirms: IndustryContent = {
       },
       {
         t: 'Client Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and adviser positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and advisor positioning.',
         icon: 'Award',
       },
     ],
@@ -596,14 +596,14 @@ export const estatePlanningFirms: IndustryContent = {
     heading: 'What makes this different from traditional estate planning marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic will and trust blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,7 +611,7 @@ export const estatePlanningFirms: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the firm and its advisers',
+      'Build the authority of the firm and its advisors',
       'Build connected media, brand, entity and citation signals',
       'Measure service visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the firm',
@@ -620,11 +620,11 @@ export const estatePlanningFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from estate planning firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from estate planning firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an estate planning firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about estate planning services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about estate planning services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisors are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -636,31 +636,31 @@ export const estatePlanningFirms: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, adviser entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, advisor entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our firm still need local SEO?',
-        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, adviser, media and third-party authority.',
+        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, advisor, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisers with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisors with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, service associations, adviser information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, service associations, advisor information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, planning guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
       },
       {
-        q: 'Can you promote individual advisers and principals?',
-        a: 'Yes, provided their experience and credentials support the positioning. Adviser authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual advisors and principals?',
+        a: 'Yes, provided their experience and credentials support the positioning. Advisor authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
-        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisers, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisors, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const estatePlanningFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

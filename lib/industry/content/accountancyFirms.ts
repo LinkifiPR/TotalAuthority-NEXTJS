@@ -16,7 +16,7 @@ export const accountancyFirms: IndustryContent = {
       'AI search for accountants',
       'digital PR for accountancy firms',
       'accountancy directory rankings',
-      'ICAEW firm visibility',
+      'AICPA firm visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Accountancy Firms',
@@ -38,7 +38,7 @@ export const accountancyFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to appoint for annual accounts, self-assessment, corporation tax, payroll, VAT, business advisory and year-end planning.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for financial statements, individual tax returns (Form 1040), corporate tax, payroll, sales tax, business advisory and year-end planning.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -60,17 +60,17 @@ export const accountancyFirms: IndustryContent = {
     competitorsHeading: 'Top competitors recommended instead',
     competitorsCaption: '4 of 10 prompts',
     competitors: [
-      { name: 'Harwood Accountancy', count: 7 },
+      { name: 'Harwood CPA Group', count: 7 },
       { name: 'Brompton & Lowe', count: 5 },
-      { name: 'Castle Ridge Accountants', count: 4 },
+      { name: 'Castle Ridge Accounting', count: 4 },
     ],
     sources: [
-      'ICAEW',
-      'Accountancy Age',
+      'AICPA',
+      'Accounting Today',
       'Trustpilot',
       'Google reviews',
-      'AccountingWEB',
-      'FreeAgent',
+      'Journal of Accountancy',
+      'QuickBooks',
       'Local press',
     ],
   },
@@ -81,8 +81,8 @@ export const accountancyFirms: IndustryContent = {
       'People are increasingly using AI platforms to shortlist firms, compare services and decide which accountants appear credible. They are asking questions such as:',
     questions: [
       'Who is the best accountant for small businesses near me?',
-      'Which firm should I use for self-assessment in Leeds?',
-      'Where can I find a specialist accountant for limited companies?',
+      'Which firm should I use for individual tax returns in Denver?',
+      'Where can I find a specialist accountant for LLCs and S-corps?',
       'Which firm has the strongest reviews for cloud accounting?',
       'Who is a trusted accountant for contractors and freelancers?',
       'Which accountancy firm handles R&D tax credits well?',
@@ -121,12 +121,12 @@ export const accountancyFirms: IndustryContent = {
     promptCategories: [
       'Best accountancy firm in your city',
       'Best accountant for small businesses',
-      'Best self-assessment accountant',
-      'Best accountant for limited companies',
+      'Best individual tax return accountant',
+      'Best accountant for LLCs and S-corps',
       'Best accountant for contractors',
       'Best bookkeeping and payroll service',
       'Best accountant for startups',
-      'Best VAT and tax adviser',
+      'Best sales tax and tax advisor',
       'Best accountant for landlords',
       'Best firm for R&D tax credits',
       'Best firm for natural-language accounting queries',
@@ -149,9 +149,9 @@ export const accountancyFirms: IndustryContent = {
     ],
     tableHeading: 'Recurring competitors',
     tableRows: [
-      { name: 'Harwood Accountancy', m: 3, p: 7, f: '23×' },
+      { name: 'Harwood CPA Group', m: 3, p: 7, f: '23×' },
       { name: 'Brompton & Lowe', m: 2, p: 5, f: '14×' },
-      { name: 'Castle Ridge Accountants', m: 3, p: 4, f: '11×' },
+      { name: 'Castle Ridge Accounting', m: 3, p: 4, f: '11×' },
       { name: 'Whitfield Tax', m: 1, p: 3, f: '6×' },
       { name: 'Dene & Marsh', m: 2, p: 2, f: '5×' },
     ],
@@ -162,7 +162,7 @@ export const accountancyFirms: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on professional bodies, accountancy trade press, software directories, local recommendation pages, review platforms, listicles, Reddit discussions, accountant profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on professional bodies, accounting trade press, software directories, local recommendation pages, review platforms, listicles, Reddit discussions, accountant profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,9 +171,9 @@ export const accountancyFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'ICAEW', pct: 88 },
-      { name: 'Accountancy Age', pct: 74 },
-      { name: 'AccountingWEB', pct: 61 },
+      { name: 'AICPA', pct: 88 },
+      { name: 'Accounting Today', pct: 74 },
+      { name: 'Journal of Accountancy', pct: 61 },
       { name: 'Local press', pct: 36 },
     ],
     multiModelTitle: 'Used across multiple AI models',
@@ -181,7 +181,7 @@ export const accountancyFirms: IndustryContent = {
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
       { name: 'Trustpilot', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'FreeAgent', models: ['Gemini', 'Perplexity'] },
+      { name: 'QuickBooks', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -197,18 +197,18 @@ export const accountancyFirms: IndustryContent = {
     positioningHeading: 'Positioning examples',
     positioning: [
       'Leading firm for owner-managed businesses',
-      'Trusted practice for company accounts and corporation tax',
+      'Trusted practice for financial statements and corporate tax',
       'Specialist firm for contractors and freelancers',
       'Local authority for cloud accounting and bookkeeping',
-      'Premier adviser on R&D tax credits and reliefs',
-      'Independently recognised business advisory team',
+      'Premier advisor on R&D tax credits and reliefs',
+      'Independently recognized business advisory team',
       'Multi-office practice with experienced partners',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
       'Who your accountants are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const accountancyFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const accountancyFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -284,7 +284,7 @@ export const accountancyFirms: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, Trustpilot, ICAEW and AccountingWEB — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, Trustpilot, AICPA and Journal of Accountancy — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const accountancyFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When an accountant is quoted in a recognised publication, several things happen:',
+      'When an accountant is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an accountant is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an accountant is quoted in a recognized publication, several things happen:',
     effects: [
       'The accountant becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
@@ -324,7 +324,7 @@ export const accountancyFirms: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const accountancyFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'An accountant with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'An accountant with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
@@ -344,28 +344,28 @@ export const accountancyFirms: IndustryContent = {
     focusHeading: 'An accountancy firm strategy may focus on',
     badge: '24 services',
     items: [
-      'Annual accounts',
-      'Self-assessment tax returns',
-      'Corporation tax',
+      'Financial statements',
+      'Individual tax returns (Form 1040)',
+      'Corporate tax',
       'Bookkeeping',
       'Payroll',
-      'VAT returns',
+      'Sales tax returns',
       'Management accounts',
       'Audit and assurance',
       'R&D tax credits',
-      'Company formation',
+      'Entity formation',
       'Cloud accounting setup',
       'Cash flow forecasting',
       'Business advisory',
       'Capital gains tax',
-      'Inheritance tax planning',
-      'CIS returns',
-      'Company secretarial',
+      'Estate tax planning',
+      '1099 filing',
+      'Entity compliance',
       'Forecasting and budgeting',
-      'Tax investigations support',
-      'Making Tax Digital',
-      'Charity accounts',
-      'Pension contributions advice',
+      'IRS audit support',
+      'IRS e-filing',
+      'Nonprofit accounting',
+      'Retirement / 401(k) / IRA contributions advice',
       'Outsourced finance',
       'Year-end planning',
     ],
@@ -390,7 +390,7 @@ export const accountancyFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -442,7 +442,7 @@ export const accountancyFirms: IndustryContent = {
       'TotalAuthority is best suited to established firms that have credible accountants, strong client service and the capacity to convert increased visibility into appointments.',
     typesHeading: 'Best-fit firm types',
     types: [
-      'Established high-street firms',
+      'Established Main Street firms',
       'Regional full-service firms',
       'Boutique advisory practices',
       'Multi-office practices',
@@ -450,9 +450,9 @@ export const accountancyFirms: IndustryContent = {
       'Cloud-led digital accountants',
       'Sole practitioner practices',
       'Bookkeeping-led firms',
-      'Contractor accountancy specialists',
+      'Contractor accounting specialists',
       'Audit and assurance practices',
-      'Charity and not-for-profit specialists',
+      'Nonprofit and not-for-profit specialists',
       'Firms entering new regions',
     ],
     qualification:
@@ -472,7 +472,7 @@ export const accountancyFirms: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const accountancyFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const accountancyFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const accountancyFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const accountancyFirms: IndustryContent = {
     heading: 'What makes this different from traditional accountancy firm marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic service blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const accountancyFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from accountancy firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from accountancy firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an accountancy firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about accountancy services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your accountants are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about accountancy services in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your accountants are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const accountancyFirms: IndustryContent = {
       },
       {
         q: 'Can you promote individual accountants and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Accountant authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Accountant authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
@@ -668,7 +668,7 @@ export const accountancyFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

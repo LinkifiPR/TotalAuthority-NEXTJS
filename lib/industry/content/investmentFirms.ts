@@ -16,7 +16,7 @@ export const investmentFirms: IndustryContent = {
       'AI search for fund managers',
       'digital PR for investment firms',
       'investment directory rankings',
-      'Citywire visibility',
+      'Morningstar visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Investment Firms',
@@ -38,7 +38,7 @@ export const investmentFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective investors are asking ChatGPT, Gemini and Perplexity who to use for discretionary fund management, ISA and pension investing, multi-asset portfolios, ESG investing and tax-efficient strategies.',
+      'Your prospective investors are asking ChatGPT, Gemini and Perplexity who to use for discretionary asset management, IRA and 401(k) investing, multi-asset portfolios, ESG investing and tax-efficient strategies.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,12 +65,12 @@ export const investmentFirms: IndustryContent = {
       { name: 'Ravenshill Investments', count: 4 },
     ],
     sources: [
-      'Citywire',
-      'Financial Times',
+      "Barron's",
+      'Wall Street Journal',
       'Morningstar',
-      'Trustpilot',
-      'Investment Week',
-      'FE fundinfo',
+      'Investopedia',
+      'InvestmentNews',
+      'FINRA BrokerCheck',
       'Local press',
     ],
   },
@@ -81,11 +81,11 @@ export const investmentFirms: IndustryContent = {
       'Investors are increasingly using AI platforms to shortlist firms, compare investment approaches and decide which managers appear credible. They are asking questions such as:',
     questions: [
       'Who is the best investment firm near me?',
-      'Which firm should I use for discretionary fund management in London?',
+      'Which firm should I use for discretionary asset management in New York?',
       'Where can I find a manager who handles ESG portfolios?',
-      'Which investment firm has the strongest reviews for pension investing?',
+      'Which investment firm has the strongest reviews for 401(k) investing?',
       'Who is a trusted manager for income portfolios?',
-      'Which firm specialises in tax-efficient and EIS investing?',
+      'Which firm specializes in tax-efficient and QSBS / Opportunity Zone investing?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent track record, experienced managers and strong long-term performance behind it. That does not guarantee you will be included.',
@@ -120,8 +120,8 @@ export const investmentFirms: IndustryContent = {
     ],
     promptCategories: [
       'Best investment firm in your city',
-      'Best discretionary fund manager',
-      'Best firm for ISA and pension investing',
+      'Best discretionary asset manager',
+      'Best firm for IRA and 401(k) investing',
       'Best multi-asset portfolio manager',
       'Best ESG and sustainable investing firm',
       'Best manager for income portfolios',
@@ -171,17 +171,17 @@ export const investmentFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Citywire', pct: 89 },
+      { name: "Barron's", pct: 89 },
       { name: 'Morningstar', pct: 75 },
-      { name: 'Financial Times', pct: 61 },
-      { name: 'Trustpilot', pct: 38 },
+      { name: 'Wall Street Journal', pct: 61 },
+      { name: 'Investopedia', pct: 38 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Investment Week', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'FE fundinfo', models: ['Gemini', 'Perplexity'] },
+      { name: 'InvestmentNews', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Morningstar', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -196,19 +196,19 @@ export const investmentFirms: IndustryContent = {
       'Being mentioned is not enough if your firm is associated with the wrong services or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading firm for discretionary fund management',
+      'Leading firm for discretionary asset management',
       'Trusted manager for multi-asset portfolios',
       'Specialist firm for ESG and sustainable investing',
-      'Local authority for pension and ISA investing',
-      'Premier adviser on high-net-worth bespoke mandates',
-      'Independently recognised income portfolio team',
-      'Multi-office firm with experienced fund managers',
+      'Local authority for 401(k) and IRA investing',
+      'Premier advisor on high-net-worth bespoke mandates',
+      'Independently recognized income portfolio team',
+      'Multi-office firm with experienced portfolio managers',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which investment services you specialise in',
+      'Which investment services you specialize in',
       'What differentiates your approach',
       'Who your managers are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const investmentFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const investmentFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -284,7 +284,7 @@ export const investmentFirms: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for investment firms — Google, Trustpilot, Citywire and Morningstar — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for investment firms — Google reviews, Morningstar, FINRA BrokerCheck and SEC filings — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const investmentFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a manager is quoted in a recognised publication, several things happen:',
+      'When a manager is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a manager is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a manager is quoted in a recognized publication, several things happen:',
     effects: [
       'The manager becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
@@ -324,7 +324,7 @@ export const investmentFirms: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Strategy specialisation',
+      'Strategy specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const investmentFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A manager with genuine expertise can become a recognised source for both investors and journalists. That authority then supports the firm they represent.',
+      'A manager with genuine expertise can become a recognized source for both investors and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
@@ -344,17 +344,17 @@ export const investmentFirms: IndustryContent = {
     focusHeading: 'An investment firm strategy may focus on',
     badge: '24 investment services',
     items: [
-      'Discretionary fund management',
+      'Discretionary asset management',
       'Advisory portfolio management',
       'Equity investment',
       'Fixed income',
       'Multi-asset portfolios',
-      'ISA investing',
-      'SIPP and pension investing',
+      'IRA investing',
+      '401(k) and retirement investing',
       'Alternative investments',
       'Private equity access',
       'Venture capital',
-      'EIS and VCT investing',
+      'QSBS and Opportunity Zone investing',
       'ESG and sustainable investing',
       'Model portfolio services',
       'Bespoke mandates',
@@ -362,7 +362,7 @@ export const investmentFirms: IndustryContent = {
       'Capital growth strategies',
       'Risk-profiled investing',
       'Structured products',
-      'Fund selection',
+      'Mutual fund selection',
       'Tax-efficient investing',
       'Trust and charity investments',
       'Currency hedging',
@@ -390,7 +390,7 @@ export const investmentFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -472,7 +472,7 @@ export const investmentFirms: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const investmentFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const investmentFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const investmentFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const investmentFirms: IndustryContent = {
     heading: 'What makes this different from traditional investment firm marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic market commentary blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const investmentFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from investment firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from investment firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an investment firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about investment management in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your managers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about investment management in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your managers are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const investmentFirms: IndustryContent = {
       },
       {
         q: 'Can you promote individual managers and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Manager authority can include media commentary, expert biographies, strategy specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Manager authority can include media commentary, expert biographies, strategy specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
@@ -668,7 +668,7 @@ export const investmentFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

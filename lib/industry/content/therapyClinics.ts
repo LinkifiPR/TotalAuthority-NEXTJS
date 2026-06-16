@@ -10,13 +10,13 @@ export const therapyClinics: IndustryContent = {
     keywords: [
       'AI visibility for therapy clinics',
       'therapy clinic marketing',
-      'counselling SEO',
+      'counseling SEO',
       'therapist authority building',
       'ChatGPT therapist recommendations',
-      'AI search for counsellors',
+      'AI search for counselors',
       'digital PR for therapy clinics',
-      'counselling directory rankings',
-      'BACP directory visibility',
+      'counseling directory rankings',
+      'Psychology Today directory visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Therapy Clinics',
@@ -38,7 +38,7 @@ export const therapyClinics: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to see for anxiety, depression, trauma, couples therapy, addiction support and counselling.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to see for anxiety, depression, trauma, couples therapy, addiction support and counseling.',
       'TotalAuthority shows you whether your clinic appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -61,15 +61,15 @@ export const therapyClinics: IndustryContent = {
     competitorsCaption: '4 of 10 prompts',
     competitors: [
       { name: 'Maple Grove Therapy', count: 7 },
-      { name: 'Stillwater Counselling', count: 5 },
+      { name: 'Stillwater Counseling', count: 5 },
       { name: 'Beacon Mind Clinic', count: 4 },
     ],
     sources: [
-      'BACP',
-      'Counselling Directory',
+      'American Psychological Association (APA)',
       'Psychology Today',
-      'NHS',
-      'UKCP',
+      'Zocdoc',
+      'GoodTherapy',
+      'American Counseling Association (ACA)',
       'Reddit',
       'Google reviews',
     ],
@@ -81,11 +81,11 @@ export const therapyClinics: IndustryContent = {
       'People are increasingly using AI platforms to shortlist clinics, compare therapeutic approaches and decide which therapists appear credible. They are asking questions such as:',
     questions: [
       'Who is the best therapist near me for anxiety?',
-      'Which clinic should I use for couples counselling in Bristol?',
+      'Which clinic should I use for couples counseling in Austin?',
       'Where can I find a specialist trauma therapist?',
       'Which therapy clinic has the strongest reviews for CBT?',
-      'Who is a trusted counsellor for bereavement support?',
-      'Which clinic specialises in addiction counselling?',
+      'Who is a trusted counselor for bereavement support?',
+      'Which clinic specializes in addiction counseling?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your clinic may have an excellent reputation, accredited therapists and years of clinical experience behind it. That does not guarantee you will be included.',
@@ -121,14 +121,14 @@ export const therapyClinics: IndustryContent = {
     promptCategories: [
       'Best therapy clinic in your city',
       'Best CBT therapist',
-      'Best couples counsellor',
+      'Best couples counselor',
       'Best trauma therapist',
-      'Best counsellor for anxiety',
+      'Best counselor for anxiety',
       'Best clinic for depression support',
-      'Best addiction counsellor',
+      'Best addiction counselor',
       'Best family therapist',
       'Best online therapy service',
-      'Best bereavement counsellor',
+      'Best bereavement counselor',
       'Best clinic for natural-language mental health queries',
       'Top-rated therapists near me',
     ],
@@ -150,7 +150,7 @@ export const therapyClinics: IndustryContent = {
     tableHeading: 'Recurring competitors',
     tableRows: [
       { name: 'Maple Grove Therapy', m: 3, p: 7, f: '22×' },
-      { name: 'Stillwater Counselling', m: 2, p: 5, f: '13×' },
+      { name: 'Stillwater Counseling', m: 2, p: 5, f: '13×' },
       { name: 'Beacon Mind Clinic', m: 3, p: 4, f: '11×' },
       { name: 'Oakhaven Wellbeing', m: 1, p: 3, f: '6×' },
       { name: 'Harborview Therapy', m: 2, p: 2, f: '5×' },
@@ -171,17 +171,17 @@ export const therapyClinics: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'BACP', pct: 88 },
-      { name: 'Counselling Directory', pct: 74 },
-      { name: 'Psychology Today', pct: 61 },
-      { name: 'NHS', pct: 39 },
+      { name: 'Psychology Today', pct: 88 },
+      { name: 'American Psychological Association (APA)', pct: 74 },
+      { name: 'Zocdoc', pct: 61 },
+      { name: 'GoodTherapy', pct: 39 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
       { name: 'Google reviews', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'UKCP', models: ['Gemini', 'Perplexity'] },
+      { name: 'American Counseling Association (ACA)', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -198,9 +198,9 @@ export const therapyClinics: IndustryContent = {
     positioning: [
       'Leading clinic for trauma-focused therapy',
       'Trusted practice for anxiety and depression support',
-      'Specialist clinic for couples and relationship counselling',
+      'Specialist clinic for couples and relationship counseling',
       'Local authority for CBT and evidence-based therapy',
-      'Premier service for addiction and dependency counselling',
+      'Premier service for addiction and dependency counseling',
       'Independently accredited child and adolescent therapy team',
       'Multi-therapist clinic with experienced practitioners',
     ],
@@ -208,7 +208,7 @@ export const therapyClinics: IndustryContent = {
     assess: [
       'Who your clinic serves',
       'Where you operate',
-      'Which therapeutic approaches you specialise in',
+      'Which therapeutic approaches you specialize in',
       'What differentiates your care',
       'Who your therapists are',
       'Which accreditations support your expertise',
@@ -230,7 +230,7 @@ export const therapyClinics: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const therapyClinics: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -254,7 +254,7 @@ export const therapyClinics: IndustryContent = {
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across counselling directories, review platforms, therapist profiles, local wellbeing resources, approach comparison pages and professional bodies.',
+        body: 'We strengthen your presence across counseling directories, review platforms, therapist profiles, local wellbeing resources, approach comparison pages and professional bodies.',
         icon: 'Layers',
       },
       {
@@ -284,7 +284,7 @@ export const therapyClinics: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, Counselling Directory, Psychology Today and BACP — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, Zocdoc, Psychology Today and GoodTherapy — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const therapyClinics: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every clinic can publish claims about being trusted, experienced or compassionate. Independent media coverage gives those claims external support.',
-      'When a therapist is quoted in a recognised publication, several things happen:',
+      'When a therapist is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a therapist is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a therapist is quoted in a recognized publication, several things happen:',
     effects: [
       'The therapist becomes associated with a relevant area of expertise',
       'The clinic earns an independent brand mention',
@@ -314,7 +314,7 @@ export const therapyClinics: IndustryContent = {
     sectionLabel: 'Therapist Authority',
     heading: 'Clients trust therapists, not faceless clinic pages',
     paragraphs: [
-      'In mental health care, the person providing the therapy can be as important as the clinic itself. Your clinical lead, senior counsellors, specialist therapists and supervisors hold expertise that can strengthen the authority of the entire brand.',
+      'In mental health care, the person providing the therapy can be as important as the clinic itself. Your clinical lead, senior counselors, specialist therapists and supervisors hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
@@ -324,7 +324,7 @@ export const therapyClinics: IndustryContent = {
       'Accreditation alignment',
       'Media commentary',
       'Author pages',
-      'Approach specialisation',
+      'Approach specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const therapyClinics: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A therapist with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the clinic they represent.',
+      'A therapist with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the clinic they represent.',
   },
 
   services: {
@@ -346,15 +346,15 @@ export const therapyClinics: IndustryContent = {
     items: [
       'CBT',
       'Psychotherapy',
-      'Counselling',
+      'Counseling',
       'Couples therapy',
       'Family therapy',
       'EMDR therapy',
       'Trauma therapy',
       'Anxiety treatment',
       'Depression support',
-      'Addiction counselling',
-      'Bereavement counselling',
+      'Addiction counseling',
+      'Bereavement counseling',
       'Child and adolescent therapy',
       'Group therapy',
       'Online therapy',
@@ -363,7 +363,7 @@ export const therapyClinics: IndustryContent = {
       'PTSD therapy',
       'Eating disorder support',
       'Anger management',
-      'Relationship counselling',
+      'Relationship counseling',
       'Psychodynamic therapy',
       'Mindfulness-based therapy',
       'Workplace mental health',
@@ -390,7 +390,7 @@ export const therapyClinics: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -443,13 +443,13 @@ export const therapyClinics: IndustryContent = {
     typesHeading: 'Best-fit clinic types',
     types: [
       'Established private therapy practices',
-      'Multi-therapist counselling clinics',
+      'Multi-therapist counseling clinics',
       'Boutique psychotherapy practices',
       'Multi-site clinics',
       'Specialist trauma clinics',
       'Couples and relationship practices',
       'Online therapy services',
-      'Addiction counselling services',
+      'Addiction counseling services',
       'Child and adolescent practices',
       'Workplace wellbeing providers',
       'CBT and evidence-based specialists',
@@ -472,7 +472,7 @@ export const therapyClinics: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the clinic but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the clinic but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const therapyClinics: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The clinic measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The clinic measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const therapyClinics: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const therapyClinics: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const therapyClinics: IndustryContent = {
     heading: 'What makes this different from traditional therapy clinic marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic mental health blogs',
       'Track Google rankings alone',
       'Promote claims made by the clinic',
       'Focus on the clinic brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const therapyClinics: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from therapy clinics considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from therapy clinics considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a therapy clinic?',
-        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about therapy and counselling in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your therapists are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about therapy and counseling in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your therapists are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const therapyClinics: IndustryContent = {
       },
       {
         q: 'Can you promote individual therapists and clinical leads?',
-        a: 'Yes, provided their experience and accreditations support the positioning. Therapist authority can include media commentary, expert biographies, approach specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and accreditations support the positioning. Therapist authority can include media commentary, expert biographies, approach specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-site clinic?',
@@ -668,7 +668,7 @@ export const therapyClinics: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

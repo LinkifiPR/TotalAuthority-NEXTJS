@@ -295,7 +295,7 @@ export const IndustryLandingPage: React.FC<{ content: IndustryContent }> = ({ co
         {/* 2. PROBLEM-AGITATION                                             */}
         {/* ============================================================== */}
         <section
-          id="what-we-analyse"
+          id="what-we-analyze"
           className="scroll-mt-36 cv-auto py-20 md:py-28 px-4 bg-white border-y border-slate-200/70"
         >
           <div className="max-w-4xl mx-auto">

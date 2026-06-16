@@ -16,7 +16,7 @@ export const wealthManagementFirms: IndustryContent = {
       'AI search for wealth managers',
       'digital PR for wealth managers',
       'wealth management directory rankings',
-      'private client adviser visibility',
+      'private client advisor visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Wealth Management Firms',
@@ -38,7 +38,7 @@ export const wealthManagementFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to appoint for discretionary portfolio management, financial planning, inheritance tax planning, intergenerational wealth and family office services.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for discretionary portfolio management, financial planning, estate tax planning, intergenerational wealth and family office services.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,11 +65,11 @@ export const wealthManagementFirms: IndustryContent = {
       { name: 'Belgrave Asset Partners', count: 4 },
     ],
     sources: [
-      'Citywire',
-      'Financial Times',
-      "Spear's",
-      'eprivateclient',
-      'VouchedFor',
+      "Barron's",
+      'Wall Street Journal',
+      'Worth',
+      'Morningstar',
+      'SmartAsset',
       'Trustpilot',
       'Local press',
     ],
@@ -81,14 +81,14 @@ export const wealthManagementFirms: IndustryContent = {
       'People are increasingly using AI platforms to shortlist firms, compare services and decide which wealth managers appear credible. They are asking questions such as:',
     questions: [
       'Who is the best wealth manager for high-net-worth clients near me?',
-      'Which firm should I use for discretionary portfolio management in London?',
-      'Where can I find a specialist adviser for intergenerational wealth?',
+      'Which firm should I use for discretionary portfolio management in New York?',
+      'Where can I find a specialist advisor for intergenerational wealth?',
       'Which firm has the strongest reputation for private client planning?',
-      'Who is a trusted adviser for inheritance tax and estate planning?',
+      'Who is a trusted advisor for inheritance tax and estate planning?',
       'Which wealth management firm handles family office services well?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisers and decades of stewarding client wealth behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisors and decades of stewarding client wealth behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -122,13 +122,13 @@ export const wealthManagementFirms: IndustryContent = {
       'Best wealth management firm in your city',
       'Best wealth manager for high-net-worth clients',
       'Best firm for discretionary portfolio management',
-      'Best adviser for intergenerational wealth',
+      'Best advisor for intergenerational wealth',
       'Best firm for inheritance tax planning',
-      'Best adviser for family office services',
-      'Best firm for bespoke investment mandates',
-      'Best adviser for trust and estate planning',
+      'Best advisor for family office services',
+      'Best firm for custom investment mandates',
+      'Best advisor for trust and estate planning',
       'Best firm for ethical and ESG portfolios',
-      'Best adviser for exit and liquidity planning',
+      'Best advisor for exit and liquidity planning',
       'Best firm for natural-language wealth queries',
       'Top-rated wealth managers near me',
     ],
@@ -162,7 +162,7 @@ export const wealthManagementFirms: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on private client press, financial media, wealth directories, local recommendation pages, review platforms, listicles, Reddit discussions, adviser profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on private client press, financial media, wealth directories, local recommendation pages, review platforms, listicles, Reddit discussions, advisor profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const wealthManagementFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Citywire', pct: 89 },
-      { name: 'Financial Times', pct: 76 },
-      { name: "Spear's", pct: 62 },
+      { name: "Barron's", pct: 89 },
+      { name: 'Wall Street Journal', pct: 76 },
+      { name: 'Worth', pct: 62 },
       { name: 'Local press', pct: 34 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'eprivateclient', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'VouchedFor', models: ['Gemini', 'Perplexity'] },
+      { name: 'Morningstar', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'SmartAsset', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -200,17 +200,17 @@ export const wealthManagementFirms: IndustryContent = {
       'Trusted practice for high-net-worth financial planning',
       'Specialist firm for intergenerational wealth planning',
       'Local authority for inheritance tax and estate planning',
-      'Premier adviser on family office and bespoke mandates',
-      'Independently recognised private client wealth team',
-      'Multi-office practice with experienced advisers',
+      'Premier advisor on family office and custom mandates',
+      'Independently recognized private client wealth team',
+      'Multi-office practice with experienced advisors',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
-      'Who your advisers are',
+      'Who your advisors are',
       'Which credentials support your expertise',
       'Which clients you are best placed to serve',
       'How your firm compares with local competitors',
@@ -230,7 +230,7 @@ export const wealthManagementFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const wealthManagementFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -254,19 +254,19 @@ export const wealthManagementFirms: IndustryContent = {
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across wealth directories, review platforms, adviser profiles, private client resources, service comparison pages and professional associations.',
+        body: 'We strengthen your presence across wealth directories, review platforms, advisor profiles, private client resources, service comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, adviser biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
+        body: 'We align firm names, locations, advisor biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, service guides, adviser-led explainers, market updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, service guides, advisor-led explainers, market updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
@@ -278,13 +278,13 @@ export const wealthManagementFirms: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level adviser recognition.',
+        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level advisor recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, VouchedFor, Citywire and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: "We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, SmartAsset, Barron's and Trustpilot — so sentiment, volume and recency reinforce recommendations.",
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const wealthManagementFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a wealth manager is quoted in a recognised publication, several things happen:',
+      'When a wealth manager is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a wealth manager is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a wealth manager is quoted in a recognized publication, several things happen:',
     effects: [
-      'The adviser becomes associated with a relevant area of expertise',
+      'The advisor becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const wealthManagementFirms: IndustryContent = {
       'Clients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, adviser authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, advisor authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Adviser Authority',
-    heading: 'Clients trust advisers, not faceless firm pages',
+    sectionLabel: 'Advisor Authority',
+    heading: 'Clients trust advisors, not faceless firm pages',
     paragraphs: [
-      'In wealth management, the person stewarding the relationship can be as important as the firm itself. Your managing partner, investment directors, chartered planners and qualified wealth managers hold expertise that can strengthen the authority of the entire brand.',
+      'In wealth management, the person stewarding the relationship can be as important as the firm itself. Your managing partner, investment directors, CFP professionals and qualified wealth managers hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Adviser positioning',
+      'Advisor positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,27 +333,27 @@ export const wealthManagementFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A wealth manager with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'A wealth manager with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
     sectionLabel: 'Service Visibility',
     heading: 'Build visibility around the services that generate fees',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisers and the services you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisors and the services you want to grow.',
     focusHeading: 'A wealth management firm strategy may focus on',
     badge: '24 services',
     items: [
       'Discretionary portfolio management',
       'Financial planning',
       'Retirement planning',
-      'Inheritance tax planning',
-      'Pension consolidation',
-      'ISA and GIA management',
+      'Estate tax planning',
+      '401(k) / IRA consolidation',
+      'Roth IRA and taxable account management',
       'Trust and estate planning',
       'Family office services',
       'Tax-efficient investing',
-      'Cash flow modelling',
+      'Cash flow modeling',
       'Intergenerational wealth planning',
       'Ethical and ESG portfolios',
       'Alternative investments',
@@ -361,10 +361,10 @@ export const wealthManagementFirms: IndustryContent = {
       'Philanthropy advisory',
       'Currency and FX planning',
       'Investment strategy reviews',
-      'Bespoke mandates',
+      'Custom mandates',
       'Risk profiling',
-      'Lombard lending advisory',
-      'Pension transfer advice',
+      'Securities-based lending advisory',
+      '401(k) rollover advice',
       'Wealth structuring',
       'Exit and liquidity planning',
       'Multi-generational governance',
@@ -390,12 +390,12 @@ export const wealthManagementFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, adviser entities, service associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, advisor entities, service associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -420,7 +420,7 @@ export const wealthManagementFirms: IndustryContent = {
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Advisers have little external authority',
+      'Advisors have little external authority',
       'Third-party source coverage is limited',
       'The firm does not know which sources influence results',
     ],
@@ -428,7 +428,7 @@ export const wealthManagementFirms: IndustryContent = {
       'The firm appears across more valuable prompts',
       'Priority services have stronger brand association',
       'Brand descriptions become more accurate',
-      'Adviser expertise is clearer',
+      'Advisor expertise is clearer',
       'More trusted sources mention the firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,17 +439,17 @@ export const wealthManagementFirms: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible advisers, strong client service and the capacity to convert increased visibility into appointments.',
+      'TotalAuthority is best suited to established firms that have credible advisors, strong client service and the capacity to convert increased visibility into appointments.',
     typesHeading: 'Best-fit firm types',
     types: [
       'Established wealth management firms',
       'Regional private client practices',
       'Boutique investment houses',
       'Multi-office practices',
-      'Chartered wealth managers',
+      'CFP-led wealth managers',
       'Discretionary investment managers',
       'Family office providers',
-      'Private banking-style advisers',
+      'Private banking-style advisors',
       'High-net-worth planning specialists',
       'Intergenerational wealth specialists',
       'Ethical and ESG portfolio specialists',
@@ -467,12 +467,12 @@ export const wealthManagementFirms: IndustryContent = {
         b: 'The firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Adviser expertise is hidden',
+        t: 'Advisor expertise is hidden',
         b: 'Highly qualified investment directors are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,7 +484,7 @@ export const wealthManagementFirms: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Firm, adviser and office details are inconsistent across profiles and third-party sources.',
+        b: 'Firm, advisor and office details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
@@ -492,7 +492,7 @@ export const wealthManagementFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const wealthManagementFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const wealthManagementFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, adviser quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, advisor quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,7 +586,7 @@ export const wealthManagementFirms: IndustryContent = {
       },
       {
         t: 'Client Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and adviser positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and advisor positioning.',
         icon: 'Award',
       },
     ],
@@ -596,14 +596,14 @@ export const wealthManagementFirms: IndustryContent = {
     heading: 'What makes this different from traditional wealth management marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic market commentary blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,7 +611,7 @@ export const wealthManagementFirms: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the firm and its advisers',
+      'Build the authority of the firm and its advisors',
       'Build connected media, brand, entity and citation signals',
       'Measure service visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the firm',
@@ -620,11 +620,11 @@ export const wealthManagementFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from wealth management firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from wealth management firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a wealth management firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about wealth management in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about wealth management in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisors are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -636,31 +636,31 @@ export const wealthManagementFirms: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, adviser entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, advisor entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our firm still need local SEO?',
-        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, adviser, media and third-party authority.',
+        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, advisor, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisers with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisors with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, service associations, adviser information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, service associations, advisor information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, service guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
       },
       {
-        q: 'Can you promote individual advisers and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Adviser authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual advisors and partners?',
+        a: 'Yes, provided their experience and credentials support the positioning. Advisor authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
-        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisers, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisors, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const wealthManagementFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

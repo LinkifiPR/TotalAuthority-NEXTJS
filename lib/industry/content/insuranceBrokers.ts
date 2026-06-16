@@ -16,7 +16,7 @@ export const insuranceBrokers: IndustryContent = {
       'AI search for insurance brokers',
       'digital PR for insurance brokers',
       'insurance directory rankings',
-      'BIBA visibility',
+      'Big I visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Insurance Brokers',
@@ -38,7 +38,7 @@ export const insuranceBrokers: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to use for professional indemnity, public liability, commercial combined cover, cyber insurance, motor fleet and complex high-net-worth risks.',
+      "Your prospective clients are asking ChatGPT, Gemini and Perplexity who to use for professional liability (E&O), general liability, business owner's policy (BOP) cover, cyber insurance, commercial auto / fleet and complex high-net-worth risks.",
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,11 +65,11 @@ export const insuranceBrokers: IndustryContent = {
       { name: 'Caldwell & Hart Insurance', count: 4 },
     ],
     sources: [
-      'BIBA',
-      'Insurance Times',
+      'Big I',
+      'Insurance Journal',
       'Trustpilot',
       'Google reviews',
-      'Insurance Age',
+      'PropertyCasualty360',
       'Reddit',
       'Local press',
     ],
@@ -81,11 +81,11 @@ export const insuranceBrokers: IndustryContent = {
       'Businesses are increasingly using AI platforms to shortlist brokers, compare cover options and decide which firms appear credible. They are asking questions such as:',
     questions: [
       'Who is the best insurance broker near me?',
-      'Which broker should I use for professional indemnity in Birmingham?',
-      'Where can I find a broker who handles motor fleet insurance?',
-      'Which insurance broker has the strongest reviews for cyber cover?',
+      'Which broker should I use for professional liability (E&O) in Chicago?',
+      'Where can I find a broker who handles commercial auto / fleet insurance?',
+      'Which insurance agent has the strongest reviews for cyber cover?',
       'Who is a trusted broker for construction insurance?',
-      'Which firm specialises in high-net-worth home insurance?',
+      'Which firm specializes in high-net-worth home insurance?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced brokers and long-standing insurer relationships behind it. That does not guarantee you will be included.',
@@ -99,7 +99,7 @@ export const insuranceBrokers: IndustryContent = {
     heading: 'Find out exactly where your firm stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the product, service and local discovery prompts that could lead to a new insurance enquiry.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the product, service and local discovery prompts that could lead to a new insurance inquiry.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -120,14 +120,14 @@ export const insuranceBrokers: IndustryContent = {
     ],
     promptCategories: [
       'Best insurance broker in your city',
-      'Best professional indemnity broker',
-      'Best broker for public liability cover',
-      'Best commercial combined insurance broker',
+      'Best professional liability (E&O) broker',
+      'Best broker for general liability cover',
+      "Best business owner's policy (BOP) broker",
       'Best cyber insurance broker',
-      'Best motor fleet insurance specialist',
+      'Best commercial auto / fleet insurance specialist',
       'Best broker for construction insurance',
       'Best high-net-worth home insurance broker',
-      'Best broker for tradesman cover',
+      'Best broker for contractor cover',
       'Best directors and officers insurance specialist',
       'Best firm for natural-language insurance queries',
       'Top-rated insurance brokers near me',
@@ -171,16 +171,16 @@ export const insuranceBrokers: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: "British Insurance Brokers' Association (BIBA)", pct: 86 },
-      { name: 'Insurance Times', pct: 72 },
-      { name: 'Insurance Age', pct: 58 },
+      { name: 'Independent Insurance Agents & Brokers of America (the Big I)', pct: 86 },
+      { name: 'Insurance Journal', pct: 72 },
+      { name: 'PropertyCasualty360', pct: 58 },
       { name: 'Trustpilot', pct: 38 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Insurance Times', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Insurance Journal', models: ['ChatGPT', 'Perplexity'] },
       { name: 'Google reviews', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
@@ -196,19 +196,19 @@ export const insuranceBrokers: IndustryContent = {
       'Being mentioned is not enough if your firm is associated with the wrong products or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading broker for professional indemnity cover',
-      'Trusted adviser for complex commercial combined risks',
+      'Leading broker for professional liability (E&O) cover',
+      "Trusted advisor for complex business owner's policy (BOP) risks",
       'Specialist firm for cyber and management liability',
-      'Local authority for motor fleet insurance',
-      'Premier adviser on high-net-worth home insurance',
-      'Independently recognised construction insurance specialist',
+      'Local authority for commercial auto / fleet insurance',
+      'Premier advisor on high-net-worth home insurance',
+      'Independently recognized construction insurance specialist',
       'Multi-office broker with strong insurer relationships',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which insurance products you specialise in',
+      'Which insurance products you specialize in',
       'What differentiates your approach',
       'Who your brokers are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const insuranceBrokers: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const insuranceBrokers: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -284,7 +284,7 @@ export const insuranceBrokers: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for brokers — Google, Trustpilot, BIBA and trade comparison sites — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for brokers — Google reviews, Trustpilot, NerdWallet and the Big I — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const insuranceBrokers: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a broker is quoted in a recognised publication, several things happen:',
+      'When a broker is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a broker is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a broker is quoted in a recognized publication, several things happen:',
     effects: [
       'The broker becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
@@ -324,7 +324,7 @@ export const insuranceBrokers: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Sector specialisation',
+      'Sector specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const insuranceBrokers: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A broker with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'A broker with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
@@ -344,18 +344,18 @@ export const insuranceBrokers: IndustryContent = {
     focusHeading: 'An insurance broker strategy may focus on',
     badge: '24 insurance products',
     items: [
-      'Commercial combined insurance',
-      'Professional indemnity',
-      'Public liability',
-      "Employers' liability",
+      "Business owner's policy (BOP)",
+      'Professional liability (E&O)',
+      'General liability',
+      "Workers' compensation",
       'Business interruption',
       'Cyber insurance',
       'Directors and officers',
       'Commercial property insurance',
-      'Motor fleet insurance',
-      'Tradesman insurance',
+      'Commercial auto / fleet insurance',
+      'Contractor insurance',
       'Landlord insurance',
-      'Shop and retail insurance',
+      "Retail / business owner's policy (BOP)",
       'Manufacturing insurance',
       'Construction insurance',
       'Marine and cargo',
@@ -390,7 +390,7 @@ export const insuranceBrokers: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -439,7 +439,7 @@ export const insuranceBrokers: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible brokers, strong client service and the capacity to convert increased visibility into insurance enquiries.',
+      'TotalAuthority is best suited to established firms that have credible brokers, strong client service and the capacity to convert increased visibility into insurance inquiries.',
     typesHeading: 'Best-fit firm types',
     types: [
       'Established commercial brokerages',
@@ -449,7 +449,7 @@ export const insuranceBrokers: IndustryContent = {
       'High-net-worth private clients firms',
       'Construction and trades specialists',
       'Cyber and professional risk specialists',
-      'Motor fleet and transport brokers',
+      'Commercial auto / fleet and transport brokers',
       'Manufacturing and engineering brokers',
       'Marine and cargo specialists',
       'Claims-led advisory firms',
@@ -472,7 +472,7 @@ export const insuranceBrokers: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong products',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -488,11 +488,11 @@ export const insuranceBrokers: IndustryContent = {
       },
       {
         t: 'Marketing is focused entirely on referrals',
-        b: 'The firm wins work through introducers and word of mouth but has little searchable, independent authority elsewhere.',
+        b: 'The firm wins work through referral partners and word of mouth but has little searchable, independent authority elsewhere.',
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const insuranceBrokers: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const insuranceBrokers: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const insuranceBrokers: IndustryContent = {
     heading: 'What makes this different from traditional insurance broker marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic insurance product blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const insuranceBrokers: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from insurance brokers considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from insurance brokers considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an insurance broker?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about insurance broking in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your brokers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about insurance broking in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your brokers are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const insuranceBrokers: IndustryContent = {
       },
       {
         q: 'Can you promote individual brokers and directors?',
-        a: 'Yes, provided their experience and credentials support the positioning. Broker authority can include media commentary, expert biographies, sector specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Broker authority can include media commentary, expert biographies, sector specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
@@ -668,7 +668,7 @@ export const insuranceBrokers: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

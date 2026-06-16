@@ -82,7 +82,7 @@ export const medSpas: IndustryContent = {
       'Where should I go for RF microneedling?',
       'Which clinic has the strongest reviews for dermal fillers?',
       'Who is a trusted provider for laser skin rejuvenation?',
-      'Which med spa specialises in acne scarring or sun damage?',
+      'Which med spa specializes in acne scarring or sun damage?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your clinic may have an excellent reputation, experienced practitioners and hundreds of positive reviews. That does not guarantee you will be included.',
@@ -205,7 +205,7 @@ export const medSpas: IndustryContent = {
     assess: [
       'Who your clinic serves',
       'Where you operate',
-      'Which treatments you specialise in',
+      'Which treatments you specialize in',
       'What differentiates your approach',
       'Who your practitioners are',
       'Which credentials support your expertise',
@@ -227,7 +227,7 @@ export const medSpas: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -238,14 +238,14 @@ export const medSpas: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified practitioners as expert sources for journalists covering medical aesthetics, skincare, injectables, healthy ageing and dermatology — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified practitioners as expert sources for journalists covering medical aesthetics, skincare, injectables, healthy aging and dermatology — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
@@ -275,7 +275,7 @@ export const medSpas: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Location Authority',
-        body: 'For clinics operating across one or more locations, we strengthen the local signals AI relies on: location-specific profiles, regional press, neighbourhood references, structured local data and location-level practitioner recognition.',
+        body: 'For clinics operating across one or more locations, we strengthen the local signals AI relies on: location-specific profiles, regional press, neighborhood references, structured local data and location-level practitioner recognition.',
         icon: 'Building2',
       },
       {
@@ -291,9 +291,9 @@ export const medSpas: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every med spa can publish claims about being trusted, experienced or clinically led. Independent media coverage gives those claims external support.',
-      'When a practitioner is quoted in a recognised publication, several things happen:',
+      'When a practitioner is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a practitioner is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a practitioner is quoted in a recognized publication, several things happen:',
     effects: [
       'The practitioner becomes associated with a relevant area of expertise',
       'The clinic earns an independent brand mention',
@@ -322,7 +322,7 @@ export const medSpas: IndustryContent = {
       'Media commentary',
       'Journalist profiles',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Podcast appearances',
       'Broadcast opportunities',
       'Expert-led content',
@@ -330,7 +330,7 @@ export const medSpas: IndustryContent = {
       'Conference speaking',
     ],
     closing:
-      'A practitioner with genuine expertise can become a recognised source for both patients and journalists. That authority then supports the clinic they represent.',
+      'A practitioner with genuine expertise can become a recognized source for both patients and journalists. That authority then supports the clinic they represent.',
   },
 
   services: {
@@ -387,7 +387,7 @@ export const medSpas: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -469,7 +469,7 @@ export const medSpas: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the clinic but connect it more strongly with secondary treatments than its commercial priorities.',
+        b: 'AI may recognize the clinic but connect it more strongly with secondary treatments than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -558,7 +558,7 @@ export const medSpas: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -568,7 +568,7 @@ export const medSpas: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -600,7 +600,7 @@ export const medSpas: IndustryContent = {
       'Focus on the clinic brand only',
       'Build backlinks as isolated SEO assets',
       'Measure social engagement',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -617,11 +617,11 @@ export const medSpas: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from med spas considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from med spas considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a med spa?',
-        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about treatments in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your practitioners are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about treatments in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your practitioners are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -653,7 +653,7 @@ export const medSpas: IndustryContent = {
       },
       {
         q: 'Can you promote individual injectors and practitioners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Practitioner authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Practitioner authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-location med spa group?',
@@ -665,7 +665,7 @@ export const medSpas: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

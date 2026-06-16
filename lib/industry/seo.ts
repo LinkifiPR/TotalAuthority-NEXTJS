@@ -22,7 +22,7 @@ export function buildIndustryMetadata(content: IndustryContent): Metadata {
       description: ogDescription ?? description,
       url: pageUrl,
       siteName: 'TotalAuthority',
-      locale: 'en_GB',
+      locale: 'en_US',
       type: 'website',
       images: [{ url: ogImage, width: 601, height: 200, alt: `TotalAuthority — ${name}` }],
     },
@@ -57,7 +57,7 @@ export function buildIndustryJsonLd(content: IndustryContent) {
           url: siteUrl,
           logo: ogImage,
         },
-        areaServed: ['United Kingdom', 'United States'],
+        areaServed: ['United States'],
         audience: { '@type': 'BusinessAudience', name },
       },
       {

@@ -10,13 +10,13 @@ export const taxAdvisoryFirms: IndustryContent = {
     keywords: [
       'AI visibility for tax advisory firms',
       'tax advisory firm marketing',
-      'tax adviser SEO',
+      'tax advisor SEO',
       'tax authority building',
-      'ChatGPT tax adviser recommendations',
-      'AI search for tax advisers',
+      'ChatGPT tax advisor recommendations',
+      'AI search for tax advisors',
       'digital PR for tax firms',
       'tax directory rankings',
-      'CIOT firm visibility',
+      'AICPA firm visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Tax Advisory Firms',
@@ -38,7 +38,7 @@ export const taxAdvisoryFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to appoint for personal tax planning, corporate tax, inheritance tax, capital gains, HMRC enquiries and international structuring.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for personal tax planning, corporate tax, estate tax, capital gains, IRS inquiries and international structuring.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,11 +65,11 @@ export const taxAdvisoryFirms: IndustryContent = {
       { name: 'Sterling Reece Tax', count: 4 },
     ],
     sources: [
-      'CIOT',
-      'Tax Journal',
-      'Accountancy Age',
-      'Financial Times',
-      'AccountingWEB',
+      'AICPA',
+      'Tax Notes',
+      'Accounting Today',
+      'Wall Street Journal',
+      'Journal of Accountancy',
       'Trustpilot',
       'Local press',
     ],
@@ -78,14 +78,14 @@ export const taxAdvisoryFirms: IndustryContent = {
   shift: {
     heading: 'Your next client may ask AI before they search Google',
     intro:
-      'People are increasingly using AI platforms to shortlist firms, compare specialisms and decide which tax advisers appear credible. They are asking questions such as:',
+      'People are increasingly using AI platforms to shortlist firms, compare specialties and decide which tax advisors appear credible. They are asking questions such as:',
     questions: [
-      'Who is the best tax adviser for high-net-worth individuals near me?',
-      'Which firm should I use for an HMRC enquiry in Birmingham?',
-      'Where can I find a specialist inheritance tax adviser?',
+      'Who is the best tax advisor for high-net-worth individuals near me?',
+      'Which firm should I use for an IRS audit in Chicago?',
+      'Where can I find a specialist estate tax advisor?',
       'Which firm has the strongest reviews for capital gains planning?',
-      'Who is a trusted adviser for non-dom and residency matters?',
-      'Which tax advisory firm handles R&D tax relief well?',
+      'Who is a trusted advisor for expat and residency matters?',
+      'Which tax advisory firm handles R&D tax credits well?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced partners and decades of advisory work behind it. That does not guarantee you will be included.',
@@ -99,7 +99,7 @@ export const taxAdvisoryFirms: IndustryContent = {
     heading: 'Find out exactly where your firm stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the specialism, service and local discovery prompts that could lead to a new appointment.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your firm name. We test the specialty, service and local discovery prompts that could lead to a new appointment.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -115,33 +115,33 @@ export const taxAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Prompt Visibility Map',
-        b: 'A simple view showing the specialisms and searches where your firm is mentioned, not mentioned, recommended or cited.',
+        b: 'A simple view showing the specialties and searches where your firm is mentioned, not mentioned, recommended or cited.',
       },
     ],
     promptCategories: [
       'Best tax advisory firm in your city',
-      'Best inheritance tax adviser',
+      'Best estate tax advisor',
       'Best capital gains tax specialist',
-      'Best adviser for HMRC enquiries',
+      'Best advisor for IRS audits',
       'Best corporate tax planning firm',
-      'Best non-dom and residency adviser',
+      'Best expat and residency advisor',
       'Best property tax specialist',
-      'Best adviser for R&D tax relief',
+      'Best advisor for R&D tax credits',
       'Best international tax firm',
-      'Best adviser for tax investigations',
+      'Best advisor for IRS disputes',
       'Best firm for natural-language tax queries',
-      'Top-rated tax advisers near me',
+      'Top-rated tax advisors near me',
     ],
   },
 
   competitorIntel: {
     heading: 'See who AI recommends instead',
     intro:
-      'A missing recommendation is only part of the picture. The more useful question is which competitors appear instead, how frequently they are recommended, and why AI associates them more strongly with a specialism or location.',
+      'A missing recommendation is only part of the picture. The more useful question is which competitors appear instead, how frequently they are recommended, and why AI associates them more strongly with a specialty or location.',
     identifiesHeading: 'Our audit identifies',
     identifies: [
       'Competitors appearing across multiple AI models',
-      'Firms repeatedly recommended for priority specialisms',
+      'Firms repeatedly recommended for priority specialties',
       'Competitors associated with particular services',
       'The prompts where your firm is absent',
       'The websites supporting competitor recommendations',
@@ -162,7 +162,7 @@ export const taxAdvisoryFirms: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on professional bodies, tax trade press, financial media, local recommendation pages, review platforms, listicles, Reddit discussions, adviser profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on professional bodies, tax trade press, financial media, local recommendation pages, review platforms, listicles, Reddit discussions, advisor profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const taxAdvisoryFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'CIOT', pct: 89 },
-      { name: 'Tax Journal', pct: 75 },
-      { name: 'Financial Times', pct: 60 },
+      { name: 'AICPA', pct: 89 },
+      { name: 'Tax Notes', pct: 75 },
+      { name: 'Wall Street Journal', pct: 60 },
       { name: 'Local press', pct: 35 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Accountancy Age', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'AccountingWEB', models: ['Gemini', 'Perplexity'] },
+      { name: 'Accounting Today', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Journal of Accountancy', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -193,24 +193,24 @@ export const taxAdvisoryFirms: IndustryContent = {
   brand: {
     heading: 'Does AI understand what you want to be known for?',
     intro:
-      'Being mentioned is not enough if your firm is associated with the wrong specialisms or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
+      'Being mentioned is not enough if your firm is associated with the wrong specialties or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading firm for complex inheritance tax planning',
-      'Trusted practice for HMRC enquiries and disputes',
-      'Specialist firm for non-dom and residency matters',
+      'Leading firm for complex estate tax planning',
+      'Trusted practice for IRS audits and disputes',
+      'Specialist firm for expat and residency matters',
       'Local authority for capital gains and property tax',
-      'Premier adviser on international and cross-border tax',
-      'Independently recognised private client tax team',
+      'Premier advisor on international and cross-border tax',
+      'Independently recognized private client tax team',
       'Multi-office practice with experienced partners',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which specialisms you focus on',
+      'Which specialties you focus on',
       'What differentiates your approach',
-      'Who your tax advisers are',
+      'Who your tax advisors are',
       'Which credentials support your expertise',
       'Which matters you are best placed to handle',
       'How your firm compares with local competitors',
@@ -230,61 +230,61 @@ export const taxAdvisoryFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
         title: 'Multi-Model AI Visibility Auditing',
-        body: 'High-intent prompts tested across ChatGPT, Gemini and Perplexity. We measure mentions, citations, recommendations, positioning, specialism visibility, local visibility, competitors and sources.',
+        body: 'High-intent prompts tested across ChatGPT, Gemini and Perplexity. We measure mentions, citations, recommendations, positioning, specialty visibility, local visibility, competitors and sources.',
         icon: 'Search',
       },
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified tax advisers as expert sources for journalists covering tax, business, personal finance and wealth — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified tax advisors as expert sources for journalists covering tax, business, personal finance and wealth — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across professional bodies, review platforms, adviser directories, local business resources, service comparison pages and professional associations.',
+        body: 'We strengthen your presence across professional bodies, review platforms, advisor directories, local business resources, service comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, adviser biographies, credentials, specialism categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
+        body: 'We align firm names, locations, advisor biographies, credentials, specialty categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, specialism guides, adviser-led explainers, tax updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, specialty guides, advisor-led explainers, tax updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
         num: '07',
         title: 'Ongoing AI Visibility Tracking',
-        body: 'We continue testing the prompts most valuable to your firm: recommendation frequency, brand mentions, specialism visibility, competitor share of voice, citation sources and positioning accuracy.',
+        body: 'We continue testing the prompts most valuable to your firm: recommendation frequency, brand mentions, specialty visibility, competitor share of voice, citation sources and positioning accuracy.',
         icon: 'BarChart3',
       },
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level adviser recognition.',
+        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level advisor recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, Trustpilot, CIOT and AccountingWEB — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, Trustpilot, AICPA and Journal of Accountancy — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const taxAdvisoryFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a tax adviser is quoted in a recognised publication, several things happen:',
+      'When a tax advisor is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a tax adviser is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a tax advisor is quoted in a recognized publication, several things happen:',
     effects: [
-      'The adviser becomes associated with a relevant area of expertise',
+      'The advisor becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const taxAdvisoryFirms: IndustryContent = {
       'Clients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, adviser authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, advisor authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Adviser Authority',
-    heading: 'Clients trust advisers, not faceless firm pages',
+    sectionLabel: 'Advisor Authority',
+    heading: 'Clients trust advisors, not faceless firm pages',
     paragraphs: [
-      'In tax advisory, the person handling the matter can be as important as the firm itself. Your managing partner, heads of specialism, senior advisers and qualified tax advisers hold expertise that can strengthen the authority of the entire brand.',
+      'In tax advisory, the person handling the matter can be as important as the firm itself. Your managing partner, heads of specialty, senior advisors and qualified tax advisors hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Adviser positioning',
+      'Advisor positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,36 +333,36 @@ export const taxAdvisoryFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A tax adviser with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'A tax advisor with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
-    sectionLabel: 'Specialism Visibility',
-    heading: 'Build visibility around the specialisms that generate fees',
+    sectionLabel: 'Specialty Visibility',
+    heading: 'Build visibility around the specialties that generate fees',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisers and the specialisms you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisors and the specialties you want to grow.',
     focusHeading: 'A tax advisory firm strategy may focus on',
-    badge: '24 specialisms',
+    badge: '24 specialties',
     items: [
       'Personal tax planning',
       'Corporate tax planning',
-      'Inheritance tax planning',
+      'Estate tax planning',
       'Capital gains tax',
-      'VAT advisory',
-      'R&D tax relief',
+      'Sales tax advisory',
+      'R&D tax credits',
       'International tax',
-      'Tax investigations (HMRC enquiries)',
+      'IRS audits and inquiries',
       'Property tax',
       'Trust taxation',
-      'Non-dom and residency',
-      'Employee share schemes',
-      'Stamp duty land tax',
-      'Self-assessment',
-      'EIS and SEIS',
-      'Tax-efficient remuneration',
+      'Expat and residency',
+      'Employee stock plans',
+      'Transfer tax',
+      'Individual tax returns (Form 1040)',
+      'Qualified Opportunity Zones',
+      'Tax-efficient compensation',
       'Cross-border structuring',
       'Transfer pricing',
-      'Capital allowances',
+      'Cost segregation',
       'Exit and succession tax',
       'Voluntary disclosures',
       'Tax dispute resolution',
@@ -370,7 +370,7 @@ export const taxAdvisoryFirms: IndustryContent = {
       'Tax compliance reviews',
     ],
     closing:
-      'A firm may be highly visible for one specialism and completely absent for another. Our process exposes those differences. Every specialism is reviewed separately because the competitors, sources and authority signals can differ considerably.',
+      'A firm may be highly visible for one specialty and completely absent for another. Our process exposes those differences. Every specialty is reviewed separately because the competitors, sources and authority signals can differ considerably.',
   },
 
   process: {
@@ -380,7 +380,7 @@ export const taxAdvisoryFirms: IndustryContent = {
       {
         n: '01',
         t: 'Define the Commercial Priorities',
-        b: 'We identify the specialisms, locations and client searches most valuable to your firm. This prevents the campaign from becoming a broad exercise with no commercial focus.',
+        b: 'We identify the specialties, locations and client searches most valuable to your firm. This prevents the campaign from becoming a broad exercise with no commercial focus.',
       },
       {
         n: '02',
@@ -390,12 +390,12 @@ export const taxAdvisoryFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, adviser entities, specialism associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, advisor entities, specialty associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -416,19 +416,19 @@ export const taxAdvisoryFirms: IndustryContent = {
       'AI visibility improvement should be measured through several indicators rather than one isolated answer.',
     before: [
       'The firm appears inconsistently',
-      'Important specialism prompts produce no mention',
+      'Important specialty prompts produce no mention',
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Advisers have little external authority',
+      'Advisors have little external authority',
       'Third-party source coverage is limited',
       'The firm does not know which sources influence results',
     ],
     after: [
       'The firm appears across more valuable prompts',
-      'Priority specialisms have stronger brand association',
+      'Priority specialties have stronger brand association',
       'Brand descriptions become more accurate',
-      'Adviser expertise is clearer',
+      'Advisor expertise is clearer',
       'More trusted sources mention the firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,7 +439,7 @@ export const taxAdvisoryFirms: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible tax advisers, strong client service and the capacity to convert increased visibility into appointments.',
+      'TotalAuthority is best suited to established firms that have credible tax advisors, strong client service and the capacity to convert increased visibility into appointments.',
     typesHeading: 'Best-fit firm types',
     types: [
       'Established independent tax firms',
@@ -448,9 +448,9 @@ export const taxAdvisoryFirms: IndustryContent = {
       'Multi-office practices',
       'Private client tax specialists',
       'Corporate tax practices',
-      'Sole practitioner advisers',
-      'R&D tax relief specialists',
-      'International tax advisers',
+      'Sole practitioner advisors',
+      'R&D tax credit specialists',
+      'International tax advisors',
       'Tax dispute resolution practices',
       'Property tax specialists',
       'Firms entering new regions',
@@ -467,12 +467,12 @@ export const taxAdvisoryFirms: IndustryContent = {
         b: 'The firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Adviser expertise is hidden',
+        t: 'Advisor expertise is hidden',
         b: 'Highly qualified partners are presented through short team biographies with little external recognition.',
       },
       {
-        t: 'The brand is associated with the wrong specialisms',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        t: 'The brand is associated with the wrong specialties',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,7 +484,7 @@ export const taxAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Firm, adviser and office details are inconsistent across profiles and third-party sources.',
+        b: 'Firm, advisor and office details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
@@ -492,7 +492,7 @@ export const taxAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -530,7 +530,7 @@ export const taxAdvisoryFirms: IndustryContent = {
   auditOffer: {
     heading: 'Get your Tax Advisory Firm AI Visibility Audit',
     intro:
-      'See how your firm currently appears across ChatGPT, Gemini and Perplexity. Your audit will examine high-intent prompts linked to your location, specialisms and desired positioning.',
+      'See how your firm currently appears across ChatGPT, Gemini and Perplexity. Your audit will examine high-intent prompts linked to your location, specialties and desired positioning.',
     includesHeading: 'What the audit includes',
     includes: [
       'Overall AI visibility score',
@@ -549,19 +549,19 @@ export const taxAdvisoryFirms: IndustryContent = {
     ],
     requestHeading: 'Request your audit',
     requestIntro:
-      'Your audit is reviewed using your actual brand, market, specialisms and local competitors.',
+      'Your audit is reviewed using your actual brand, market, specialties and local competitors.',
     formFields: [
       'First name and last name',
       'Business email and phone',
       'Firm name and website',
       'Primary location and number of offices',
-      'Most important specialisms',
-      'Specialisms you want to grow',
+      'Most important specialties',
+      'Specialties you want to grow',
     ],
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const taxAdvisoryFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, adviser quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, advisor quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,7 +586,7 @@ export const taxAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Client Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and adviser positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and advisor positioning.',
         icon: 'Award',
       },
     ],
@@ -596,14 +596,14 @@ export const taxAdvisoryFirms: IndustryContent = {
     heading: 'What makes this different from traditional tax advisory marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic tax blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,24 +611,24 @@ export const taxAdvisoryFirms: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the firm and its advisers',
+      'Build the authority of the firm and its advisors',
       'Build connected media, brand, entity and citation signals',
-      'Measure specialism visibility, competitor share and source influence',
+      'Measure specialty visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the firm',
     ],
   },
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from tax advisory firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from tax advisory firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a tax advisory firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about tax advice in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about tax advice in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisors are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
-        a: 'We create a defined set of high-intent prompts based on your specialisms, location and commercial priorities. We then audit the answers across ChatGPT, Gemini and Perplexity, recording brand mentions, website citations, direct recommendations, competitors and source usage.',
+        a: 'We create a defined set of high-intent prompts based on your specialties, location and commercial priorities. We then audit the answers across ChatGPT, Gemini and Perplexity, recording brand mentions, website citations, direct recommendations, competitors and source usage.',
       },
       {
         q: 'Can you guarantee that AI will recommend us?',
@@ -636,31 +636,31 @@ export const taxAdvisoryFirms: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, adviser entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, advisor entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our firm still need local SEO?',
-        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, adviser, media and third-party authority.',
+        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, advisor, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisers with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisors with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, specialism associations, adviser information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, specialty associations, advisor information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
-        a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, specialism guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
+        a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, specialty guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
       },
       {
-        q: 'Can you promote individual advisers and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Adviser authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual advisors and partners?',
+        a: 'Yes, provided their experience and credentials support the positioning. Advisor authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
-        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisers, specialism offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisors, specialty offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const taxAdvisoryFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },
@@ -683,8 +683,8 @@ export const taxAdvisoryFirms: IndustryContent = {
     eyebrow: 'Find out where you stand',
     heading: 'Is AI recommending your firm, or your competitors?',
     paragraph:
-      'Your firm may already be visible for some specialisms and absent for others. The only way to know is to test the questions your prospective clients are asking, examine the competitors appearing instead, and identify the sources influencing those answers. Start with a clear visibility baseline. Then build the authority required to compete.',
+      'Your firm may already be visible for some specialties and absent for others. The only way to know is to test the questions your prospective clients are asking, examine the competitors appearing instead, and identify the sources influencing those answers. Start with a clear visibility baseline. Then build the authority required to compete.',
     footnote:
-      'Measured across ChatGPT, Gemini and Perplexity using prompts tailored to your firm, specialisms and location.',
+      'Measured across ChatGPT, Gemini and Perplexity using prompts tailored to your firm, specialties and location.',
   },
 };

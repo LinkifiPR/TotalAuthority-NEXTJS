@@ -16,7 +16,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'AI search for plastic surgeons',
       'digital PR for cosmetic surgery clinics',
       'cosmetic surgery directory rankings',
-      'BAAPS surgeon visibility',
+      'ASPS surgeon visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Cosmetic Surgery Clinics',
@@ -60,18 +60,18 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     competitorsHeading: 'Top competitors recommended instead',
     competitorsCaption: '4 of 10 prompts',
     competitors: [
-      { name: 'Belgravia Aesthetics', count: 7 },
-      { name: 'Kensington Surgical Group', count: 5 },
+      { name: 'Bayview Aesthetics', count: 7 },
+      { name: 'Lakeshore Surgical Group', count: 5 },
       { name: 'Meridian Cosmetic Clinic', count: 4 },
     ],
     sources: [
       'RealSelf',
-      'BAAPS',
-      'Save Face',
-      'Doctify',
-      'Tatler',
-      'Top Doctors',
-      'Trustpilot',
+      'ASPS',
+      'The Aesthetic Society',
+      'Healthgrades',
+      'Allure',
+      'NewBeauty',
+      'Google reviews',
     ],
   },
 
@@ -81,11 +81,11 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'People are increasingly using AI platforms to shortlist clinics, compare procedures and decide which surgeons appear credible. They are asking questions such as:',
     questions: [
       'Who is the best cosmetic surgeon near me for rhinoplasty?',
-      'Which clinic should I use for breast augmentation in London?',
+      'Which clinic should I use for breast augmentation in Los Angeles?',
       'Where can I find a specialist facelift surgeon?',
       'Which clinic has the strongest reviews for liposuction?',
       'Who is a trusted surgeon for a tummy tuck?',
-      'Which clinic specialises in mummy makeover surgery?',
+      'Which clinic specializes in mommy makeover surgery?',
     ],
     paragraphs: [
       'AI can answer those questions without sending the user through a traditional list of search results. Your clinic may have an excellent reputation, accredited surgeons and outstanding patient results behind it. That does not guarantee you will be included.',
@@ -126,9 +126,9 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'Best liposuction clinic',
       'Best clinic for a tummy tuck',
       'Best eyelid surgery surgeon',
-      'Best clinic for a mummy makeover',
+      'Best clinic for a mommy makeover',
       'Best body contouring clinic',
-      'Best gynaecomastia surgeon',
+      'Best gynecomastia surgeon',
       'Best clinic for natural-language cosmetic surgery queries',
       'Top-rated cosmetic surgeons near me',
     ],
@@ -149,10 +149,10 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     ],
     tableHeading: 'Recurring competitors',
     tableRows: [
-      { name: 'Belgravia Aesthetics', m: 3, p: 7, f: '24×' },
-      { name: 'Kensington Surgical Group', m: 2, p: 5, f: '14×' },
+      { name: 'Bayview Aesthetics', m: 3, p: 7, f: '24×' },
+      { name: 'Lakeshore Surgical Group', m: 2, p: 5, f: '14×' },
       { name: 'Meridian Cosmetic Clinic', m: 3, p: 4, f: '11×' },
-      { name: 'Harley Row Surgery', m: 1, p: 3, f: '6×' },
+      { name: 'Summit Row Surgery', m: 1, p: 3, f: '6×' },
       { name: 'Aurelia Plastic Surgery', m: 2, p: 2, f: '5×' },
     ],
     note:
@@ -172,16 +172,16 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
       { name: 'RealSelf', pct: 89 },
-      { name: 'BAAPS', pct: 75 },
-      { name: 'Save Face', pct: 62 },
-      { name: 'Doctify', pct: 38 },
+      { name: 'ASPS', pct: 75 },
+      { name: 'The Aesthetic Society', pct: 62 },
+      { name: 'Healthgrades', pct: 38 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Top Doctors', models: ['Gemini', 'Perplexity'] },
+      { name: 'Allure', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'NewBeauty', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -200,15 +200,15 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'Trusted practice for breast augmentation and uplift',
       'Specialist clinic for body contouring and liposuction',
       'Local authority for facelift and rejuvenation surgery',
-      'Premier provider of mummy makeover procedures',
+      'Premier provider of mommy makeover procedures',
       'Independently accredited revision surgery team',
-      'Multi-surgeon clinic with experienced consultants',
+      'Multi-surgeon clinic with experienced board-certified plastic surgeons',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your clinic serves',
       'Where you operate',
-      'Which procedures you specialise in',
+      'Which procedures you specialize in',
       'What differentiates your care',
       'Who your surgeons are',
       'Which accreditations support your expertise',
@@ -230,7 +230,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -284,7 +284,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, RealSelf, Doctify and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, RealSelf, Healthgrades and the Aesthetic Society — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every clinic can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a surgeon is quoted in a recognised publication, several things happen:',
+      'When a surgeon is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a surgeon is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a surgeon is quoted in a recognized publication, several things happen:',
     effects: [
       'The surgeon becomes associated with a relevant area of expertise',
       'The clinic earns an independent brand mention',
@@ -314,7 +314,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     sectionLabel: 'Surgeon Authority',
     heading: 'Patients trust surgeons, not faceless clinic pages',
     paragraphs: [
-      'In cosmetic surgery, the person performing the procedure can be as important as the clinic itself. Your lead surgeon, consultant surgeons, specialist practitioners and clinical team hold expertise that can strengthen the authority of the entire brand.',
+      'In cosmetic surgery, the person performing the procedure can be as important as the clinic itself. Your lead surgeon, board-certified plastic surgeons, specialist practitioners and clinical team hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
@@ -324,7 +324,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'Accreditation alignment',
       'Media commentary',
       'Author pages',
-      'Procedure specialisation',
+      'Procedure specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A surgeon with genuine expertise can become a recognised source for both patients and journalists. That authority then supports the clinic they represent.',
+      'A surgeon with genuine expertise can become a recognized source for both patients and journalists. That authority then supports the clinic they represent.',
   },
 
   services: {
@@ -353,8 +353,8 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       'Facelift',
       'Eyelid surgery (blepharoplasty)',
       'Brow lift',
-      'Mummy makeover',
-      'Gynaecomastia surgery',
+      'Mommy makeover',
+      'Gynecomastia surgery',
       'Otoplasty',
       'Body contouring',
       'Fat transfer',
@@ -390,7 +390,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -443,7 +443,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     typesHeading: 'Best-fit clinic types',
     types: [
       'Established cosmetic surgery clinics',
-      'Consultant-led surgical practices',
+      'Board-certified surgeon-led surgical practices',
       'Boutique aesthetic surgery clinics',
       'Multi-site clinic groups',
       'Facial surgery specialists',
@@ -472,7 +472,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong procedures',
-        b: 'AI may recognise the clinic but connect it more strongly with secondary procedures than its commercial priorities.',
+        b: 'AI may recognize the clinic but connect it more strongly with secondary procedures than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The clinic measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The clinic measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const cosmeticSurgeryClinics: IndustryContent = {
     heading: 'What makes this different from traditional cosmetic surgery marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic procedure blogs',
       'Track Google rankings alone',
       'Promote claims made by the clinic',
       'Focus on the clinic brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const cosmeticSurgeryClinics: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from cosmetic surgery clinics considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from cosmetic surgery clinics considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a cosmetic surgery clinic?',
-        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about cosmetic surgery in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your surgeons are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about cosmetic surgery in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your surgeons are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -655,8 +655,8 @@ export const cosmeticSurgeryClinics: IndustryContent = {
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, procedure guides, comparison pages, reports and other assets that may support citations, media outreach and patient education.',
       },
       {
-        q: 'Can you promote individual surgeons and consultants?',
-        a: 'Yes, provided their experience and accreditations support the positioning. Surgeon authority can include media commentary, expert biographies, procedure specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual surgeons and board-certified plastic surgeons?',
+        a: 'Yes, provided their experience and accreditations support the positioning. Surgeon authority can include media commentary, expert biographies, procedure specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-site clinic?',
@@ -668,7 +668,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

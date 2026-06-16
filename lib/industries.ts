@@ -68,7 +68,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: 'rehab-centres',
-    name: 'Rehab Centres',
+    name: 'Rehab Centers',
     status: 'live',
     related: ['therapy-clinics', 'private-medical-practices', 'health-clinics'],
     shortDescription: 'AI visibility for addiction, recovery and rehabilitation centres.',

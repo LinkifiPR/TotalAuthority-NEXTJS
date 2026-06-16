@@ -6,7 +6,7 @@ export const architecturalFirms: IndustryContent = {
   meta: {
     title: 'AI Visibility & Authority Building for Architectural Firms | TotalAuthority',
     description:
-      'See whether ChatGPT, Gemini and Perplexity recommend your practice when prospective clients ask which architect to use for an extension, new build or planning application. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
+      'See whether ChatGPT, Gemini and Perplexity recommend your practice when prospective clients ask which architect to use for an addition, new build or permitting application. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
     keywords: [
       'AI visibility for architectural firms',
       'architect marketing',
@@ -15,7 +15,7 @@ export const architecturalFirms: IndustryContent = {
       'ChatGPT architect recommendations',
       'AI search for architects',
       'digital PR for architects',
-      'RIBA directory rankings',
+      'AIA directory rankings',
       'architecture practice visibility',
       'AI visibility audit',
     ],
@@ -38,7 +38,7 @@ export const architecturalFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity which architect to use for a house extension, a new build, a planning application, a listed building project or a commercial scheme.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity which architect to use for a home addition, a new build, a permitting application, a historic landmark project or a commercial scheme.',
       'TotalAuthority shows you whether your practice appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,11 +65,11 @@ export const architecturalFirms: IndustryContent = {
       { name: 'Northgate Design Studio', count: 4 },
     ],
     sources: [
-      'RIBA',
+      'AIA',
       'Dezeen',
       'ArchDaily',
       'Houzz',
-      "The Architects' Journal",
+      'Architectural Record',
       'Google reviews',
       'Local press',
     ],
@@ -81,14 +81,14 @@ export const architecturalFirms: IndustryContent = {
       'People are increasingly using AI platforms to shortlist architects, compare services and decide which practices appear credible. They are asking questions such as:',
     questions: [
       'Who is the best architect near me?',
-      'Which practice should I use for a house extension in Brighton?',
-      'Where can I find an architect for a listed building project?',
+      'Which practice should I use for a home addition in Portland?',
+      'Where can I find an architect for a historic landmark project?',
       'Which firm has the strongest portfolio for sustainable homes?',
-      'Who is a trusted architect for a planning application?',
-      'Which practice specialises in commercial and mixed-use schemes?',
+      'Who is a trusted architect for a permitting application?',
+      'Which practice specializes in commercial and mixed-use schemes?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your practice may have an award-winning portfolio, chartered architects and decades of completed projects behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your practice may have an award-winning portfolio, licensed architects and decades of completed projects behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -120,14 +120,14 @@ export const architecturalFirms: IndustryContent = {
     ],
     promptCategories: [
       'Best architect in your city',
-      'Best architect for house extensions',
+      'Best architect for home additions',
       'Best architect for a new build home',
-      'Best architect for planning applications',
-      'Best architect for listed buildings',
+      'Best architect for permitting and zoning approvals',
+      'Best architect for historic landmarks',
       'Best architect for sustainable design',
       'Best architect for commercial schemes',
-      'Best architect for loft conversions',
-      'Best architect for self-build projects',
+      'Best architect for attic conversions',
+      'Best architect for custom home projects',
       'Best architect for interior architecture',
       'Best practice for natural-language architecture queries',
       'Top-rated architects near me',
@@ -171,7 +171,7 @@ export const architecturalFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'RIBA', pct: 90 },
+      { name: 'AIA', pct: 90 },
       { name: 'Dezeen', pct: 75 },
       { name: 'Houzz', pct: 61 },
       { name: 'Local press', pct: 36 },
@@ -181,7 +181,7 @@ export const architecturalFirms: IndustryContent = {
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
       { name: 'ArchDaily', models: ['ChatGPT', 'Perplexity'] },
-      { name: "The Architects' Journal", models: ['Gemini', 'Perplexity'] },
+      { name: 'Architectural Record', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -196,19 +196,19 @@ export const architecturalFirms: IndustryContent = {
       'Being mentioned is not enough if your practice is associated with the wrong services or described too generically. We compare what you want AI to understand with what the platforms currently say about your practice.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading practice for residential extensions and new builds',
-      'Trusted studio for planning applications and consents',
-      'Specialist practice for conservation and listed buildings',
+      'Leading practice for residential additions and new builds',
+      'Trusted studio for permitting and zoning approvals',
+      'Specialist practice for preservation and historic landmarks',
       'Local authority for sustainable and low-energy design',
-      'Premier adviser on commercial and mixed-use schemes',
-      'Independently recognised award-winning design studio',
-      'Multi-disciplinary practice with chartered architects',
+      'Premier advisor on commercial and mixed-use schemes',
+      'Independently recognized award-winning design studio',
+      'Multi-disciplinary practice with licensed architects',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your practice serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
       'Who your architects are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const architecturalFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,7 +241,7 @@ export const architecturalFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
@@ -284,7 +284,7 @@ export const architecturalFirms: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for practices — Google, Houzz, RIBA and the major design platforms — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for practices — Google, Houzz, AIA and the major design platforms — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const architecturalFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every practice can publish claims about being trusted, experienced or award-winning. Independent media coverage gives those claims external support.',
-      'When an architect is quoted in a recognised publication, several things happen:',
+      'When an architect is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an architect is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an architect is quoted in a recognized publication, several things happen:',
     effects: [
       'The architect becomes associated with a relevant area of expertise',
       'The practice earns an independent brand mention',
@@ -314,7 +314,7 @@ export const architecturalFirms: IndustryContent = {
     sectionLabel: 'Architect Authority',
     heading: 'Clients trust architects, not faceless practice pages',
     paragraphs: [
-      'In architecture, the person leading the design can be as important as the practice itself. Your directors, project architects, design leads and conservation specialists hold expertise that can strengthen the authority of the entire brand.',
+      'In architecture, the person leading the design can be as important as the practice itself. Your principals, project architects, design leads and preservation specialists hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
@@ -324,7 +324,7 @@ export const architecturalFirms: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Service specialisation',
+      'Service specialization',
       'Speaking engagements',
       'Professional citations',
       'Design awards',
@@ -333,7 +333,7 @@ export const architecturalFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'An architect with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the practice they represent.',
+      'An architect with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the practice they represent.',
   },
 
   services: {
@@ -345,29 +345,29 @@ export const architecturalFirms: IndustryContent = {
     badge: '24 services',
     items: [
       'Residential architecture',
-      'House extensions',
+      'Home additions',
       'New build design',
-      'Planning applications',
-      'Listed building consent',
+      'Permitting and zoning approvals',
+      'Historic landmark approval',
       'Commercial architecture',
       'Interior architecture',
-      'Conservation and heritage',
+      'Preservation and heritage',
       'Sustainable design',
       'Feasibility studies',
       'Concept design',
-      'Building regulations drawings',
-      'Loft conversions',
+      'Building-code and permit drawings',
+      'Attic conversions',
       'Basement design',
-      'Self-build design',
+      'Custom home design',
       'Mixed-use developments',
       'Masterplanning',
-      '3D visualisation',
+      '3D visualization',
       'Project management',
       'Contract administration',
-      'Retrofit and refurbishment',
+      'Retrofit and renovation',
       'Landscape architecture',
       'Education and healthcare buildings',
-      'Planning appeals',
+      'Zoning appeals',
     ],
     closing:
       'A practice may be highly visible for one service and completely absent for another. Our process exposes those differences. Every service is reviewed separately because the competitors, sources and authority signals can differ considerably.',
@@ -390,7 +390,7 @@ export const architecturalFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -446,11 +446,11 @@ export const architecturalFirms: IndustryContent = {
       'Regional multi-studio firms',
       'Boutique design studios',
       'Commercial architecture practices',
-      'Conservation and heritage specialists',
+      'Preservation and heritage specialists',
       'Sustainable design practices',
       'Masterplanning and urban design firms',
       'Interior architecture studios',
-      'Self-build and bespoke home specialists',
+      'Custom and bespoke home specialists',
       'Mixed-use development practices',
       'Education and healthcare specialists',
       'Practices entering new regions',
@@ -472,7 +472,7 @@ export const architecturalFirms: IndustryContent = {
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the practice but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the practice but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -492,7 +492,7 @@ export const architecturalFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The practice measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The practice measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const architecturalFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const architecturalFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const architecturalFirms: IndustryContent = {
     heading: 'What makes this different from traditional architecture practice marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic service blogs',
       'Track Google rankings alone',
       'Promote claims made by the practice',
       'Focus on the practice brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const architecturalFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from architectural firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from architectural firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an architecture practice?',
-        a: 'AI visibility refers to whether your practice appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about architectural services in your area. It also includes whether your website is cited, whether your practice is accurately described, and whether your architects are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your practice appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about architectural services in your area. It also includes whether your website is cited, whether your practice is accurately described, and whether your architects are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const architecturalFirms: IndustryContent = {
       },
       {
         q: 'Can you promote individual architects and directors?',
-        a: 'Yes, provided their experience and credentials support the positioning. Architect authority can include media commentary, expert biographies, service specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Architect authority can include media commentary, expert biographies, service specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-studio practice?',
@@ -668,7 +668,7 @@ export const architecturalFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

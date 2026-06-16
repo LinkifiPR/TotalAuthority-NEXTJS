@@ -9,14 +9,14 @@ export const financialAdvisoryFirms: IndustryContent = {
       'See whether ChatGPT, Gemini and Perplexity recommend your firm when prospective clients ask for financial advice. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
     keywords: [
       'AI visibility for financial advisory firms',
-      'financial adviser marketing',
-      'IFA SEO',
+      'financial advisor marketing',
+      'RIA SEO',
       'financial advice authority building',
-      'ChatGPT financial adviser recommendations',
-      'AI search for financial advisers',
-      'digital PR for financial advisers',
-      'IFA directory rankings',
-      'VouchedFor adviser visibility',
+      'ChatGPT financial advisor recommendations',
+      'AI search for financial advisors',
+      'digital PR for financial advisors',
+      'RIA directory rankings',
+      'SmartAsset advisor visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Financial Advisory Firms',
@@ -38,7 +38,7 @@ export const financialAdvisoryFirms: IndustryContent = {
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
-      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to appoint for retirement planning, pensions, investments, mortgages, protection and estate planning.',
+      'Your prospective clients are asking ChatGPT, Gemini and Perplexity who to hire for retirement planning, 401(k) / IRA rollovers, investments, mortgages, insurance and estate planning.',
       'TotalAuthority shows you whether your firm appears in those answers, which competitors are being recommended instead, and which sources are influencing the results. We then build the external authority, earned media, content and brand signals needed to improve your visibility.',
     ],
     supportingLine:
@@ -65,11 +65,11 @@ export const financialAdvisoryFirms: IndustryContent = {
       { name: 'Tradewell Planning', count: 4 },
     ],
     sources: [
-      'VouchedFor',
-      'Unbiased',
-      'Money Marketing',
-      'FTAdviser',
-      'Citywire',
+      'SmartAsset',
+      'NerdWallet',
+      'InvestmentNews',
+      'Financial Planning',
+      'BrokerCheck (FINRA)',
       'Trustpilot',
       'Google reviews',
     ],
@@ -78,17 +78,17 @@ export const financialAdvisoryFirms: IndustryContent = {
   shift: {
     heading: 'Your next client may ask AI before they search Google',
     intro:
-      'People are increasingly using AI platforms to shortlist firms, compare services and decide which financial advisers appear credible. They are asking questions such as:',
+      'People are increasingly using AI platforms to shortlist firms, compare services and decide which financial advisors appear credible. They are asking questions such as:',
     questions: [
-      'Who is the best financial adviser near me?',
-      'Which firm should I use for retirement planning in Bristol?',
-      'Where can I find an independent adviser for pension transfers?',
+      'Who is the best financial advisor near me?',
+      'Which firm should I use for retirement planning in Austin?',
+      'Where can I find an independent advisor for 401(k) rollovers?',
       'Which firm has the strongest reviews for investment advice?',
-      'Who is a trusted adviser for estate and inheritance tax planning?',
+      'Who is a trusted advisor for estate and inheritance tax planning?',
       'Which financial advisory firm handles ethical investing well?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisers and decades of client relationships behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your firm may have an excellent reputation, experienced advisors and decades of client relationships behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -119,18 +119,18 @@ export const financialAdvisoryFirms: IndustryContent = {
       },
     ],
     promptCategories: [
-      'Best financial adviser in your city',
-      'Best independent adviser near me',
-      'Best adviser for retirement planning',
-      'Best adviser for pension transfers',
-      'Best adviser for investment advice',
-      'Best adviser for mortgages and protection',
-      'Best adviser for estate and IHT planning',
-      'Best adviser for at-retirement advice',
-      'Best adviser for ethical investing',
-      'Best fee-based financial planner',
+      'Best financial advisor in your city',
+      'Best independent advisor near me',
+      'Best advisor for retirement planning',
+      'Best advisor for 401(k) rollovers',
+      'Best advisor for investment advice',
+      'Best advisor for mortgages and insurance',
+      'Best advisor for estate and inheritance tax planning',
+      'Best advisor for retirement income planning',
+      'Best advisor for ethical investing',
+      'Best fee-only financial planner',
       'Best firm for natural-language financial queries',
-      'Top-rated financial advisers near me',
+      'Top-rated financial advisors near me',
     ],
   },
 
@@ -152,7 +152,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       { name: 'Oakvale Wealth Advice', m: 3, p: 7, f: '23×' },
       { name: 'Merebrook Financial', m: 2, p: 5, f: '14×' },
       { name: 'Tradewell Planning', m: 3, p: 4, f: '11×' },
-      { name: 'Linden Court Advisers', m: 1, p: 3, f: '6×' },
+      { name: 'Linden Court Advisors', m: 1, p: 3, f: '6×' },
       { name: 'Ashby & Frome', m: 2, p: 2, f: '5×' },
     ],
     note:
@@ -162,7 +162,7 @@ export const financialAdvisoryFirms: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on adviser directories, financial trade press, comparison platforms, local recommendation pages, review platforms, listicles, Reddit discussions, adviser profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on advisor directories, financial trade press, comparison platforms, local recommendation pages, review platforms, listicles, Reddit discussions, advisor profiles, service comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const financialAdvisoryFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'VouchedFor', pct: 90 },
-      { name: 'Unbiased', pct: 77 },
-      { name: 'Money Marketing', pct: 61 },
+      { name: 'SmartAsset', pct: 90 },
+      { name: 'NerdWallet', pct: 77 },
+      { name: 'InvestmentNews', pct: 61 },
       { name: 'Local press', pct: 36 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'FTAdviser', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Citywire', models: ['Gemini', 'Perplexity'] },
+      { name: 'Financial Planning', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'BrokerCheck (FINRA)', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -196,21 +196,21 @@ export const financialAdvisoryFirms: IndustryContent = {
       'Being mentioned is not enough if your firm is associated with the wrong services or described too generically. We compare what you want AI to understand with what the platforms currently say about your firm.',
     positioningHeading: 'Positioning examples',
     positioning: [
-      'Leading firm for retirement and pension planning',
-      'Trusted practice for whole-of-market investment advice',
-      'Specialist firm for at-retirement and drawdown',
-      'Local authority for mortgages and protection',
-      'Premier adviser on estate and inheritance tax planning',
-      'Independently recognised financial planning team',
-      'Multi-office practice with experienced advisers',
+      'Leading firm for retirement and 401(k) / IRA planning',
+      'Trusted practice for independent investment advice',
+      'Specialist firm for retirement income and withdrawals',
+      'Local authority for mortgages and insurance',
+      'Premier advisor on estate and inheritance tax planning',
+      'Independently recognized financial planning team',
+      'Multi-office practice with experienced advisors',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your firm serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
-      'Who your advisers are',
+      'Who your advisors are',
       'Which credentials support your expertise',
       'Which clients you are best placed to serve',
       'How your firm compares with local competitors',
@@ -230,7 +230,7 @@ export const financialAdvisoryFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,32 +241,32 @@ export const financialAdvisoryFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified advisers as expert sources for journalists covering personal finance, pensions, investments and money — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified advisors as expert sources for journalists covering personal finance, retirement, investments and money — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
         num: '04',
         title: 'Third-Party Authority Development',
-        body: 'We strengthen your presence across adviser directories, review platforms, comparison sites, local business resources, service comparison pages and professional associations.',
+        body: 'We strengthen your presence across advisor directories, review platforms, comparison sites, local business resources, service comparison pages and professional associations.',
         icon: 'Layers',
       },
       {
         num: '05',
         title: 'Brand and Entity Alignment',
-        body: 'We align firm names, locations, adviser biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
+        body: 'We align firm names, locations, advisor biographies, credentials, service categories, social profiles, directory listings and website schema so AI systems build a clearer understanding of the firm.',
         icon: 'UserCheck',
       },
       {
         num: '06',
         title: 'Citable Content and Authority Assets',
-        body: 'Original research, service guides, adviser-led explainers, financial updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
+        body: 'Original research, service guides, advisor-led explainers, financial updates, comparison pages, client decision tools and proprietary data — each asset has a defined role in the authority strategy.',
         icon: 'FileText',
       },
       {
@@ -278,13 +278,13 @@ export const financialAdvisoryFirms: IndustryContent = {
       {
         num: '08',
         title: 'Local and Multi-Office Authority',
-        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level adviser recognition.',
+        body: 'For firms operating across one or more offices, we strengthen the local signals AI relies on: office-specific profiles, regional press, community references, structured local data and office-level advisor recognition.',
         icon: 'Building2',
       },
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, VouchedFor, Unbiased and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for firms — Google, SmartAsset, NerdWallet and Trustpilot — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,11 +294,11 @@ export const financialAdvisoryFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every firm can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When a financial adviser is quoted in a recognised publication, several things happen:',
+      'When a financial advisor is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When a financial adviser is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When a financial advisor is quoted in a recognized publication, several things happen:',
     effects: [
-      'The adviser becomes associated with a relevant area of expertise',
+      'The advisor becomes associated with a relevant area of expertise',
       'The firm earns an independent brand mention',
       'The website may receive an authoritative backlink',
       'Search engines gain another reference point',
@@ -306,25 +306,25 @@ export const financialAdvisoryFirms: IndustryContent = {
       'Clients see evidence that the expert is trusted by journalists',
     ],
     closing:
-      'The same piece of editorial coverage can support brand discovery, SEO, adviser authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
+      'The same piece of editorial coverage can support brand discovery, SEO, advisor authority, client confidence and AI visibility. This is why earned media forms a central part of the TotalAuthority process.',
     logosHeading: 'Publications featuring our clients and their experts',
   },
 
   practitioner: {
-    sectionLabel: 'Adviser Authority',
-    heading: 'Clients trust advisers, not faceless firm pages',
+    sectionLabel: 'Advisor Authority',
+    heading: 'Clients trust advisors, not faceless firm pages',
     paragraphs: [
-      'In financial advice, the person handling the relationship can be as important as the firm itself. Your managing partner, chartered planners, paraplanners and qualified advisers hold expertise that can strengthen the authority of the entire brand.',
+      'In financial advice, the person handling the relationship can be as important as the firm itself. Your managing partner, CFP professionals, paraplanners and qualified advisors hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
     chips: [
-      'Adviser positioning',
+      'Advisor positioning',
       'Expert biographies',
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,41 +333,41 @@ export const financialAdvisoryFirms: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A financial adviser with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the firm they represent.',
+      'A financial advisor with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the firm they represent.',
   },
 
   services: {
     sectionLabel: 'Service Visibility',
     heading: 'Build visibility around the services that generate fees',
     intro:
-      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisers and the services you want to grow.',
+      'Your campaign should not chase vague visibility. It should strengthen the association between your firm, location, advisors and the services you want to grow.',
     focusHeading: 'A financial advisory firm strategy may focus on',
     badge: '24 services',
     items: [
       'Retirement planning',
-      'Pension advice',
+      '401(k) / IRA advice',
       'Investment advice',
-      'ISA planning',
+      'Roth IRA planning',
       'Mortgage advice',
       'Life insurance and protection',
-      'Estate and IHT planning',
-      'Pension transfers',
+      'Estate and inheritance tax planning',
+      '401(k) rollovers',
       'Annuities',
-      'Drawdown planning',
+      'Retirement withdrawal planning',
       'Tax-efficient investing',
-      'Cash flow modelling',
-      'Workplace pensions',
+      'Cash flow modeling',
+      'Workplace retirement plans',
       'Long-term care planning',
       'Trusts and wealth structuring',
       'Ethical and ESG investing',
-      'Equity release advice',
+      'Reverse mortgage advice',
       'Income protection',
       'Critical illness cover',
       'Business protection',
-      'SIPP advice',
+      'Solo 401(k) advice',
       'Wealth preservation',
       'Financial planning reviews',
-      'At-retirement advice',
+      'Retirement income planning',
     ],
     closing:
       'A firm may be highly visible for one service and completely absent for another. Our process exposes those differences. Every service is reviewed separately because the competitors, sources and authority signals can differ considerably.',
@@ -390,12 +390,12 @@ export const financialAdvisoryFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
         t: 'Strengthen the Foundation',
-        b: 'We improve the clarity and consistency of brand positioning, adviser entities, service associations, profiles, website information, citations, structured data and local signals.',
+        b: 'We improve the clarity and consistency of brand positioning, advisor entities, service associations, profiles, website information, citations, structured data and local signals.',
       },
       {
         n: '05',
@@ -420,7 +420,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       'Competitors dominate recommendations',
       'AI uses weak or inaccurate positioning',
       'The website receives few citations',
-      'Advisers have little external authority',
+      'Advisors have little external authority',
       'Third-party source coverage is limited',
       'The firm does not know which sources influence results',
     ],
@@ -428,7 +428,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       'The firm appears across more valuable prompts',
       'Priority services have stronger brand association',
       'Brand descriptions become more accurate',
-      'Adviser expertise is clearer',
+      'Advisor expertise is clearer',
       'More trusted sources mention the firm',
       'The website earns relevant citations',
       'Competitive gaps begin to reduce',
@@ -439,19 +439,19 @@ export const financialAdvisoryFirms: IndustryContent = {
   whoFor: {
     heading: 'Built for firms with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established firms that have credible advisers, strong client service and the capacity to convert increased visibility into appointments.',
+      'TotalAuthority is best suited to established firms that have credible advisors, strong client service and the capacity to convert increased visibility into appointments.',
     typesHeading: 'Best-fit firm types',
     types: [
-      'Established independent financial advisers',
+      'Established independent financial advisors (RIAs)',
       'Regional advisory practices',
       'Boutique financial planning firms',
       'Multi-office practices',
-      'Chartered financial planners',
-      'Retirement and pension specialists',
-      'Sole practitioner advisers',
-      'Mortgage and protection-led firms',
+      'CFP-led financial planners',
+      'Retirement and 401(k) / IRA specialists',
+      'Sole practitioner advisors',
+      'Mortgage and insurance-led firms',
       'Investment-led advisory firms',
-      'At-retirement specialists',
+      'Retirement income specialists',
       'Ethical and ESG investing specialists',
       'Firms entering new regions',
     ],
@@ -467,12 +467,12 @@ export const financialAdvisoryFirms: IndustryContent = {
         b: 'The firm may have loyal clients but very few independent sources confirming its expertise.',
       },
       {
-        t: 'Adviser expertise is hidden',
+        t: 'Advisor expertise is hidden',
         b: 'Highly qualified planners are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the firm but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the firm but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -484,7 +484,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Local and brand information conflicts',
-        b: 'Firm, adviser and office details are inconsistent across profiles and third-party sources.',
+        b: 'Firm, advisor and office details are inconsistent across profiles and third-party sources.',
       },
       {
         t: 'Marketing is focused entirely on referrals',
@@ -492,7 +492,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The firm measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The firm measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const financialAdvisoryFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,12 +571,12 @@ export const financialAdvisoryFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
         t: 'Earned Media Results',
-        b: 'Tier-one editorial coverage, dofollow media links, adviser quotes, broadcast opportunities, podcast placements and journalist relationships.',
+        b: 'Tier-one editorial coverage, dofollow media links, advisor quotes, broadcast opportunities, podcast placements and journalist relationships.',
         icon: 'Megaphone',
       },
       {
@@ -586,24 +586,24 @@ export const financialAdvisoryFirms: IndustryContent = {
       },
       {
         t: 'Client Testimonials',
-        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and adviser positioning.',
+        b: 'Quotes that reference quality of publications, strategic insight, communication, brand authority, measurable growth and advisor positioning.',
         icon: 'Award',
       },
     ],
   },
 
   comparison: {
-    heading: 'What makes this different from traditional financial adviser marketing?',
+    heading: 'What makes this different from traditional financial advisor marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic financial blogs',
       'Track Google rankings alone',
       'Promote claims made by the firm',
       'Focus on the firm brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -611,7 +611,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       'Create content and assets designed around specific citation and authority opportunities',
       'Track mentions, citations and recommendations across multiple AI platforms',
       'Earn independent support from trusted third parties',
-      'Build the authority of the firm and its advisers',
+      'Build the authority of the firm and its advisors',
       'Build connected media, brand, entity and citation signals',
       'Measure service visibility, competitor share and source influence',
       'Strengthen the wider source environment surrounding the firm',
@@ -620,11 +620,11 @@ export const financialAdvisoryFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from financial advisory firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from financial advisory firms considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for a financial advisory firm?',
-        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about financial advice in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisers are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your firm appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about financial advice in your area. It also includes whether your website is cited, whether your firm is accurately described, and whether your advisors are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -636,31 +636,31 @@ export const financialAdvisoryFirms: IndustryContent = {
       },
       {
         q: 'Is AI visibility the same as SEO?',
-        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, adviser entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
+        a: 'No, but the two are connected. SEO focuses heavily on website rankings and organic traffic. AI visibility also includes third-party mentions, citations, advisor entities, reviews, external profiles, editorial coverage and the sources used to produce generated answers. Strong authority building can support both.',
       },
       {
         q: 'Does our firm still need local SEO?',
-        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, adviser, media and third-party authority.',
+        a: 'Yes. Clients still use Google Search and Google Maps, while AI platforms may also rely on local business information. TotalAuthority complements local SEO by developing broader brand, advisor, media and third-party authority.',
       },
       {
         q: 'Why is earned media part of the strategy?',
-        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisers with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
+        a: 'Editorial coverage gives your firm independent recognition. It can connect your advisors with relevant expertise, create authoritative mentions, earn backlinks and give both clients and AI systems additional sources through which to validate the brand.',
       },
       {
         q: 'Do you work on our website?',
-        a: 'Website alignment can form part of the implementation plan. This may include positioning, service associations, adviser information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
+        a: 'Website alignment can form part of the implementation plan. This may include positioning, service associations, advisor information, citable content, entity clarity, structured data and internal site recommendations. The work is directed by the gaps identified in the audit and Blueprint.',
       },
       {
         q: 'Do you create content?',
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, service guides, comparison pages, reports and other assets that may support citations, media outreach and client education.',
       },
       {
-        q: 'Can you promote individual advisers and partners?',
-        a: 'Yes, provided their experience and credentials support the positioning. Adviser authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual advisors and partners?',
+        a: 'Yes, provided their experience and credentials support the positioning. Advisor authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-office firm?',
-        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisers, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
+        a: 'Yes. Multi-office firms need clear connections between the parent brand, each office, advisors, service offerings, local profiles and external mentions. The audit and strategy can be structured around individual markets or the wider firm.',
       },
       {
         q: 'How quickly will visibility improve?',
@@ -668,7 +668,7 @@ export const financialAdvisoryFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

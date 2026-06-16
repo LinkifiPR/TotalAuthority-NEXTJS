@@ -6,17 +6,17 @@ export const realEstateFirms: IndustryContent = {
   meta: {
     title: 'AI Visibility & Authority Building for Real Estate Firms | TotalAuthority',
     description:
-      'See whether ChatGPT, Gemini and Perplexity recommend your agency when prospective clients ask who to use to buy, sell or let property. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
+      'See whether ChatGPT, Gemini and Perplexity recommend your agency when prospective clients ask who to use to buy, sell or rent property. TotalAuthority audits your AI visibility and builds the earned media, content and authority signals that influence those answers.',
     keywords: [
       'AI visibility for real estate firms',
-      'estate agent marketing',
-      'estate agency SEO',
+      'real estate agent marketing',
+      'real estate agency SEO',
       'property authority building',
-      'ChatGPT estate agent recommendations',
-      'AI search for estate agents',
-      'digital PR for estate agents',
+      'ChatGPT real estate agent recommendations',
+      'AI search for real estate agents',
+      'digital PR for real estate agents',
       'property portal rankings',
-      'Rightmove and Zoopla visibility',
+      'Zillow and Realtor.com visibility',
       'AI visibility audit',
     ],
     ogTitle: 'AI Visibility & Authority Building for Real Estate Firms',
@@ -44,7 +44,7 @@ export const realEstateFirms: IndustryContent = {
     supportingLine:
       'See how your agency is mentioned, cited and compared across leading AI platforms.',
     footnote: 'Measured across ChatGPT, Gemini and Perplexity',
-    dashboardTitle: 'Estate Agency AI Visibility Audit',
+    dashboardTitle: 'Real Estate Agency AI Visibility Audit',
   },
 
   dashboard: {
@@ -61,16 +61,16 @@ export const realEstateFirms: IndustryContent = {
     competitorsCaption: '4 of 10 prompts',
     competitors: [
       { name: 'Oakfield Residential', count: 8 },
-      { name: 'Harbrook & Vale', count: 5 },
+      { name: 'Harbrook & Vale Realty', count: 5 },
       { name: 'Meridian Property Group', count: 4 },
     ],
     sources: [
-      'Rightmove',
-      'Zoopla',
-      'allAgents',
+      'Zillow',
+      'Realtor.com',
+      'Yelp',
       'Google reviews',
-      'Trustpilot',
-      'Estate Agent Today',
+      'NAR',
+      'Inman',
       'Local press',
     ],
   },
@@ -80,15 +80,15 @@ export const realEstateFirms: IndustryContent = {
     intro:
       'People are increasingly using AI platforms to shortlist agents, compare services and decide which firms appear credible. They are asking questions such as:',
     questions: [
-      'Who is the best estate agent near me?',
-      'Which agency should I use to sell my house in Bristol?',
-      'Where can I find a reliable letting agent for my flat?',
-      'Which estate agent has the strongest reviews for selling quickly?',
-      'Who is a trusted agent for managing a buy-to-let portfolio?',
-      'Which agency specialises in new homes and developments?',
+      'Who is the best real estate agent near me?',
+      'Which agency should I use to sell my house in Austin?',
+      'Where can I find a reliable leasing agent for my apartment?',
+      'Which Realtor has the strongest reviews for selling quickly?',
+      'Who is a trusted agent for managing an investment property portfolio?',
+      'Which agency specializes in new homes and developments?',
     ],
     paragraphs: [
-      'AI can answer those questions without sending the user through a traditional list of search results. Your agency may have a strong local presence, experienced negotiators and decades of completed sales behind it. That does not guarantee you will be included.',
+      'AI can answer those questions without sending the user through a traditional list of search results. Your agency may have a strong local presence, experienced agents and decades of completed sales behind it. That does not guarantee you will be included.',
       'AI systems form their answers using the sources and signals they can find across the wider web. If your competitors are better represented across those sources, they may be recommended ahead of you.',
     ],
     callout:
@@ -99,7 +99,7 @@ export const realEstateFirms: IndustryContent = {
     heading: 'Find out exactly where your agency stands',
     introPre: 'Our ',
     introPost:
-      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your agency name. We test the service, sector and local discovery prompts that could lead to a new instruction.",
+      " tests the commercially valuable questions your clients are likely to ask. We don't simply search for your agency name. We test the service, sector and local discovery prompts that could lead to a new listing.",
     outputCards: [
       {
         t: 'Overall AI Visibility Score',
@@ -119,18 +119,18 @@ export const realEstateFirms: IndustryContent = {
       },
     ],
     promptCategories: [
-      'Best estate agent in your city',
+      'Best real estate agent in your city',
       'Best agent for selling a house fast',
-      'Best letting agent for landlords',
+      'Best leasing agent for landlords',
       'Best agency for property management',
       'Best agent for new homes',
       'Best commercial property agent',
-      'Best agent for buy-to-let investors',
-      'Best agency for block management',
+      'Best agent for investment property investors',
+      'Best agency for HOA management',
       'Best agent for relocation services',
       'Best agency for property auctions',
       'Best agency for natural-language property queries',
-      'Top-rated estate agents near me',
+      'Top-rated real estate agents near me',
     ],
   },
 
@@ -150,10 +150,10 @@ export const realEstateFirms: IndustryContent = {
     tableHeading: 'Recurring competitors',
     tableRows: [
       { name: 'Oakfield Residential', m: 3, p: 8, f: '24×' },
-      { name: 'Harbrook & Vale', m: 2, p: 5, f: '15×' },
+      { name: 'Harbrook & Vale Realty', m: 2, p: 5, f: '15×' },
       { name: 'Meridian Property Group', m: 3, p: 4, f: '12×' },
       { name: 'Castleton & Rowe', m: 1, p: 3, f: '6×' },
-      { name: 'Linden Bay Estates', m: 2, p: 2, f: '5×' },
+      { name: 'Linden Bay Realty', m: 2, p: 2, f: '5×' },
     ],
     note:
       'This gives you a practical competitive view based on AI-generated recommendations, rather than assumptions about who your online competitors are.',
@@ -171,17 +171,17 @@ export const realEstateFirms: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'Rightmove', pct: 91 },
-      { name: 'Zoopla', pct: 78 },
-      { name: 'allAgents', pct: 60 },
+      { name: 'Zillow', pct: 91 },
+      { name: 'Realtor.com', pct: 78 },
+      { name: 'Yelp', pct: 60 },
       { name: 'Local press', pct: 36 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Estate Agent Today', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'OnTheMarket', models: ['Gemini', 'Perplexity'] },
+      { name: 'Inman', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Trulia', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -197,18 +197,18 @@ export const realEstateFirms: IndustryContent = {
     positioningHeading: 'Positioning examples',
     positioning: [
       'Leading agency for residential sales in the area',
-      'Trusted firm for lettings and property management',
+      'Trusted firm for rentals and property management',
       'Specialist agency for new homes and developments',
-      'Local authority for buy-to-let and investment property',
-      'Premier adviser on commercial property transactions',
-      'Independently recognised block management team',
-      'Multi-branch agency with experienced negotiators',
+      'Local authority for investment property and rentals',
+      'Premier advisor on commercial property transactions',
+      'Independently recognized HOA management team',
+      'Multi-branch agency with experienced agents',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your agency serves',
       'Where you operate',
-      'Which services you specialise in',
+      'Which services you specialize in',
       'What differentiates your approach',
       'Who your agents are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const realEstateFirms: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,14 +241,14 @@ export const realEstateFirms: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your experienced agents as expert sources for journalists covering property, housing, the local market, lettings and investment — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your experienced agents as expert sources for journalists covering property, housing, the local market, rentals and investment — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
@@ -284,7 +284,7 @@ export const realEstateFirms: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for agencies — Google, Trustpilot, allAgents and the major property portals — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for agencies — Google, Yelp, Zillow and the major property portals — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const realEstateFirms: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every agency can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When an agent is quoted in a recognised publication, several things happen:',
+      'When an agent is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an agent is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an agent is quoted in a recognized publication, several things happen:',
     effects: [
       'The agent becomes associated with a relevant area of expertise',
       'The agency earns an independent brand mention',
@@ -314,7 +314,7 @@ export const realEstateFirms: IndustryContent = {
     sectionLabel: 'Agent Authority',
     heading: 'Clients trust agents, not faceless agency pages',
     paragraphs: [
-      'In property, the person handling the sale or let can be as important as the agency itself. Your branch managers, senior negotiators, valuers and lettings specialists hold expertise that can strengthen the authority of the entire brand.',
+      'In property, the person handling the sale or lease can be as important as the agency itself. Your branch managers, senior agents, appraisers and leasing specialists hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
@@ -324,16 +324,16 @@ export const realEstateFirms: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Area specialisation',
+      'Area specialization',
       'Speaking engagements',
       'Professional citations',
-      'Portal rankings',
+      'Zillow rankings',
       'Thought leadership',
       'Podcast appearances',
       'Award submissions',
     ],
     closing:
-      'An agent with genuine expertise can become a recognised source for both clients and journalists. That authority then supports the agency they represent.',
+      'An agent with genuine expertise can become a recognized source for both clients and journalists. That authority then supports the agency they represent.',
   },
 
   services: {
@@ -345,28 +345,28 @@ export const realEstateFirms: IndustryContent = {
     badge: '24 services',
     items: [
       'Residential sales',
-      'Residential lettings',
+      'Residential rentals',
       'Property management',
-      'Property valuations',
+      'Property appraisals',
       'New homes sales',
       'Commercial property',
       'Land and development',
       'Property auctions',
-      'Buy-to-let services',
-      'Block management',
-      'Tenant find services',
+      'Investment property services',
+      'HOA management',
+      'Tenant placement services',
       'Rent collection',
       'Property investment advice',
       'Relocation services',
-      'Probate property sales',
-      'Short-term lets',
-      'Student lettings',
-      'Service charge management',
+      'Estate sales',
+      'Short-term rentals',
+      'Student rentals',
+      'HOA dues management',
       'Portfolio management',
       'Vacant property management',
-      'Snagging and handover',
+      'Punch list and handover',
       'Mortgage referrals',
-      'Conveyancing referrals',
+      'Title and closing referrals',
       'Market appraisals',
     ],
     closing:
@@ -390,7 +390,7 @@ export const realEstateFirms: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -439,18 +439,18 @@ export const realEstateFirms: IndustryContent = {
   whoFor: {
     heading: 'Built for agencies with genuine expertise to promote',
     intro:
-      'TotalAuthority is best suited to established agencies that have credible agents, strong client service and the capacity to convert increased visibility into instructions.',
+      'TotalAuthority is best suited to established agencies that have credible agents, strong client service and the capacity to convert increased visibility into listings.',
     typesHeading: 'Best-fit agency types',
     types: [
       'Established independent agencies',
       'Regional multi-branch firms',
-      'Boutique prime property agencies',
-      'Lettings-led agencies',
+      'Boutique luxury property agencies',
+      'Rental-led agencies',
       'New homes and land specialists',
       'Commercial property firms',
       'Property management companies',
-      'Buy-to-let and investment agencies',
-      'Block management specialists',
+      'Investment property agencies',
+      'HOA management specialists',
       'Auction-led agencies',
       'Relocation specialists',
       'Agencies entering new areas',
@@ -468,11 +468,11 @@ export const realEstateFirms: IndustryContent = {
       },
       {
         t: 'Agent expertise is hidden',
-        b: 'Highly experienced negotiators are presented through short team biographies with little external recognition.',
+        b: 'Highly experienced agents are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong services',
-        b: 'AI may recognise the agency but connect it more strongly with secondary services than its commercial priorities.',
+        b: 'AI may recognize the agency but connect it more strongly with secondary services than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -488,11 +488,11 @@ export const realEstateFirms: IndustryContent = {
       },
       {
         t: 'Marketing is focused entirely on portals',
-        b: 'The agency wins instructions through Rightmove and Zoopla but has little searchable, independent authority elsewhere.',
+        b: 'The agency wins listings through Zillow and Realtor.com but has little searchable, independent authority elsewhere.',
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The agency measures rankings, traffic and valuations without knowing whether AI platforms are recommending competitors.',
+        b: 'The agency measures rankings, traffic and appraisals without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const realEstateFirms: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const realEstateFirms: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -593,17 +593,17 @@ export const realEstateFirms: IndustryContent = {
   },
 
   comparison: {
-    heading: 'What makes this different from traditional estate agency marketing?',
+    heading: 'What makes this different from traditional real estate agency marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate valuations',
+      'Run paid ads for immediate appraisals',
       'Publish generic area and service blogs',
       'Track Google rankings alone',
       'Promote claims made by the agency',
       'Focus on the agency brand only',
       'Build backlinks as isolated SEO assets',
       'Measure portal listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const realEstateFirms: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from real estate firms considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from real estate firms considering an AI visibility program.',
     items: [
       {
-        q: 'What is AI visibility for an estate agency?',
-        a: 'AI visibility refers to whether your agency appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about property services in your area. It also includes whether your website is cited, whether your agency is accurately described, and whether your agents are recognised for relevant expertise.',
+        q: 'What is AI visibility for a real estate agency?',
+        a: 'AI visibility refers to whether your agency appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about property services in your area. It also includes whether your website is cited, whether your agency is accurately described, and whether your agents are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -656,7 +656,7 @@ export const realEstateFirms: IndustryContent = {
       },
       {
         q: 'Can you promote individual agents and branch managers?',
-        a: 'Yes, provided their experience and credentials support the positioning. Agent authority can include media commentary, expert biographies, area specialisation, professional profiles and expert-led content.',
+        a: 'Yes, provided their experience and credentials support the positioning. Agent authority can include media commentary, expert biographies, area specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-branch agency?',
@@ -668,7 +668,7 @@ export const realEstateFirms: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },

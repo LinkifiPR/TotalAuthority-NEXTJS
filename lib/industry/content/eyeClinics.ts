@@ -60,18 +60,18 @@ export const eyeClinics: IndustryContent = {
     competitorsHeading: 'Top competitors recommended instead',
     competitorsCaption: '4 of 10 prompts',
     competitors: [
-      { name: 'Clearview Eye Centre', count: 7 },
+      { name: 'Clearview Eye Center', count: 7 },
       { name: 'Vista Ophthalmology', count: 5 },
       { name: 'Brightside Vision Clinic', count: 4 },
     ],
     sources: [
-      'The Royal College of Ophthalmologists',
-      'Doctify',
-      'NHS',
-      'Trustpilot',
-      'Which?',
+      'American Academy of Ophthalmology (AAO)',
+      'Healthgrades',
+      'WebMD',
+      'Vitals',
+      'Zocdoc',
       'Google reviews',
-      'Top Doctors',
+      'Castle Connolly',
     ],
   },
 
@@ -81,10 +81,10 @@ export const eyeClinics: IndustryContent = {
       'People are increasingly using AI platforms to shortlist clinics, compare procedures and decide which surgeons appear credible. They are asking questions such as:',
     questions: [
       'Where is the best clinic for cataract surgery near me?',
-      'Which clinic should I use for laser eye surgery in Birmingham?',
+      'Which clinic should I use for laser eye surgery in Houston?',
       'Where can I get lens replacement from an experienced surgeon?',
       'Which clinic has the strongest reviews for glaucoma treatment?',
-      'Where can I find a trusted paediatric ophthalmologist?',
+      'Where can I find a trusted pediatric ophthalmologist?',
       'Which clinic offers same-week emergency eye care near me?',
     ],
     paragraphs: [
@@ -126,7 +126,7 @@ export const eyeClinics: IndustryContent = {
       'Best glaucoma specialist',
       'Best clinic for macular degeneration care',
       'Best dry eye treatment clinic',
-      'Best paediatric ophthalmologist',
+      'Best pediatric ophthalmologist',
       'Best emergency eye care provider',
       'Best clinic for keratoconus management',
       'Best clinic for natural-language eye care queries',
@@ -149,7 +149,7 @@ export const eyeClinics: IndustryContent = {
     ],
     tableHeading: 'Recurring competitors',
     tableRows: [
-      { name: 'Clearview Eye Centre', m: 3, p: 7, f: '23×' },
+      { name: 'Clearview Eye Center', m: 3, p: 7, f: '23×' },
       { name: 'Vista Ophthalmology', m: 2, p: 5, f: '14×' },
       { name: 'Brightside Vision Clinic', m: 3, p: 4, f: '11×' },
       { name: 'Hawthorne Laser Eye', m: 1, p: 3, f: '6×' },
@@ -162,7 +162,7 @@ export const eyeClinics: IndustryContent = {
   sourceLandscape: {
     heading: 'Discover which sources are influencing AI',
     paragraphs: [
-      'Improving AI visibility is not only a website project. AI platforms may rely on health directories, the NHS website, professional bodies, consumer review sites, local recommendation pages, review platforms, listicles, Reddit discussions, surgeon profiles, procedure comparison pages, competitor websites, social profiles and your own service and location pages.',
+      'Improving AI visibility is not only a website project. AI platforms may rely on health directories, the American Academy of Ophthalmology website, professional bodies, consumer review sites, local recommendation pages, review platforms, listicles, Reddit discussions, surgeon profiles, procedure comparison pages, competitor websites, social profiles and your own service and location pages.',
       'Our source analysis identifies which websites appear most frequently across the answers being generated in your market. This allows us to see where your brand is already represented, where competitors have an advantage, and where new authority needs to be created.',
     ],
     pullQuoteLine1: 'Your website tells AI what you say about yourself.',
@@ -171,17 +171,17 @@ export const eyeClinics: IndustryContent = {
     topSourcesTitle: 'Top recurring sources',
     topSourcesBody: 'The websites appearing most frequently across audited answers.',
     topSources: [
-      { name: 'The Royal College of Ophthalmologists', pct: 84 },
-      { name: 'Doctify', pct: 71 },
-      { name: 'NHS', pct: 63 },
+      { name: 'American Academy of Ophthalmology (AAO)', pct: 84 },
+      { name: 'Healthgrades', pct: 71 },
+      { name: 'WebMD', pct: 63 },
       { name: 'Local press', pct: 34 },
     ],
     multiModelTitle: 'Used across multiple AI models',
     multiModelBody: 'Sources relied upon by more than one platform.',
     multiModel: [
       { name: 'Reddit', models: ['ChatGPT', 'Gemini', 'Perplexity'] },
-      { name: 'Which?', models: ['ChatGPT', 'Perplexity'] },
-      { name: 'Trustpilot', models: ['Gemini', 'Perplexity'] },
+      { name: 'WebMD', models: ['ChatGPT', 'Perplexity'] },
+      { name: 'Vitals', models: ['Gemini', 'Perplexity'] },
     ],
     ownedTitle: 'Owned vs third-party signals',
     ownedBody:
@@ -198,17 +198,17 @@ export const eyeClinics: IndustryContent = {
     positioning: [
       'Leading clinic for cataract surgery',
       'Trusted provider of laser eye surgery and lens replacement',
-      'Specialist centre for glaucoma and retinal conditions',
+      'Specialist center for glaucoma and retinal conditions',
       'Local authority for comprehensive eye examinations',
-      'Premier provider of paediatric ophthalmology',
-      'Independently recognised dry eye and corneal team',
+      'Premier provider of pediatric ophthalmology',
+      'Independently recognized dry eye and corneal team',
       'Multi-site clinic with experienced ophthalmologists',
     ],
     assessHeading: 'We assess whether AI accurately understands',
     assess: [
       'Who your clinic serves',
       'Where you operate',
-      'Which procedures you specialise in',
+      'Which procedures you specialize in',
       'What differentiates your approach',
       'Who your ophthalmologists are',
       'Which credentials support your expertise',
@@ -230,7 +230,7 @@ export const eyeClinics: IndustryContent = {
     paragraphsPost:
       ' needed to strengthen them, and execute the work required to build a more visible and defensible brand.',
     paragraph2:
-      'This combines AI visibility analysis with digital PR, earned media, content, entity optimisation, citation building and external authority development.',
+      'This combines AI visibility analysis with digital PR, earned media, content, entity optimization, citation building and external authority development.',
     pillars: [
       {
         num: '01',
@@ -241,14 +241,14 @@ export const eyeClinics: IndustryContent = {
       {
         num: '02',
         title: 'AI Authority Strategy Blueprint',
-        body: 'The Blueprint turns audit findings into a prioritised execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
+        body: 'The Blueprint turns audit findings into a prioritized execution plan: competitors, sources, AI-cited rankings, website alignment, third-party gaps, PR opportunities, citations and content priorities.',
         icon: 'FileText',
         href: '/strategy-blueprint',
       },
       {
         num: '03',
         title: 'Earned Media and Digital PR',
-        body: 'We position your qualified ophthalmologists as expert sources for journalists covering health, vision, wellbeing and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
+        body: 'We position your qualified ophthalmologists as expert sources for journalists covering health, vision, well-being and consumer affairs — for editorial features, expert commentary and authoritative backlinks.',
         icon: 'Megaphone',
       },
       {
@@ -284,7 +284,7 @@ export const eyeClinics: IndustryContent = {
       {
         num: '09',
         title: 'Reputation and Review Authority',
-        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, Doctify, Trustpilot and Top Doctors — so sentiment, volume and recency reinforce recommendations.',
+        body: 'We strengthen the consistency and depth of the review platforms and directories AI weighs most heavily for clinics — Google, Healthgrades, Vitals and Castle Connolly — so sentiment, volume and recency reinforce recommendations.',
         icon: 'Star',
       },
     ],
@@ -294,9 +294,9 @@ export const eyeClinics: IndustryContent = {
     heading: 'Real authority is earned outside your own website',
     paragraphs: [
       'Every clinic can publish claims about being trusted, experienced or market-leading. Independent media coverage gives those claims external support.',
-      'When an ophthalmologist is quoted in a recognised publication, several things happen:',
+      'When an ophthalmologist is quoted in a recognized publication, several things happen:',
     ],
-    effectsIntro: 'When an ophthalmologist is quoted in a recognised publication, several things happen:',
+    effectsIntro: 'When an ophthalmologist is quoted in a recognized publication, several things happen:',
     effects: [
       'The ophthalmologist becomes associated with a relevant area of expertise',
       'The clinic earns an independent brand mention',
@@ -314,7 +314,7 @@ export const eyeClinics: IndustryContent = {
     sectionLabel: 'Surgeon Authority',
     heading: 'Patients trust surgeons, not faceless clinic pages',
     paragraphs: [
-      'In eye care, the surgeon performing the procedure can be as important as the clinic itself. Your lead consultant ophthalmologists, refractive surgeons, optometrists and specialist clinicians hold expertise that can strengthen the authority of the entire brand.',
+      'In eye care, the surgeon performing the procedure can be as important as the clinic itself. Your lead ophthalmologists, refractive surgeons, optometrists and specialist clinicians hold expertise that can strengthen the authority of the entire brand.',
       'We help develop that expertise into visible authority through:',
     ],
     developIntro: 'We help develop that expertise into visible authority through:',
@@ -324,7 +324,7 @@ export const eyeClinics: IndustryContent = {
       'Credential alignment',
       'Media commentary',
       'Author pages',
-      'Topic specialisation',
+      'Topic specialization',
       'Speaking engagements',
       'Professional citations',
       'Directory rankings',
@@ -333,7 +333,7 @@ export const eyeClinics: IndustryContent = {
       'Award submissions',
     ],
     closing:
-      'A surgeon with genuine expertise can become a recognised source for both patients and journalists. That authority then supports the clinic they represent.',
+      'A surgeon with genuine expertise can become a recognized source for both patients and journalists. That authority then supports the clinic they represent.',
   },
 
   services: {
@@ -351,7 +351,7 @@ export const eyeClinics: IndustryContent = {
       'Macular degeneration care',
       'Diabetic eye screening',
       'Dry eye treatment',
-      'Paediatric ophthalmology',
+      'Pediatric ophthalmology',
       'Corneal treatment',
       'Squint surgery',
       'Eyelid surgery',
@@ -365,7 +365,7 @@ export const eyeClinics: IndustryContent = {
       'Emergency eye care',
       'ICL implants',
       'Presbyopia treatment',
-      'Colour vision testing',
+      'Color vision testing',
       'Low vision support',
       'Second opinions',
     ],
@@ -390,7 +390,7 @@ export const eyeClinics: IndustryContent = {
       {
         n: '03',
         t: 'Build the Strategy Blueprint',
-        b: 'We analyse why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritised roadmap for implementation.',
+        b: 'We analyze why competitors are appearing, which sources are influencing results and where your authority footprint is weak. You receive a prioritized roadmap for implementation.',
       },
       {
         n: '04',
@@ -448,7 +448,7 @@ export const eyeClinics: IndustryContent = {
       'Multi-site eye clinic groups',
       'Specialist glaucoma clinics',
       'Retinal and medical eye clinics',
-      'Paediatric ophthalmology clinics',
+      'Pediatric ophthalmology clinics',
       'Corneal and keratoconus clinics',
       'Optometry-led practices',
       'Dry eye and ocular surface clinics',
@@ -468,11 +468,11 @@ export const eyeClinics: IndustryContent = {
       },
       {
         t: 'Surgeon expertise is hidden',
-        b: 'Highly qualified consultants are presented through short team biographies with little external recognition.',
+        b: 'Highly qualified surgeons are presented through short team biographies with little external recognition.',
       },
       {
         t: 'The brand is associated with the wrong procedures',
-        b: 'AI may recognise the clinic but connect it more strongly with secondary procedures than its commercial priorities.',
+        b: 'AI may recognize the clinic but connect it more strongly with secondary procedures than its commercial priorities.',
       },
       {
         t: 'Competitors occupy the trusted sources',
@@ -488,11 +488,11 @@ export const eyeClinics: IndustryContent = {
       },
       {
         t: 'Marketing is focused entirely on referrals',
-        b: 'The clinic wins patients through word of mouth and optician referrals but has little searchable, independent authority elsewhere.',
+        b: 'The clinic wins patients through word of mouth and optometrist referrals but has little searchable, independent authority elsewhere.',
       },
       {
         t: 'Nobody is tracking AI recommendations',
-        b: 'The clinic measures rankings, traffic and enquiries without knowing whether AI platforms are recommending competitors.',
+        b: 'The clinic measures rankings, traffic and inquiries without knowing whether AI platforms are recommending competitors.',
       },
     ],
   },
@@ -561,7 +561,7 @@ export const eyeClinics: IndustryContent = {
     blueprintEyebrow: 'Next step after the audit',
     blueprintHeading: 'Turn findings into a clear execution plan',
     blueprintBody:
-      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritised work needed across competitors, sources, media, website positioning, profiles, citations and content.",
+      "The AI Authority Strategy Blueprint takes the audit's baseline and sets out the prioritized work needed across competitors, sources, media, website positioning, profiles, citations and content.",
   },
 
   proof: {
@@ -571,7 +571,7 @@ export const eyeClinics: IndustryContent = {
     cards: [
       {
         t: 'AI Visibility Audit Example',
-        b: 'Anonymised reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
+        b: 'Anonymized reports showing overall score, mentions across each model, website citations, prompt visibility map, competitor recommendations and source landscape.',
         icon: 'BarChart3',
       },
       {
@@ -596,14 +596,14 @@ export const eyeClinics: IndustryContent = {
     heading: 'What makes this different from traditional eye clinic marketing?',
     traditionalLabel: 'Old marketing playbook',
     traditional: [
-      'Run paid ads for immediate enquiries',
+      'Run paid ads for immediate inquiries',
       'Publish generic eye health blogs',
       'Track Google rankings alone',
       'Promote claims made by the clinic',
       'Focus on the clinic brand only',
       'Build backlinks as isolated SEO assets',
       'Measure directory listings in isolation',
-      'Optimise only the website',
+      'Optimize only the website',
     ],
     authorityLabel: 'Authority-led approach',
     authority: [
@@ -620,11 +620,11 @@ export const eyeClinics: IndustryContent = {
 
   faq: {
     intro:
-      'Twelve of the questions we hear most often from eye clinics considering an AI visibility programme.',
+      'Twelve of the questions we hear most often from eye clinics considering an AI visibility program.',
     items: [
       {
         q: 'What is AI visibility for an eye clinic?',
-        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about eye care and surgery in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your surgeons are recognised for relevant expertise.',
+        a: 'AI visibility refers to whether your clinic appears when people ask platforms such as ChatGPT, Gemini and Perplexity for recommendations, comparisons or information about eye care and surgery in your area. It also includes whether your website is cited, whether your clinic is accurately described, and whether your surgeons are recognized for relevant expertise.',
       },
       {
         q: 'How do you measure our visibility?',
@@ -655,8 +655,8 @@ export const eyeClinics: IndustryContent = {
         a: 'Yes, where content has a clear authority purpose. This can include expert resources, original research, procedure guides, comparison pages, reports and other assets that may support citations, media outreach and patient education.',
       },
       {
-        q: 'Can you promote individual surgeons and consultants?',
-        a: 'Yes, provided their experience and credentials support the positioning. Surgeon authority can include media commentary, expert biographies, topic specialisation, professional profiles and expert-led content.',
+        q: 'Can you promote individual surgeons and specialist physicians?',
+        a: 'Yes, provided their experience and credentials support the positioning. Surgeon authority can include media commentary, expert biographies, topic specialization, professional profiles and expert-led content.',
       },
       {
         q: 'Can you help a multi-site eye clinic group?',
@@ -668,7 +668,7 @@ export const eyeClinics: IndustryContent = {
       },
       {
         q: 'What happens after the audit?',
-        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritised plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
+        a: 'The next stage is the AI Authority Strategy Blueprint. This expands the baseline findings into a prioritized plan covering competitors, sources, media, website positioning, profiles, citations, content and authority assets. TotalAuthority can then execute the strategy.',
       },
     ],
   },
