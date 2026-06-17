@@ -7,7 +7,7 @@ import { Header } from '@/components/Header';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { useScheduleCallPopup } from '@/hooks/useScheduleCallPopup';
 import { getRelatedIndustries } from '@/lib/industries';
-import type { IndustryContent, IndustryIcon } from '@/lib/industry/types';
+import type { IndustryContent, IndustryIcon, IndustryGuide } from '@/lib/industry/types';
 import {
   ArrowRight,
   CheckCircle2,
@@ -215,7 +215,10 @@ const ScrollProgressBar = () => {
 // ---------------------------------------------------------------------------
 // Page
 // ---------------------------------------------------------------------------
-export const IndustryLandingPage: React.FC<{ content: IndustryContent }> = ({ content }) => {
+export const IndustryLandingPage: React.FC<{
+  content: IndustryContent;
+  relatedPosts?: IndustryGuide[];
+}> = ({ content, relatedPosts = [] }) => {
   const { isOpen, openForm, closeForm } = useFormPopup();
   const {
     isOpen: isScheduleCallOpen,
@@ -1597,6 +1600,45 @@ export const IndustryLandingPage: React.FC<{ content: IndustryContent }> = ({ co
             </div>
           </div>
         </section>
+
+        {/* ============================================================== */}
+        {/* GUIDES & RESOURCES (industry → blog, reciprocal)                 */}
+        {/* ============================================================== */}
+        {relatedPosts.length > 0 && (
+          <section className="cv-auto py-16 md:py-20 px-4 bg-white border-t border-slate-200/70">
+            <div className="max-w-6xl mx-auto">
+              <SectionEyebrow>Guides &amp; Resources</SectionEyebrow>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-3">
+                Related guides from our blog
+              </h2>
+              <p className="text-slate-600 mb-8 max-w-2xl">
+                Practical reading on AI visibility and authority building relevant to your sector.
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {relatedPosts.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={`/${g.slug}`}
+                    className="group block rounded-xl border border-slate-200 bg-white p-5 hover:shadow-md hover:border-orange-200 transition-all"
+                  >
+                    <span className="text-xs font-semibold tracking-[0.16em] uppercase text-orange-600">
+                      Guide
+                    </span>
+                    <h3 className="text-lg font-semibold text-slate-900 mt-2 mb-2 leading-snug line-clamp-2 group-hover:text-orange-700 transition-colors">
+                      {g.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      {g.excerpt}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600">
+                      Read more <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ============================================================== */}
         {/* 21. FINAL CTA                                                    */}

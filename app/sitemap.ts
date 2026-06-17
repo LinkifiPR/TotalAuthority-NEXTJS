@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { siteUrl } from '@/lib/siteConfig';
+import { LIVE_INDUSTRIES } from '@/lib/industries';
 
 const BASE_URL = siteUrl;
 
@@ -74,13 +75,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // Industry landing pages (commercial hubs) — one per live industry.
+  const industryPages: MetadataRoute.Sitemap = LIVE_INDUSTRIES.map((ind) => ({
+    url: `${BASE_URL}/${ind.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   // Keep deploys resilient: if Supabase env vars are not available during build,
   // still return a valid sitemap with static pages.
   if (!supabaseUrl || !supabaseAnonKey) {
-    return staticPages;
+    return [...staticPages, ...industryPages];
   }
 
   const { createServerSupabaseClient } = await import('@/lib/integrations/supabase/server');
@@ -102,5 +111,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...industryPages, ...blogPages];
 }

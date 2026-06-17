@@ -97,6 +97,13 @@ export interface Faq {
   a: string;
 }
 
+/** A blog post surfaced as a "guide" on an industry hub (fetched at runtime). */
+export interface IndustryGuide {
+  title: string;
+  slug: string;
+  excerpt: string;
+}
+
 export interface IndustryContent {
   /** Root-level route slug, must match lib/industries.ts (e.g. 'law-firms'). */
   slug: string;

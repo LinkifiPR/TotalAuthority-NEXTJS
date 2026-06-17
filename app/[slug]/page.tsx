@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createServerSupabaseClient, isServerSupabaseConfigured } from '@/lib/integrations/supabase/server';
 import { BlogPostClient } from '@/components/blog/BlogPostClient';
 import { buildAbsoluteUrl } from '@/lib/siteConfig';
+import { scoreRelatedPosts, industriesFromTags, type RelatedPostCandidate } from '@/lib/blog/related';
 
 interface BlogPost {
   id: string;
@@ -23,6 +24,7 @@ interface BlogPost {
   view_count: number;
   reading_time?: number;
   tags: string[];
+  category_id?: string | null;
   author_name?: string;
 }
 
@@ -49,6 +51,34 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
   }
 
   return data as BlogPost;
+}
+
+/** Compute related posts (blog↔blog) + relevant industry hubs (blog→industry). */
+async function getRelatedData(post: BlogPost) {
+  const relevantIndustries = industriesFromTags(post.tags);
+
+  if (!isServerSupabaseConfigured()) {
+    return { relatedPosts: [] as RelatedPostCandidate[], relevantIndustries };
+  }
+
+  const supabase = createServerSupabaseClient();
+  const { data } = await supabase
+    .from('blog_posts')
+    .select(
+      'title, slug, excerpt, tags, category_id, featured_image_url, featured_image_alt, published_at, reading_time'
+    )
+    .eq('status', 'published')
+    .eq('is_indexed', true)
+    .order('published_at', { ascending: false })
+    .limit(50);
+
+  const relatedPosts = scoreRelatedPosts(
+    { slug: post.slug, tags: post.tags, category_id: post.category_id },
+    (data ?? []) as RelatedPostCandidate[],
+    4
+  );
+
+  return { relatedPosts, relevantIndustries };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -104,5 +134,13 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  return <BlogPostClient post={post} />;
+  const { relatedPosts, relevantIndustries } = await getRelatedData(post);
+
+  return (
+    <BlogPostClient
+      post={post}
+      relatedPosts={relatedPosts}
+      relevantIndustries={relevantIndustries}
+    />
+  );
 }

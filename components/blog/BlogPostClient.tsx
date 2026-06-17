@@ -5,9 +5,12 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { BlogPostContent } from '@/components/blog/BlogPostContent';
 import { BlogPostSidebar } from '@/components/blog/BlogPostSidebar';
+import { RelatedPosts } from '@/components/blog/RelatedPosts';
 import { FormPopup } from '@/components/FormPopup';
 import { useFormPopup } from '@/hooks/useFormPopup';
 import { supabase } from '@/lib/integrations/supabase/client';
+import type { RelatedPostCandidate } from '@/lib/blog/related';
+import type { Industry } from '@/lib/industries';
 
 interface BlogPost {
   id: string;
@@ -34,9 +37,16 @@ interface BlogPost {
 interface BlogPostClientProps {
   post: BlogPost;
   isPreview?: boolean;
+  relatedPosts?: RelatedPostCandidate[];
+  relevantIndustries?: Industry[];
 }
 
-export function BlogPostClient({ post, isPreview = false }: BlogPostClientProps) {
+export function BlogPostClient({
+  post,
+  isPreview = false,
+  relatedPosts = [],
+  relevantIndustries = [],
+}: BlogPostClientProps) {
   const [headings, setHeadings] = useState<Array<{id: string, text: string, level: number}>>([]);
   const { isOpen, openForm, closeForm } = useFormPopup();
 
@@ -145,6 +155,9 @@ export function BlogPostClient({ post, isPreview = false }: BlogPostClientProps)
           
           <div className="flex-1 max-w-4xl min-w-0">
             <BlogPostContent post={post} />
+            {!isPreview && (
+              <RelatedPosts posts={relatedPosts} industries={relevantIndustries} />
+            )}
           </div>
         </div>
       </div>

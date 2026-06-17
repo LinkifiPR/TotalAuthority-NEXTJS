@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar, Clock, Eye, Search, X } from 'lucide-react';
+import { LIVE_INDUSTRIES } from '@/lib/industries';
 
 interface BlogPost {
   id: string;
@@ -127,6 +128,24 @@ function BlogListContent({ initialPosts, availableTags, basePath }: BlogListClie
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Latest Articles</h1>
+        </div>
+
+        {/* Browse by industry — internal links to the 24 industry hubs */}
+        <div className="mb-10 rounded-2xl border border-slate-200 bg-slate-50/60 p-5 md:p-6">
+          <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-3">
+            Browse guides by industry
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {LIVE_INDUSTRIES.map((ind) => (
+              <Link
+                key={ind.slug}
+                href={`/${ind.slug}`}
+                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:border-orange-300 hover:text-orange-700 transition-colors"
+              >
+                {ind.name}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Search and Filters */}

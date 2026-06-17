@@ -134,6 +134,27 @@ All 24 industry landing pages render from **one shared template** so structure i
 
 ---
 
+## Internal Linking System (blog ↔ blog ↔ industries)
+
+Hub-and-spoke topic clusters. **Industry pages** (`/<slug>`) and **product pages** (`/llm-visibility-audit`, `/strategy-blueprint`, `/llm-visibility-gap-calculator`) are hubs; **blog posts** are spokes. The high-value links auto-generate from post **tags** — no per-post hand-mapping.
+
+**Tagging convention (drives everything):** in each post's `tags[]` —
+- **Industry slug tag(s)** — 1–3 values that exactly match slugs in `lib/industries.ts` (e.g. `med-spas`). These create the post→industry and industry→post links.
+- **One primary cluster tag** from the vocabulary: `AI Visibility`, `Generative Engine Optimization`, `Answer Engine Optimization`, `Digital PR & Earned Media`, `Authority Building`, `Local SEO`, `AI Platform Guides`, `Case Studies`.
+- Free-form descriptive tags as desired (they boost related-post overlap scoring).
+
+**What's automated:**
+- **Post → related articles** + **post → relevant industry hubs**: computed server-side in `app/[slug]/page.tsx` (helpers in `lib/blog/related.ts`: `scoreRelatedPosts` by shared-tag overlap → category → recency; `industriesFromTags`), rendered by `components/blog/RelatedPosts.tsx` at the foot of every post.
+- **Industry hub → guides**: `lib/industry/guides.ts` `getIndustryGuides(slug)` fetches posts tagged with the slug; each `app/<slug>/page.tsx` (ISR, `revalidate = 300`) passes them as `relatedPosts` to `IndustryLandingPage`, which renders a "Guides & resources" section. Returns `[]` (section hidden) when Supabase is unconfigured.
+- **Blog list → industries**: "Browse guides by industry" row on `/blog` + `/insights`.
+- **Sitemap**: `app/sitemap.ts` now includes all 24 industry URLs (`LIVE_INDUSTRIES`).
+
+**Anchor-text rules (logical, not over-optimized):** descriptive/natural anchors (use the destination's real name/title); vary anchors to the same URL; never "click here"; 2–5 contextual in-content links per ~1,000 words, only where genuinely relevant; one link per destination per post; reciprocal where logical, never forced.
+
+**Follow-up (not yet done):** retro-fitting contextual in-content links into the existing posts' HTML needs a temporary Netlify-deployed Supabase migration route (sandbox can't reach the DB) + an editorial pass using the rules above.
+
+---
+
 ## Supabase Configuration
 
 - **Project URL**: https://pgbcixncaeyjunwxrsik.supabase.co
