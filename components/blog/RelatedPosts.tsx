@@ -27,17 +27,30 @@ export function RelatedPosts({ posts, industries }: RelatedPostsProps) {
               <Link
                 key={p.slug}
                 href={`/${p.slug}`}
-                className="group block rounded-xl border border-slate-200 bg-white p-5 hover:shadow-md hover:border-orange-200 transition-all"
+                className="group flex flex-col rounded-xl border border-slate-200 bg-white overflow-hidden hover:shadow-md hover:border-orange-200 transition-all"
               >
-                <h3 className="text-base font-semibold text-slate-900 leading-snug mb-2 line-clamp-2 group-hover:text-orange-700 transition-colors">
-                  {p.title}
-                </h3>
-                {p.excerpt && (
-                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">{p.excerpt}</p>
+                {p.featured_image_url && (
+                  <div className="h-40 overflow-hidden">
+                    <img
+                      src={p.featured_image_url}
+                      alt={p.featured_image_alt || p.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                 )}
-                <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600">
-                  Read more <ArrowRight className="w-3.5 h-3.5" />
-                </span>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base font-semibold text-slate-900 leading-snug mb-2 line-clamp-2 group-hover:text-orange-700 transition-colors">
+                    {p.title}
+                  </h3>
+                  {p.excerpt && (
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">{p.excerpt}</p>
+                  )}
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600">
+                    Read more <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

@@ -28,7 +28,7 @@ export async function getIndustryGuides(
     // 1) Posts explicitly tagged with this industry's slug.
     const { data: tagged } = await supabase
       .from('blog_posts')
-      .select('title, slug, excerpt')
+      .select('title, slug, excerpt, featured_image_url, featured_image_alt')
       .eq('status', 'published')
       .eq('is_indexed', true)
       .contains('tags', [slug])
@@ -42,7 +42,7 @@ export async function getIndustryGuides(
     const seen = new Set(guides.map((g) => g.slug));
     const { data: recent } = await supabase
       .from('blog_posts')
-      .select('title, slug, excerpt')
+      .select('title, slug, excerpt, featured_image_url, featured_image_alt')
       .eq('status', 'published')
       .eq('is_indexed', true)
       .order('published_at', { ascending: false })

@@ -1619,20 +1619,33 @@ export const IndustryLandingPage: React.FC<{
                   <Link
                     key={g.slug}
                     href={`/${g.slug}`}
-                    className="group block rounded-xl border border-slate-200 bg-white p-5 hover:shadow-md hover:border-orange-200 transition-all"
+                    className="group flex flex-col rounded-xl border border-slate-200 bg-white overflow-hidden hover:shadow-md hover:border-orange-200 transition-all"
                   >
-                    <span className="text-xs font-semibold tracking-[0.16em] uppercase text-orange-600">
-                      Guide
-                    </span>
-                    <h3 className="text-lg font-semibold text-slate-900 mt-2 mb-2 leading-snug line-clamp-2 group-hover:text-orange-700 transition-colors">
-                      {g.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
-                      {g.excerpt}
-                    </p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600">
-                      Read more <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
+                    {g.featured_image_url && (
+                      <div className="h-44 overflow-hidden">
+                        <img
+                          src={g.featured_image_url}
+                          alt={g.featured_image_alt || g.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5 flex flex-col flex-1">
+                      <span className="text-xs font-semibold tracking-[0.16em] uppercase text-orange-600">
+                        Guide
+                      </span>
+                      <h3 className="text-lg font-semibold text-slate-900 mt-2 mb-2 leading-snug line-clamp-2 group-hover:text-orange-700 transition-colors">
+                        {g.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                        {g.excerpt}
+                      </p>
+                      <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600">
+                        Read more <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>

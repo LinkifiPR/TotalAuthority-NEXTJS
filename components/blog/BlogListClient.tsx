@@ -242,8 +242,8 @@ function BlogListContent({ initialPosts, availableTags, basePath }: BlogListClie
                       )}
                       
                       <CardHeader>
-                        <Link href={`/${post.slug}`} className="relative after:content-[''] after:block after:absolute after:inset-0">
-                          <CardTitle className="group-hover:text-blue-600 transition-colors line-clamp-2">
+                        <Link href={`/${post.slug}`} className="after:content-[''] after:block after:absolute after:inset-0 after:z-0">
+                          <CardTitle className="group-hover:text-orange-600 transition-colors line-clamp-2">
                             {post.title}
                           </CardTitle>
                         </Link>

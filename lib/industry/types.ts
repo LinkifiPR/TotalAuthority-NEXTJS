@@ -102,6 +102,8 @@ export interface IndustryGuide {
   title: string;
   slug: string;
   excerpt: string;
+  featured_image_url?: string | null;
+  featured_image_alt?: string | null;
 }
 
 export interface IndustryContent {
