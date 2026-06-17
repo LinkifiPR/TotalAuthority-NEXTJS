@@ -64,7 +64,12 @@ export const Header: React.FC<HeaderProps> = () => {
           </Link>
 
           {/* Industries dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          <div
+            className="relative"
+            ref={dropdownRef}
+            onMouseEnter={() => setIndustriesOpen(true)}
+            onMouseLeave={() => setIndustriesOpen(false)}
+          >
             <button
               type="button"
               onClick={() => setIndustriesOpen((v) => !v)}
@@ -98,9 +103,6 @@ export const Header: React.FC<HeaderProps> = () => {
                           className={`${baseClasses} text-slate-700 hover:bg-orange-50 hover:text-orange-700 font-medium`}
                         >
                           <span>{ind.name}</span>
-                          <span className="text-[10px] font-medium uppercase tracking-wider text-orange-600">
-                            Live
-                          </span>
                         </Link>
                       );
                     }
