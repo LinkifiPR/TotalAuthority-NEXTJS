@@ -4,6 +4,12 @@ import { LIVE_INDUSTRIES } from '@/lib/industries';
 
 const BASE_URL = siteUrl;
 
+// Never durably-cache the sitemap (a stale Supabase response was previously
+// pinned in Netlify's Durable Cache with a 1-year TTL). Forcing dynamic keeps
+// it fresh on every request.
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

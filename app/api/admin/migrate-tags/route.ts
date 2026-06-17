@@ -4,6 +4,10 @@ import { INDUSTRY_BY_SLUG } from '@/lib/industries';
 
 export const dynamic = 'force-dynamic';
 
+// One-time apply token (this route is deleted immediately after the migration
+// runs). `?dryRun=1` is open and read-only; writing requires `?token=`.
+const APPLY_TOKEN = 'ta-tagmigrate-7Qm2Kx9vZ4nR8sT1wbY3';
+
 /**
  * TEMPORARY migration route — auto-tags existing blog posts so the internal
  * linking system has data to work with. DELETE after running.
@@ -73,12 +77,15 @@ function pickIndustries(hay: string): string[] {
 }
 
 export async function GET(req: NextRequest) {
-  const secret = req.nextUrl.searchParams.get('secret');
+  const token = req.nextUrl.searchParams.get('token');
   const dryRun = req.nextUrl.searchParams.get('dryRun') === '1';
 
-  const expected = process.env.AI_SETUP_JOB_SECRET;
-  if (!expected || secret !== expected) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  // Dry-run is read-only and open; applying changes requires the token.
+  if (!dryRun && token !== APPLY_TOKEN) {
+    return NextResponse.json(
+      { error: 'Unauthorized — add ?token=<APPLY_TOKEN> to apply, or ?dryRun=1 to preview.' },
+      { status: 401 }
+    );
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
