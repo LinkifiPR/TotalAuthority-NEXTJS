@@ -113,19 +113,12 @@ export async function GET(req: NextRequest) {
   let updated = 0;
 
   for (const p of posts ?? []) {
-    const hay = [
-      p.title || '',
-      p.excerpt || '',
-      (p.content || '').replace(/<[^>]+>/g, ' '),
-      (p.tags || []).join(' '),
-    ]
-      .join(' ')
-      .toLowerCase();
-
-    const cluster = pickCluster(hay);
-    // Industry tags only when the sector term is in the TITLE — body mentions
-    // are usually incidental examples and produce false positives.
-    const industries = pickIndustries((p.title || '').toLowerCase());
+    // Assess from the TITLE + slug only. Body text in this tightly-themed
+    // corpus mentions nearly every term ("generative engine", "chatgpt", …)
+    // and produces noisy matches; the title reflects the actual topic.
+    const titleHay = `${p.title || ''} ${(p.slug || '').replace(/-/g, ' ')}`.toLowerCase();
+    const cluster = pickCluster(titleHay);
+    const industries = pickIndustries(titleHay);
 
     const existing: string[] = Array.isArray(p.tags) ? p.tags : [];
     const merged = Array.from(new Set([...existing, cluster, ...industries]));
