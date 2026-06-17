@@ -21,14 +21,17 @@ const APPLY_TOKEN = 'ta-tagmigrate-7Qm2Kx9vZ4nR8sT1wbY3';
  */
 
 // Ordered; first match wins. Default handled separately.
+// Topic-specific clusters first; generic "AI Platform Guides" last so it only
+// applies when nothing more specific matched. Case Studies requires a literal
+// "case study" (no loose synonyms).
 const CLUSTER_RULES: Array<[string, RegExp]> = [
-  ['Case Studies', /\b(case study|case studies|client story|success story|we helped|results we)\b/i],
-  ['AI Platform Guides', /\b(chatgpt|chat gpt|gemini|perplexity|\bclaude\b|copilot|ai overview|\bsge\b)\b/i],
   ['Generative Engine Optimization', /\b(generative engine optimi|generative engine)\b/i],
   ['Answer Engine Optimization', /\b(answer engine optimi|answer engine|featured snippet)\b/i],
+  ['Local SEO', /\b(local seo|google business profile|google my business|local pack)\b/i],
   ['Digital PR & Earned Media', /\b(digital pr|earned media|journalist|press release|backlink|\bharo\b|media coverage|media outreach)\b/i],
-  ['Local SEO', /\b(local seo|google business profile|google my business|local pack|near me)\b/i],
   ['Authority Building', /\b(thought leadership|e-?e-?a-?t|topical authority|brand authority|expert positioning)\b/i],
+  ['Case Studies', /\b(case study|case studies)\b/i],
+  ['AI Platform Guides', /\b(chatgpt|chat gpt|gemini|perplexity|\bclaude\b|copilot|google ai overview)\b/i],
 ];
 const DEFAULT_CLUSTER = 'AI Visibility';
 
@@ -120,7 +123,9 @@ export async function GET(req: NextRequest) {
       .toLowerCase();
 
     const cluster = pickCluster(hay);
-    const industries = pickIndustries(hay);
+    // Industry tags only when the sector term is in the TITLE — body mentions
+    // are usually incidental examples and produce false positives.
+    const industries = pickIndustries((p.title || '').toLowerCase());
 
     const existing: string[] = Array.isArray(p.tags) ? p.tags : [];
     const merged = Array.from(new Set([...existing, cluster, ...industries]));
