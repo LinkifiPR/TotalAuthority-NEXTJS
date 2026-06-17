@@ -6,6 +6,7 @@ import { BlogPostForm } from '../BlogPostForm';
 import { BlogPostSEOForm } from '../BlogPostSEOForm';
 import { BlogPostSettings } from '../BlogPostSettings';
 import { BlogPostTags } from '../BlogPostTags';
+import { BlogPostIndustries } from '../BlogPostIndustries';
 import { WYSIWYGEditor } from '../../WYSIWYGEditor';
 
 interface BlogPost {
@@ -68,6 +69,11 @@ export const BlogPostTabs: React.FC<BlogPostTabsProps> = ({
             </div>
 
             <BlogPostTags
+              tags={formData.tags}
+              onTagsChange={onTagsChange}
+            />
+
+            <BlogPostIndustries
               tags={formData.tags}
               onTagsChange={onTagsChange}
             />
