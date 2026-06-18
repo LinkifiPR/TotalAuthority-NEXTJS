@@ -34,7 +34,7 @@ export const lawFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Law Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Law Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

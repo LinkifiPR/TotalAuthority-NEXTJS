@@ -34,7 +34,7 @@ export const therapyClinics: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Therapy Clinics',
-    headlinePre: 'Make Your Clinic the One',
+    headlinePre: 'Make Your Therapy Clinic the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

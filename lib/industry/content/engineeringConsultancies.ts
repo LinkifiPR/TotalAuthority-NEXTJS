@@ -34,7 +34,7 @@ export const engineeringConsultancies: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Engineering Consultancies',
-    headlinePre: 'Make Your Consultancy the One',
+    headlinePre: 'Make Your Engineering Consultancy the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

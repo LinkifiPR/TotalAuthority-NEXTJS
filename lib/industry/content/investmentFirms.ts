@@ -34,7 +34,7 @@ export const investmentFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Investment Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Investment Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

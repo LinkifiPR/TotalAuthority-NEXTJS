@@ -34,7 +34,7 @@ export const realEstateFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Real Estate Firms',
-    headlinePre: 'Make Your Agency the One',
+    headlinePre: 'Make Your Real Estate Agency the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

@@ -34,7 +34,7 @@ export const businessBrokers: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Business Brokers',
-    headlinePre: 'Make Your Brokerage the One',
+    headlinePre: 'Make Your Business Brokerage the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

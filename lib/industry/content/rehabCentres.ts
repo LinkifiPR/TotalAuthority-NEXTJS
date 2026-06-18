@@ -34,7 +34,7 @@ export const rehabCentres: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Rehab Centers',
-    headlinePre: 'Make Your Center the One',
+    headlinePre: 'Make Your Rehab Center the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

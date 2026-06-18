@@ -34,7 +34,7 @@ export const eyeClinics: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Eye Clinics',
-    headlinePre: 'Make Your Clinic the One',
+    headlinePre: 'Make Your Eye Clinic the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

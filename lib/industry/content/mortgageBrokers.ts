@@ -34,7 +34,7 @@ export const mortgageBrokers: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Mortgage Brokers',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Mortgage Brokerage the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

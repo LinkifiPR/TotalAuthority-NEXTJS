@@ -34,7 +34,7 @@ export const dentalClinics: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Dental Clinics',
-    headlinePre: 'Make Your Practice the One',
+    headlinePre: 'Make Your Dental Clinic the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

@@ -34,7 +34,7 @@ export const estatePlanningFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Estate Planning Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Estate Planning Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

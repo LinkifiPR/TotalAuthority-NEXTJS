@@ -34,7 +34,7 @@ export const insolvencyPractitioners: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Business Bankruptcy & Restructuring Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Insolvency Practice the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

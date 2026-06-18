@@ -34,7 +34,7 @@ export const wealthManagementFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Wealth Management Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Wealth Management Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

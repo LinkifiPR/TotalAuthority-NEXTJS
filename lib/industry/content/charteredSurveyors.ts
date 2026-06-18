@@ -34,7 +34,7 @@ export const charteredSurveyors: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Chartered Surveyors',
-    headlinePre: 'Make Your Practice the One',
+    headlinePre: 'Make Your Chartered Surveying Practice the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

@@ -34,7 +34,7 @@ export const taxAdvisoryFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Tax Advisory Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Tax Advisory Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

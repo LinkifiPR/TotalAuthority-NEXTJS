@@ -34,7 +34,7 @@ export const architecturalFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Architectural Firms',
-    headlinePre: 'Make Your Practice the One',
+    headlinePre: 'Make Your Architectural Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

@@ -34,7 +34,7 @@ export const insuranceBrokers: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Insurance Brokers',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Insurance Brokerage the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

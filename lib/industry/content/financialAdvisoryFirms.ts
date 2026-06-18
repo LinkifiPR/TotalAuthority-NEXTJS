@@ -34,7 +34,7 @@ export const financialAdvisoryFirms: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Financial Advisory Firms',
-    headlinePre: 'Make Your Firm the One',
+    headlinePre: 'Make Your Financial Advisory Firm the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

@@ -34,7 +34,7 @@ export const businessConsultancies: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Business Consulting Firms',
-    headlinePre: 'Make Your Consulting Firm the One',
+    headlinePre: 'Make Your Business Consultancy the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

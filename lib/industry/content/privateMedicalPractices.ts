@@ -34,7 +34,7 @@ export const privateMedicalPractices: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Private Medical Practices',
-    headlinePre: 'Make Your Practice the One',
+    headlinePre: 'Make Your Private Medical Practice the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [

@@ -34,7 +34,7 @@ export const cosmeticSurgeryClinics: IndustryContent = {
 
   hero: {
     eyebrow: 'AI Visibility and Authority Building for Cosmetic Surgery Clinics',
-    headlinePre: 'Make Your Clinic the One',
+    headlinePre: 'Make Your Cosmetic Surgery Clinic the One',
     headlineHighlight: 'AI Recommends',
     headlinePost: '',
     paragraphs: [
