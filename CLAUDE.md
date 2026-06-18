@@ -217,6 +217,25 @@ git config user.name "Christopher"
 
 ## Session Log
 
+### 2026-06-18
+Focus: industries rollout → US English → internal-linking system → sitemap/cache fixes → blog-card images → header dropdown. (Handoff snapshot for the next session.)
+
+**Industries system (24 pages, data-driven)** — built one shared template `components/industry/IndustryLandingPage.tsx` (client) + contract `lib/industry/types.ts` (`IndustryContent`, fixed array lengths) + per-industry `lib/industry/content/<camelCaseSlug>.ts` + SEO helper `lib/industry/seo.ts` + thin async `app/<slug>/page.tsx` (calls `getIndustryGuides`, `revalidate=300`). Registry `lib/industries.ts` (all `live`). Proved on Law Firms, then rolled out all 24 (parallel sub-agents) and migrated Med Spas onto the template. See the "Industries System" section above.
+
+**US English** — full localization pass (spelling + US institutions/examples/resources): attorneys/Chambers USA/ABA, IRS/AICPA/Form 1040, 401(k)/IRA, the "Big I", Healthgrades/Joint Commission/CDC, Zillow/NAR/AIA/ASCE, BizBuySell/IBBA, insolvency → Chapter 7/11/13. `seo.ts` `en_US`/`areaServed: United States`; "Rehab Centres" → "Rehab Centers".
+
+**Internal-linking system** — see the "Internal Linking System" section above. `lib/blog/related.ts` (`scoreRelatedPosts`, `industriesFromTags`) → `components/blog/RelatedPosts.tsx` (Related articles + relevant-industry links, with featured images) in `BlogPostClient`; `lib/industry/guides.ts` `getIndustryGuides` (tagged-first + recent fallback, with featured images) → "Guides & resources" section in the template; "Browse by industry" row on `/blog`+`/insights`; editor **Industries picker** `components/blog/editor/BlogPostIndustries.tsx`. Tagging convention = industry-slug tag(s) + one cluster tag (reuses `tags[]`). All ~28 existing posts were auto-tagged via a temporary `/api/admin/migrate-tags` route (rules-based, dry-run-verified, then **deleted**).
+
+**Sitemap** — `app/sitemap.ts` now includes the 24 industries and is `export const dynamic = 'force-dynamic'`. The live `/sitemap.xml` had been serving a stale **Netlify Durable Cache** copy of an old Supabase `generate-sitemap` proxy (1-yr TTL); removed the proxy from `public/_redirects` and the owner did one "Clear cache and deploy site". Now correct (63 URLs: 11 pages + 24 industries + 28 posts; no `/auth`/`/dashboard`).
+
+**Header** (`components/Header.tsx`) — Industries dropdown opens on **hover** (+ click), removed redundant "Live" badges.
+
+**Build/deploy/sandbox notes** — fresh container: `npm install` first. Google Fonts blocked → stub Inter in `app/layout.tsx` before `npx next build`, then `git checkout -- app/layout.tsx`. `.next` is tracked → `git restore --staged .next && git checkout -- .next` before staging. Sandbox **cannot reach Supabase** (DB ops need a temporary Netlify route); the **live site IS reachable** (curl + headless Chromium at `/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell` via `playwright-core`, args `--no-sandbox --ignore-certificate-errors`, `ignoreHTTPSErrors:true`). Push to `main` + `claude/hopeful-fermat-cia7hk` with the TA-2 write PAT (Contents R/W) set on the remote first.
+
+**Open item** — Christopher reported blog/industry links "frozen" in **Safari**. Not reproducible in headless Chromium (all links navigate, zero console errors); likely stale cached JS chunks after rapid deploys. Also fixed a real bug: the blog-list card overlay only covered the title (not the whole card). Awaiting his retest after a hard refresh (⌘⇧R); if it persists, instrument Safari specifically.
+
+**Design** — orange primary + emerald complementary accents, light template aesthetic, no multi-colour "rainbow".
+
 ### 2026-06-16
 Focus: Footer fix → Med Spas polish/SEO → **industries landing-page system** → roll out all 24 industries → convert everything to **US English**.
 
