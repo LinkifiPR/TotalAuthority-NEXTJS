@@ -17,6 +17,7 @@ export const Header: React.FC<HeaderProps> = () => {
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleLogoClick = () => {
     if (pathname === '/') {
@@ -37,6 +38,26 @@ export const Header: React.FC<HeaderProps> = () => {
     };
     document.addEventListener('mousedown', onClick);
     return () => document.removeEventListener('mousedown', onClick);
+  }, []);
+
+  // Open immediately on hover; close after a short delay so the cursor can
+  // travel from the trigger into the panel without the menu snapping shut.
+  const openIndustries = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setIndustriesOpen(true);
+  };
+
+  const scheduleCloseIndustries = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setIndustriesOpen(false), 150);
+  };
+
+  // Clear any pending close timer on unmount.
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
 
   return (
@@ -67,8 +88,8 @@ export const Header: React.FC<HeaderProps> = () => {
           <div
             className="relative"
             ref={dropdownRef}
-            onMouseEnter={() => setIndustriesOpen(true)}
-            onMouseLeave={() => setIndustriesOpen(false)}
+            onMouseEnter={openIndustries}
+            onMouseLeave={scheduleCloseIndustries}
           >
             <button
               type="button"
@@ -85,52 +106,57 @@ export const Header: React.FC<HeaderProps> = () => {
               />
             </button>
             {industriesOpen && (
-              <div className="absolute right-0 top-full mt-2 w-[480px] bg-white border border-slate-200 rounded-xl shadow-xl p-3 z-50">
-                <div className="grid grid-cols-2 gap-1">
-                  {INDUSTRIES.map((ind) => {
-                    const isLive = ind.status === 'live';
-                    const baseClasses =
-                      'flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors';
-                    if (isLive) {
+              // Outer container has no margin gap: it starts flush at the
+              // button's bottom edge and uses transparent top padding as a
+              // hover "bridge" so the cursor never crosses a dead zone.
+              <div className="absolute right-0 top-full pt-2 w-[480px] z-50">
+                <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-3">
+                  <div className="grid grid-cols-2 gap-1">
+                    {INDUSTRIES.map((ind) => {
+                      const isLive = ind.status === 'live';
+                      const baseClasses =
+                        'flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors';
+                      if (isLive) {
+                        return (
+                          <Link
+                            key={ind.slug}
+                            href={`/${ind.slug}`}
+                            onClick={() => {
+                              setIndustriesOpen(false);
+                              scrollToTop();
+                            }}
+                            className={`${baseClasses} text-slate-700 hover:bg-orange-50 hover:text-orange-700 font-medium`}
+                          >
+                            <span>{ind.name}</span>
+                          </Link>
+                        );
+                      }
                       return (
-                        <Link
+                        <span
                           key={ind.slug}
-                          href={`/${ind.slug}`}
-                          onClick={() => {
-                            setIndustriesOpen(false);
-                            scrollToTop();
-                          }}
-                          className={`${baseClasses} text-slate-700 hover:bg-orange-50 hover:text-orange-700 font-medium`}
+                          className={`${baseClasses} text-slate-400 cursor-default select-none`}
+                          title={`${ind.name} — coming soon`}
                         >
                           <span>{ind.name}</span>
-                        </Link>
-                      );
-                    }
-                    return (
-                      <span
-                        key={ind.slug}
-                        className={`${baseClasses} text-slate-400 cursor-default select-none`}
-                        title={`${ind.name} — coming soon`}
-                      >
-                        <span>{ind.name}</span>
-                        <span className="text-[10px] font-medium uppercase tracking-wider text-slate-300">
-                          Soon
+                          <span className="text-[10px] font-medium uppercase tracking-wider text-slate-300">
+                            Soon
+                          </span>
                         </span>
-                      </span>
-                    );
-                  })}
-                </div>
-                <div className="border-t border-slate-100 mt-3 pt-3 px-3">
-                  <p className="text-xs text-slate-500">
-                    More industries launching soon.{' '}
-                    <Link
-                      href="/llm-visibility-audit"
-                      className="text-orange-600 hover:text-orange-700 font-medium"
-                      onClick={() => setIndustriesOpen(false)}
-                    >
-                      Audit your business →
-                    </Link>
-                  </p>
+                      );
+                    })}
+                  </div>
+                  <div className="border-t border-slate-100 mt-3 pt-3 px-3">
+                    <p className="text-xs text-slate-500">
+                      More industries launching soon.{' '}
+                      <Link
+                        href="/llm-visibility-audit"
+                        className="text-orange-600 hover:text-orange-700 font-medium"
+                        onClick={() => setIndustriesOpen(false)}
+                      >
+                        Audit your business →
+                      </Link>
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
