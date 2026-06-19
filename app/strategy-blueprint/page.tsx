@@ -193,7 +193,6 @@ const FullAudit = () => {
             
             {/* AI Logos Section */}
             <div className="mb-12">
-              <p className="text-sm text-slate-500 mb-6 font-medium">We test across all major AI platforms</p>
               <div className="flex justify-center items-center gap-8 flex-wrap">
                 {aiLogos.map((logo, index) => (
                   <div 
