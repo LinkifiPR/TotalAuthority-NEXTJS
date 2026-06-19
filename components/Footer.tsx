@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
               decoding="async"
               className="h-12 md:h-14 w-auto mb-5 brightness-0 invert"
             />
-            <p className="text-slate-200 mb-6 max-w-md leading-relaxed">
+            <p className="text-slate-200 text-sm mb-6 max-w-md leading-relaxed">
               Get a comprehensive AI visibility audit to boost your online presence and outrank competitors with data-driven insights.
             </p>
 
@@ -77,12 +77,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
           {/* Quick Links */}
           <div>
             <h3 className="text-sm font-semibold tracking-wide text-white mb-4 uppercase">Quick Links</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/about"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   About
                 </Link>
@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/blog"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Blog
                 </Link>
@@ -100,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/podcast"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Podcast
                 </Link>
@@ -109,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/llm-visibility-gap-calculator"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Visibility Gap Calculator
                 </Link>
@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/llm-visibility-audit"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Visibility Mini Audit
                 </Link>
@@ -127,7 +127,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/strategy-blueprint"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Strategy Blueprint
                 </Link>
@@ -162,12 +162,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
           {/* Legal */}
           <div>
             <h3 className="text-sm font-semibold tracking-wide text-white mb-4 uppercase">Legal</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/privacy-policy"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Privacy Policy
                 </Link>
@@ -176,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/terms-of-service"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Terms of Service
                 </Link>
@@ -185,7 +185,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenForm }) => {
                 <Link
                   href="/cookie-policy"
                   onClick={scrollToTop}
-                  className="text-slate-200 hover:text-orange-300 transition-colors"
+                  className="text-slate-200 hover:text-orange-300 transition-colors text-sm leading-snug"
                 >
                   Cookie Policy
                 </Link>
