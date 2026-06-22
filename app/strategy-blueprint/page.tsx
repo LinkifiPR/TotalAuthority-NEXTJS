@@ -15,33 +15,10 @@ import { BOOKING_URL } from '@/config/links';
 const FullAudit = () => {
   const { isOpen, openForm, closeForm } = useFormPopup();
 
-  // AI Logos from homepage
-  const aiLogos = [
-    {
-      name: "OpenAI",
-      url: "https://cdn.brandfetch.io/openai.com/w/512/h/139/logo?c=1idP0DrE2OZDRG5HYTw",
-      size: "h-8"
-    },
-    {
-      name: "Claude",
-      url: "https://cdn.brandfetch.io/claude.ai/w/512/h/111/logo?c=1idP0DrE2OZDRG5HYTw",
-      size: "h-8"
-    },
-    {
-      name: "Perplexity",
-      url: "https://cdn.brandfetch.io/perplexity.ai/w/512/h/512?c=1idP0DrE2OZDRG5HYTw",
-      size: "h-10 w-10"
-    },
-    {
-      name: "Google",
-      url: "https://cdn.brandfetch.io/google.com/w/512/h/161/logo?c=1idP0DrE2OZDRG5HYTw",
-      size: "h-8"
-    }
-  ];
   const quickWins = [
-    "Schema and boilerplate fixes",
-    "Review profile claims", 
-    "Easy citation upgrades"
+    "Claim and complete the profiles AI already reads",
+    "Citation upgrades",
+    "Getting listed on the roundups AI cites"
   ];
 
   const longTermPlays = [
@@ -60,31 +37,31 @@ const FullAudit = () => {
     {
       icon: Eye,
       title: "How You Show Up When Buyers Ask AI", 
-      description: "We run dozens of real prompts across ChatGPT, Claude, Gemini, and Perplexity to test if you appear in recommendations, how you compare to competitors, and what's influencing the answers.",
+      description: "We run dozens of real buyer prompts through ChatGPT to test if you appear in recommendations, how you compare to competitors, and what's influencing the answers.",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: Brain,
       title: "What the AI Models Know About You",
-      description: "We assess core brand data, review signals, media credibility, metadata, boilerplate, and structured information. Outdated or inconsistent data means you don't get recommended.",
+      description: "We assess core brand data, review signals, media credibility, and structured information. Outdated or inconsistent data means you don't get recommended.",
       color: "from-emerald-500 to-teal-500"
     },
     {
       icon: Shield,
       title: "Whether You're an Entity They Can Trust",
-      description: "We check Google Knowledge Panel status, entity resolution on LinkedIn, Crunchbase, G2, Wikidata, and on-site schema. If LLMs don't recognize you as credible, you're not on the shortlist.",
+      description: "We check Google Knowledge Panel status, entity resolution on LinkedIn, Crunchbase, G2, and Wikidata. If LLMs don't recognize you as credible, you're not on the shortlist.",
       color: "from-orange-500 to-red-500"
     },
     {
       icon: BarChart3,
       title: "What's Influencing the Answers — and Where You're Missing",
-      description: "We map the real sources shaping recommendations: high-authority listicles, review hubs, blogs, forums. Sites that mention your competitors — but not you.",
+      description: "We map the real sources shaping recommendations: high-authority listicles, review hubs, blogs, forums. Sites that mention your competitors — but not you. We find the exact 'best of' and buyer-guide pages AI cites for your category, show where you're not listed, and target getting you onto them.",
       color: "from-indigo-500 to-blue-500"
     },
     {
       icon: Award,
-      title: "A Full Digital Authority & Reputation Pulse",
-      description: "We scan domain authority and backlinks, presence and ratings on trusted review platforms, and consistency across key citations and descriptions.",
+      title: "Your Review & Citation Footprint",
+      description: "The review platforms and third-party sources AI pulls from when it answers — including your presence and ratings on trusted review sites, and consistency across key citations and descriptions.",
       color: "from-violet-500 to-purple-500"
     }
   ];
@@ -188,27 +165,8 @@ const FullAudit = () => {
             </h1>
 
             <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-slate-600 mb-6 md:mb-8 leading-relaxed max-w-4xl mx-auto px-4">{/* ... keep existing paragraph content ... */}
-              Millions of buyers now turn to <span className="font-bold text-orange-600">ChatGPT</span>, <span className="font-bold text-purple-600">Claude</span>, <span className="font-bold text-blue-600">Gemini</span>, and <span className="font-bold text-emerald-600">Perplexity</span> instead of Google.
+              Millions of buyers now turn to AI tools like <span className="font-bold text-orange-600">ChatGPT</span> instead of Google.
             </p>
-            
-            {/* AI Logos Section */}
-            <div className="mb-12">
-              <div className="flex justify-center items-center gap-8 flex-wrap">
-                {aiLogos.map((logo, index) => (
-                  <div 
-                    key={logo.name} 
-                    className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 border border-orange-200/50 robot-glow animate-wobble"
-                  >
-                    <img 
-                      src={logo.url} 
-                      alt={logo.name} 
-                      className={`${logo.size} object-contain opacity-80 hover:opacity-100 transition-opacity duration-300`} 
-                      loading="lazy" 
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
             
             <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl p-8 md:p-12 mb-12 relative overflow-hidden border border-slate-700 max-w-4xl mx-auto">
               {/* Animated background elements */}
@@ -298,7 +256,7 @@ const FullAudit = () => {
               <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>Polished PDF report with screenshots</span>
+                  <span>Polished PDF report with scores and source links</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500" />
@@ -440,7 +398,7 @@ const FullAudit = () => {
                   <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 shadow-lg mr-3 md:mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Zap className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900">Quick Wins (30 Days)</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900">Quick Wins</h3>
                 </div>
                 <ul className="space-y-3 md:space-y-4">
                   {quickWins.map((item, index) => (
@@ -464,7 +422,7 @@ const FullAudit = () => {
                   <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 shadow-lg mr-3 md:mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Target className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900">Long-Term Plays (90–180 Days)</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900">Long-Term Plays</h3>
                 </div>
                 <ul className="space-y-3 md:space-y-4">
                   {longTermPlays.map((item, index) => (
@@ -547,13 +505,13 @@ const FullAudit = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-8 max-w-6xl mx-auto">
             {[
-              "A full breakdown of how your brand appears (or doesn't) across ChatGPT, Claude, Gemini, and Perplexity",
+              "A full breakdown of how your brand appears (or doesn't) in ChatGPT",
               "A clear understanding of the exact research your prospects are doing in LLMs",
               "The exact sources the LLMs are citing, so you can target the domains that shape recommendations",
               "The exact content types you should be creating to earn those citations and influence answers",
               "A prioritized action plan covering both quick wins and long-term plays",
               "A prompt pack so you can track visibility and changes over time",
-              "Everything delivered in a polished PDF report with screenshots, scores, and source links"
+              "Everything delivered in a polished PDF report with scores and source links"
             ].map((item, index) => (
               <Card 
                 key={index} 
